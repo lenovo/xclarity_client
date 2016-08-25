@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe XclarityClient do
+describe XClarityClient do
   it 'has a version number' do
-    expect(XclarityClient::VERSION).not_to be nil
+    expect(XClarityClient::VERSION).not_to be nil
   end
 
   # TODO: Actuall create real tests!
