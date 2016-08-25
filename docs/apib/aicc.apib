@@ -128,6 +128,17 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+  {
+   "ip_status": [{
+      "ip_disable": 0,
+      "ip_version": 4
+   },
+   {
+      "ip_disable": 0,
+      "ip_version": 6
+   }]
+  }
+
 + Response 404
 
 # PUT /aicc/network/ipdisable
@@ -140,15 +151,94 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+  {
+      "dns_servers": [{
+          "ip": "192.168.3.1",
+          "priority": 1
+      },
+      {
+          "ip": "9.0.128.50",
+          "priority": 2
+      },
+      {
+          "ip": "9.0.130.50",
+          "priority": 3
+      },
+      {
+          "ip": "192.168.129.1",
+          "priority": 4
+      }],
+      "domain_name": "(none),"
+      "hostname": "localhost",
+      "proxy": {
+          "enabled": true,
+          "ip": "1.1.1.1",
+          "password": "password",
+          "port": 11,
+          "userid": "userid"
+      }
+  }
+
 # PUT /aicc/network/host
 
 + Response 200 (application/json)
+
+  {
+      "dns_servers": [{
+          "ip": "192.168.3.1",
+          "priority": 1
+      },
+      {
+          "ip": "9.0.128.50",
+          "priority": 2
+      },
+      {
+          "ip": "9.0.130.50",
+          "priority": 3
+      },
+      {
+          "ip": "192.168.129.1",
+          "priority": 4
+      }],
+      "domain_name": "(none),"
+      "hostname": "localhost",
+      "proxy": {
+          "enabled": true,
+          "ip": "1.1.1.1",
+          "password": "password",
+          "port": 11,
+          "userid": "userid"
+      }
+  }
 
 + Response 400
 
 # GET /aicc/network/interfaces/{interface}
 
++ Parameters
+    + interface - ID of the network interface.
+
 + Response 200 (application/json)
+
+  [{
+     "id": "eth0",
+     "ip_addresses": [{
+        "assign_method": "static",
+        "ip": "fe80:0:0:0:20c:29ff:fec3:af6b%2",
+        "ip_linklocal": "true",
+        "prefix_length": 64,
+        "version": 6
+     },
+     {
+        "assign_method": "static",
+        "ip": "10.240.70.20",
+        "ip_linklocal": "false",
+        "prefix_length": 23,
+        "version": 4
+     }],
+     "mac_address": "00:0C:29:C3:AF:6B",
+     "role": ["management", "osdeployment"]
+  }]
 
 + Response 400
 
@@ -170,11 +260,66 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+  {
+    "routes": [{
+        "dev": "eth0",
+        "destination": "100.10.10.10",
+        "ip_version": 4,
+        "nexthop": "192.168.56.1",
+        "prefix_len": 32
+    },
+    {
+        "dev": "eth0",
+        "destination": "10.10.10.0",
+        "ip_version": 4,
+        "nexthop": "192.168.56.1",
+        "prefix_len": 24
+    },
+    {
+        "ip_version": 4,
+        "nexthop": "10.0.3.2",
+        "prefix_len": 0
+    },
+    {
+        "dev": "eth1",
+        "destination": "2001:db7:1::",
+        "ip_version": 6,
+        "nexthop": "2002:97b:c2bb:83d:5054:ff:fe2c:eefe",
+        "prefix_len": 64
+    },
+    {
+        "dev": "eth1",
+        "destination": "2002:97b:face:83d:5054:ff:fe2c:eefe",
+        "ip_version": 6,
+        "nexthop": "2002:97b:c2bb:83d:5054:ff:fe2c:eefe",
+        "prefix_len": 128
+    }]
+  }
+
 + Response 400
 
 # GET /aicc/subscriptions
 
 + Response 200 (application/json)
+
+  [{
+     "id": 1,
+     "monitor_uri": "/aicc/network/interfaces",
+     "submonitor_uri": "",
+     "uri": "/osdeployment/rest/internal/event/aicc"
+  },
+  {
+     "id": 2,
+     "monitor_uri": "/aicc",
+     "submonitor_uri": "/ntp",
+     "uri": "/ntpNotification"
+  },
+  {
+     "id": 3,
+     "monitor_uri": "/aicc/network/interfaces",
+     "submonitor_uri": "",
+     "uri": "/netchangenotsec"
+  }]
 
 + Response 400
 
