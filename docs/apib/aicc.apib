@@ -1,0 +1,83 @@
+FORMAT: 1A
+
+# GET /aicc
+
++ Response 200 (application/json)
+
+# PUT /aicc
+
++ Response 200 (application/json)
+
++ Response 400
+
+# GET /aicc/network/ipdisable
+
++ Response 200 (application/json)
+
++ Response 404
+
+# PUT /aicc/network/ipdisable
+
++ Response 200 (application/json)
+
++ Response 400
+
+# GET /aicc/network/host
+
++ Response 200 (application/json)
+
+# PUT /aicc/network/host
+
++ Response 200 (application/json)
+
++ Response 400
+
+# GET /aicc/network/interfaces/{interface}
+
++ Response 200 (application/json)
+
++ Response 400
+
+# PUT /aicc/network/interfaces/{interface}
+
++ Response 200 (application/json)
++ Response 400
++ Response 401
++ Response 403
++ Response 404
++ Response 409
++ Response 500
+
+# GET /aicc/network/routes
+
++ Response 200 (application/json)
+
+# PUT /aicc/network/routes
+
++ Response 200 (application/json)
+
++ Response 400
+
+# GET /aicc/subscriptions
+
++ Response 200 (application/json)
+
++ Response 400
+
+# PUT /aicc/subscriptions
+
++ Response 200 (application/json)
++ Response 400
++ Response 409
+
+# DELETE /aicc/subscriptions/{id}
+
++ Response 200 (application/json)
+
++ Response 404
+
+# GET /aicc/subscriptions/{id}
+
++ Response 200 (application/json)
+
++ Response 400

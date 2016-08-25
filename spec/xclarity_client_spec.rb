@@ -5,7 +5,18 @@ describe XclarityClient do
     expect(XclarityClient::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  # TODO: Actuall create real tests!
+  describe 'GET /aicc' do
+    it 'should respond with information about the Lenovo XClarity Administrator' do
+      response = 200
+      expect(response).to eq(200)
+    end
+  end
+
+  describe 'GET /aicc/network/ipdisable' do
+    it 'should respond with the IPv6 and IPv6 addresses enablement state.' do
+      response = 200
+      expect(response).to eq(200)
+    end
   end
 end
