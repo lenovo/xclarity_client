@@ -4,6 +4,120 @@ FORMAT: 1A
 
 + Response 200 (application/json)
 
+  {
+   "appliance": {
+      "build": "110",
+      "date": "2015-09-15_10-25-16",
+      "name": "LXCA - 10.240.61.98",
+      "runlevel": 3,
+      "status": "Normal",
+      "uuid": "bef3e2c3-a689-4734-aa79-2a21f21e8b97",
+      "version": "1.1.0"
+   },
+   "appliance_states": [{
+      "description": "Halt the appliance",
+      "runlevel": 0
+   },
+   {
+      "description": "Reboot the appliance",
+      "runlevel": 6
+   }],
+   "date": {
+      "date_time": "September 18, 2015 8:45:54 AM EST",
+      "parts": {
+         "yyyy": 2015,
+         "mm": 9,
+         "dd": 18,
+         "hours": 8,
+         "mins": 45
+         "secs": 54,
+      },
+      "timezone": "Eastern Standard Time",
+      "timezones": [{
+         "daylight_saves": 0,
+         "display_name": "GMT-12:00",
+         "id": "Etc/GMT+12",
+         "offset": -43200000,
+         "uses_daylight": false,
+         "utc_offset_raw": -43200000,
+         "utc_offset_w_dst": -43200000
+      },
+      {
+         "daylight_saves": 0,
+         "display_name": "Eastern Standard Time",
+         "id": "America/Grand_Turk",
+         "offset": -14400000,
+         "uses_daylight": false,
+         "utc_offset_raw": -18000000,
+         "utc_offset_w_dst": -14400000
+      }],
+      "timezone_id": "America/Cayman",
+      "uses_daylight": true,
+      "utc_offset": -18000000,
+      "utc_offset_raw": -18000000,
+      "utc_offset_w_dst": -18000000
+   }
+   "network_interfaces": [{
+      "id": "eth0",
+      "ip_addresses": [{
+         "assign_method": "static",
+         "ip": "fe80:0:0:0:200:ff:fe00:10%2",
+         "ip_linklocal": "true",
+         "prefix_length": 64,
+         "version": 6
+      },
+      {
+         "assign_method": "static",
+         "ip": "10.240.61.98",
+         "ip_linklocal": "false",
+         "prefix_length": 22,
+         "version": 4
+      }],
+      "mac_address": "00:00:00:00:00:10",
+      "role": ["management", "osdeployment"]
+   }],
+   "ntp": {
+      "servers": [{
+         "authenticated": false,
+         "server": "us.pool.ntp.org",
+         "version": 1,
+         "v3_key": "",
+         "v3_key_index": 0,
+         "v3_key_type": ""
+      }]
+   },
+   "services": [{
+      "id": "core",
+      "initd": "xhmc-core",
+      "pid": 52706,
+      "state": 0
+   },
+   {
+      "id": "watchdog",
+      "initd": "sympl-watchdog",
+      "pid": 52517,
+      "state": 0
+   }],
+   "service_states": [{
+      "description": "Service is running",
+      "state": 0
+   },
+   {
+      "description": "Special purpose state used to trigger restart through REST",
+      "state": 191
+   }],
+   "subscriptions": [{
+      "id": 1,
+      "monitor_uri": "/aicc",
+      "uri": "/ntpNotification"
+   },
+   {
+      "id": 3,
+      "monitor_uri": "",
+      "uri": "/osdeployment/rest/internal/event/aicc"
+   }],
+  }
+
 # PUT /aicc
 
 + Response 200 (application/json)
