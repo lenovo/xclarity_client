@@ -5,7 +5,7 @@ require 'xclarity_client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "xclarity_client"
-  spec.version       = XclarityClient::VERSION
+  spec.version       = XClarityClient::VERSION
   spec.authors       = ["Julian Cheal"]
   spec.email         = ["jcheal@redhat.com"]
 
