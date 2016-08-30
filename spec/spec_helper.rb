@@ -4,8 +4,11 @@ require 'apib/mock_server'
 require 'webmock/rspec'
 
 base_url = "http://example.com"
-blueprint = Pathname(__dir__).join("..", "docs/apib", "aicc.apib").read
-app = Apib::MockServer.new(base_url, blueprint)
+blueprints = ""
+Dir.glob('docs/apib/*.apib') do |blueprint|
+  blueprints << File.open(blueprint).read
+end
+app = Apib::MockServer.new(base_url, blueprints)
 
 RSpec.configure do |config|
   config.before do
