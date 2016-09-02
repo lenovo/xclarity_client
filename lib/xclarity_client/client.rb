@@ -8,6 +8,5 @@ module XClarityClient
     def discover_nodes
       Node.new(@connection).populate
     end
-
   end
 end
