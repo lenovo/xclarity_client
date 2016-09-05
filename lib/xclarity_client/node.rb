@@ -5,91 +5,17 @@ module XClarityClient
 
     BASE_URI = '/nodes'.freeze
 
-    # accessState
-    # activationKeys
-    # addinCardSlots
-    # addinCards
-    # arch
-    # backedBy
-    # bladeState
-    # bootMode
-    # bootOrder
-    # cmmDisplayName
-    # cmmHealthState
-    # complexID
-    # contact
-    # dataHandle
-    # description
-    # dnsHostnames
-    # domainName
-    # driveBays
-    # drives
-    # embeddedHypervisorPresence
-    # encapsulation
-    # errorFields
-    # excludedHealthState
-    # expansionCardSlots
-    # expansionCards
-    # expansionProductType
-    # expansionProducts
-    # firmware
-    # flashStorage
-    # FRU
-    # fruSerialNumber
-    # hasOS
-    # height
-    # hostMacAddresses
-    # hostname
-    # ipInterfaces
-    # ipv4Addresses
-    # ipv6Addresses
-    # isConnectionTrusted
-    # isITME
-    # isRemotePresenceEnabled
-    # isScalable
-    # lanOverUsb
-    # leds
-    # location
-    # macAddress
-    # machineType
-    # manufacturer
-    # manufacturerId
-    # memoryModules
-    # memorySlots
-    # mgmtProcIPaddress
-    # model
-    # name
-    # nist
-    # onboardPciDevices
-    # overallHealthState
-    # partNumber
-    # partitionID
-    # pciCapabilities
-    # pciDevices
-    # ports
-    # posID
-    # powerAllocation
-    # powerCappingPolicy
-    # powerStatus
-    # powerSupplies
-    # processorSlots
-    # processors
-    # productId
-    # productName
-    # raidSettings
-    # secureBootMode
-    # serialNumber
-    # slots
-    # status
-    # subSlots
-    # subType
-    # tlsVersion
-    # type
-    # uri
-    # userDescription
-    # uuid
-    # vnicMode
-    # vpdID
+    attr_accessor :accessState, :activationKeys,:uuid,:addinCardSlots,:addinCards,:vnicMode, :productName, :arch, :backedBy, :bladeState, :bootMode,
+      :bootOrder,:canisters,:canisterSlots, :cmmDisplayName, :cmmHealthState, :complexID, :dataHandle, :dnsHostnames, :domainName,
+      :driveBays, :embeddedHypervisorPresence, :errorFields, :excludedHealthState, :expansionCardSlots,:expansionCards,
+      :expansionProductType, :expansionProducts ,:expansionProductSlots, :firmware, :flashStorage,:fruSerialNumber, :hostMacAddresses, :hostname, :ipInterfaces,
+      :ipv4Addresses, :ipv6Addresses ,:isConnectionTrusted ,:isITME ,:hasOS, :isRemotePresenceEnabled, :isScalable ,:lanOverUsb,
+      :machineType, :manufacturer, :manufacturerID ,:memoryModules ,:memorySlots, :mgmtProcIPaddress,:model, :nist ,:onboardPciDevices,
+      :overallHealthState, :partitionEnabled, :powerStatus ,:pciExpressCards ,:pciExpressCardSlots ,:physicalID ,:ports ,:posID ,:powerAllocation ,:powerCappingPolicy,
+      :powerSupplies, :primary, :processorSlots, :processors, :productID ,:raidSettings ,:secureBootMode,:serialNumber, :slots, :status ,:subSlots,
+      :thinkServerFru, :tlsVersion :type ,:uri ,:userDescription ,:vpdID
+
+
 
     def initialize(conf)
       super(conf, BASE_URI)
@@ -97,7 +23,11 @@ module XClarityClient
 
     def populate
       response = connection(BASE_URI)
-      response.body
+      build_node(response.body)
+    end
+
+    def build_node(args)
+      args.each { |key, value| send("#{key}=", value) }
     end
 
   end
