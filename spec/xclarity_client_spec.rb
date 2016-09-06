@@ -4,13 +4,13 @@ describe XClarityClient do
 
   before :all do
     conf = XClarityClient::Configuration.new(
-      :username => 'admin',
-      :password => 'pass',
-      :host     => 'http://example.com'
+    :username => 'admin',
+    :password => 'pass',
+    :host     => 'http://example.com'
     )
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
-    client = XClarityClient::Client.new(conf)
+    @client = XClarityClient::Client.new(conf)
   end
 
   it 'has a version number' do
@@ -71,52 +71,66 @@ describe XClarityClient do
     end
   end
 
-  decribe 'GET /nodes' do
+  describe 'GET /nodes' do
 
     it 'should respond with an array' do
-      expect(client.discover_nodes.class).to eq(Array)
+      expect(@client.discover_nodes.class).to eq(Array)
     end
 
     it 'the response must have one or more nodes' do
-      expect(client.discover_nodes).not_to be_empty
+      expect(@client.discover_nodes).not_to be_empty
     end
 
   end
 
-  decribe 'GET /nodes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
+  describe 'GET /nodes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
     before :each do
       @includeAttributes = %w(accessState activationKeys)
       @excludeAttributes = %w(accessState activationKeys)
+      @uuidArray = @client.discover_nodes.map { |node| node.uuid  }
     end
 
     it 'GET /nodes/UUID with includeAttributes' do
 
-      uuidArray = client.discover_nodes.map { |node| node.uuid  }
-      response = client.fetch_nodes(uuidArray, includeAttributes)
-      expect(response).to be_a(Array)
-      @includeAttributes.each do |attribute|
-        expect(response.properties.has_key? attribute).to eq(true)
+      response = @client.fetch_nodes(@uuidArray, @includeAttributes)
+      respose.map do |node|
+        @includeAttributes.map do |attribute|
+          expect(response.properties.has_key? attribute).to eq(true)
+        end
       end
+
     end
     it 'GET /nodes/UUID with excludeAttributes' do
-
+      response = @client.fetch_nodes(@uuidArray, @excludeAttributes)
+      respose.map do |node|
+        @excludeAttributes.map do |attribute|
+          expect(response.properties.has_key? attribute).to eq(false)
+        end
+      end
     end
-    it 'GET /nodes with includeAttributes' do
-
+    it 'GET /nodes just with includeAttributes' do
+      response = @client.fetch_nodes(@includeAttributes)
+      respose.map do |node|
+        @includeAttributes.map do |attribute|
+          expect(response.properties.has_key? attribute).to eq(true)
+        end
+      end
     end
-    it 'GET /nodes with excludeAttributes' do
-
+    it 'GET /nodes just with excludeAttributes' do
+      response = @client.fetch_nodes(@excludeAttributes)
+      respose.map do |node|
+        @excludeAttributes.map do |attribute|
+          expect(response.properties.has_key? attribute).to eq(false)
+        end
+      end
     end
-
   end
 
-    describe 'GET /nodes/UUID,UUID,...,UUID' do
+  describe 'GET /nodes/UUID,UUID,...,UUID' do
 
-      it 'to multiples uuid, should return two or more nodes' do
-        uuidArray = client.discover_nodes.map { |node| node.uuid  }
-        expect(client.fetch_nodes(uuidArray)).to be >= 2
-      end
-
+    it 'to multiples uuid, should return two or more nodes' do
+      uuidArray = @client.discover_nodes.map { |node| node.uuid  }
+      expect(@client.fetch_nodes(uuidArray)).to be >= 2
     end
-
+  end
 end
