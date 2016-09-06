@@ -14,14 +14,13 @@ module XClarityClient
       :thinkServerFru, :tlsVersion, :type, :uri ,:userDescription ,:vpdID
 
 
-
     def initialize(attributes)
       build_node(attributes)
     end
 
     def build_node(attributes)
       attributes.each do |key, value|
-        "@#{key}" = value
+        send("#{key}=", value)
       end
     end
 
