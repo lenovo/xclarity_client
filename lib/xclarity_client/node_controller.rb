@@ -1,3 +1,5 @@
+require 'json'
+
 module XClarityClient
   class NodeController < XClarityBase
 
@@ -9,7 +11,9 @@ module XClarityClient
 
     def population
       response = connection(BASE_URI)
-      response.body[:nodeList].map do |node|
+
+      body = JSON.parse(response.body)
+      body.map do |node|
         Node.new node
       end
     end
@@ -26,7 +30,10 @@ module XClarityClient
                    connection(BASE_URI)
                  end
 
-      response.body[:nodeList].map do |node|
+
+        # puts "#{response.body}"
+        body = JSON.parse(response.body)
+        body.map do |node|
         Node.new node
       end
     end

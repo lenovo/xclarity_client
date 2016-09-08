@@ -6,7 +6,7 @@ module XClarityClient
     end
 
     def discover_nodes
-      NodeController.new(@connection).fetch_nodes
+      NodeController.new(@connection).population
     end
 
     def fetch_nodes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
