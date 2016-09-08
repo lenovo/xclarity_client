@@ -11,7 +11,8 @@ module XClarityClient
       :machineType, :manufacturer, :manufacturerID ,:memoryModules,:memorySlots, :mgmtProcIPaddress, :model, :nist, :onboardPciDevices,
       :overallHealthState, :partitionEnabled, :powerStatus, :pciExpressCards, :pciExpressCardSlots, :physicalID, :ports, :posID, :powerAllocation, :powerCappingPolicy,
       :powerSupplies, :primary, :processorSlots, :processors, :productID, :raidSettings, :secureBootMode, :serialNumber, :slots, :status, :subSlots,
-      :thinkServerFru, :tlsVersion, :type, :uri ,:userDescription ,:vpdID
+      :thinkServerFru, :tlsVersion, :type, :uri ,:userDescription ,:vpdID,:contact, :description, :driveBays, :drives,:encapsulation, :FRU,:height,:leds,:location,:logicalID,
+      :macAddress,:name,:parent,:parentComplexID, :parentPartitionUUID,:partNumber,:partitionEnabled,:partitionID,:pciCapabilities,:pciDevices,:subType
 
 
     def initialize(attributes)
