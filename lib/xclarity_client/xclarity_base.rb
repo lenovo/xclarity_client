@@ -22,8 +22,6 @@ module XClarityClient
     private
 
     def connection(uri = "", options = {})
-# puts "EU ESTOU AQUI 2 #{@conn.get(uri).body}"
-# puts "EU ESTOU AQUI 2 #{uri}"
       @conn.get(uri)
     end
   end

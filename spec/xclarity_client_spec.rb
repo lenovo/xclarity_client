@@ -100,7 +100,7 @@ describe XClarityClient do
     it 'GET /nodes/UUID with includeAttributes' do
 
       response = @client.fetch_nodes(@uuidArray, @includeAttributes)
-      respose.map do |node|
+      response.map do |node|
         @includeAttributes.map do |attribute|
           expect(response.properties.has_key? attribute).to eq(true)
         end
@@ -108,26 +108,26 @@ describe XClarityClient do
 
     end
     it 'GET /nodes/UUID with excludeAttributes' do
-      response = @client.fetch_nodes(@uuidArray, @excludeAttributes)
-      respose.map do |node|
+      response = @client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+      response.map do |node|
         @excludeAttributes.map do |attribute|
           expect(response.properties.has_key? attribute).to eq(false)
         end
       end
     end
     it 'GET /nodes just with includeAttributes' do
-      response = @client.fetch_nodes(@includeAttributes)
-      respose.map do |node|
+      response = @client.fetch_nodes(nil,@includeAttributes,nil)
+      response.map do |node|
         @includeAttributes.map do |attribute|
-          expect(response.properties.has_key? attribute).to eq(true)
+          expect(node).to have_attributes(attribute)
         end
       end
     end
     it 'GET /nodes just with excludeAttributes' do
-      response = @client.fetch_nodes(@excludeAttributes)
-      respose.map do |node|
+      response = @client.fetch_nodes(nil,nil,@excludeAttributes)
+      response.map do |node|
         @excludeAttributes.map do |attribute|
-          expect(response.properties.has_key? attribute).to eq(false)
+          expect(node).not_to have_attributes(attribute)
         end
       end
     end
@@ -137,7 +137,7 @@ describe XClarityClient do
 
     it 'to multiples uuid, should return two or more nodes' do
       uuidArray = @client.discover_nodes.map { |node| node.uuid  }
-      expect(@client.fetch_nodes(uuidArray)).to be >= 2
+      expect(uuidArray.length).to be >= 2
     end
   end
 end
