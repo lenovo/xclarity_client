@@ -30,6 +30,7 @@ module XClarityClient
                    connection(BASE_URI)
                  end
 
+
         body = JSON.parse(response.body)
         body.map do |node|
         Node.new node
