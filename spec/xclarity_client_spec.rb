@@ -102,7 +102,7 @@ describe XClarityClient do
       response = @client.fetch_nodes(@uuidArray, @includeAttributes)
       response.map do |node|
         @includeAttributes.map do |attribute|
-          expect(response.properties.has_key? attribute).to eq(true)
+          expect(node).to have_attributes(attribute)
         end
       end
 
@@ -111,7 +111,7 @@ describe XClarityClient do
       response = @client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
       response.map do |node|
         @excludeAttributes.map do |attribute|
-          expect(response.properties.has_key? attribute).to eq(false)
+          expect(node).not_to have_attributes(attribute)
         end
       end
     end
