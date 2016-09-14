@@ -99,10 +99,10 @@ describe XClarityClient do
 
     it 'GET /nodes/UUID with includeAttributes' do
 
-      response = @client.fetch_nodes(@uuidArray, @includeAttributes)
+      response = @client.fetch_nodes(@uuidArray, @includeAttributes,nil)
       response.map do |node|
         @includeAttributes.map do |attribute|
-          expect(node).to have_attributes(attribute)
+        expect(node.send(attribute)).not_to be_nil
         end
       end
 
@@ -111,7 +111,7 @@ describe XClarityClient do
       response = @client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
       response.map do |node|
         @excludeAttributes.map do |attribute|
-          expect(node).not_to have_attributes(attribute)
+        expect(node.send(attribute)).to be_nil
         end
       end
     end
@@ -119,7 +119,7 @@ describe XClarityClient do
       response = @client.fetch_nodes(nil,@includeAttributes,nil)
       response.map do |node|
         @includeAttributes.map do |attribute|
-          expect(node).to have_attributes(attribute)
+          expect(node.send(attribute)).not_to be_nil
         end
       end
     end
@@ -127,7 +127,7 @@ describe XClarityClient do
       response = @client.fetch_nodes(nil,nil,@excludeAttributes)
       response.map do |node|
         @excludeAttributes.map do |attribute|
-          expect(node).not_to have_attributes(attribute)
+          expect(node.send(attribute)).to be_nil
         end
       end
     end

@@ -19,8 +19,6 @@ module XClarityClient
       end
     end
 
-    private
-
     def connection(uri = "", options = {})
       @conn.get(uri)
     end
