@@ -1,7 +1,7 @@
 require 'json'
 
 module XClarityClient
-  class NodeController < XClarityBase
+  class NodeManagement < XClarityBase
 
     BASE_URI = '/nodes'.freeze
 
@@ -21,29 +21,30 @@ module XClarityClient
     def get_object_nodes(uuids, includeAttributes, excludeAttributes)
 
       response = if not includeAttributes.nil?
-                   get_object_nodes_include_attributes(uuids, includeAttributes)
-                 elsif not excludeAttributes.nil?
-                   get_object_nodes_exclude_attributes(uuids, excludeAttributes)
-                 elsif not uuids.nil?
-                   connection(BASE_URI + "/" + uuids.join(","))
-                 else
-                   connection(BASE_URI)
-                 end
+        get_object_nodes_include_attributes(uuids, includeAttributes)
+      elsif not excludeAttributes.nil?
+        get_object_nodes_exclude_attributes(uuids, excludeAttributes)
+      elsif not uuids.nil?
+        connection(BASE_URI + "/" + uuids.join(","))
+      else
+        connection(BASE_URI)
+      end
 
-        body = JSON.parse(response.body)
-        body.map do |node|
+      body = JSON.parse(response.body)
+      body.map do |node|
         Node.new node
       end
-    end
 
+    end
 
     def get_object_nodes_exclude_attributes(uuids, attributes)
 
-        if not uuids.nil?
-          response = connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes=" + attributes.join(","))
-        else
-          response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
-        end
+      response = if not uuids.nil?
+        connection(BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
+      else
+        connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+      end
+
     end
 
     def get_object_nodes_include_attributes(uuids, attributes)
