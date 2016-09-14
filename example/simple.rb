@@ -17,4 +17,3 @@ client = XClarityClient::Client.new(conf)
 @uuidArray = client.discover_nodes.map { |node| node.uuid  }
 
 puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
-# puts client.discover_nodes[0]
