@@ -30,22 +30,20 @@ module XClarityClient
                    connection(BASE_URI)
                  end
 
-
         body = JSON.parse(response.body)
         body.map do |node|
         Node.new node
       end
     end
 
-    private
 
     def get_object_nodes_exclude_attributes(uuids, attributes)
 
-      response = if not uuids.nil?
-                   connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes=" + attributes.join(","))
-                 else
-                   connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
-                 end
+        if not uuids.nil?
+          response = connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes=" + attributes.join(","))
+        else
+          response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+        end
     end
 
     def get_object_nodes_include_attributes(uuids, attributes)
