@@ -19,4 +19,5 @@ puts client.discover_chassis
 @uuidArray = client.discover_nodes.map { |node| node.uuid  }
 
 puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_nodes[0]

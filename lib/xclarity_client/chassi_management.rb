@@ -1,7 +1,7 @@
 require 'json'
 
 module XClarityClient
-  class ChassiController < XClarityBase
+  class ChassiManagement < XClarityBase
 
     BASE_URI = '/chassis'.freeze
 
@@ -31,7 +31,7 @@ module XClarityClient
                  end
 
 
-        puts "ALO ALO GRACAS  A DEUS: #{response.body.to_s}"
+
         body = JSON.parse(response.body)
         body.map do |chassi|
           Chassi.new chassi
