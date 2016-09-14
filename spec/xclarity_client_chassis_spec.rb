@@ -97,7 +97,7 @@ describe XClarityClient do
         response = @client.fetch_chassis(@uuidArray, @includeAttributes)
         response.map do |chassi|
           @includeAttributes.map do |attribute|
-            expect(chassi).to have_attributes(attribute)
+            expec git t(chassi).to have_attributes(attribute)
           end
         end
       end
