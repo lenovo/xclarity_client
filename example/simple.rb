@@ -13,4 +13,4 @@ conf = XClarityClient::Configuration.new(
 client = XClarityClient::Client.new(conf)
 
 
-puts client.discover_nodes[0]
+puts client.discover_chassis
