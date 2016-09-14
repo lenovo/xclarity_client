@@ -1,4 +1,5 @@
 require 'faraday'
+require 'uri'
 
 module XClarityClient
   class XClarityBase
@@ -10,6 +11,7 @@ module XClarityClient
     end
 
     def connection_builder(conf, uri)
+
       @conn = Faraday.new(url: conf.host + uri) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
