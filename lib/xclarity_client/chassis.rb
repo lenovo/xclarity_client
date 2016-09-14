@@ -1,5 +1,5 @@
 module XClarityClient
-  class Chassis
+  class Chassis < XClarityBase
 
     def initialize
     end

@@ -11,3 +11,4 @@ module XClarityClient
 
   end
 end
+ 
