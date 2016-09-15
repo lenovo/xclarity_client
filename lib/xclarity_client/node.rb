@@ -3,7 +3,7 @@ module XClarityClient
 
     BASE_URI = '/nodes'.freeze
 
-    attr_accessor :accessState, :activationKeys, :uuid, :addinCardSlots, :addinCards, :vnicMode, :productName, :arch, :backedBy, :bladeState, :bootMode,
+    attr_accessor :properties,:_uuid, :accessState, :activationKeys, :uuid, :addinCardSlots, :addinCards, :vnicMode, :productName, :arch, :backedBy, :bladeState, :bootMode,
       :bootOrder, :canisters, :canisterSlots, :cmmDisplayName, :cmmHealthState, :complexID, :dataHandle, :dnsHostnames, :domainName,
       :driveBays, :embeddedHypervisorPresence, :errorFields, :excludedHealthState, :expansionCardSlots, :expansionCards,
       :expansionProductType, :expansionProducts, :expansionProductSlots, :firmware, :flashStorage, :fruSerialNumber, :hostMacAddresses, :hostname, :ipInterfaces,
