@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe XClarityClient do
 
   before :all do
@@ -76,64 +78,66 @@ describe XClarityClient do
     end
   end
 
-  describe 'GET /cmms' do
+  describe 'GET /nodes' do
+
     it 'should respond with an array' do
-      expect(@client.discover_cmms.class).to eq(Array)
+      expect(@client.discover_nodes.class).to eq(Array)
     end
 
     it 'the response must have one or more nodes' do
-      expect(@client.discover_cmms).not_to be_empty
+      expect(@client.discover_nodes).not_to be_empty
     end
 
-    describe 'GET /cmms/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
-      before :each do
-        @includeAttributes = %w(accessState backedBy)
-        @excludeAttributes = %w(accessState backedBy)
-        @uuidArray = @client.discover_cmms.map { |cmm| cmm.uuid  }
-      end
+  end
 
-      it 'GET /cmms/UUID with includeAttributes' do
+  describe 'GET /nodes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
+    before :each do
+      @includeAttributes = %w(accessState activationKeys)
+      @excludeAttributes = %w(accessState activationKeys)
+      @uuidArray = @client.discover_nodes.map { |node| node.uuid  }
+    end
 
-        response = @client.fetch_cmms(@uuidArray, @includeAttributes)
-        response.map do |cmm|
-          @includeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
-          end
+    it 'GET /nodes/UUID with includeAttributes' do
+
+      response = @client.fetch_nodes(@uuidArray, @includeAttributes,nil)
+      response.map do |node|
+        @includeAttributes.map do |attribute|
+        expect(node.send(attribute)).not_to be_nil
         end
       end
 
-      it 'GET /cmms/UUID with excludeAttributes' do
-        response = @client.fetch_cmms(@uuidArray, nil, @excludeAttributes)
-        response.map do |cmms|
-          @excludeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
-          end
-        end
-      end
-      it 'GET /cmms just with includeAttributes' do
-        response = @client.fetch_cmms(nil,@includeAttributes,nil)
-        response.map do |cmm|
-          @includeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
-          end
-        end
-      end
-      it 'GET /cmms just with excludeAttributes' do
-        response = @client.fetch_cmms(nil,nil,@excludeAttributes)
-        response.map do |cmm|
-          @excludeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
-          end
+    end
+    it 'GET /nodes/UUID with excludeAttributes' do
+      response = @client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+      response.map do |node|
+        @excludeAttributes.map do |attribute|
+        expect(node.send(attribute)).to be_nil
         end
       end
     end
-
-    describe 'GET /cmms/UUID,UUID,...,UUID' do
-
-      it 'to multiples uuid, should return two or more cmms' do
-        uuidArray = @client.discover_cmms.map { |cmms| cmms.uuid  }
-        expect(uuidArray.length).to be >= 2
+    it 'GET /nodes just with includeAttributes' do
+      response = @client.fetch_nodes(nil,@includeAttributes,nil)
+      response.map do |node|
+        @includeAttributes.map do |attribute|
+          expect(node.send(attribute)).not_to be_nil
+        end
       end
+    end
+    it 'GET /nodes just with excludeAttributes' do
+      response = @client.fetch_nodes(nil,nil,@excludeAttributes)
+      response.map do |node|
+        @excludeAttributes.map do |attribute|
+          expect(node.send(attribute)).to be_nil
+        end
+      end
+    end
+  end
+
+  describe 'GET /nodes/UUID,UUID,...,UUID' do
+
+    it 'to multiples uuid, should return two or more nodes' do
+      uuidArray = @client.discover_nodes.map { |node| node.uuid  }
+      expect(uuidArray.length).to be >= 2
     end
   end
 end
