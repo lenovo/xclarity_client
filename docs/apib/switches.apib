@@ -1,0 +1,141 @@
+FORMAT: 1A
+
+# XClarity Switches
+
+# GET /nodes
+
++ Response 200 (application/json)
+{
+  "accessState": "Online",
+  "attachedNodes": ["BDB64B266F3911E391406CAE8B703820"],
+  "backedBy": "real",
+  "cmmDisplayName": "IO Module 01",
+  "cmmHealthState": "Non-Critical",
+  "dataHandle": 1430160812847,
+  "description": "FC5022",
+  "dnsHostnames": [
+      "10.243.15.198",
+      "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee"
+  ],
+  "errorFields": [],
+  "excludedHealthState": "Normal",
+  "firmware": [{
+      "status": "Backup",
+      "name": "Main Application",
+      "build": "",
+      "type": "Main Application",
+      "date": "2013-01-17T05:00:00Z",
+      "version": "7.0.0_pha3"
+  }],
+  "FRU": "90Y9359",
+  "fruSerialNumber": "Y050UZ31G00Z",
+  "hostname": "",
+  "ipInterfaces": [{
+      "IPv4enabled": true,
+      "IPv4DHCPmode": "DHCP_THEN_STATIC",
+      "IPv6enabled": true,
+      "IPv6assignments": [{
+          "id": 33,
+          "scope": "Global",
+          "source": "Stateless",
+          "gateway": "0:0:0:0:0:0:0:0",
+          "address": "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee",
+          "prefix": 64,
+          "type": "INUSE"
+      },
+      {
+          "id": 1,
+          "scope": "LinkLocal",
+          "source": "Other",
+          "gateway": "0:0:0:0:0:0:0:0",
+          "address": "fe80:0:0:0:205:33ff:fe94:dbee",
+          "prefix": 64,
+          "type": "INUSE"
+      },
+      {
+          "id": 2,
+          "scope": "Global",
+          "source": "Static",
+          "gateway": "0:0:0:0:0:0:0:0",
+          "address": "0:0:0:0:0:0:0:0",
+          "prefix": 64,
+          "type": "CONFIGURED"
+      }],
+      "IPv4assignments": [{
+          "id": 2,
+          "subnet": "255.255.255.0",
+          "gateway": "0.0.0.0",
+          "address": "192.168.70.120",
+          "type": "CONFIGURED"
+      },
+      {
+          "id": 64,
+          "subnet": "0.0.0.0",
+          "gateway": "0.0.0.0",
+          "address": "10.243.15.198",
+          "type": "INUSE"
+      }],
+      "IPv6DHCPenabled": true,
+      "name": "ioe0",
+      "IPv6statelessEnabled": true,
+      "label": "",
+      "IPv6staticEnabled": false
+  }],
+  "ipv4Addresses": ["10.243.15.198"],
+  "leds": [{
+      "location": "FrontPanel",
+      "color": "Blue",
+      "name": "Enclosure Identify",
+      "state": "Off"
+  },
+  {
+      "location": "FrontPanel",
+      "color": "Amber",
+      "name": "FRU Fault",
+      "state": "Off"
+  },
+  {
+      "location": "FrontPanel",
+      "color": "Green",
+      "name": "Power",
+      "state": "On"
+  }],
+  "ipv6Addresses": [
+      "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee",
+      "fe80:0:0:0:205:33ff:fe94:dbee"
+  ],
+  "model": "",
+  "manufacturerId": "20301",
+  "name": "IO Module 01",
+  "partNumber": "90Y9358",
+  "serialNumber": "",
+  "stackMode": "N/A",
+  "type": "Switch",
+  "userDescription": "",
+  "macAddresses": ["00:05:33:94:DB:EE"],
+  "machineType": "",
+  "manufacturer": "Lenovo",
+  "overallHealthState": "Normal",
+  "parent": {
+      "uuid": "ED895B48D50D4E34B5DAF1F697B1FAC5",
+      "uri": "chassis/ED895B48D50D4E34B5DAF1F697B1FAC5"
+  },
+  "posID": "17",
+  "powerAllocation": {
+      "maximumAllocatedPower": 100,
+      "minimumAllocatedPower": 100
+  },
+  "powerState": "On",
+  "productId": "329",
+  "productName": "Flex System FC5022 16Gb SAN Scalable Switch",
+  "protectedMode": "Not supported",
+  "slots": [1],
+  "uri": "switch/8C6F73601DD2B201036F00053394DBED",
+  "uuid": "8C6F73601DD2B201036F00053394DBED",
+  "vpdID": "309"
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
