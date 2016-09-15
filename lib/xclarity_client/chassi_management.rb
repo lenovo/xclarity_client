@@ -20,19 +20,18 @@ module XClarityClient
 
     def get_object_chassis(uuids, includeAttributes, excludeAttributes)
 
-      response = if not includeAttributes.nil?
-                   get_object_chassis_include_attributes(uuids, includeAttributes)
-                 elsif not excludeAttributes.nil?
-                   get_object_chassis_exclude_attributes(uuids, excludeAttributes)
-                 elsif not uuids.nil?
-                   connection(BASE_URI + "/" + uuids.join(","))
-                 else
-                   connection(BASE_URI)
-                 end
+      if not includeAttributes.nil?
+        response = get_object_chassis_include_attributes(uuids, includeAttributes)
+      elsif not excludeAttributes.nil?
+        response = get_object_chassis_exclude_attributes(uuids, excludeAttributes)
+      elsif not uuids.nil?
+        response = connection(BASE_URI + "/" + uuids.join(","))
+      else
+        response = connection(BASE_URI)
+      end
 
 
-
-        body = JSON.parse(response.body)
+        body = JSON.parse(response.body) rescue {}
         body.map do |chassi|
           Chassi.new chassi
         end
@@ -42,7 +41,7 @@ module XClarityClient
 
     def get_object_chassis_exclude_attributes(uuids, attributes)
       if not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes=" + attributes.join(","))
+        response = connection(BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
       else
         response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
       end

@@ -10,11 +10,11 @@ module XClarityClient
     end
 
     def discover_chassis
-      ChassiController.new(@connection).population
+      ChassiManagement.new(@connection).population
     end
 
     def fetch_chassis(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
-      array_chassis = ChassiController.new(@connection)
+      array_chassis = ChassiManagement.new(@connection)
       .get_object_chassis(uuids, includeAttributes, excludeAttributes)
     end
 
