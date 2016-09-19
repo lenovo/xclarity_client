@@ -12,16 +12,21 @@ Set mongo database up and running it
 
 Execute rails console:
 
+```ruby
   $ bundle exec rails console
+```
 
 Create new Switches to your database:
 
+```ruby
   $ FactoryGirl.create(:switch)
+```
 
 Get up LXCA-Mock server:
 
+```ruby
   $ bundle exec rails s
-
+```
 
 ## Installation
 
