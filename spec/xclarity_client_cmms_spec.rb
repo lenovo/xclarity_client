@@ -85,31 +85,40 @@ describe XClarityClient do
       expect(@client.discover_cmms).not_to be_empty
     end
 
-    describe 'GET /cmms/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
+    describe 'GET /cmms/UUID with includeAttributes and excludeAttributes' do
       before :each do
         @includeAttributes = %w(accessState backedBy)
         @excludeAttributes = %w(accessState backedBy)
         @uuidArray = @client.discover_cmms.map { |cmm| cmm.uuid  }
+
+        puts @uuidArray
       end
 
       it 'GET /cmms/UUID with includeAttributes' do
 
-        response = @client.fetch_cmms(@uuidArray, @includeAttributes)
-        response.map do |cmm|
-          @includeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
+        @uuidArray.each do | cmm |
+
+          response = @client.fetch_cmms(cmm, @includeAttributes)
+          response.map do |cmm_response |
+            @includeAttributes.map do |attribute|
+              expect(cmm_response.send(attribute)).to be_nil
+            end
           end
         end
       end
 
       it 'GET /cmms/UUID with excludeAttributes' do
-        response = @client.fetch_cmms(@uuidArray, nil, @excludeAttributes)
-        response.map do |cmms|
-          @excludeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
+
+        @uuidArray.each do | cmm |
+          response = @client.fetch_cmms(cmm, nil, @excludeAttributes)
+          response.map do |cmm_response|
+            @excludeAttributes.map do |attribute|
+              expect(cmm_response.send(attribute)).to be_nil
+            end
           end
         end
       end
+
       it 'GET /cmms just with includeAttributes' do
         response = @client.fetch_cmms(nil,@includeAttributes,nil)
         response.map do |cmm|
