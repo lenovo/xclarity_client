@@ -29,9 +29,8 @@ module XClarityClient
       else
         connection(BASE_URI)
       end
-      puts "HEEEEEY #{response.body}"
 
-      body = JSON.parse(response.body) rescue {}
+      body = JSON.parse(response.body)
       body.map do |switch|
         Switch.new switch
       end
