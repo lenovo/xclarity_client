@@ -12,4 +12,5 @@ virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
 
 client = XClarityClient::Client.new(conf)
 
-puts client.discover_nodes
+# puts client.discover_nodes
+puts client.discover_power_supplies

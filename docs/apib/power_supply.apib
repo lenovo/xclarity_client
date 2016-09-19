@@ -1,0 +1,71 @@
+FORMAT 1A
+
+# XClarity Power Supplies
+
+# GET /power_supplies
+
++ Response 200 (application/json)
+  {
+   "cmmDisplayName": "Power Supply 01",
+   "cmmHealthState": "Non-Critical",
+   "dataHandle": 0,
+   "description": "Power Supply",
+   "firmware": [{
+      "build": "",
+      "date": "",
+      "name": "Power Supply Firmware",
+      "role": "",
+      "status": "",
+      "type": "Power Supply Firmware",
+      "version": "0"
+   }],
+   "FRU": "69Y5817",
+   "fruSerialNumber": "ZK125116E0KK",
+   "hardwareRevision": "5.0",
+   "inputVoltageIsAC": true,
+   "inputVoltageMax": 208,
+   "inputVoltageMin": 200,
+   "leds": [{
+      "color": "Green",
+      "location": "Planar",
+      "name": "IN",
+      "state": "On"
+   },
+   {
+      "color": "Amber",
+      "location": "Planar",
+      "name": "FAULT",
+      "state": "Off"
+   }],
+   "machineType": "",
+   "manufacturer": "IBM",
+   "manufactureDate": "2411",
+   "manufacturerId": "20301",
+   "model": "",
+   "name": "Power Supply 01",
+   "parent": {
+      "uri": "chassis/FBEF740B178F4EFAA846E7225EE256DC",
+      "uuid": "FBEF740B178F4EFAA846E7225EE256DC"
+   },
+   "partNumber": "69Y5801",
+   "posID": "128",
+   "powerAllocation": {
+      "totalInputPower": 0,
+      "totalOutputPower": 0
+   },
+   "powerState": "Unknown",
+   "productId": "303",
+   "productName": "IBM 2500 W Power Supply",
+   "serialNumber": "",
+   "slots": [1],
+   "type": "PowerSupply",
+   "uri": "powerSupply/B1B549049DE811E00005000500050005",
+   "userDescription": "",
+   "uuid": "B1B549049DE811E00005000500050005",
+   "vpdID": "60"
+  }
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
