@@ -91,4 +91,72 @@ describe XClarityClient do
       end
     end
   end
+
+  describe 'GET /chassis/UUID' do
+
+    it 'with includeAttributes' do
+      response = @client.fetch_chassis([@uuidArray[0]], @includeAttributes,nil)
+      response.map do |chassi|
+        @includeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).not_to be_nil
+        end
+      end
+
+    end
+
+    it 'with excludeAttributes' do
+      response = @client.fetch_chassis([@uuidArray[0]], nil, @excludeAttributes)
+      response.map do |chassi|
+        @excludeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).to be_nil
+        end
+      end
+    end
+  end
+
+  describe 'GET /chassis/UUID,UUID,...,UUID' do
+
+    it 'to multiples uuid, should return two or more chassis' do
+      uuidArray = @client.discover_chassis.map { |chassi| chassi.uuid  }
+      expect(uuidArray.length).to be >= 2
+    end
+
+    it 'with includeAttributes' do
+      response = @client.fetch_chassis(@uuidArray, @includeAttributes,nil)
+      response.map do |chassi|
+        @includeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).not_to be_nil
+        end
+      end
+    end
+
+    it 'with excludeAttributes' do
+      response = @client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
+      response.map do |chassi|
+        @excludeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).to be_nil
+        end
+      end
+    end
+  end
+
+  describe 'GET /chassis' do
+
+    it 'with includeAttributes' do
+      response = @client.fetch_chassis(nil,@includeAttributes,nil)
+      response.map do |chassi|
+        @includeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).not_to be_nil
+        end
+      end
+    end
+    it 'with excludeAttributes' do
+      response = @client.fetch_chassis(nil,nil,@excludeAttributes)
+      response.map do |chassi|
+        @excludeAttributes.map do |attribute|
+          expect(chassi.send(attribute)).to be_nil
+        end
+      end
+    end
+  end
 end

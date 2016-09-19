@@ -17,7 +17,5 @@ module XClarityClient
       array_chassis = ChassiManagement.new(@connection)
       .get_object_chassis(uuids, includeAttributes, excludeAttributes)
     end
-
-
   end
 end
