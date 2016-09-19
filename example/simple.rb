@@ -12,8 +12,8 @@ conf = XClarityClient::Configuration.new(
 
 client = XClarityClient::Client.new(conf)
 
-@includeAttributes = %w(accessState)
-@excludeAttributes = %w(accessState)
-@uuidArray = client.discover_nodes.map { |node| node.uuid  }
+@includeAttributes = %w(partNumber)
+@excludeAttributes = %w(partNumber)
+@uuidArray = client.discover_fans.map { |node| node.uuid  }
 
-puts client.fetch_nodes(@uuidArray, @includeAttributes, nil)
+puts client.discover_fans
