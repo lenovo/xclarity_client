@@ -20,6 +20,6 @@ puts client.discover_chassis
 
 puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_chassis
-# puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
-puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
+puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+# puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_nodes[0]
