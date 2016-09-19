@@ -102,7 +102,7 @@ describe XClarityClient do
       response = @client.fetch_switches(@uuidArray, @includeAttributes)
       response.map do |switch|
         @includeAttributes.map do |attribute|
-          expect(switch.send(attribute)).to be_nil
+          expect(switch.send(attribute)).not_to be_nil
         end
       end
 
@@ -119,7 +119,7 @@ describe XClarityClient do
       response = @client.fetch_switches(nil,@includeAttributes,nil)
       response.map do |switch|
         @includeAttributes.map do |attribute|
-          expect(switch.send(attribute)).to be_nil
+          expect(switch.send(attribute)).not_to be_nil
         end
       end
     end
