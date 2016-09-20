@@ -19,7 +19,7 @@ Execute rails console:
 Create new Switches to your database:
 
 ```ruby
-  $ FactoryGirl.create(:switch)
+  $ FactoryGirl.create(:scalable_complex)
 ```
 
 Get up LXCA-Mock server:
