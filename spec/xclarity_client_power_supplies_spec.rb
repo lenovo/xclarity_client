@@ -72,7 +72,6 @@ describe XClarityClient do
     end
   end
 
-
   describe 'GET /power_supplies' do
 
     it 'should respond with an array' do
@@ -84,20 +83,39 @@ describe XClarityClient do
     end
   end
 
-  # describe 'GET /power_supplies/UUID' do
+  describe 'GET /power_supplies/UUID' do
+
+    it 'with includeAttributes' do
+      response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes,nil)
+      response.map do |power_supply|
+        @includeAttributes.map do |attribute|
+          expect(power_supply.send(attribute)).not_to be_nil
+        end
+      end
+    end
+
+    it 'with excludeAttributes' do
+      response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+      response.map do |power_supply|
+        @excludeAttributes.map do |attribute|
+          expect(power_supply.send(attribute)).to be_nil
+        end
+      end
+    end
+  end
+  #
+  # describe 'GET /power_supplies' do
   #
   #   it 'with includeAttributes' do
-  #     response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes,nil)
+  #     response = @client.fetch_power_supplies(nil,@includeAttributes,nil)
   #     response.map do |power_supply|
   #       @includeAttributes.map do |attribute|
   #         expect(power_supply.send(attribute)).not_to be_nil
   #       end
   #     end
-  #
   #   end
-  #
   #   it 'with excludeAttributes' do
-  #     response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+  #     response = @client.fetch_power_supplies(nil,nil,@excludeAttributes)
   #     response.map do |power_supply|
   #       @excludeAttributes.map do |attribute|
   #         expect(power_supply.send(attribute)).to be_nil
@@ -105,4 +123,5 @@ describe XClarityClient do
   #     end
   #   end
   # end
+
 end

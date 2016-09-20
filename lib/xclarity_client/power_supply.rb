@@ -11,11 +11,12 @@ module XClarityClient
     :userDescription, :uuid, :vpdID
 
     def initialize(attributes)
-      build_chassi(attributes)
+      build_power_supply(attributes)
     end
 
-    def build_chassi(attributes)
+    def build_power_supply(attributes)
       attributes.each do |key, value|
+        print "#{key}= #{value};; "
         send("#{key}=", value)
       end
     end
