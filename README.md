@@ -6,6 +6,28 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+## Pre Configuration for Connection with LXCA
+
+Set mongo database up and running it
+
+Execute rails console:
+
+```ruby
+  $ bundle exec rails console
+```
+
+Create new Switches to your database:
+
+```ruby
+  $ FactoryGirl.create(:switch)
+```
+
+Get up LXCA-Mock server:
+
+```ruby
+  $ bundle exec rails s
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
