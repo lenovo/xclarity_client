@@ -19,8 +19,8 @@ describe XClarityClient do
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
     @client = XClarityClient::Client.new(conf)
 
-    @includeAttributes = %w(manufacturer fruSerialNumber)
-    @excludeAttributes = %w(manufacturer fruSerialNumber)
+    @includeAttributes = %w(cmmHealthState)
+    @excludeAttributes = %w(cmmHealthState)
     @uuidArray = @client.discover_fans.map { |fan| fan.uuid  }
   end
 
@@ -98,19 +98,19 @@ describe XClarityClient do
 
     it 'with includeAttributes' do
       response = @client.fetch_fans(nil,@includeAttributes,nil)
-      response.map do |fan|
+       response.map do |fan|
         @includeAttributes.map do |attribute|
           expect(fan.send(attribute)).not_to be_nil
         end
-      end
+       end
     end
     it 'with excludeAttributes' do
       response = @client.fetch_fans(nil,nil,@excludeAttributes)
-      response.map do |fan|
+       response.map do |fan|
         @excludeAttributes.map do |attribute|
           expect(fan.send(attribute)).to be_nil
         end
-      end
+       end
     end
 
   end
@@ -118,22 +118,17 @@ describe XClarityClient do
   describe 'GET /fans/UUID' do
 
     it 'with includeAttributes' do
-      response = @client.fetch_fans([@uuidArray[0]], @includeAttributes,nil)
-      response.map do |fan|
+      response = @client.fetch_fans(@uuidArray[0], @includeAttributes,nil)
         @includeAttributes.map do |attribute|
-          expect(fan.send(attribute)).not_to be_nil
+          expect(response.send(attribute)).not_to be_nil
         end
-      end
-
     end
 
     it 'with excludeAttributes' do
-      response = @client.fetch_fans([@uuidArray[0]], nil, @excludeAttributes)
-      response.map do |fan|
+      fan = @client.fetch_fans(@uuidArray[0], nil, @excludeAttributes)
         @excludeAttributes.map do |attribute|
           expect(fan.send(attribute)).to be_nil
         end
-      end
     end
   end
 end

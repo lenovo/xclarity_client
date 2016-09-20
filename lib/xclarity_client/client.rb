@@ -19,6 +19,7 @@ module XClarityClient
     end
 
     def fetch_fans(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+
       array_fans = FanManagement.new(@connection)
       .get_object_fans(uuids, includeAttributes, excludeAttributes)
     end

@@ -12,6 +12,7 @@ module XClarityClient
     def population
       response = connection(BASE_URI)
 
+
       body = JSON.parse(response.body)
       body.map do |fan|
         Fan.new fan
@@ -25,32 +26,44 @@ module XClarityClient
                 elsif not excludeAttributes.nil?
                   get_object_fans_exclude_attributes(uuids, excludeAttributes)
                 elsif not uuids.nil?
-                  connection(BASE_URI + "/" + uuids.join(","))
+                  response = connection(BASE_URI + "/" + uuids)
+                  body = JSON.parse(response.body)
+                  Fan.new body
                 else
-                  connection(BASE_URI)
+                  response = connection(BASE_URI)
+                  body = JSON.parse(response.body)
+                  body.map do |fan|
+                    Fan.new fan
+                  end
                 end
-
-      body = JSON.parse(response.body)
-      body.map do |fan|
-        Fan.new fan
-      end
-
     end
 
     def get_object_fans_exclude_attributes(uuids, attributes)
 
       response = if not uuids.nil?
-                  connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
+                  response = connection(BASE_URI + "/" + uuids + "?excludeAttributes="+ attributes.join(","))
+                  body = JSON.parse(response.body)
+                  Fan.new body
                 else
-                  connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+                  response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+                  body = JSON.parse(response.body)
+                  body.map do |fan|
+                    Fan.new fan
+                  end
                 end
     end
 
     def get_object_fans_include_attributes(uuids, attributes)
       response = if not uuids.nil?
-                  connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
+                  response = connection(BASE_URI + "/" + uuids + "?includeAttributes="+ attributes.join(","))
+                  body = JSON.parse(response.body)
+                  Fan.new body
                 else
-                  connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+                  response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+                  body = JSON.parse(response.body)
+                  body.map do |fan|
+                    Fan.new fan
+                  end
                 end
     end
   end

@@ -14,6 +14,6 @@ client = XClarityClient::Client.new(conf)
 
 @includeAttributes = %w(partNumber)
 @excludeAttributes = %w(partNumber)
-@uuidArray = client.discover_fans.map { |node| node.uuid  }
+@uuidArray = client.discover_fans.map { |fan| fan.uuid  }
 
 puts client.discover_fans

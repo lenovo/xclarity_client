@@ -16,6 +16,7 @@ module XClarityClient
     end
 
     def build_fan(attributes)
+
       attributes.each do |key, value|
         send("#{key}=", value)
       end
