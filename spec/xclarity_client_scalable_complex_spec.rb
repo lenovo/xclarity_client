@@ -92,14 +92,14 @@ describe XClarityClient do
 
   describe 'GET /scalable_complexes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
     before :each do
-      @includeAttributes = %w(accessState attachedNodes)
-      @excludeAttributes = %w(accessState attachedNodes)
+      @includeAttributes = %w(nodeCount)
+      @excludeAttributes = %w(nodeCount)
       @uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
     end
 
     it 'GET /scalable_complexes/UUID with includeAttributes' do
 
-      response = @client.fetch_scalableComplexes(@uuidArray, @includeAttributes)
+      response = @client.fetch_scalableComplexes([@uuidArray[0]], @includeAttributes)
       response.map do |scalableComplex|
         @includeAttributes.map do |attribute|
           expect(scalableComplex.send(attribute)).not_to be_nil
@@ -108,7 +108,7 @@ describe XClarityClient do
 
     end
     it 'GET /scalable_complexes/UUID with excludeAttributes' do
-      response = @client.fetch_scalableComplexes(@uuidArray, nil, @excludeAttributes)
+      response = @client.fetch_scalableComplexes([@uuidArray[0]], nil, @excludeAttributes)
       response.map do |scalableComplex|
         @excludeAttributes.map do |attribute|
           expect(scalableComplex.send(attribute)).to be_nil
