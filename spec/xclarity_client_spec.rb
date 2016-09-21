@@ -78,65 +78,65 @@ describe XClarityClient do
     end
   end
 
-  describe 'GET /nodes' do
+  describe 'GET /canisters' do
 
     it 'should respond with an array' do
-      expect(@client.discover_nodes.class).to eq(Array)
+      expect(@client.discover_canisters.class).to eq(Array)
     end
 
-    it 'the response must have one or more nodes' do
-      expect(@client.discover_nodes).not_to be_empty
+    it 'the response must have one or more canisters' do
+      expect(@client.discover_canisters).not_to be_empty
     end
 
   end
 
-  describe 'GET /nodes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
+  describe 'GET /canisters/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
     before :each do
-      @includeAttributes = %w(accessState activationKeys)
-      @excludeAttributes = %w(accessState activationKeys)
-      @uuidArray = @client.discover_nodes.map { |node| node.uuid  }
+      @includeAttributes = %w(cmmDisplayName backedBy)
+      @excludeAttributes = %w(cmmDisplayName backedBy)
+      @uuidArray = @client.discover_canisters.map { |canister| canister.uuid  }
     end
 
-    it 'GET /nodes/UUID with includeAttributes' do
+    it 'GET /canisters/UUID with includeAttributes' do
 
-      response = @client.fetch_nodes(@uuidArray, @includeAttributes,nil)
-      response.map do |node|
+      response = @client.fetch_canisters(@uuidArray, @includeAttributes,nil)
+      response.map do |canister|
         @includeAttributes.map do |attribute|
-        expect(node.send(attribute)).not_to be_nil
+        expect(canister.send(attribute)).not_to be_nil
         end
       end
 
     end
-    it 'GET /nodes/UUID with excludeAttributes' do
-      response = @client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
-      response.map do |node|
+    it 'GET /canisters/UUID with excludeAttributes' do
+      response = @client.fetch_canisters(@uuidArray, nil, @excludeAttributes)
+      response.map do |canister|
         @excludeAttributes.map do |attribute|
-        expect(node.send(attribute)).to be_nil
+        expect(canister.send(attribute)).to be_nil
         end
       end
     end
-    it 'GET /nodes just with includeAttributes' do
-      response = @client.fetch_nodes(nil,@includeAttributes,nil)
-      response.map do |node|
+    it 'GET /canisters just with includeAttributes' do
+      response = @client.fetch_canisters(nil,@includeAttributes,nil)
+      response.map do |canister|
         @includeAttributes.map do |attribute|
-          expect(node.send(attribute)).not_to be_nil
+          expect(canister.send(attribute)).not_to be_nil
         end
       end
     end
-    it 'GET /nodes just with excludeAttributes' do
-      response = @client.fetch_nodes(nil,nil,@excludeAttributes)
-      response.map do |node|
+    it 'GET /canisters just with excludeAttributes' do
+      response = @client.fetch_canisters(nil,nil,@excludeAttributes)
+      response.map do |canister|
         @excludeAttributes.map do |attribute|
-          expect(node.send(attribute)).to be_nil
+          expect(canister.send(attribute)).to be_nil
         end
       end
     end
   end
 
-  describe 'GET /nodes/UUID,UUID,...,UUID' do
+  describe 'GET /canisters/UUID,UUID,...,UUID' do
 
-    it 'to multiples uuid, should return two or more nodes' do
-      uuidArray = @client.discover_nodes.map { |node| node.uuid  }
+    it 'to multiples uuid, should return two or more canisters' do
+      uuidArray = @client.discover_canisters.map { |canister| canister.uuid  }
       expect(uuidArray.length).to be >= 2
     end
   end
