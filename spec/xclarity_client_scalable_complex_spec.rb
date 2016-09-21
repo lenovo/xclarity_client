@@ -92,8 +92,8 @@ describe XClarityClient do
 
   describe 'GET /scalable_complexes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
     before :each do
-      @includeAttributes = %w(accessState attachedNodes)
-      @excludeAttributes = %w(accessState attachedNodes)
+      @includeAttributes = %w(nodeCount)
+      @excludeAttributes = %w(nodeCount)
       @uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
     end
 
