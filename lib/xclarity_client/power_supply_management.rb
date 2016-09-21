@@ -23,14 +23,13 @@ module XClarityClient
       elsif not excludeAttributes.nil?
         response = get_object_power_supplies_exclude_attributes(uuids, excludeAttributes)
       elsif not uuids.nil?
-        connection(BASE_URI + "/" + uuids.join(","))
+        response = connection(BASE_URI + "/" + uuids.join(","))
+        body = JSON.parse(response.body)
+        PowerSupply.new body
       else
-        connection(BASE_URI)
-      end
-
-      body = JSON.parse(response.body)
-      body.map do |power_supply|
-        PowerSupply.new power_supply
+        response = connection(BASE_URI)
+        body = JSON.parse(response.body)
+        PowerSupply.new body
       end
     end
 
@@ -38,8 +37,14 @@ module XClarityClient
       response = nil
       if not uuids.nil?
         response = connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
+        body = JSON.parse(response.body)
+        PowerSupply.new body
       else
         response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |power_supply|
+          PowerSupply.new power_supply
+        end
       end
     end
 
@@ -47,8 +52,14 @@ module XClarityClient
       response = nil
       if not uuids.nil?
         response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
+        body = JSON.parse(response.body)
+        PowerSupply.new body
       else
         response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |power_supply|
+          PowerSupply.new power_supply
+        end
       end
     end
   end

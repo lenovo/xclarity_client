@@ -17,10 +17,10 @@ describe XClarityClient do
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
     @client = XClarityClient::Client.new(conf)
-    #
-    # @includeAttributes = %w(description dataHandle)
-    # @excludeAttributes = %w(description dataHandle)
-    # @uuidArray = @client.discover_power_supplies.map { |chassi| chassi.uuid  }
+    
+    @includeAttributes = %w(description dataHandle)
+    @excludeAttributes = %w(description dataHandle)
+    @uuidArray = @client.discover_power_supplies.map { |power_supply| power_supply.uuid  }
   end
 
   it "has a version number" do
@@ -84,25 +84,20 @@ describe XClarityClient do
     end
   end
 
-  # describe 'GET /power_supplies/UUID' do
-  #
-  #   it 'with includeAttributes' do
-  #     response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes,nil)
-  #     response.map do |power_supply|
-  #       @includeAttributes.map do |attribute|
-  #         expect(power_supply.send(attribute)).not_to be_nil
-  #       end
-  #     end
-  #
-  #   end
-  #
-  #   it 'with excludeAttributes' do
-  #     response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
-  #     response.map do |power_supply|
-  #       @excludeAttributes.map do |attribute|
-  #         expect(power_supply.send(attribute)).to be_nil
-  #       end
-  #     end
-  #   end
-  # end
+  describe 'GET /power_supplies/UUID' do
+
+    it 'with includeAttributes' do
+      response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
+      @includeAttributes.map do |attribute|
+        expect(response.send(attribute)).not_to be_nil
+      end
+    end
+
+    it 'with excludeAttributes' do
+      response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+      @excludeAttributes.map do |attribute|
+        expect(response.send(attribute)).to be_nil
+      end
+    end
+  end
 end
