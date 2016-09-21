@@ -16,7 +16,6 @@ module XClarityClient
 
     def build_power_supply(attributes)
       attributes.each do |key, value|
-        print "#{key}= #{value};; "
         send("#{key}=", value)
       end
     end
