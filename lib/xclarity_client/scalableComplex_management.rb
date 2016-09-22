@@ -25,33 +25,46 @@ module XClarityClient
       elsif not excludeAttributes.nil?
         get_object_scalableComplexes_exclude_attributes(uuids, excludeAttributes)
       elsif not uuids.nil?
-        connection(BASE_URI + "/" + uuids.join(","))
+        response = connection(BASE_URI + "/" + uuids)
+        body = JSON.parse(response.body)
+        ScalableComplex.new body
       else
-        connection(BASE_URI)
-      end
-
-      body = JSON.parse(response.body)
-      body.map do |scalableComplex|
-        ScalableComplex.new scalableComplex
+        response = connection(BASE_URI)
+        body = JSON.parse(response.body)
+        body.map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       end
 
     end
 
     def get_object_scalableComplexes_exclude_attributes(uuids, attributes)
 
-      response = if not uuids.nil?
-        connection(BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
+      if not uuids.nil?
+        response = connection(BASE_URI + "/" + uuids +"?excludeAttributes=#{attributes.join(",")}")
+        body = JSON.parse(response.body)
+        ScalableComplex.new body
       else
-        connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+        response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       end
 
     end
 
     def get_object_scalableComplexes_include_attributes(uuids, attributes)
-      response = if not uuids.nil?
-        connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes=" + attributes.join(","))
+      if not uuids.nil?
+        response =  connection(BASE_URI + "/" + uuids + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        ScalableComplex.new body
       else
-        connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+        response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       end
     end
   end

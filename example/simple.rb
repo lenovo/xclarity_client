@@ -15,10 +15,8 @@ client = XClarityClient::Client.new(conf)
 
 @includeAttributes = %w(nodeCount)
 @excludeAttributes = %w(nodeCount)
-# @uuidArray = client.discover_nodes.map { |node| node.uuid  }
+@uuidArray = client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
 
-# puts client.discover_chassis
-# puts client.fetch_switches
-# puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
-# puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
+puts client.discover_scalableComplexes
+
 puts client.fetch_scalableComplexes(@uuidArray, nil, @excludeAttributes)
