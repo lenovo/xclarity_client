@@ -16,10 +16,10 @@ puts client.discover_chassis
 
 @includeAttributes = %w(accessState activationKeys)
 @excludeAttributes = %w(accessState activationKeys)
-@uuidArray = client.discover_nodes.map { |node| node.uuid  }
+# @uuidArray = client.discover_nodes.map { |node| node.uuid  }
 
 puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_chassis
-puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+puts client.fetch_chassis(@uuidArray, @excludeAttributes, nil)
 # puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_nodes[0]
