@@ -18,6 +18,10 @@ describe XClarityClient do
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
     @client = XClarityClient::Client.new(conf)
+
+    @includeAttributes = %w(nodeCount partition)
+    @excludeAttributes = %w(nodeCount partition)
+    @uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid }
   end
 
   it 'has a version number' do
@@ -78,7 +82,7 @@ describe XClarityClient do
     end
   end
 
-  describe 'GET /scalable_complexes' do
+  describe 'GET /scalableComplexes' do
 
     it 'should respond with an array' do
       expect(@client.discover_scalableComplexes.class).to eq(Array)
@@ -90,54 +94,40 @@ describe XClarityClient do
 
   end
 
-  describe 'GET /scalable_complexes/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
-    before :each do
-      @includeAttributes = %w(nodeCount)
-      @excludeAttributes = %w(nodeCount)
-      @uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
-    end
+  describe 'GET /scalable_complexes' do
 
-    it 'GET /scalable_complexes/UUID with includeAttributes' do
-
-      response = @client.fetch_scalableComplexes([@uuidArray[0]], @includeAttributes)
-      response.map do |scalableComplex|
-        @includeAttributes.map do |attribute|
-          expect(scalableComplex.send(attribute)).not_to be_nil
-        end
-      end
-
-    end
-    it 'GET /scalable_complexes/UUID with excludeAttributes' do
-      response = @client.fetch_scalableComplexes([@uuidArray[0]], nil, @excludeAttributes)
-      response.map do |scalableComplex|
-        @excludeAttributes.map do |attribute|
-          expect(scalableComplex.send(attribute)).to be_nil
-        end
-      end
-    end
-    it 'GET /scalable_complexes just with includeAttributes' do
+    it 'with includeAttributes' do
       response = @client.fetch_scalableComplexes(nil,@includeAttributes,nil)
-      response.map do |scalableComplex|
+      response.map do |fan|
         @includeAttributes.map do |attribute|
-          expect(scalableComplex.send(attribute)).not_to be_nil
+          expect(fan.send(attribute)).not_to be_nil
         end
       end
     end
-    it 'GET /scalable_complexes just with excludeAttributes' do
+    it 'with excludeAttributes' do
       response = @client.fetch_scalableComplexes(nil,nil,@excludeAttributes)
-      response.map do |scalableComplex|
+      response.map do |fan|
         @excludeAttributes.map do |attribute|
-          expect(scalableComplex.send(attribute)).to be_nil
+          expect(fan.send(attribute)).to be_nil
         end
       end
     end
   end
 
-  describe 'GET /scalable_complexes/UUID,UUID,...,UUID' do
+  describe 'GET /scalable_complexes/UUID' do
 
-    it 'to multiples uuid, should return two or more scalableComplexes' do
-      uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
-      expect(uuidArray.length).to be >= 2
+    it 'with includeAttributes' do
+      response = @client.fetch_scalableComplexes(@uuidArray[0], @includeAttributes,nil)
+      @includeAttributes.map do |attribute|
+        expect(response.send(attribute)).not_to be_nil
+      end
+    end
+
+    it 'with excludeAttributes' do
+      fan = @client.fetch_scalableComplexes(@uuidArray[0], nil, @excludeAttributes)
+      @excludeAttributes.map do |attribute|
+        expect(fan.send(attribute)).to be_nil
+      end
     end
   end
 end
