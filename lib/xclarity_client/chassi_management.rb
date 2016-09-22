@@ -12,7 +12,7 @@ module XClarityClient
     def population
       response = connection(BASE_URI)
 
-      body = JSON.parse(response.body) 
+      body = JSON.parse(response.body)
       body.map do |chassi|
         Chassi.new chassi
       end
@@ -31,7 +31,7 @@ module XClarityClient
       end
 
 
-        body = JSON.parse(response.body)
+        body = JSON.parse(response.body) #rescue {}
         body.map do |chassi|
           Chassi.new chassi
         end
