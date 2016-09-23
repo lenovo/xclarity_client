@@ -8,20 +8,37 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Pre Configuration for Connection with LXCA
 
+
 Get up and running mongo database
 
 Execute rails console:
 
+```ruby
   $ bundle exec rails console
+```
 
-Add nodes to your database:
+Add resources to your database:
 
+Nodes:
+
+```ruby
   $ FactoryGirl.create(:node)
+```
+Switches:
 
+```ruby
+  $ FactoryGirl.create(:switch)
+```
+Scalable Complexes:
+
+```ruby
+  $ FactoryGirl.create(:scalable_complex)
+```
 Get up LXCA-Mock server:
 
+```ruby
   $ bundle exec rails s
-
+```
 
 ## Installation
 

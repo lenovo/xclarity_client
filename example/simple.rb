@@ -23,3 +23,22 @@ not_nil = response[0].send(@includeAttributes[0])
 puts not_nil
 # puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_nodes[0]
+# @includeAttributes = %w(nodeCount)
+# @excludeAttributes = %w(nodeCount)
+# @uuidArray = client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
+#
+# puts client.discover_scalableComplexes
+#
+# puts client.fetch_scalableComplexes(@uuidArray, nil, @excludeAttributes)
+
+# @includeAttributes = %w(accessState activationKeys)
+# @excludeAttributes = %w(accessState activationKeys)
+#
+# puts client.fetch_switches(@uuidArray, nil, @excludeAttributes)
+
+
+@includeAttributes = %w(accessState)
+@excludeAttributes = %w(accessState)
+@uuidArray = client.discover_nodes.map { |node| node.uuid  }
+
+puts client.fetch_nodes(@uuidArray, @includeAttributes, nil)
