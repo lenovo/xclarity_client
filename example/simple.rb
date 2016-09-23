@@ -22,8 +22,9 @@ puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_chassis
 puts client.fetch_chassis(@uuidArray, @excludeAttributes, nil)
 puts @uuidArray[0]
-# response = client.fetch_chassis(@uuidArray, @includeAttributes, nil)
-# puts response[0]
-# not_nil = response[0].send(@includeAttributes[0])
+response = client.fetch_chassis(@uuidArray, @includeAttributes, nil)
+puts response[0]
+not_nil = response[0].send(@includeAttributes[0])
+puts not_nil
 # puts client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
 # puts client.discover_nodes[0]
