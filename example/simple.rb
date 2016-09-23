@@ -20,6 +20,11 @@ client = XClarityClient::Client.new(conf)
 #
 # puts client.fetch_scalableComplexes(@uuidArray, nil, @excludeAttributes)
 
+# @includeAttributes = %w(accessState activationKeys)
+# @excludeAttributes = %w(accessState activationKeys)
+#
+# puts client.fetch_switches(@uuidArray, nil, @excludeAttributes)
+
 
 @includeAttributes = %w(accessState)
 @excludeAttributes = %w(accessState)
