@@ -13,7 +13,9 @@ Get up and running mongo database
 
 Execute rails console:
 
+```ruby
   $ bundle exec rails console
+```
 
 Add resources to your database:
 
