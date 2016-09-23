@@ -86,7 +86,7 @@ describe XClarityClient do
       response = @client.fetch_chassis([@uuidArray[0]], @includeAttributes, nil)
       response.map do |chassi|
         @includeAttributes.map do |attribute|
-          expect(chassi.send(attribute)).to be_nil
+          expect(chassi.send(attribute)).not_to be_nil
         end
       end
     end
@@ -98,7 +98,7 @@ describe XClarityClient do
       response = @client.fetch_chassis([@uuidArray[0]], @includeAttributes,nil)
       response.map do |chassi|
         @includeAttributes.map do |attribute|
-          expect(chassi.send(attribute)).to be_nil
+          expect(chassi.send(attribute)).not_to be_nil
         end
       end
 
@@ -146,7 +146,7 @@ describe XClarityClient do
       response = @client.fetch_chassis(nil,@includeAttributes,nil)
       response.map do |chassi|
         @includeAttributes.map do |attribute|
-          expect(chassi.send(attribute)).to be_nil
+          expect(chassi.send(attribute)).not_to be_nil
         end
       end
     end
