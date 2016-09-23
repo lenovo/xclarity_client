@@ -14,5 +14,14 @@ module XClarityClient
       .get_object_nodes(uuids, includeAttributes, excludeAttributes)
     end
 
+    def discover_scalableComplexes
+     ScalableComplexManagement.new(@connection).population
+   end
+
+   def fetch_scalableComplexes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+     array_scalableComplexes = ScalableComplexManagement.new(@connection)
+     .get_object_scalableComplexes(uuids, includeAttributes, excludeAttributes)
+   end
+
   end
 end
