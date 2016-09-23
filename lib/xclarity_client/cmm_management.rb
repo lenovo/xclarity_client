@@ -21,37 +21,50 @@ module XClarityClient
     def get_object_cmms(uuids, includeAttributes, excludeAttributes)
 
       if not includeAttributes.nil?
-        response = get_object_cmms_include_attributes(uuids, includeAttributes)
+        get_object_cmms_include_attributes(uuids, includeAttributes)
       elsif not excludeAttributes.nil?
-        response = get_object_cmms_exclude_attributes(uuids, excludeAttributes)
+        get_object_cmms_exclude_attributes(uuids, excludeAttributes)
       elsif not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(","))
+        response = connection(BASE_URI + "/" + uuids)
+        body = JSON.parse(response.body)
+        Cmm.new body
       else
         response = connection(BASE_URI)
-      end
-
-
-        body = JSON.parse(response.body) #rescue {}
+        body = JSON.parse(response.body)
         body.map do |cmm|
           Cmm.new cmm
         end
+      end
+
     end
 
     private
 
     def get_object_cmms_exclude_attributes(uuids, attributes)
       if not uuids.nil?
-        response = connection(BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
+        response = connection(BASE_URI + "/"+uuids +"?excludeAttributes="+ attributes.join(","))
+        body = JSON.parse(response.body)
+        Cmm.new body
       else
         response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |cmm|
+          Cmm.new cmm
+        end
       end
     end
 
     def get_object_cmms_include_attributes(uuids, attributes)
       if not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes=" + attributes.join(","))
+        response = connection(BASE_URI + "/" + uuids + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        Cmm.new body
       else
         response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body.map do |cmm|
+          Cmm.new cmm
+        end
       end
     end
 

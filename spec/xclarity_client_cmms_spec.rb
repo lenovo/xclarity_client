@@ -96,34 +96,25 @@ describe XClarityClient do
 
       it 'GET /cmms/UUID with includeAttributes' do
 
-        @uuidArray.each do | cmm |
-
-          response = @client.fetch_cmms(cmm, @includeAttributes)
-          response.map do |cmm_response |
+          response = @client.fetch_cmms(@uuidArray[0], @includeAttributes,nil)
             @includeAttributes.map do |attribute|
-              expect(cmm_response.send(attribute)).to be_nil
+              expect(response.send(attribute)).not_to be_nil
             end
-          end
-        end
       end
 
       it 'GET /cmms/UUID with excludeAttributes' do
 
-        @uuidArray.each do | cmm |
-          response = @client.fetch_cmms(cmm, nil, @excludeAttributes)
-          response.map do |cmm_response|
+          response = @client.fetch_cmms(@uuidArray[0], nil, @excludeAttributes)
             @excludeAttributes.map do |attribute|
-              expect(cmm_response.send(attribute)).to be_nil
+              expect(response.send(attribute)).to be_nil
             end
-          end
-        end
       end
 
       it 'GET /cmms just with includeAttributes' do
         response = @client.fetch_cmms(nil,@includeAttributes,nil)
-        response.map do |cmm|
+         response.map do |cmm|
           @includeAttributes.map do |attribute|
-            expect(cmm.send(attribute)).to be_nil
+            expect(cmm.send(attribute)).not_to be_nil
           end
         end
       end

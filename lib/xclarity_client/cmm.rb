@@ -6,7 +6,7 @@ module XClarityClient
     attr_accessor :_id, :properties, :accessState, :backedBy, :cmmDisplayName, :cmmHealthState, :dataHandle, :dnsHostNames, :domainName, :errorFields,
     :excludedHealthState, :firmware, :FRU, :fruSerialNumber, :hostConfig, :hostname, :ipInterfaces, :ipv4Addresses, :ipv6Addresses,
     :macAddresses, :machineType, :mgmtProcIPaddress, :model, :name, :overallHealthState, :parent, :partNumber, :powerAllocation,
-    :productID, :role, :serialNumber, :slots, :type, :userDescription, :uri, :uuid
+    :productID, :role, :serialNumber, :slots, :type, :userDescription, :uri, :uuid,:description, :leds
 
     def initialize(attributes)
         build_cmm(attributes)
