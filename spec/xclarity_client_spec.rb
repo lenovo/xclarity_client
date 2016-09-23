@@ -17,7 +17,7 @@ describe XClarityClient do
     )
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
-    @client = XClarityClient::Client.new(conf)
+    @client = XClarityClient::Client.new(conf_blueprint)
 
     @includeAttributes = %w(accessState activationKeys)
     @excludeAttributes = %w(accessState activationKeys)
