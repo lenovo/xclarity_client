@@ -91,7 +91,7 @@ describe XClarityClient do
         @excludeAttributes = %w(accessState backedBy)
         @uuidArray = @client.discover_cmms.map { |cmm| cmm.uuid  }
 
-    
+
       end
 
       it 'GET /cmms/UUID with includeAttributes' do

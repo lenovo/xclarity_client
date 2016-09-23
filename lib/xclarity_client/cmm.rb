@@ -8,16 +8,14 @@ module XClarityClient
     :macAddresses, :machineType, :mgmtProcIPaddress, :model, :name, :overallHealthState, :parent, :partNumber, :powerAllocation,
     :productID, :role, :serialNumber, :slots, :type, :userDescription, :uri, :uuid
 
-
     def initialize(attributes)
-      build_cmm(attributes)
-    end
+        build_cmm(attributes)
+      end
 
-    def build_cmm(attributes)
-      attributes.each do |key, value|
-        send("#{key}=", value)
+      def build_cmm(attributes)
+        attributes.each do |key, value|
+          send("#{key}=", value)
+        end
       end
     end
-
   end
-end

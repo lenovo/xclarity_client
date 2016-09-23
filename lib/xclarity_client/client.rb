@@ -14,6 +14,7 @@ module XClarityClient
       .get_object_nodes(uuids, includeAttributes, excludeAttributes)
     end
 
+
     def discover_cmms
       CmmManagement.new(@connection).population
     end
