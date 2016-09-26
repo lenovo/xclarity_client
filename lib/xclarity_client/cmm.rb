@@ -16,7 +16,6 @@ module XClarityClient
 
       def build_cmm(attributes)
         attributes.each do |key, value|
-          
           send("#{key}=", value)
         end
       end
