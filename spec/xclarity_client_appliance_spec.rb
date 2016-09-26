@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe XClarityClient do
 
+
   before :all do
-    WebMock.allow_net_connect!
 
     conf_blueprint = XClarityClient::Configuration.new(
     :username => 'admin',
@@ -11,13 +11,11 @@ describe XClarityClient do
     :host     => 'http://example.com'
     )
 
+    WebMock.allow_net_connect!
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
-    @client = XClarityClient::Client.new(conf_blueprint)
-    @includeAttributes = %w(accessState activationKeys)
-    @excludeAttributes = %w(accessState activationKeys)
-    @uuidArray = @client.discover_chassis.map { |chassi| chassi.uuid  }
-  end
 
+  end
+  
   it 'has a version number' do
     expect(XClarityClient::VERSION).not_to be nil
   end
