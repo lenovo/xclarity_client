@@ -1,3 +1,5 @@
+require "pp"
+
 describe XClarityClient do
 
   before :all do
@@ -81,7 +83,7 @@ describe XClarityClient do
       expect(@client.discover_cmms.class).to eq(Array)
     end
 
-    it 'the response must have one or more nodes' do
+    it 'the response must have one or more cmms' do
       expect(@client.discover_cmms).not_to be_empty
     end
 
@@ -91,22 +93,32 @@ describe XClarityClient do
         @excludeAttributes = %w(accessState backedBy)
         @uuidArray = @client.discover_cmms.map { |cmm| cmm.uuid  }
 
-
       end
 
       it 'GET /cmms/UUID with includeAttributes' do
 
-          response = @client.fetch_cmms(@uuidArray[0], @includeAttributes,nil)
-            @includeAttributes.map do |attribute|
-              expect(response.send(attribute)).not_to be_nil
-            end
+            @uuidArray.each do |uuid|
+              response = @client.fetch_cmms(uuid, @includeAttributes,nil)
+
+              response.each do |cmm|
+
+                @includeAttributes.map do |attribute|
+                  expect(cmm.send(attribute)).not_to be_nil
+                end
+              end
+          end
       end
 
       it 'GET /cmms/UUID with excludeAttributes' do
 
-          response = @client.fetch_cmms(@uuidArray[0], nil, @excludeAttributes)
-            @excludeAttributes.map do |attribute|
-              expect(response.send(attribute)).to be_nil
+            @uuidArray.each do |uuid|
+              response = @client.fetch_cmms(uuid, nil, @excludeAttributes)
+
+              response.each do |cmm|
+                @excludeAttributes.map do |attribute|
+                  expect(cmm.send(attribute)).to be_nil
+                end
+              end
             end
       end
 
