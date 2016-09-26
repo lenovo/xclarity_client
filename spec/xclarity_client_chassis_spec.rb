@@ -11,10 +11,11 @@ describe XClarityClient do
     :host     => 'http://example.com'
     )
 
-    @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
     @client = XClarityClient::Client.new(conf_blueprint)
+
     @includeAttributes = %w(accessState activationKeys)
     @excludeAttributes = %w(accessState activationKeys)
+
     @uuidArray = @client.discover_chassis.map { |chassi| chassi.uuid  }
   end
 

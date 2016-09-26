@@ -18,6 +18,10 @@ module XClarityClient
       end
     end
 
+    def discover_chassis
+      ChassiManagement.new(@connection).population
+    end
+
     def get_object_chassis(uuids, includeAttributes, excludeAttributes)
 
       if not includeAttributes.nil?
@@ -36,7 +40,7 @@ module XClarityClient
           Chassi.new chassi
         end
     end
-
+    
     private
 
     def get_object_chassis_exclude_attributes(uuids, attributes)
