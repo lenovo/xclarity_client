@@ -3,11 +3,6 @@ require 'spec_helper'
 describe XClarityClient do
   before :all do
     WebMock.allow_net_connect!
-    conf = XClarityClient::Configuration.new(
-      :username => 'admin',
-      :password => 'pass',
-      :host     => 'http://127.0.0.1:3000'
-    )
 
     conf_blueprint = XClarityClient::Configuration.new(
       :username => 'admin',
@@ -16,8 +11,8 @@ describe XClarityClient do
     )
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
-    @client = XClarityClient::Client.new(conf)
-    
+    @client = XClarityClient::Client.new(conf_blueprint)
+
     @includeAttributes = %w(description dataHandle)
     @excludeAttributes = %w(description dataHandle)
     @uuidArray = @client.discover_power_supplies.map { |power_supply| power_supply.uuid  }
@@ -25,51 +20,6 @@ describe XClarityClient do
 
   it "has a version number" do
     expect(XClarityClient::VERSION).not_to be nil
-  end
-
-  describe 'GET /aicc/network/ipdisable' do
-    it 'should respond with the IPv6 and IPv6 addresses enablement state.' do
-
-      response = @virtual_appliance.ip_enablement_state
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/host' do
-    it 'should respond with the XClarity Administrator host settings.' do
-
-      response = @virtual_appliance.host_settings
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/interfaces/{interface}' do
-    it 'should respond with information about a specific network interface.' do
-
-      response = @virtual_appliance.network_interface_settings("eth0")
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/routes' do
-    it 'should respond with all XClarity Administrator routes.' do
-
-      response = @virtual_appliance.route_settings
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/host' do
-    it 'should respond with all XClarity Administrator subscriptions.' do
-
-      response = @virtual_appliance.subscriptions
-
-      expect(response.status).to eq(200)
-    end
   end
 
   describe 'GET /power_supplies' do
