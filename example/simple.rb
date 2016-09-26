@@ -11,6 +11,10 @@ conf = XClarityClient::Configuration.new(
 # puts virtual_appliance.configuration_settings
 
 client = XClarityClient::Client.new(conf)
+#
+# @includeAttributes = %w(accessState)
+# @excludeAttributes = %w(accessState)
+# @uuidArray = client.discover_nodes.map { |node| node.uuid  }
 
 @includeAttributes = %w(accessState activationKeys)
 @excludeAttributes = %w(accessState activationKeys)
@@ -40,5 +44,18 @@ puts not_nil
 @includeAttributes = %w(accessState)
 @excludeAttributes = %w(accessState)
 @uuidArray = client.discover_nodes.map { |node| node.uuid  }
+# puts client.fetch_nodes(@uuidArray, @includeAttributes, nil)
 
-puts client.fetch_nodes(@uuidArray, @includeAttributes, nil)
+# puts client.discover_power_supplies
+# client.discover_nodes
+
+# puts client.discover_nodes
+
+
+@includeAttributes = %w(dataHandle)
+@excludeAttributes = %w(dataHandle)
+@uuidArray = client.discover_power_supplies.map { |node| node.uuid  }
+# puts client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+# puts @uuidArray[0]
+
+puts client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
