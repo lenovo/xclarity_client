@@ -34,6 +34,19 @@ Scalable Complexes:
 ```ruby
   $ FactoryGirl.create(:scalable_complex)
 ```
+
+Power Supplies:
+
+```ruby
+  $ FactoryGirl.create(:power_supply)
+```
+
+Chassis:
+
+```ruby
+  $ FactoryGirl.create(:chassi)
+```
+
 Get up LXCA-Mock server:
 
 ```ruby
@@ -50,7 +63,7 @@ gem 'xclarity_client'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
