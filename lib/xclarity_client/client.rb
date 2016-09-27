@@ -14,5 +14,14 @@ module XClarityClient
       .get_object_nodes(uuids, includeAttributes, excludeAttributes)
     end
 
+    def discover_canisters
+      CanisterManagement.new(@connection).population
+    end
+
+    def fetch_canisters(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+      array_nodes = CanisterManagement.new(@connection)
+      .get_object_canisters(uuids, includeAttributes, excludeAttributes)
+    end
+
   end
 end

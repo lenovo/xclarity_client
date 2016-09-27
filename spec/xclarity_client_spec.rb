@@ -92,14 +92,14 @@ describe XClarityClient do
 
   describe 'GET /canisters/UUID,UUID,...,UUID with includeAttributes and excludeAttributes' do
     before :each do
-      @includeAttributes = %w(cmmDisplayName backedBy)
-      @excludeAttributes = %w(cmmDisplayName backedBy)
+      @includeAttributes = %w(memorySlots)
+      @excludeAttributes = %w(memorySlots)
       @uuidArray = @client.discover_canisters.map { |canister| canister.uuid  }
     end
 
     it 'GET /canisters/UUID with includeAttributes' do
 
-      response = @client.fetch_canisters(@uuidArray, @includeAttributes,nil)
+      response = @client.fetch_canisters(@uuidArray[0], @includeAttributes,nil)
       response.map do |canister|
         @includeAttributes.map do |attribute|
         expect(canister.send(attribute)).not_to be_nil
@@ -108,7 +108,7 @@ describe XClarityClient do
 
     end
     it 'GET /canisters/UUID with excludeAttributes' do
-      response = @client.fetch_canisters(@uuidArray, nil, @excludeAttributes)
+      response = @client.fetch_canisters(@uuidArray[0], nil, @excludeAttributes)
       response.map do |canister|
         @excludeAttributes.map do |attribute|
         expect(canister.send(attribute)).to be_nil

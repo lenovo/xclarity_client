@@ -14,7 +14,7 @@ module XClarityClient
 
       body = JSON.parse(response.body)
       body.map do |canister|
-        Canister.new
+        Canister.new canister
       end
     end
 
@@ -25,14 +25,14 @@ module XClarityClient
       elsif not excludeAttributes.nil?
         get_object_canisters_exclude_attributes(uuids, excludeAttributes)
       elsif not uuids.nil?
-        connection(BASE_URI + "/" + uuids.join(","))
+        connection(BASE_URI + "/" + uuids)
       else
         connection(BASE_URI)
       end
 
       body = JSON.parse(response.body)
       body.map do |canister|
-        Canister.new
+        Canister.new canister
       end
 
     end
@@ -40,7 +40,7 @@ module XClarityClient
     def get_object_canisters_exclude_attributes(uuids, attributes)
 
       response = if not uuids.nil?
-        connection(BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
+        connection(BASE_URI + "/#{uuids}"+"?excludeAttributes=#{attributes.join(",")}")
       else
         connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
       end
@@ -49,7 +49,7 @@ module XClarityClient
 
     def get_object_canisters_include_attributes(uuids, attributes)
       response = if not uuids.nil?
-                   connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes=" + attributes.join(","))
+                   connection(BASE_URI + "/" + uuids + "?includeAttributes=" + attributes.join(","))
                  else
                    connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
                  end

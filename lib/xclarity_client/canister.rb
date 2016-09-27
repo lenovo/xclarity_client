@@ -7,7 +7,10 @@ module XClarityClient
       :firmware, :FRU, :domainName, :driveBays, :drives, :errorFields, :ipInterfaces, :powerStatus,
       :fruSerialNumber, :manufacturer, :manufacturerID, :processorSlots,
       :processors, :name, :parent, :posID, :productId, :productName,
-      :serviceHostName, :userDescription, :uri, :vnicMode, :uuid, :vpdID,
+      :serviceHostName, :userDescription, :uri, :vnicMode, :uuid, :vpdID, :activationKeys, :bladeState, :cmmHealthState,
+      :hostname, :ipv4Addresses, :ipv4ServiceAddress,:ipv6Addresses, :ipv6ServiceAddress, :lanOverUsb, :leds, :location,
+      :macAddress, :machineType, :memoryModules, :memorySlots, :model, :partNumber, :posId,:serialNumber,:slots, :subType,
+      :subSlots
 
     def initialize(attributes)
       build_canister(attributes)
