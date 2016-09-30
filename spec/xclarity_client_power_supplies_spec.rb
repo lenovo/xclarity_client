@@ -25,7 +25,6 @@ describe XClarityClient do
   end
 
   describe 'GET /power_supplies' do
-
     it 'should respond with an array' do
       expect(@client.discover_power_supplies.class).to eq(Array)
     end
@@ -34,37 +33,46 @@ describe XClarityClient do
       expect(@client.discover_power_supplies).not_to be_empty
     end
 
-    it 'with includeAttributes' do
-      response = @client.fetch_power_supplies(nil, @includeAttributes, nil)
-      response.map do |powerSupply|
-        @includeAttributes.map do |attribute|
-          expect(powerSupply.send(attribute)).not_to be_nil
+
+    context 'with includeAttributes' do
+      it 'required attributes should not be nil' do
+        response = @client.fetch_power_supplies(nil, @includeAttributes, nil)
+        response.map do |powerSupply|
+          @includeAttributes.map do |attribute|
+            expect(powerSupply.send(attribute)).not_to be_nil
+          end
         end
       end
     end
 
-    it 'with excludeAttributes' do
-      response = @client.fetch_power_supplies(nil, nil, @excludeAttributes)
-      response.map do |powerSupply|
-        @excludeAttributes.map do |attribute|
-          expect(powerSupply.send(attribute)).to be_nil
+    context 'with excludeAttributes' do
+      it 'unrequired attributes should be nil' do
+        response = @client.fetch_power_supplies(nil, nil, @excludeAttributes)
+        response.map do |powerSupply|
+          @excludeAttributes.map do |attribute|
+            expect(powerSupply.send(attribute)).to be_nil
+          end
         end
       end
     end
   end
 
   describe 'GET /powerSupplies/UUID' do
-    it 'with includeAttributes' do
-      response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
-      @includeAttributes.map do |attribute|
-        expect(response.send(attribute)).not_to be_nil
+    context 'with includeAttributes' do
+      it 'required attributes should not be nil' do
+        response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
+        @includeAttributes.map do |attribute|
+          expect(response.send(attribute)).not_to be_nil
+        end
       end
     end
 
-    it 'with excludeAttributes' do
-      response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
-      @excludeAttributes.map do |attribute|
-        expect(response.send(attribute)).to be_nil
+    context 'with excludeAttributes' do
+      it 'unrequired attributes should be nil' do
+        response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+        @excludeAttributes.map do |attribute|
+          expect(response.send(attribute)).to be_nil
+        end
       end
     end
   end
