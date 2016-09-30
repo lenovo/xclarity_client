@@ -5,9 +5,9 @@ module XClarityClient
 
     attr_accessor :properties, :_id, :cmmDisplayName, :cmmHealthState, :dataHandle,
     :description, :firmware, :FRU, :fruSerialNumber, :hardwareRevision, :inputVoltageMax,
-    :inputVoltageIsAC, :inputVoltageMin, :leds, :machineType, :manufacturer, :manufacturerID,
+    :inputVoltageIsAC, :inputVoltageMin, :leds, :machineType, :manufacturer, :manufacturerId,
     :manufactureDate, :model, :name, :parent, :powerAllocation, :partNumber, :posID,
-    :powerState, :productID, :productName, :serialNumber, :slots, :type, :uri,
+    :powerState, :productId, :productName, :serialNumber, :slots, :type, :uri,
     :userDescription, :uuid, :vpdID
 
     def initialize(attributes)

@@ -2,68 +2,516 @@ FORMAT 1A
 
 # XClarity Power Supplies
 
-# GET /power_supplies
+# GET /powerSupplies/735425074A8511E200FB00FB00FB00FB?includeAttributes=description,dataHandle
 
 + Response 200 (application/json)
-  {
-   "cmmDisplayName": "Power Supply 01",
-   "cmmHealthState": "Non-Critical",
-   "dataHandle": 0,
-   "description": "Power Supply",
-   "firmware": [{
-      "build": "",
-      "date": "",
-      "name": "Power Supply Firmware",
-      "role": "",
-      "status": "",
-      "type": "Power Supply Firmware",
-      "version": "0"
-   }],
-   "FRU": "69Y5817",
-   "fruSerialNumber": "ZK125116E0KK",
-   "hardwareRevision": "5.0",
-   "inputVoltageIsAC": true,
-   "inputVoltageMax": 208,
-   "inputVoltageMin": 200,
-   "leds": [{
-      "color": "Green",
-      "location": "Planar",
-      "name": "IN",
-      "state": "On"
+{
+   "description":"2100W Power Supply",
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
    },
-   {
-      "color": "Amber",
-      "location": "Planar",
-      "name": "FAULT",
-      "state": "Off"
-   }],
-   "machineType": "",
-   "manufacturer": "IBM",
-   "manufactureDate": "2411",
-   "manufacturerId": "20301",
-   "model": "",
-   "name": "Power Supply 01",
-   "parent": {
-      "uri": "chassis/FBEF740B178F4EFAA846E7225EE256DC",
-      "uuid": "FBEF740B178F4EFAA846E7225EE256DC"
+   "uuid":"735425074A8511E200FB00FB00FB00FB",
+   "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+   "dataHandle":0
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /powerSupplies/735425074A8511E200FB00FB00FB00FB?excludeAttributes=description,dataHandle
+
++ Response 200 (application/json)
+{
+   "model":"",
+   "manufacturerId":"20301",
+   "serialNumber":"",
+   "inputVoltageIsAC":true,
+   "inputVoltageMin":200,
+   "type":"PowerSupply",
+   "cmmDisplayName":"Power Supply 01",
+   "leds":[
+      {
+         "color":"Green",
+         "location":"Planar",
+         "name":"IN",
+         "state":"On"
+      },
+      {
+         "color":"Green",
+         "location":"Planar",
+         "name":"OUT",
+         "state":"On"
+      },
+      {
+         "color":"Amber",
+         "location":"Planar",
+         "name":"FAULT",
+         "state":"Off"
+      }
+   ],
+   "name":"Power Supply 01",
+   "cmmHealthState":"Normal",
+   "userDescription":"",
+   "manufactureDate":"5112",
+   "partNumber":"69Y5830",
+   "firmware":[
+      {
+         "status":"",
+         "name":"Power Supply Firmware",
+         "role":"",
+         "date":"",
+         "type":"Power Supply Firmware",
+         "build":"",
+         "version":"14"
+      }
+   ],
+   "machineType":"",
+   "hardwareRevision":"2.0",
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
    },
-   "partNumber": "69Y5801",
-   "posID": "128",
-   "powerAllocation": {
-      "totalInputPower": 0,
-      "totalOutputPower": 0
+   "FRU":"69Y5831",
+   "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+   "productId":"303",
+   "powerAllocation":{
+      "totalInputPower":0,
+      "totalOutputPower":0
    },
-   "powerState": "Unknown",
-   "productId": "303",
-   "productName": "IBM 2500 W Power Supply",
-   "serialNumber": "",
-   "slots": [1],
-   "type": "PowerSupply",
-   "uri": "powerSupply/B1B549049DE811E00005000500050005",
-   "userDescription": "",
-   "uuid": "B1B549049DE811E00005000500050005",
-   "vpdID": "60"
-  }
+   "powerState":"Unknown",
+   "posID":"128",
+   "slots":[
+      1
+   ],
+   "manufacturer":"IBM",
+   "vpdID":"70",
+   "uuid":"735425074A8511E200FB00FB00FB00FB",
+   "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+   "fruSerialNumber":"ZK11512CJ007",
+   "inputVoltageMax":240
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /powerSupplies/735425074A8511E200FB00FB00FB00FB
+
++ Response 200 (application/json)
+{
+   "model":"",
+   "manufacturerId":"20301",
+   "serialNumber":"",
+   "inputVoltageIsAC":true,
+   "inputVoltageMin":200,
+   "type":"PowerSupply",
+   "dataHandle":0,
+   "cmmDisplayName":"Power Supply 01",
+   "leds":[
+      {
+         "color":"Green",
+         "location":"Planar",
+         "name":"IN",
+         "state":"On"
+      },
+      {
+         "color":"Green",
+         "location":"Planar",
+         "name":"OUT",
+         "state":"On"
+      },
+      {
+         "color":"Amber",
+         "location":"Planar",
+         "name":"FAULT",
+         "state":"Off"
+      }
+   ],
+   "description":"2100W Power Supply",
+   "name":"Power Supply 01",
+   "cmmHealthState":"Normal",
+   "userDescription":"",
+   "manufactureDate":"5112",
+   "partNumber":"69Y5830",
+   "firmware":[
+      {
+         "status":"",
+         "name":"Power Supply Firmware",
+         "role":"",
+         "date":"",
+         "type":"Power Supply Firmware",
+         "build":"",
+         "version":"14"
+      }
+   ],
+   "machineType":"",
+   "hardwareRevision":"2.0",
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+   },
+   "FRU":"69Y5831",
+   "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+   "productId":"303",
+   "powerAllocation":{
+      "totalInputPower":0,
+      "totalOutputPower":0
+   },
+   "powerState":"Unknown",
+   "posID":"128",
+   "slots":[
+      1
+   ],
+   "manufacturer":"IBM",
+   "vpdID":"70",
+   "uuid":"735425074A8511E200FB00FB00FB00FB",
+   "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+   "fruSerialNumber":"ZK11512CJ007",
+   "inputVoltageMax":240
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /powerSupplies?includeAttributes=description,dataHandle
+
++ Response 200 (application/json)
+{
+   "powerSupplyList":[
+      {
+         "description":"2100W Power Supply",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "uuid":"735425074A8511E200FB00FB00FB00FB",
+         "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+         "dataHandle":0
+      },
+      {
+         "description":"2100W Power Supply",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "uuid":"C2890E051CFF11E200AB00AB00AB00AB",
+         "uri":"powerSupply/C2890E051CFF11E200AB00AB00AB00AB",
+         "dataHandle":0
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /powerSupplies?excludeAttributes=description,dataHandle
+
++ Response 200 (application/json)
+{
+ "powerSupplyList":[
+    {
+       "model":"",
+       "manufacturerId":"20301",
+       "serialNumber":"",
+       "inputVoltageIsAC":true,
+       "inputVoltageMin":200,
+       "type":"PowerSupply",
+       "cmmDisplayName":"Power Supply 01",
+       "leds":[
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"IN",
+             "state":"On"
+          },
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"OUT",
+             "state":"On"
+          },
+          {
+             "color":"Amber",
+             "location":"Planar",
+             "name":"FAULT",
+             "state":"Off"
+          }
+       ],
+       "name":"Power Supply 01",
+       "cmmHealthState":"Normal",
+       "userDescription":"",
+       "manufactureDate":"5112",
+       "partNumber":"69Y5830",
+       "firmware":[
+          {
+             "status":"",
+             "name":"Power Supply Firmware",
+             "role":"",
+             "date":"",
+             "type":"Power Supply Firmware",
+             "build":"",
+             "version":"14"
+          }
+       ],
+       "machineType":"",
+       "hardwareRevision":"2.0",
+       "parent":{
+          "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+          "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+       },
+       "FRU":"69Y5831",
+       "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+       "productId":"303",
+       "powerAllocation":{
+          "totalInputPower":0,
+          "totalOutputPower":0
+       },
+       "powerState":"Unknown",
+       "posID":"128",
+       "slots":[
+          1
+       ],
+       "manufacturer":"IBM",
+       "vpdID":"70",
+       "uuid":"735425074A8511E200FB00FB00FB00FB",
+       "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+       "fruSerialNumber":"ZK11512CJ007",
+       "inputVoltageMax":240
+    },
+    {
+       "model":"",
+       "manufacturerId":"20301",
+       "serialNumber":"",
+       "inputVoltageIsAC":true,
+       "inputVoltageMin":200,
+       "type":"PowerSupply",
+       "cmmDisplayName":"Power Supply 02",
+       "leds":[
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"IN",
+             "state":"On"
+          },
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"OUT",
+             "state":"On"
+          },
+          {
+             "color":"Amber",
+             "location":"Planar",
+             "name":"FAULT",
+             "state":"Off"
+          }
+       ],
+       "name":"Power Supply 02",
+       "cmmHealthState":"Normal",
+       "userDescription":"",
+       "manufactureDate":"4212",
+       "partNumber":"69Y5830",
+       "firmware":[
+          {
+             "status":"",
+             "name":"Power Supply Firmware",
+             "role":"",
+             "date":"",
+             "type":"Power Supply Firmware",
+             "build":"",
+             "version":"14"
+          }
+       ],
+       "machineType":"",
+       "hardwareRevision":"2.0",
+       "parent":{
+          "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+          "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+       },
+       "FRU":"69Y5831",
+       "uri":"powerSupply/C2890E051CFF11E200AB00AB00AB00AB",
+       "productId":"303",
+       "powerAllocation":{
+          "totalInputPower":0,
+          "totalOutputPower":0
+       },
+       "powerState":"Unknown",
+       "posID":"128",
+       "slots":[
+          2
+       ],
+       "manufacturer":"IBM",
+       "vpdID":"70",
+       "uuid":"C2890E051CFF11E200AB00AB00AB00AB",
+       "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+       "fruSerialNumber":"ZK11512AG03J",
+       "inputVoltageMax":240
+    }
+ ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /powerSupplies
+
++ Response 200 (application/json)
+{
+ "powerSupplyList":[
+    {
+       "model":"",
+       "manufacturerId":"20301",
+       "serialNumber":"",
+       "inputVoltageIsAC":true,
+       "inputVoltageMin":200,
+       "type":"PowerSupply",
+       "dataHandle":0,
+       "cmmDisplayName":"Power Supply 01",
+       "leds":[
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"IN",
+             "state":"On"
+          },
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"OUT",
+             "state":"On"
+          },
+          {
+             "color":"Amber",
+             "location":"Planar",
+             "name":"FAULT",
+             "state":"Off"
+          }
+       ],
+       "description":"2100W Power Supply",
+       "name":"Power Supply 01",
+       "cmmHealthState":"Normal",
+       "userDescription":"",
+       "manufactureDate":"5112",
+       "partNumber":"69Y5830",
+       "firmware":[
+          {
+             "status":"",
+             "name":"Power Supply Firmware",
+             "role":"",
+             "date":"",
+             "type":"Power Supply Firmware",
+             "build":"",
+             "version":"14"
+          }
+       ],
+       "machineType":"",
+       "hardwareRevision":"2.0",
+       "parent":{
+          "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+          "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+       },
+       "FRU":"69Y5831",
+       "uri":"powerSupply/735425074A8511E200FB00FB00FB00FB",
+       "productId":"303",
+       "powerAllocation":{
+          "totalInputPower":0,
+          "totalOutputPower":0
+       },
+       "powerState":"Unknown",
+       "posID":"128",
+       "slots":[
+          1
+       ],
+       "manufacturer":"IBM",
+       "vpdID":"70",
+       "uuid":"735425074A8511E200FB00FB00FB00FB",
+       "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+       "fruSerialNumber":"ZK11512CJ007",
+       "inputVoltageMax":240
+    },
+    {
+       "model":"",
+       "manufacturerId":"20301",
+       "serialNumber":"",
+       "inputVoltageIsAC":true,
+       "inputVoltageMin":200,
+       "type":"PowerSupply",
+       "dataHandle":0,
+       "cmmDisplayName":"Power Supply 02",
+       "leds":[
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"IN",
+             "state":"On"
+          },
+          {
+             "color":"Green",
+             "location":"Planar",
+             "name":"OUT",
+             "state":"On"
+          },
+          {
+             "color":"Amber",
+             "location":"Planar",
+             "name":"FAULT",
+             "state":"Off"
+          }
+       ],
+       "description":"2100W Power Supply",
+       "name":"Power Supply 02",
+       "cmmHealthState":"Normal",
+       "userDescription":"",
+       "manufactureDate":"4212",
+       "partNumber":"69Y5830",
+       "firmware":[
+          {
+             "status":"",
+             "name":"Power Supply Firmware",
+             "role":"",
+             "date":"",
+             "type":"Power Supply Firmware",
+             "build":"",
+             "version":"14"
+          }
+       ],
+       "machineType":"",
+       "hardwareRevision":"2.0",
+       "parent":{
+          "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+          "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+       },
+       "FRU":"69Y5831",
+       "uri":"powerSupply/C2890E051CFF11E200AB00AB00AB00AB",
+       "productId":"303",
+       "powerAllocation":{
+          "totalInputPower":0,
+          "totalOutputPower":0
+       },
+       "powerState":"Unknown",
+       "posID":"128",
+       "slots":[
+          2
+       ],
+       "manufacturer":"IBM",
+       "vpdID":"70",
+       "uuid":"C2890E051CFF11E200AB00AB00AB00AB",
+       "productName":"IBM Flex System Enterprise Chassis 2100W Power Module",
+       "fruSerialNumber":"ZK11512AG03J",
+       "inputVoltageMax":240
+    }
+ ]
+}
 + Response 400
 + Response 401
 + Response 404

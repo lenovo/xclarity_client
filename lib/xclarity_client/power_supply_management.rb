@@ -2,7 +2,7 @@ require 'json'
 
 module XClarityClient
   class PowerSupplyManagement < XClarityBase
-    BASE_URI = '/power_supplies'.freeze
+    BASE_URI = '/powerSupplies'.freeze
 
     def initialize(conf)
       super(conf, BASE_URI)
@@ -12,7 +12,7 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |power_supply|
+      body['powerSupplyList'].map do |power_supply|
         PowerSupply.new power_supply
       end
     end
@@ -42,7 +42,7 @@ module XClarityClient
       else
         response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        body.map do |power_supply|
+        body['powerSupplyList'].map do |power_supply|
           PowerSupply.new power_supply
         end
       end
@@ -57,7 +57,7 @@ module XClarityClient
       else
         response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        body.map do |power_supply|
+        body['powerSupplyList'].map do |power_supply|
           PowerSupply.new power_supply
         end
       end
