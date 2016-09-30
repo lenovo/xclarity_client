@@ -11,9 +11,8 @@ module XClarityClient
 
     def population
       response = connection(BASE_URI)
-
       body = JSON.parse(response.body)
-      body.map do |switch|
+      body['switchList'].map do |switch|
         Switch.new switch
       end
     end
@@ -31,7 +30,7 @@ module XClarityClient
       end
 
       body = JSON.parse(response.body)
-      body.map do |switch|
+      body['switchList'].map do |switch|
         Switch.new switch
       end
 

@@ -1,138 +1,1593 @@
 FORMAT: 1A
 
-# XClarity Switches
+# Switches
 
-# GET /nodes
+# GET /switches
 
 + Response 200 (application/json)
 {
-  "accessState": "Online",
-  "attachedNodes": ["BDB64B266F3911E391406CAE8B703820"],
-  "backedBy": "real",
-  "cmmDisplayName": "IO Module 01",
-  "cmmHealthState": "Non-Critical",
-  "dataHandle": 1430160812847,
-  "description": "FC5022",
-  "dnsHostnames": [
-      "10.243.15.198",
-      "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee"
-  ],
-  "errorFields": [],
-  "excludedHealthState": "Normal",
-  "firmware": [{
-      "status": "Backup",
-      "name": "Main Application",
-      "build": "",
-      "type": "Main Application",
-      "date": "2013-01-17T05:00:00Z",
-      "version": "7.0.0_pha3"
-  }],
-  "FRU": "90Y9359",
-  "fruSerialNumber": "Y050UZ31G00Z",
-  "hostname": "",
-  "ipInterfaces": [{
-      "IPv4enabled": true,
-      "IPv4DHCPmode": "DHCP_THEN_STATIC",
-      "IPv6enabled": true,
-      "IPv6assignments": [{
-          "id": 33,
-          "scope": "Global",
-          "source": "Stateless",
-          "gateway": "0:0:0:0:0:0:0:0",
-          "address": "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee",
-          "prefix": 64,
-          "type": "INUSE"
+   "switchList":[
+      {
+         "accessState":"Online",
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169867948,
+         "ipv4Addresses":[
+            "10.240.72.62"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN4093R 10Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"Standby",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"95Y3311",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":34,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2014-09-22T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.7.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"95Y3312",
+         "macAddresses":[
+            "A8:97:DC:78:4F:EF"
+         ],
+         "uri":"switch/1B33D6D13F267A614567A897DC784F00",
+         "productId":"471",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:aa97:dcff:fe78:4fef",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "posID":"33",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6D13F267A614567A897DC784F00",
+         "productName":"IBM Flex System Fabric EN4093R 10Gb Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y010CM3BE008.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "fruSerialNumber":"Y010CM3BE008"
       },
       {
-          "id": 1,
-          "scope": "LinkLocal",
-          "source": "Other",
-          "gateway": "0:0:0:0:0:0:0:0",
-          "address": "fe80:0:0:0:205:33ff:fe94:dbee",
-          "prefix": 64,
-          "type": "INUSE"
+         "accessState":"Online",
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475170006456,
+         "ipv4Addresses":[
+            "10.240.72.64"
+         ],
+         "cmmDisplayName":"IO Module 03",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"FC5022 16Gb SAN Scalable Switch",
+         "name":"IO Module 03",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"00Y3327",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":33,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Main Application",
+               "date":"2014-06-26T04:00:00Z",
+               "type":"Main Application",
+               "build":"",
+               "version":"7.2.1a2"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"00Y3329",
+         "macAddresses":[
+            "00:27:F8:87:0F:11"
+         ],
+         "uri":"switch/2BB054971DD2B201663F0027F8870F10",
+         "productId":"329",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:227:f8ff:fe87:f11",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "posID":"17",
+         "overallHealthState":"Normal",
+         "protectedMode":"Not supported",
+         "manufacturer":"IBM",
+         "slots":[
+            3
+         ],
+         "vpdID":"309",
+         "uuid":"2BB054971DD2B201663F0027F8870F10",
+         "productName":"IBM Flex System FC5022 24-port 16Gb SAN Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y051UZ3S4002.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "fruSerialNumber":"Y051UZ3S4002"
       },
       {
-          "id": 2,
-          "scope": "Global",
-          "source": "Static",
-          "gateway": "0:0:0:0:0:0:0:0",
-          "address": "0:0:0:0:0:0:0:0",
-          "prefix": 64,
-          "type": "CONFIGURED"
-      }],
-      "IPv4assignments": [{
-          "id": 2,
-          "subnet": "255.255.255.0",
-          "gateway": "0.0.0.0",
-          "address": "192.168.70.120",
-          "type": "CONFIGURED"
+         "accessState":"Online",
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169605221,
+         "ipv4Addresses":[
+            "192.168.70.120"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN2092 1Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"49Y4295",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"DHCP_THEN_STATIC",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":35,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2015-07-21T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.11.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "hostname":"",
+         "FRU":"49Y4296",
+         "macAddresses":[
+            "08:17:F4:B1:14:EF"
+         ],
+         "uri":"switch/1B33D6CE6D58C30145BA0817F4B11400",
+         "productId":"347",
+         "powerAllocation":{
+            "maximumAllocatedPower":64,
+            "minimumAllocatedPower":64
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:a17:f4ff:feb1:14ef",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "posID":"281",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6CE6D58C30145BA0817F4B11400",
+         "productName":"IBM Flex System EN2092 1Gb Ethernet Scalable Switch",
+         "dnsHostnames":[
+            "192.168.70.120",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "fruSerialNumber":"Y250VT183065"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /switches/1B33D6D13F267A614567A897DC784F00,2BB054971DD2B201663F0027F8870F10,1B33D6CE6D58C30145BA0817F4B11400?includeAttributes=accessState,attachedNodes
+
++ Response 200 (application/json)
+{
+   "switchList":[
+      {
+         "accessState":"Online",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"1B33D6D13F267A614567A897DC784F00",
+         "uri":"switch/1B33D6D13F267A614567A897DC784F00",
+         "dataHandle":1475169867948
       },
       {
-          "id": 64,
-          "subnet": "0.0.0.0",
-          "gateway": "0.0.0.0",
-          "address": "10.243.15.198",
-          "type": "INUSE"
-      }],
-      "IPv6DHCPenabled": true,
-      "name": "ioe0",
-      "IPv6statelessEnabled": true,
-      "label": "",
-      "IPv6staticEnabled": false
-  }],
-  "ipv4Addresses": ["10.243.15.198"],
-  "leds": [{
-      "location": "FrontPanel",
-      "color": "Blue",
-      "name": "Enclosure Identify",
-      "state": "Off"
-  },
-  {
-      "location": "FrontPanel",
-      "color": "Amber",
-      "name": "FRU Fault",
-      "state": "Off"
-  },
-  {
-      "location": "FrontPanel",
-      "color": "Green",
-      "name": "Power",
-      "state": "On"
-  }],
-  "ipv6Addresses": [
-      "fd55:faaf:e1ab:2021:205:33ff:fe94:dbee",
-      "fe80:0:0:0:205:33ff:fe94:dbee"
-  ],
-  "model": "",
-  "manufacturerId": "20301",
-  "name": "IO Module 01",
-  "partNumber": "90Y9358",
-  "serialNumber": "",
-  "stackMode": "N/A",
-  "type": "Switch",
-  "userDescription": "",
-  "macAddresses": ["00:05:33:94:DB:EE"],
-  "machineType": "",
-  "manufacturer": "Lenovo",
-  "overallHealthState": "Normal",
-  "parent": {
-      "uuid": "ED895B48D50D4E34B5DAF1F697B1FAC5",
-      "uri": "chassis/ED895B48D50D4E34B5DAF1F697B1FAC5"
-  },
-  "posID": "17",
-  "powerAllocation": {
-      "maximumAllocatedPower": 100,
-      "minimumAllocatedPower": 100
-  },
-  "powerState": "On",
-  "productId": "329",
-  "productName": "Flex System FC5022 16Gb SAN Scalable Switch",
-  "protectedMode": "Not supported",
-  "slots": [1],
-  "uri": "switch/8C6F73601DD2B201036F00053394DBED",
-  "uuid": "8C6F73601DD2B201036F00053394DBED",
-  "vpdID": "309"
+         "accessState":"Online",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"2BB054971DD2B201663F0027F8870F10",
+         "uri":"switch/2BB054971DD2B201663F0027F8870F10",
+         "dataHandle":1475170006456
+      },
+      {
+         "accessState":"Online",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"1B33D6CE6D58C30145BA0817F4B11400",
+         "uri":"switch/1B33D6CE6D58C30145BA0817F4B11400",
+         "dataHandle":1475169605221
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /switches?includeAttributes=accessState,attachedNodes
+
++ Response 200 (application/json)
+{
+   "switchList":[
+      {
+         "accessState":"Online",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"1B33D6D13F267A614567A897DC784F00",
+         "uri":"switch/1B33D6D13F267A614567A897DC784F00",
+         "dataHandle":1475169867948
+      },
+      {
+         "accessState":"Online",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"2BB054971DD2B201663F0027F8870F10",
+         "uri":"switch/2BB054971DD2B201663F0027F8870F10",
+         "dataHandle":1475170006456
+      },
+      {
+         "accessState":"Online",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "attachedNodes":[
+
+         ],
+         "uuid":"1B33D6CE6D58C30145BA0817F4B11400",
+         "uri":"switch/1B33D6CE6D58C30145BA0817F4B11400",
+         "dataHandle":1475169605221
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /switches/1B33D6D13F267A614567A897DC784F00,2BB054971DD2B201663F0027F8870F10,1B33D6CE6D58C30145BA0817F4B11400?excludeAttributes=accessState,attachedNodes
+
++ Response 200 (application/json)
+{
+   "switchList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169867948,
+         "ipv4Addresses":[
+            "10.240.72.62"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN4093R 10Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"Standby",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"95Y3311",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":34,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2014-09-22T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.7.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"95Y3312",
+         "macAddresses":[
+            "A8:97:DC:78:4F:EF"
+         ],
+         "uri":"switch/1B33D6D13F267A614567A897DC784F00",
+         "productId":"471",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:aa97:dcff:fe78:4fef",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "posID":"33",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6D13F267A614567A897DC784F00",
+         "productName":"IBM Flex System Fabric EN4093R 10Gb Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y010CM3BE008.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "fruSerialNumber":"Y010CM3BE008"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475170006456,
+         "ipv4Addresses":[
+            "10.240.72.64"
+         ],
+         "cmmDisplayName":"IO Module 03",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"FC5022 16Gb SAN Scalable Switch",
+         "name":"IO Module 03",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"00Y3327",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":33,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Main Application",
+               "date":"2014-06-26T04:00:00Z",
+               "type":"Main Application",
+               "build":"",
+               "version":"7.2.1a2"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"00Y3329",
+         "macAddresses":[
+            "00:27:F8:87:0F:11"
+         ],
+         "uri":"switch/2BB054971DD2B201663F0027F8870F10",
+         "productId":"329",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:227:f8ff:fe87:f11",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "posID":"17",
+         "overallHealthState":"Normal",
+         "protectedMode":"Not supported",
+         "manufacturer":"IBM",
+         "slots":[
+            3
+         ],
+         "vpdID":"309",
+         "uuid":"2BB054971DD2B201663F0027F8870F10",
+         "productName":"IBM Flex System FC5022 24-port 16Gb SAN Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y051UZ3S4002.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "fruSerialNumber":"Y051UZ3S4002"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169605221,
+         "ipv4Addresses":[
+            "192.168.70.120"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN2092 1Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"49Y4295",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"DHCP_THEN_STATIC",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":35,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2015-07-21T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.11.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "hostname":"",
+         "FRU":"49Y4296",
+         "macAddresses":[
+            "08:17:F4:B1:14:EF"
+         ],
+         "uri":"switch/1B33D6CE6D58C30145BA0817F4B11400",
+         "productId":"347",
+         "powerAllocation":{
+            "maximumAllocatedPower":64,
+            "minimumAllocatedPower":64
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:a17:f4ff:feb1:14ef",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "posID":"281",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6CE6D58C30145BA0817F4B11400",
+         "productName":"IBM Flex System EN2092 1Gb Ethernet Scalable Switch",
+         "dnsHostnames":[
+            "192.168.70.120",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "fruSerialNumber":"Y250VT183065"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /switches?excludeAttributes=accessState,attachedNodes
+
+
++ Response 200 (application/json)
+{
+   "switchList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169867948,
+         "ipv4Addresses":[
+            "10.240.72.62"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN4093R 10Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"Standby",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"95Y3311",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.62",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":34,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-08-03T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.5"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2014-09-22T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.7.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"95Y3312",
+         "macAddresses":[
+            "A8:97:DC:78:4F:EF"
+         ],
+         "uri":"switch/1B33D6D13F267A614567A897DC784F00",
+         "productId":"471",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:aa97:dcff:fe78:4fef",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "posID":"33",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6D13F267A614567A897DC784F00",
+         "productName":"IBM Flex System Fabric EN4093R 10Gb Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y010CM3BE008.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:aa97:dcff:fe78:4fef"
+         ],
+         "fruSerialNumber":"Y010CM3BE008"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475170006456,
+         "ipv4Addresses":[
+            "10.240.72.64"
+         ],
+         "cmmDisplayName":"IO Module 03",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"FC5022 16Gb SAN Scalable Switch",
+         "name":"IO Module 03",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"00Y3327",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"STATIC_ONLY",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.252.0",
+                     "gateway":"10.240.72.1",
+                     "address":"10.240.72.64",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":33,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Main Application",
+               "date":"2014-06-26T04:00:00Z",
+               "type":"Main Application",
+               "build":"",
+               "version":"7.2.1a2"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "hostname":"",
+         "FRU":"00Y3329",
+         "macAddresses":[
+            "00:27:F8:87:0F:11"
+         ],
+         "uri":"switch/2BB054971DD2B201663F0027F8870F10",
+         "productId":"329",
+         "powerAllocation":{
+            "maximumAllocatedPower":100,
+            "minimumAllocatedPower":100
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:227:f8ff:fe87:f11",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "posID":"17",
+         "overallHealthState":"Normal",
+         "protectedMode":"Not supported",
+         "manufacturer":"IBM",
+         "slots":[
+            3
+         ],
+         "vpdID":"309",
+         "uuid":"2BB054971DD2B201663F0027F8870F10",
+         "productName":"IBM Flex System FC5022 24-port 16Gb SAN Scalable Switch",
+         "dnsHostnames":[
+            "SW-Y051UZ3S4002.labs.lenovo.com",
+            "fd55:faaf:e1ab:20fc:227:f8ff:fe87:f11"
+         ],
+         "fruSerialNumber":"Y051UZ3S4002"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Switch",
+         "dataHandle":1475169605221,
+         "ipv4Addresses":[
+            "192.168.70.120"
+         ],
+         "cmmDisplayName":"IO Module 01",
+         "backedBy":"real",
+         "leds":[
+            {
+               "color":"Blue",
+               "location":"FrontPanel",
+               "name":"Enclosure Identify",
+               "state":"Off"
+            },
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FRU Fault",
+               "state":"Off"
+            },
+            {
+               "color":"Green",
+               "location":"FrontPanel",
+               "name":"Power",
+               "state":"On"
+            }
+         ],
+         "description":"EN2092 1Gb Ethernet Switch",
+         "name":"IO Module 01",
+         "errorFields":[
+            {
+               "IOCompatibilityData":"FETCH_FAILED"
+            }
+         ],
+         "stackMode":"N/A",
+         "attachedNodes":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "partNumber":"49Y4295",
+         "ipInterfaces":[
+            {
+               "IPv4enabled":true,
+               "IPv4DHCPmode":"DHCP_THEN_STATIC",
+               "IPv6enabled":true,
+               "IPv6DHCPenabled":true,
+               "IPv4assignments":[
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":2,
+                     "subnet":"255.255.255.0",
+                     "gateway":"0.0.0.0",
+                     "address":"192.168.70.120",
+                     "type":"INUSE"
+                  }
+               ],
+               "IPv6assignments":[
+                  {
+                     "id":1,
+                     "scope":"LinkLocal",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Other",
+                     "address":"fe80:0:0:0:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  },
+                  {
+                     "id":2,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Static",
+                     "address":"0:0:0:0:0:0:0:0",
+                     "prefix":64,
+                     "type":"CONFIGURED"
+                  },
+                  {
+                     "id":35,
+                     "scope":"Global",
+                     "gateway":"0:0:0:0:0:0:0:0",
+                     "source":"Stateless",
+                     "address":"fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef",
+                     "prefix":64,
+                     "type":"INUSE"
+                  }
+               ],
+               "name":"ioe0",
+               "IPv6statelessEnabled":true,
+               "label":"",
+               "IPv6staticEnabled":false
+            }
+         ],
+         "excludedHealthState":"Normal",
+         "firmware":[
+            {
+               "status":"Active",
+               "name":"Boot ROM",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Boot ROM",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Active",
+               "name":"Main Application 1",
+               "date":"2016-06-14T04:00:00Z",
+               "type":"Main Application 1",
+               "build":"",
+               "version":"7.8.14.2"
+            },
+            {
+               "status":"Not-Active",
+               "name":"Main Application 2",
+               "date":"2015-07-21T04:00:00Z",
+               "type":"Main Application 2",
+               "build":"",
+               "version":"7.8.11.0"
+            }
+         ],
+         "machineType":"",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "hostname":"",
+         "FRU":"49Y4296",
+         "macAddresses":[
+            "08:17:F4:B1:14:EF"
+         ],
+         "uri":"switch/1B33D6CE6D58C30145BA0817F4B11400",
+         "productId":"347",
+         "powerAllocation":{
+            "maximumAllocatedPower":64,
+            "minimumAllocatedPower":64
+         },
+         "powerState":"On",
+         "ipv6Addresses":[
+            "fe80:0:0:0:a17:f4ff:feb1:14ef",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "posID":"281",
+         "overallHealthState":"Normal",
+         "protectedMode":"False",
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "vpdID":"304",
+         "uuid":"1B33D6CE6D58C30145BA0817F4B11400",
+         "productName":"IBM Flex System EN2092 1Gb Ethernet Scalable Switch",
+         "dnsHostnames":[
+            "192.168.70.120",
+            "fd55:faaf:e1ab:2021:a17:f4ff:feb1:14ef"
+         ],
+         "fruSerialNumber":"Y250VT183065"
+      }
+   ]
 }
 + Response 400
 + Response 401
