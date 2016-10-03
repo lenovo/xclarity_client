@@ -3,7 +3,7 @@ require 'json'
 module XClarityClient
   class FanMuxManagement < XClarityBase
 
-    BASE_URI = '/fan_muxes'.freeze
+    BASE_URI = '/fanMuxes'.freeze
 
     def initialize(conf)
       super(conf, BASE_URI)
@@ -13,7 +13,8 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |fan_mux|
+      body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+      body['fanMuxList'].map do |fan_mux|
         FanMux.new fan_mux
       end
     end
@@ -44,24 +45,26 @@ module XClarityClient
                 else
               response =  connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
                           body = JSON.parse(response.body)
-                          body.map do |fan_mux|
+                          body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+                          body['fanMuxList'].map do |fan_mux|
                             FanMux.new fan_mux
                           end
                 end
     end
 
     def get_object_fan_muxes_include_attributes(uuids, attributes)
-       if not uuids.nil?
-            response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
-                        fan_mux = JSON.parse(response.body)
-                        FanMux.new fan_mux
-                else
-            response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
-                        body = JSON.parse(response.body)
-                        body.map do |fan_mux|
-                          FanMux.new fan_mux
-                        end
-                end
+      if not uuids.nil?
+        response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
+        fan_mux = JSON.parse(response.body)
+        FanMux.new fan_mux
+      else
+        response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
+        body = JSON.parse(response.body)
+        body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+        body['fanMuxList'].map do |fan_mux|
+          FanMux.new fan_mux
+        end
+      end
     end
   end
 end

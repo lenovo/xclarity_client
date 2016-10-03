@@ -5,7 +5,7 @@ module XClarityClient
 
     attr_accessor :cmmDisplayName, :cmmHealthState, :dataHandle, :description, :FRU,
       :fruSerialNumber, :hardwareRevision, :leds, :machineType, :manufacturer, :manufactureDate,
-      :manufacturerID, :model, :name, :parent, :partNumber, :productID, :productName, :serialNumber,
+      :manufacturerId, :model, :name, :parent, :partNumber, :productId, :productName, :serialNumber,
       :slots, :status, :type, :uri, :uuid
 
 
