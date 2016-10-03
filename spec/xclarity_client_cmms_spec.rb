@@ -3,21 +3,18 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    WebMock.allow_net_connect!
-    conf = XClarityClient::Configuration.new(
-    :username => 'admin',
-    :password => 'pass',
-    :host     => 'http://127.0.0.1:3000'
-    )
+    # WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection.
 
-    conf_blueprint = XClarityClient::Configuration.new(
+    conf = XClarityClient::Configuration.new(
     :username => 'admin',
     :password => 'pass',
     :host     => 'http://example.com'
     )
 
-    @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
     @client = XClarityClient::Client.new(conf)
+  end
+
+  before :each do
     @includeAttributes = %w(accessState backedBy)
     @excludeAttributes = %w(accessState backedBy)
     @uuidArray = @client.discover_cmms.map { |cmm| cmm.uuid  }
@@ -25,60 +22,6 @@ describe XClarityClient do
 
   it 'has a version number' do
     expect(XClarityClient::VERSION).not_to be nil
-  end
-
-  describe 'GET /aicc' do
-    it 'should respond with information about the Lenovo XClarity Administrator' do
-
-      response = @virtual_appliance.configuration_settings
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/ipdisable' do
-    it 'should respond with the IPv6 and IPv6 addresses enablement state.' do
-
-      response = @virtual_appliance.ip_enablement_state
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/host' do
-    it 'should respond with the XClarity Administrator host settings.' do
-
-      response = @virtual_appliance.host_settings
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/interfaces/{interface}' do
-    it 'should respond with information about a specific network interface.' do
-
-      response = @virtual_appliance.network_interface_settings("eth0")
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/routes' do
-    it 'should respond with all XClarity Administrator routes.' do
-
-      response = @virtual_appliance.route_settings
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe 'GET /aicc/network/host' do
-    it 'should respond with all XClarity Administrator subscriptions.' do
-
-      response = @virtual_appliance.subscriptions
-
-      expect(response.status).to eq(200)
-    end
   end
 
   describe 'GET /cmms' do
@@ -94,21 +37,24 @@ describe XClarityClient do
 
   describe 'GET /cmms/UUID' do
 
-    it 'with includeAttributes' do
-      response = @client.fetch_cmms([@uuidArray[0]], @includeAttributes,nil)
-      response.map do |cmm|
-        @includeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).not_to be_nil
+    context 'with includeAttributes' do
+      it 'include attributes should not be nil' do
+        response = @client.fetch_cmms([@uuidArray[0]], @includeAttributes,nil)
+        response.map do |cmm|
+          @includeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).not_to be_nil
+          end
         end
       end
-
     end
 
-    it 'with excludeAttributes' do
-      response = @client.fetch_cmms([@uuidArray[0]], nil, @excludeAttributes)
-      response.map do |cmm|
-        @excludeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).to be_nil
+    context 'with excludeAttributes' do
+      it 'exclude attributes should be nil' do
+        response = @client.fetch_cmms([@uuidArray[0]], nil, @excludeAttributes)
+        response.map do |cmm|
+          @excludeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).to be_nil
+          end
         end
       end
     end
@@ -121,40 +67,50 @@ describe XClarityClient do
       expect(uuidArray.length).to be >= 2
     end
 
-    it 'with includeAttributes' do
-      response = @client.fetch_cmms(@uuidArray, @includeAttributes,nil)
-      response.map do |cmm|
-        @includeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).not_to be_nil
+    context 'with includeAttributes' do
+      it 'include attributes should not be nil' do
+        response = @client.fetch_cmms(@uuidArray, @includeAttributes,nil)
+        response.map do |cmm|
+          @includeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).not_to be_nil
+          end
         end
       end
     end
 
-    it 'with excludeAttributes' do
-      response = @client.fetch_cmms(@uuidArray, nil, @excludeAttributes)
-      response.map do |cmm|
-        @excludeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).to be_nil
+    context 'with excludeAttributes' do
+      it 'exclude attributes should be nil' do
+        response = @client.fetch_cmms(@uuidArray, nil, @excludeAttributes)
+        response.map do |cmm|
+          @excludeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).to be_nil
+          end
         end
       end
     end
+
   end
 
   describe 'GET /cmms' do
 
-    it 'with includeAttributes' do
-      response = @client.fetch_cmms(nil,@includeAttributes,nil)
-      response.map do |cmm|
-        @includeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).not_to be_nil
+    context 'with includeAttributes' do
+      it 'include attributes should not be nil' do
+        response = @client.fetch_cmms(nil,@includeAttributes,nil)
+        response.map do |cmm|
+          @includeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).not_to be_nil
+          end
         end
       end
     end
-    it 'with excludeAttributes' do
-      response = @client.fetch_cmms(nil,nil,@excludeAttributes)
-      response.map do |cmm|
-        @excludeAttributes.map do |attribute|
-          expect(cmm.send(attribute)).to be_nil
+
+    context 'with excludeAttributes' do
+      it 'exclude attributes should be nil' do
+        response = @client.fetch_cmms(nil,nil,@excludeAttributes)
+        response.map do |cmm|
+          @excludeAttributes.map do |attribute|
+            expect(cmm.send(attribute)).to be_nil
+          end
         end
       end
     end

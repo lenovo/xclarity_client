@@ -13,7 +13,8 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |cmm|
+      body = {'cmmList' => [body]} unless body.has_key? 'cmmList'
+      body['cmmList'].map do |cmm|
         Cmm.new cmm
       end
     end
@@ -32,7 +33,8 @@ module XClarityClient
 
 
         body = JSON.parse(response.body) #rescue {}
-        body.map do |cmm|
+        body = {'cmmList' => [body]} unless body.has_key? 'cmmList'
+        body['cmmList'].map do |cmm|
           Cmm.new cmm
         end
     end
