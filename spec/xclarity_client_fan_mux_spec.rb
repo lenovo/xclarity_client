@@ -36,6 +36,7 @@ describe XClarityClient do
     end
 
     context 'with includeAttributes' do
+      #TODO: Uncomment this block when the issue from LXCA API will be fixed
 =begin
       it 'include attributes should not be nil' do
         response = @client.fetch_fan_muxes(nil,@includeAttributes,nil)
@@ -62,6 +63,7 @@ describe XClarityClient do
   describe 'GET /nodes/UUID' do
 
     context 'with includeAttributes' do
+      #TODO: Uncomment this block when the issue from LXCA API will be fixed
 =begin
       it 'include attributes should be nil' do
         response = @client.fetch_fan_muxes([@uuidArray[0]], @includeAttributes,nil)
