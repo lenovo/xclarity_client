@@ -4,10 +4,10 @@ module XClarityClient
     BASE_URI = '/fans'.freeze
 
     attr_accessor :cmmDisplayName, :cmmHealthState, :dataHandle, :firmware, :FRU,
-    :fruSerialNumber, :hardwareRevision, :manufacturer, :manufacturerID,
+    :fruSerialNumber, :hardwareRevision, :manufacturer, :manufacturerId,
     :name, :parent, :partNumber, :posID, :powerState, :uri, :uuid, :vpdID, :description,
-    :errorFields,:leds,:machineType,:manufacturingDate, :model, :powerAllocation,
-    :productID, :productName, :serialNumber, :slots, :type, :userDescription
+    :errorFields,:leds,:machineType,:manufactureDate, :model, :powerAllocation,
+    :productId, :productName, :serialNumber, :slots, :type, :userDescription
 
 
 
