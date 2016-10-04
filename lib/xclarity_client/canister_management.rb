@@ -13,7 +13,8 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |canister|
+      body = {'canisterList' => [body]} unless body.has_key? 'canisterList'
+      body['canisterList'].map do |canister|
         Canister.new canister
       end
     end
@@ -31,7 +32,8 @@ module XClarityClient
       end
 
       body = JSON.parse(response.body)
-      body.map do |canister|
+      body = {'canisterList' => [body]} unless body.has_key? 'canisterList'
+      body['canisterList'].map do |canister|
         Canister.new canister
       end
 
