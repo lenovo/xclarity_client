@@ -3,7 +3,7 @@ require 'json'
 module XClarityClient
   class ScalableComplexManagement < XClarityBase
 
-    BASE_URI = '/scalable_complexes'.freeze
+    BASE_URI = '/scalableComplex'.freeze
 
     def initialize(conf)
       super(conf, BASE_URI)
@@ -11,9 +11,9 @@ module XClarityClient
 
     def population
       response = connection(BASE_URI)
-
       body = JSON.parse(response.body)
-      body.map do |scalableComplex|
+      body = {'complex' => [body]} unless body.has_key? 'complex'
+      body['complex'].map do |scalableComplex|
         ScalableComplex.new scalableComplex
       end
     end
@@ -27,11 +27,15 @@ module XClarityClient
       elsif not uuids.nil?
         response = connection(BASE_URI + "/" + uuids)
         body = JSON.parse(response.body)
-        ScalableComplex.new body
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       else
         response = connection(BASE_URI)
         body = JSON.parse(response.body)
-        body.map do |scalableComplex|
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
           ScalableComplex.new scalableComplex
         end
       end
@@ -41,13 +45,17 @@ module XClarityClient
     def get_object_scalableComplexes_exclude_attributes(uuids, attributes)
 
       if not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids +"?excludeAttributes=#{attributes.join(",")}")
+        response = connection(BASE_URI + "/" + uuids +"?excludeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        ScalableComplex.new body
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       else
         response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        body.map do |scalableComplex|
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
           ScalableComplex.new scalableComplex
         end
       end
@@ -58,11 +66,15 @@ module XClarityClient
       if not uuids.nil?
         response =  connection(BASE_URI + "/" + uuids + "?includeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        ScalableComplex.new body
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
+          ScalableComplex.new scalableComplex
+        end
       else
         response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)
-        body.map do |scalableComplex|
+        body = {'complex' => [body]} unless body.has_key? 'complex'
+        body['complex'].map do |scalableComplex|
           ScalableComplex.new scalableComplex
         end
       end
