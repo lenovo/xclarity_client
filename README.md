@@ -47,9 +47,10 @@ To get basic information from the virtual appliance
 require 'xclarity_client'
 
 conf = XClarityClient::Configuration.new(
-  :username => 'admin',
-  :password => 'pass',
-  :host     => 'http://example.com'
+  :username   => 'admin',
+  :password   => 'pass',
+  :host       => 'http://example.com'
+  :auth_type  => 'token'
 )
 
 virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
@@ -60,6 +61,7 @@ client = XClarityClient::Client.new(conf)
 
 puts client.discover_nodes
 ```
+NOTE: `auth_type` variable must have 'token' or 'basic_auth' as value.
 
 ## Development
 
