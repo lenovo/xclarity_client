@@ -13,8 +13,8 @@ describe XClarityClient do
 
     @client = XClarityClient::Client.new(conf)
 
-    @includeAttributes = %w(accessState activationKeys)
-    @excludeAttributes = %w(accessState activationKeys)
+    @includeAttributes = %w(storageList height)
+    @excludeAttributes = %w(storageList height)
   end
 
   before :each do
@@ -35,6 +35,28 @@ describe XClarityClient do
       expect(@client.discover_cabinet).not_to be_empty
     end
 
+    context 'with includeAttributes' do
+      it 'required attributes should not be nil' do
+        response = @client.fetch_cabinet(nil,@includeAttributes,nil)
+        response.map do |cabinet|
+          @includeAttributes.map do |attribute|
+            expect(cabinet.send(attribute)).not_to be_nil
+          end
+        end
+      end
+    end
+
+    context 'with excludeAttributes' do
+      it 'excluded attributes should be nil' do
+        response = @client.fetch_cabinet(nil,nil,@excludeAttributes)
+        response.map do |cabinet|
+          @excludeAttributes.map do |attribute|
+            expect(cabinet.send(attribute)).to be_nil
+          end
+        end
+      end
+    end
+
   end
 
   describe 'GET /cabinet/UUID' do
@@ -52,61 +74,6 @@ describe XClarityClient do
     context 'with excludeAttributes' do
       it 'excluded attributes should to be nil' do
         response = @client.fetch_cabinet([@uuidArray[0]], nil, @excludeAttributes)
-        response.map do |cabinet|
-          @excludeAttributes.map do |attribute|
-            expect(cabinet.send(attribute)).to be_nil
-          end
-        end
-      end
-    end
-  end
-
-  describe 'GET /cabinet/UUID,UUID,...,UUID' do
-
-    it 'to multiples uuid, should return two or more cabinet' do
-      uuidArray = @client.discover_cabinet.map { |cabinet| cabinet.UUID  }
-      expect(uuidArray.length).to be >= 2
-    end
-
-    context 'with includeAttributes' do
-      it 'required attributes shoud not be nil ' do
-        response = @client.fetch_cabinet(@uuidArray, @includeAttributes,nil)
-        response.map do |cabinet|
-          @includeAttributes.map do |attribute|
-            expect(cabinet.send(attribute)).not_to be_nil
-          end
-        end
-      end
-    end
-
-    context 'with excludeAttributes' do
-      it 'excluded attributes shoud to be nil' do
-        response = @client.fetch_cabinet(@uuidArray, nil, @excludeAttributes)
-        response.map do |cabinet|
-          @excludeAttributes.map do |attribute|
-            expect(cabinet.send(attribute)).to be_nil
-          end
-        end
-      end
-    end
-  end
-
-  describe 'GET /cabinet' do
-
-    context 'with includeAttributes' do
-      it 'required attributes should not be nil' do
-        response = @client.fetch_cabinet(nil,@includeAttributes,nil)
-        response.map do |cabinet|
-          @includeAttributes.map do |attribute|
-            expect(cabinet.send(attribute)).not_to be_nil
-          end
-        end
-      end
-    end
-
-    context 'with excludeAttributes' do
-      it 'excluded attributes should be nil' do
-        response = @client.fetch_cabinet(nil,nil,@excludeAttributes)
         response.map do |cabinet|
           @excludeAttributes.map do |attribute|
             expect(cabinet.send(attribute)).to be_nil
