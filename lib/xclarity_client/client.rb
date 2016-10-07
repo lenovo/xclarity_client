@@ -13,6 +13,15 @@ module XClarityClient
       ScalableComplexManagement.new(@connection).population
     end
 
+def discover_cmms
+      CmmManagement.new(@connection).population
+    end
+
+    def fetch_cmms(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+      array_cmms = CmmManagement.new(@connection)
+      .get_object_cmms(uuids, includeAttributes, excludeAttributes)
+    end
+
     def fetch_fans(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
 
       array_fans = FanManagement.new(@connection)
