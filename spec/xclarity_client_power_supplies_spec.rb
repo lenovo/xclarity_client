@@ -2,19 +2,21 @@ require 'spec_helper'
 
 describe XClarityClient do
   before :all do
-    WebMock.allow_net_connect!
+    # WebMock.allow_net_connect! # -- uncomment this line if you're testing with external mock.
 
-    conf_blueprint = XClarityClient::Configuration.new(
+    conf = XClarityClient::Configuration.new(
       :username => 'admin',
       :password => 'pass',
       :host     => 'http://example.com'
     )
 
-    @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
-    @client = XClarityClient::Client.new(conf_blueprint)
+    @client = XClarityClient::Client.new(conf)
 
     @includeAttributes = %w(description dataHandle)
     @excludeAttributes = %w(description dataHandle)
+  end
+
+  before :each do
     @uuidArray = @client.discover_power_supplies.map { |power_supply| power_supply.uuid  }
   end
 
@@ -31,10 +33,27 @@ describe XClarityClient do
     it 'the response must have one or more nodes' do
       expect(@client.discover_power_supplies).not_to be_empty
     end
+
+    it 'with includeAttributes' do
+      response = @client.fetch_power_supplies(nil, @includeAttributes, nil)
+      response.map do |powerSupply|
+        @includeAttributes.map do |attribute|
+          expect(powerSupply.send(attribute)).not_to be_nil
+        end
+      end
+    end
+
+    it 'with excludeAttributes' do
+      response = @client.fetch_power_supplies(nil, nil, @excludeAttributes)
+      response.map do |powerSupply|
+        @excludeAttributes.map do |attribute|
+          expect(powerSupply.send(attribute)).to be_nil
+        end
+      end
+    end
   end
 
-  describe 'GET /power_supplies/UUID' do
-
+  describe 'GET /powerSupplies/UUID' do
     it 'with includeAttributes' do
       response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
       @includeAttributes.map do |attribute|
