@@ -1,0 +1,245 @@
+FORMAT: 1A
+
+# Fan Muxes
+
+# GET /fanMuxes/08F010AC32A811E38EC187BED4950FD7?excludeAttributes=productName
+
++ Response 200 (application/json)
+{
+   "model":"",
+   "manufacturerId":"20301",
+   "machineType":"",
+   "status":"Normal",
+   "hardwareRevision":"5.3",
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+   },
+   "serialNumber":"",
+   "FRU":"94Y5805",
+   "type":"FanMux",
+   "uri":"fanMux/08F010AC32A811E38EC187BED4950FD7",
+   "productId":"338",
+   "dataHandle":0,
+   "cmmDisplayName":"Fan Logic 01",
+   "leds":[
+      {
+         "color":"Amber",
+         "location":"FrontPanel",
+         "name":"FAULT",
+         "state":"Off"
+      }
+   ],
+   "manufacturer":"IBM",
+   "slots":[
+      1
+   ],
+   "description":"fan logic card",
+   "name":"Fan Logic 01",
+   "uuid":"08F010AC32A811E38EC187BED4950FD7",
+   "cmmHealthState":"Normal",
+   "manufactureDate":"4311",
+   "fruSerialNumber":"Y031BG16D093",
+   "partNumber":"49Y3276"
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fanMuxes/08F010AC32A811E38EC187BED4950FD7?includeAttributes=productName
+
++ Response 200 (application/json)
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fanMuxes?excludeAttributes=productName
+
++ Response 200 (application/json)
+{
+   "fanMuxList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "machineType":"",
+         "status":"Normal",
+         "hardwareRevision":"5.3",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "serialNumber":"",
+         "FRU":"94Y5805",
+         "type":"FanMux",
+         "uri":"fanMux/08F010AC32A811E38EC187BED4950FD7",
+         "productId":"338",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan Logic 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "description":"fan logic card",
+         "name":"Fan Logic 01",
+         "uuid":"08F010AC32A811E38EC187BED4950FD7",
+         "cmmHealthState":"Normal",
+         "manufactureDate":"4311",
+         "fruSerialNumber":"Y031BG16D093",
+         "partNumber":"49Y3276"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "machineType":"",
+         "status":"Non-Critical",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "serialNumber":"",
+         "FRU":"81Y2912",
+         "type":"FanMux",
+         "uri":"fanMux/F40B548FA17811E092C5D2CFEE48E2A3",
+         "productId":"338",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan Logic 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"On"
+            }
+         ],
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "description":"Fan Logic Module",
+         "name":"Fan Logic 01",
+         "uuid":"F40B548FA17811E092C5D2CFEE48E2A3",
+         "cmmHealthState":"Non-Critical",
+         "manufactureDate":"2611",
+         "fruSerialNumber":"Y031BG16P023",
+         "partNumber":"81Y2990"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fanMuxes?includeAttribute=productName
+
++ Response 200 (application/json)
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fanMuxes
+
++ Response 200 (application/json)
+{
+   "fanMuxList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "machineType":"",
+         "status":"Normal",
+         "hardwareRevision":"5.3",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "serialNumber":"",
+         "FRU":"94Y5805",
+         "type":"FanMux",
+         "uri":"fanMux/08F010AC32A811E38EC187BED4950FD7",
+         "productId":"338",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan Logic 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "description":"fan logic card",
+         "name":"Fan Logic 01",
+         "uuid":"08F010AC32A811E38EC187BED4950FD7",
+         "cmmHealthState":"Normal",
+         "manufactureDate":"4311",
+         "productName":"IBM Flex System Enterprise Chassis Fan Logic Card",
+         "fruSerialNumber":"Y031BG16D093",
+         "partNumber":"49Y3276"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "machineType":"",
+         "status":"Non-Critical",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"3B058C775CE44FA6AC05608B196EDAB1",
+            "uri":"chassis/3B058C775CE44FA6AC05608B196EDAB1"
+         },
+         "serialNumber":"",
+         "FRU":"81Y2912",
+         "type":"FanMux",
+         "uri":"fanMux/F40B548FA17811E092C5D2CFEE48E2A3",
+         "productId":"338",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan Logic 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"On"
+            }
+         ],
+         "manufacturer":"IBM",
+         "slots":[
+            1
+         ],
+         "description":"Fan Logic Module",
+         "name":"Fan Logic 01",
+         "uuid":"F40B548FA17811E092C5D2CFEE48E2A3",
+         "cmmHealthState":"Non-Critical",
+         "manufactureDate":"2611",
+         "productName":"IBM Fan Pack Multiplexor Card",
+         "fruSerialNumber":"Y031BG16P023",
+         "partNumber":"81Y2990"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
