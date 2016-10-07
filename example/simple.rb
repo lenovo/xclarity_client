@@ -13,3 +13,9 @@ virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
 client = XClarityClient::Client.new(conf)
 
 puts client.discover_nodes
+
+@includeAttributes = %w(accessState)
+@excludeAttributes = %w(accessState)
+@uuidArray = client.discover_cabinet.map { |cabinet| cabinet.uuid  }
+
+puts client.fetch_cabinet(@uuidArray, @includeAttributes, nil)
