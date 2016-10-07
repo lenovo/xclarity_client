@@ -13,4 +13,4 @@ virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
 client = XClarityClient::Client.new(conf)
 
 
-puts client.discover_nodes
+puts client.fetch_nodes(@uuidArray, @includeAttributes, nil)
