@@ -13,7 +13,7 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |node|
+      body['nodeList'].map do |node|
         Node.new node
       end
     end
@@ -31,7 +31,8 @@ module XClarityClient
                 end
 
       body = JSON.parse(response.body)
-      body.map do |node|
+      body = {'nodeList' => [body]} unless body.has_key? 'nodeList'
+      body['nodeList'].map do |node|
         Node.new node
       end
 
