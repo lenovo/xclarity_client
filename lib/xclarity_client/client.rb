@@ -31,7 +31,7 @@ module XClarityClient
       .get_object_canisters(uuids, includeAttributes, excludeAttributes)
     end
 
-def discover_cmms
+    def discover_cmms
       CmmManagement.new(@connection).population
     end
 
