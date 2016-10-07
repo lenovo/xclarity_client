@@ -13,7 +13,8 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body.map do |chassi|
+      body = {'chassisList' => [body]} unless body.has_key? 'chassisList'
+      body['chassisList'].map do |chassi|
         Chassi.new chassi
       end
     end
@@ -34,13 +35,13 @@ module XClarityClient
         response = connection(BASE_URI)
       end
 
-
         body = JSON.parse(response.body) #rescue {}
-        body.map do |chassi|
+        body = {'chassisList' => [body]} unless body.has_key? 'chassisList'
+        body['chassisList'].map do |chassi|
           Chassi.new chassi
         end
     end
-    
+
     private
 
     def get_object_chassis_exclude_attributes(uuids, attributes)

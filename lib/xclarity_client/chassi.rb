@@ -7,11 +7,11 @@ module XClarityClient
     :description, :domainName, :encapsulation, :energyPolicies, :errorFields,
     :excludedHealthState, :fanMuxes, :fanMuxSlots, :fans, :fanSlots, :height, :hostname,
     :isConnectionTrusted, :ledCardSlots, :leds, :location, :machineType, :managerName,
-    :managerUuid, :manufacturer, :manufacturerID, :mgmtProcIPaddress, :model, :name,
+    :managerUuid, :manufacturer, :manufacturerId, :mgmtProcIPaddress, :model, :name,
     :nist, :nodes, :partNumber, :passThroughModules, :posID, :powerAllocation,
-    :powerSupplySlots, :powerSupplies, :productID, :overallHealthState, :securityPolicy,
+    :powerSupplySlots, :powerSupplies, :productId, :overallHealthState, :SecurityPolicy,
     :serialNumber, :status, :switches, :switchSlots, :tlsVersion, :type, :userDescription,
-    :uri, :uuid, :vpdID
+    :uri, :uuid, :vpdID, :mmSlots, :displayName, :productName, :parent
 
     def initialize(attributes)
       build_chassi(attributes)
