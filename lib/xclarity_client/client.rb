@@ -13,6 +13,16 @@ module XClarityClient
       ScalableComplexManagement.new(@connection).population
     end
 
+    def fetch_fans(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+
+      array_fans = FanManagement.new(@connection)
+      .get_object_fans(uuids, includeAttributes, excludeAttributes)
+    end
+
+    def discover_fans
+      FanManagement.new(@connection).population
+    end
+
     def discover_switches
       SwitchManagement.new(@connection).population
     end
