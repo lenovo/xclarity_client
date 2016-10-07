@@ -18,7 +18,7 @@ describe XClarityClient do
   end
 
   before :each do
-    @uuidArray = @client.discover_cabinet.map { |cabinet| cabinet.uuid  }
+    @uuidArray = @client.discover_cabinet.map { |cabinet| cabinet.UUID  }
   end
 
   it 'has a version number' do
@@ -64,7 +64,7 @@ describe XClarityClient do
   describe 'GET /cabinet/UUID,UUID,...,UUID' do
 
     it 'to multiples uuid, should return two or more cabinet' do
-      uuidArray = @client.discover_cabinet.map { |cabinet| cabinet.uuid  }
+      uuidArray = @client.discover_cabinet.map { |cabinet| cabinet.UUID  }
       expect(uuidArray.length).to be >= 2
     end
 
