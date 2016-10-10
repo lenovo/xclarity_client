@@ -3,12 +3,13 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    # WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
+    WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
 
     conf = XClarityClient::Configuration.new(
-    :username => 'admin',
-    :password => 'pass',
-    :host     => 'http://example.com'
+    :username => ENV['username_value'],
+    :password => ENV['password_value'],
+    :host     => ENV['host_value'],
+    :auth_type => ENV['auth_type_value']
     )
 
     @client = XClarityClient::Client.new(conf)

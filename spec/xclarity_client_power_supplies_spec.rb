@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe XClarityClient do
   before :all do
-    # WebMock.allow_net_connect! # -- uncomment this line if you're testing with external mock.
+    WebMock.allow_net_connect! # -- uncomment this line if you're testing with external mock.
 
     conf = XClarityClient::Configuration.new(
-      :username => 'admin',
-      :password => 'pass',
-      :host     => 'http://example.com'
+    :username => ENV['username_value'],
+    :password => ENV['password_value'],
+    :host     => ENV['host_value'],
+    :auth_type => ENV['auth_type_value']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -30,7 +31,7 @@ describe XClarityClient do
       expect(@client.discover_power_supplies.class).to eq(Array)
     end
 
-    it 'the response must have one or more nodes' do
+    it 'the response must have one or more Power Suplies' do
       expect(@client.discover_power_supplies).not_to be_empty
     end
 

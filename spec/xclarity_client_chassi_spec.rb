@@ -3,12 +3,13 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    # WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection with mock
+    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection with mock
 
     conf = XClarityClient::Configuration.new(
-    :username => 'admin',
-    :password => 'pass',
-    :host     => 'http://example.com'
+    :username => ENV['username_value'],
+    :password => ENV['password_value'],
+    :host     => ENV['host_value'],
+    :auth_type => ENV['auth_type_value']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -26,7 +27,7 @@ describe XClarityClient do
 
   describe 'GET /chassis' do
     it "should response 200 code" do
-      response = @client.fetch_chassis([@uuidArray[0]], @includeAttributes, nil)
+      response = @client.discover_chassis
       expect(response).not_to be_empty
     end
   end
@@ -57,11 +58,6 @@ describe XClarityClient do
   end
 
   describe 'GET /chassis/UUID,UUID,...,UUID' do
-
-    it 'to multiples uuid, should return two or more chassis' do
-      uuidArray = @client.discover_chassis.map { |chassi| chassi.uuid  }
-      expect(uuidArray.length).to be >= 2
-    end
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do

@@ -3,12 +3,13 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    # WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection or mock.
+    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection or mock.
 
     conf = XClarityClient::Configuration.new(
-    :username => 'admin',
-    :password => 'pass',
-    :host     => 'http://example.com'
+    :username => ENV['username_value'],
+    :password => ENV['password_value'],
+    :host     => ENV['host_value'],
+    :auth_type => ENV['auth_type_value']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -59,11 +60,6 @@ describe XClarityClient do
   end
 
   describe 'GET /canisters/UUID' do
-
-    it 'should return two or more canisters' do
-      uuidArray = @client.discover_canisters.map { |canister| canister.uuid  }
-      expect(uuidArray.length).to be >= 2
-    end
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do

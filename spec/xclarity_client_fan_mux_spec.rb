@@ -4,12 +4,13 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    # WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection.
+    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection.
 
     conf = XClarityClient::Configuration.new(
-    :username => 'admin',
-    :password => 'pass',
-    :host     => 'http://example.com'
+    :username => ENV['username_value'],
+    :password => ENV['password_value'],
+    :host     => ENV['host_value'],
+    :auth_type => ENV['auth_type_value']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -25,13 +26,13 @@ describe XClarityClient do
     expect(XClarityClient::VERSION).not_to be nil
   end
 
-  describe 'GET /nodes' do
+  describe 'GET /fanMuxes' do
 
     it 'should respond with an array' do
       expect(@client.discover_fan_muxes.class).to eq(Array)
     end
 
-    it 'the response must have one or more nodes' do
+    it 'the response must have one or more Fan Muxes' do
       expect(@client.discover_fan_muxes).not_to be_empty
     end
 
@@ -40,9 +41,9 @@ describe XClarityClient do
 =begin
       it 'include attributes should not be nil' do
         response = @client.fetch_fan_muxes(nil,@includeAttributes,nil)
-        response.map do |node|
+        response.map do |fan_mux|
           @includeAttributes.map do |attribute|
-            expect(node.send(attribute)).not_to be_nil
+            expect(fan_mux.send(attribute)).not_to be_nil
           end
         end
       end
@@ -51,16 +52,16 @@ describe XClarityClient do
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
         response = @client.fetch_fan_muxes(nil,nil,@excludeAttributes)
-        response.map do |node|
+        response.map do |fan_mux|
           @excludeAttributes.map do |attribute|
-            expect(node.send(attribute)).to be_nil
+            expect(fan_mux.send(attribute)).to be_nil
           end
         end
       end
     end
   end
 
-  describe 'GET /nodes/UUID' do
+  describe 'GET /fanMuxes/UUID' do
 
     context 'with includeAttributes' do
       #TODO: Uncomment this block when the issue from LXCA API will be fixed
