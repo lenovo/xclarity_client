@@ -13,6 +13,7 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
+      body = {'cabinetList' => [body]} unless body.has_key? 'cabinetList'
       body['cabinetList'].map do |cabinet|
         Cabinet.new cabinet
       end

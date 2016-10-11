@@ -6,8 +6,6 @@ module XClarityClient
     attr_accessor :cabinetName, :chassisList, :complexList, :height, :location, :nodeList,
                   :placeholderList, :room, :storageList, :switchList, :UUID
 
-
-
     def initialize(attributes)
       build_cabinet(attributes)
     end

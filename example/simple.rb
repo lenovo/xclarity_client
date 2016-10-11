@@ -1,10 +1,10 @@
 require 'xclarity_client'
 
 conf = XClarityClient::Configuration.new(
-  :username => 'USER-HERE',
-  :password => 'PASSWORD-HERE',
-  :host     => 'HOST_DOMAIN_HERE',
-  :auth_type => 'TYPE_OF_AUTHENTICATION'
+  :username => '',
+  :password => '',
+  :host     => '',
+  :auth_type => ''
 )
 
 # virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
@@ -13,4 +13,9 @@ conf = XClarityClient::Configuration.new(
 
 client = XClarityClient::Client.new(conf)
 
-puts client.discover_chassis
+puts "============= CABINETS ==============="
+client.discover_cabinet.map do |cabinet|
+  cabinet.instance_variables.each do |att|
+    puts "#{att} - #{cabinet.instance_variable_get att}"
+  end
+end
