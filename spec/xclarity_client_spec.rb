@@ -3,13 +3,21 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
+    WebMock.allow_net_connect!
     conf = XClarityClient::Configuration.new(
-      :username => 'admin',
-      :password => 'pass',
-      :host     => 'http://example.com'
+    :username => 'admin',
+    :password => 'pass',
+    :host     => 'http://127.0.0.1:3000'
     )
 
-    @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
+    conf_blueprint = XClarityClient::Configuration.new(
+    :username => 'admin',
+    :password => 'pass',
+    :host     => 'http://example.com'
+    )
+
+    @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf_blueprint)
+    @client = XClarityClient::Client.new(conf)
   end
 
   it 'has a version number' do
