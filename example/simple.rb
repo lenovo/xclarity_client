@@ -3,13 +3,13 @@ require 'xclarity_client'
 conf = XClarityClient::Configuration.new(
   :username => 'admin',
   :password => 'pass',
-  :host     => 'http://localhost:9292'
+  :host     => 'http://127.0.0.1:3000'
 )
-
-virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
-
-# puts virtual_appliance.configuration_settings
 
 client = XClarityClient::Client.new(conf)
 
-puts client.discover_nodes
+
+# @includeAttributes = %w(accessState activationKeys)
+# @excludeAttributes = %w(accessState activationKeys)
+#
+# puts client.fetch_switches(@uuidArray, nil, @excludeAttributes)
