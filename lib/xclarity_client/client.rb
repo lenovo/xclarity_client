@@ -10,7 +10,7 @@ module XClarityClient
     end
 
     def discover_power_supplies
-      PowerSupply.new(@connection).populate
+      PowerSupplyManagement.new(@connection).population
     end
 
     def fetch_power_supplies(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
