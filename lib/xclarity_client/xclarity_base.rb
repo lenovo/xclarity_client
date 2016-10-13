@@ -11,10 +11,9 @@ module XClarityClient
     end
 
     def connection_builder(conf, uri)
-
       @conn = Faraday.new(url: conf.host + uri) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
-        # faraday.response :logger                  # log requests to STDOUT -- Uncomment this line when you will inspect request logs.
+        faraday.response :logger                  # log requests to STDOUT -- Uncomment this line if you wanna inspect the URL request
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
     end

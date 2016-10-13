@@ -5,6 +5,15 @@ module XClarityClient
       @connection = connection
     end
 
+    def discover_cabinet
+      CabinetManagement.new(@connection).population
+    end
+
+    def fetch_cabinet(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+      array_cabinet = CabinetManagement.new(@connection)
+      .get_object_cabinet(uuids, includeAttributes, excludeAttributes)
+    end
+
     def discover_nodes
       NodeManagement.new(@connection).population
     end

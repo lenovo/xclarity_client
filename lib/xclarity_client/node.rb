@@ -1,3 +1,5 @@
+require 'json'
+
 module XClarityClient
   class Node
 
