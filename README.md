@@ -6,6 +6,23 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+## Pre Configuration for Connection with LXCA
+
+Get up and running mongo database
+
+Execute rails console:
+
+  $ bundle exec rails console
+
+Add nodes to your database:
+
+  $ FactoryGirl.create(:node)
+
+Get up LXCA-Mock server:
+
+  $ bundle exec rails s
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -38,6 +55,10 @@ conf = XClarityClient::Configuration.new(
 virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
 
 puts virtual_appliance.configuration_settings
+
+client = XClarityClient::Client.new(conf)
+
+puts client.discover_nodes
 ```
 
 ## Development

@@ -1,0 +1,383 @@
+FORMAT: 1A
+
+# Fans
+
+# GET /fans/57B16D219DB211E0AEBDBBC70E13DA7F?includeAttributes=cmmHealthState
+
++ Response 200 (application/json)
+{
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+   },
+   "uuid":"57B16D219DB211E0AEBDBBC70E13DA7F",
+   "cmmHealthState":"Normal",
+   "uri":"fan/57B16D219DB211E0AEBDBBC70E13DA7F",
+   "dataHandle":0
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fans/57B16D219DB211E0AEBDBBC70E13DA7F?excludeAttributes=cmmHealthState
+
++ Response 200 (application/json)
+{
+   "model":"",
+   "manufacturerId":"20301",
+   "serialNumber":"",
+   "type":"Fan",
+   "dataHandle":0,
+   "cmmDisplayName":"Fan 01",
+   "leds":[
+      {
+         "color":"Amber",
+         "location":"FrontPanel",
+         "name":"FAULT",
+         "state":"Off"
+      }
+   ],
+   "description":"IBM Fan Pack",
+   "name":"Fan 01",
+   "errorFields":[
+
+   ],
+   "userDescription":"",
+   "manufactureDate":"2611",
+   "partNumber":"88Y6691",
+   "firmware":[
+      {
+         "status":"",
+         "name":"Fan Controller",
+         "role":"",
+         "date":"",
+         "type":"Fan Controller",
+         "build":"",
+         "version":"226"
+      }
+   ],
+   "machineType":"",
+   "hardwareRevision":"4.0",
+   "parent":{
+      "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+      "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+   },
+   "FRU":"88Y6685",
+   "uri":"fan/57B16D219DB211E0AEBDBBC70E13DA7F",
+   "productId":"342",
+   "powerAllocation":{
+      "maximumAllocatedPower":0,
+      "minimumAllocatedPower":0
+   },
+   "powerState":"Unknown",
+   "posID":"373",
+   "slots":[
+      1
+   ],
+   "manufacturer":"IBM",
+   "vpdID":"11",
+   "uuid":"57B16D219DB211E0AEBDBBC70E13DA7F",
+   "productName":"80mm Fan Pack for ITE Cooling",
+   "fruSerialNumber":"YK10JPB69K75"
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fans?excludeAttributes=cmmHealthState
+
++ Response 200 (application/json)
+{
+   "fanList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Fan",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "description":"IBM Fan Pack",
+         "name":"Fan 01",
+         "errorFields":[
+
+         ],
+         "userDescription":"",
+         "manufactureDate":"2611",
+         "partNumber":"88Y6691",
+         "firmware":[
+            {
+               "status":"",
+               "name":"Fan Controller",
+               "role":"",
+               "date":"",
+               "type":"Fan Controller",
+               "build":"",
+               "version":"226"
+            }
+         ],
+         "machineType":"",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "FRU":"88Y6685",
+         "uri":"fan/57B16D219DB211E0AEBDBBC70E13DA7F",
+         "productId":"342",
+         "powerAllocation":{
+            "maximumAllocatedPower":0,
+            "minimumAllocatedPower":0
+         },
+         "powerState":"Unknown",
+         "posID":"373",
+         "slots":[
+            1
+         ],
+         "manufacturer":"IBM",
+         "vpdID":"11",
+         "uuid":"57B16D219DB211E0AEBDBBC70E13DA7F",
+         "productName":"80mm Fan Pack for ITE Cooling",
+         "fruSerialNumber":"YK10JPB69K75"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Fan",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan 02",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "description":"IBM Fan Pack",
+         "name":"Fan 02",
+         "errorFields":[
+
+         ],
+         "userDescription":"",
+         "manufactureDate":"2611",
+         "partNumber":"88Y6691",
+         "firmware":[
+            {
+               "status":"",
+               "name":"Fan Controller",
+               "role":"",
+               "date":"",
+               "type":"Fan Controller",
+               "build":"",
+               "version":"226"
+            }
+         ],
+         "machineType":"",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "FRU":"88Y6685",
+         "uri":"fan/C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "productId":"342",
+         "powerAllocation":{
+            "maximumAllocatedPower":0,
+            "minimumAllocatedPower":0
+         },
+         "powerState":"Unknown",
+         "posID":"373",
+         "slots":[
+            2
+         ],
+         "manufacturer":"IBM",
+         "vpdID":"11",
+         "uuid":"C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "productName":"80mm Fan Pack for ITE Cooling",
+         "fruSerialNumber":"YK10JPB69L17"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /fans?includeAttributes=cmmHealthState
+
++ Response 200 (application/json)
+{
+   "fanList":[
+      {
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "uuid":"57B16D219DB211E0AEBDBBC70E13DA7F",
+         "cmmHealthState":"Normal",
+         "uri":"fan/57B16D219DB211E0AEBDBBC70E13DA7F",
+         "dataHandle":0
+      },
+      {
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "uuid":"C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "cmmHealthState":"Normal",
+         "uri":"fan/C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "dataHandle":0
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+
+# GET /fans
+
++ Response 200 (application/json)
+{
+   "fanList":[
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Fan",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan 01",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "description":"IBM Fan Pack",
+         "name":"Fan 01",
+         "errorFields":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "manufactureDate":"2611",
+         "partNumber":"88Y6691",
+         "firmware":[
+            {
+               "status":"",
+               "name":"Fan Controller",
+               "role":"",
+               "date":"",
+               "type":"Fan Controller",
+               "build":"",
+               "version":"226"
+            }
+         ],
+         "machineType":"",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "FRU":"88Y6685",
+         "uri":"fan/57B16D219DB211E0AEBDBBC70E13DA7F",
+         "productId":"342",
+         "powerAllocation":{
+            "maximumAllocatedPower":0,
+            "minimumAllocatedPower":0
+         },
+         "powerState":"Unknown",
+         "posID":"373",
+         "slots":[
+            1
+         ],
+         "manufacturer":"IBM",
+         "vpdID":"11",
+         "uuid":"57B16D219DB211E0AEBDBBC70E13DA7F",
+         "productName":"80mm Fan Pack for ITE Cooling",
+         "fruSerialNumber":"YK10JPB69K75"
+      },
+      {
+         "model":"",
+         "manufacturerId":"20301",
+         "serialNumber":"",
+         "type":"Fan",
+         "dataHandle":0,
+         "cmmDisplayName":"Fan 02",
+         "leds":[
+            {
+               "color":"Amber",
+               "location":"FrontPanel",
+               "name":"FAULT",
+               "state":"Off"
+            }
+         ],
+         "description":"IBM Fan Pack",
+         "name":"Fan 02",
+         "errorFields":[
+
+         ],
+         "cmmHealthState":"Normal",
+         "userDescription":"",
+         "manufactureDate":"2611",
+         "partNumber":"88Y6691",
+         "firmware":[
+            {
+               "status":"",
+               "name":"Fan Controller",
+               "role":"",
+               "date":"",
+               "type":"Fan Controller",
+               "build":"",
+               "version":"226"
+            }
+         ],
+         "machineType":"",
+         "hardwareRevision":"4.0",
+         "parent":{
+            "uuid":"7F3E7E375B5747E0938969896B1CFDF5",
+            "uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5"
+         },
+         "FRU":"88Y6685",
+         "uri":"fan/C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "productId":"342",
+         "powerAllocation":{
+            "maximumAllocatedPower":0,
+            "minimumAllocatedPower":0
+         },
+         "powerState":"Unknown",
+         "posID":"373",
+         "slots":[
+            2
+         ],
+         "manufacturer":"IBM",
+         "vpdID":"11",
+         "uuid":"C4EDAE619DB411E0AB85FF10F8AF18C2",
+         "productName":"80mm Fan Pack for ITE Cooling",
+         "fruSerialNumber":"YK10JPB69L17"
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
