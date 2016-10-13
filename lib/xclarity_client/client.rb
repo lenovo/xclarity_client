@@ -6,7 +6,12 @@ module XClarityClient
     end
 
     def discover_nodes
-      Node.new(@connection).populate
+      NodeManagement.new(@connection).population
+    end
+
+    def fetch_nodes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
+      array_nodes = NodeManagement.new(@connection)
+      .get_object_nodes(uuids, includeAttributes, excludeAttributes)
     end
 
   end
