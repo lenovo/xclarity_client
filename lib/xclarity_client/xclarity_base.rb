@@ -1,4 +1,5 @@
 require 'faraday'
+require 'uri'
 
 module XClarityClient
   class XClarityBase
@@ -16,8 +17,6 @@ module XClarityClient
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
     end
-
-    private
 
     def connection(uri = "", options = {})
       @conn.get(uri)
