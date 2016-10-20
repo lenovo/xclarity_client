@@ -5,10 +5,10 @@ require 'webmock/rspec'
 
 
 #This environment variables must to be defined
-ENV['username_value'] = ''
-ENV['password_value'] = ''
-ENV['host_value'] = ''
-ENV['auth_type_value'] = ''
+ENV['USERNAME_VALUE'] = ''
+ENV['PASSWORD_VALUE'] = ''
+ENV['HOST_VALUE'] = ''
+ENV['AUTH_TYPE_VALUE'] = ''
 
 base_url = "http://example.com"
 blueprints = ""

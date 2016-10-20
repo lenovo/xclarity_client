@@ -6,10 +6,10 @@ describe XClarityClient do
     WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['username_value'],
-    :password => ENV['password_value'],
-    :host     => ENV['host_value'],
-    :auth_type => ENV['auth_type_value']
+    :username => ENV['USERNAME_VALUE'],
+    :password => ENV['PASSWORD_VALUE'],
+    :host     => ENV['HOST_VALUE'],
+    :auth_type => ENV['AUTH_TYPE_VALUE']
     )
 
     @client = XClarityClient::Client.new(conf)
