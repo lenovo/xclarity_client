@@ -26,7 +26,7 @@ module XClarityClient
 
       response = authentication(conf) unless conf.auth_type != 'token'
       #TODO: What's to do with the response of authentication request?
-      @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth' or conf.auth_type.nil?
+      @conn.basic_auth(conf.username, conf.password) unless conf.auth_type != 'basic_auth'
 
       @conn
     end
