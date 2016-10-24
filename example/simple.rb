@@ -4,7 +4,8 @@ conf = XClarityClient::Configuration.new(
   :username => '',
   :password => '',
   :host     => '',
-  :auth_type => ''
+  :auth_type => '',
+  :ssl_verify => ''
 )
 
 # virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
