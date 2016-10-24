@@ -7,6 +7,8 @@ module XClarityClient
 
     def initialize(args)
 
+      args.each { |key, value| send("#{key}=", value) }
+      
       unless username && password && host
         raise ArgumentError, "username, password, and host must all be specified"
       end
@@ -14,8 +16,6 @@ module XClarityClient
       if auth_type.nil?
         auth_type = 'basic_auth'
       end
-
-      args.each { |key, value| send("#{key}=", value) }
 
       @csrf_token ||= SecureRandom.base64(120) unless auth_type != 'token'
     end
