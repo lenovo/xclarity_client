@@ -21,7 +21,7 @@ module XClarityClient
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-        faraday.ssl[:verify] = conf.to_s.eql?('true') ? true : false
+        faraday.ssl[:verify] = conf.ssl_verify == 'true'
       end
 
       response = authentication(conf) unless conf.auth_type != 'token'
