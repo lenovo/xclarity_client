@@ -1,8 +1,6 @@
 require 'faraday'
 require 'json'
 require 'uri'
-require 'openssl'
-   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE # -- this is to
 
 module XClarityClient
   class XClarityBase
@@ -21,8 +19,9 @@ module XClarityClient
       @conn = Faraday.new(url: conf.host + uri) do |faraday|
         faraday.ssl[:verify] = false
         faraday.request  :url_encoded             # form-encode POST params
-        # faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
+        faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+        faraday.ssl[:verify] = conf.to_s.eql?('true') ? true : false
       end
 
       response = authentication(conf) unless conf.auth_type != 'token'

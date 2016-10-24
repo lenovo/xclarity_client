@@ -3,13 +3,13 @@ require 'securerandom'
 module XClarityClient
   class Configuration
 
-    attr_accessor :username, :password, :host, :csrf_token, :auth_type, :generated_token
+    attr_accessor :username, :password, :host, :csrf_token, :auth_type, :generated_token, :ssl_verify
 
     def initialize(args)
 
       args.each { |key, value| send("#{key}=", value) }
-      
-      unless username && password && host
+
+      unless username and password and host and ssl_verify
         raise ArgumentError, "username, password, and host must all be specified"
       end
 
