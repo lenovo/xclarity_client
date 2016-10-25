@@ -13,11 +13,12 @@ module XClarityClient
         raise ArgumentError, "username, password, host, and verify_ssl must all be specified"
       end
 
-      if auth_type.nil?
-        auth_type = 'basic_auth'
+
+      if not @auth_type.is_a?(String) or @auth_type == ''
+        @auth_type = 'basic_auth'
       end
 
-      @csrf_token ||= SecureRandom.base64(120) unless auth_type != 'token'
+      @csrf_token ||= SecureRandom.base64(120) if @auth_type == 'token'
     end
   end
 end
