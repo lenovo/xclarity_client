@@ -9,7 +9,7 @@ ENV['USERNAME_VALUE'] = ''
 ENV['PASSWORD_VALUE'] = ''
 ENV['HOST_VALUE'] = ''
 ENV['AUTH_TYPE_VALUE'] = ''
-ENV['SSL_VERIFY'] = ''
+ENV['VERIFY_SSL'] = ''
 
 base_url = "http://example.com"
 blueprints = ""
