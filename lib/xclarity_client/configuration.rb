@@ -9,8 +9,8 @@ module XClarityClient
 
       args.each { |key, value| send("#{key}=", value) }
 
-      unless username and password and host and ssl_verify
-        raise ArgumentError, "username, password, and host must all be specified"
+      if [username, password, host, ssl_verify].any? { |item| item.nil? }
+        raise ArgumentError, "username, password, host, and verify_ssl must all be specified"
       end
 
       if auth_type.nil?
