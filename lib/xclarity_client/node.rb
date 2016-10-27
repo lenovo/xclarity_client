@@ -21,7 +21,11 @@ module XClarityClient
 
     def build_node(attributes)
       attributes.each do |key, value|
-        send("#{key}=", value)
+        begin
+          send("#{key}=", value)
+        rescue
+          $log.warn("UNEXISTING ATTRIBUTES FOR NODE: #{key}")
+        end
       end
     end
 
