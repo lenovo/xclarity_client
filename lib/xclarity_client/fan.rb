@@ -1,5 +1,6 @@
 module XClarityClient
   class Fan
+    include XClarityClient::Resource
 
     BASE_URI = '/fans'.freeze
 
@@ -12,17 +13,7 @@ module XClarityClient
 
 
     def initialize(attributes)
-      build_fan(attributes)
-    end
-
-    def build_fan(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR FAN: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
 
   end

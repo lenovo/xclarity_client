@@ -1,5 +1,6 @@
 module XClarityClient
   class PowerSupply
+    include XClarityClient::Resource
 
     BASE_URI = '/power_supplies'.freeze
 
@@ -11,17 +12,7 @@ module XClarityClient
     :userDescription, :uuid, :vpdID, :description
 
     def initialize(attributes)
-      build_power_supply(attributes)
-    end
-
-    def build_power_supply(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR POWER_SUPPLY: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
   end
 end

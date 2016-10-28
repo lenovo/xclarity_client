@@ -1,5 +1,6 @@
 module XClarityClient
   class Node
+    include XClarityClient::Resource
 
     BASE_URI = '/nodes'.freeze
 
@@ -17,17 +18,7 @@ module XClarityClient
 
 
     def initialize(attributes)
-      build_node(attributes)
-    end
-
-    def build_node(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR NODE: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
 
   end

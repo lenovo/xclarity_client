@@ -1,5 +1,6 @@
 module XClarityClient
   class FanMux
+    include XClarityClient::Resource
 
     BASE_URI = '/fan_muxes'.freeze
 
@@ -10,17 +11,7 @@ module XClarityClient
 
 
     def initialize(attributes)
-      build_fan_mux(attributes)
-    end
-
-    def build_fan_mux(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR FAN_MUX: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
 
   end

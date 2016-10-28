@@ -1,5 +1,6 @@
 module XClarityClient
   class Switch
+    include XClarityClient::Resource
 
     BASE_URI = '/switches'.freeze
 
@@ -11,17 +12,7 @@ module XClarityClient
 
 
     def initialize(attributes)
-      build_switch(attributes)
-    end
-
-    def build_switch(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR SWITCH: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
 
   end

@@ -1,5 +1,6 @@
 module XClarityClient
   class ScalableComplex
+    include XClarityClient::Resource
 
     BASE_URI = '/scalable_complexes'.freeze
 
@@ -8,17 +9,7 @@ module XClarityClient
 
 
     def initialize(attributes)
-      build_scalableComplex(attributes)
-    end
-
-    def build_scalableComplex(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR SCALABLE_COMPLEX: #{key}") unless Rails.nil?
-        end
-      end
+      build_resource(attributes)
     end
 
   end

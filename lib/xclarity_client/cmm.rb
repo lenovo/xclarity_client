@@ -2,6 +2,7 @@ require "pp"
 
 module XClarityClient
   class Cmm
+    include XClarityClient::Resource
 
     BASE_URI = '/cmms'.freeze
 
@@ -11,17 +12,7 @@ module XClarityClient
     :productId, :role, :serialNumber, :slots, :type, :userDescription, :uri, :uuid,:description, :leds, :manufacturerId, :manufacturer
 
     def initialize(attributes)
-        build_cmm(attributes)
-      end
-
-      def build_cmm(attributes)
-        attributes.each do |key, value|
-          begin
-            send("#{key}=", value)
-          rescue
-            $log.warn("UNEXISTING ATTRIBUTES FOR CMM: #{key}") unless Rails.nil?
-          end
-        end
-      end
+      build_resource(attributes)
     end
   end
+end

@@ -1,5 +1,7 @@
 module XClarityClient
   class Chassi
+    include XClarityClient::Resource
+
     BASE_URI = '/chassis'.freeze
 
     attr_accessor :properties, :_id, :accessState, :activationKeys, :activeAlerts, :backedBy, :bladeSlots,
@@ -15,17 +17,8 @@ module XClarityClient
     :username, :managementPorts, :ipAddresses
 
     def initialize(attributes)
-      build_chassi(attributes)
+      build_resource(attributes)
     end
 
-    def build_chassi(attributes)
-      attributes.each do |key, value|
-        begin
-          send("#{key}=", value)
-        rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR CHASSI: #{key}") unless Rails.nil?
-        end
-      end
-    end
   end
 end
