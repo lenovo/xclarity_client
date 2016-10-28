@@ -33,13 +33,9 @@ describe XClarityClient do
       expect(@client.discover_fan_muxes.class).to eq(Array)
     end
 
-    it 'the response must have one or more Fan Muxes' do
-      expect(@client.discover_fan_muxes).not_to be_empty
-    end
-
+=begin
     context 'with includeAttributes' do
       #TODO: Uncomment this block when the issue from LXCA API will be fixed
-=begin
       it 'include attributes should not be nil' do
         response = @client.fetch_fan_muxes(nil,@includeAttributes,nil)
         response.map do |fan_mux|
@@ -48,8 +44,10 @@ describe XClarityClient do
           end
         end
       end
-=end
+
     end
+=end
+
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
         response = @client.fetch_fan_muxes(nil,nil,@excludeAttributes)
@@ -64,23 +62,26 @@ describe XClarityClient do
 
   describe 'GET /fanMuxes/UUID' do
 
+=begin
     context 'with includeAttributes' do
       #TODO: Uncomment this block when the issue from LXCA API will be fixed
-=begin
       it 'include attributes should be nil' do
         response = @client.fetch_fan_muxes([@uuidArray[0]], @includeAttributes,nil)
         @includeAttributes.map do |attribute|
           expect(response.send(attribute)).not_to be_nil
         end
       end
-=end
+
     end
+=end
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
         response = @client.fetch_fan_muxes([@uuidArray[0]], nil, @excludeAttributes)
-        @excludeAttributes.map do |attribute|
-          expect(response.send(attribute)).to be_nil
+        response.map do |fan_mux|
+          @excludeAttributes.map do |attribute|
+            expect(fan_mux.send(attribute)).to be_nil
+          end
         end
       end
     end

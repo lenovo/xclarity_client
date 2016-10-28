@@ -11,7 +11,8 @@ module XClarityClient
     :nist, :nodes, :partNumber, :passThroughModules, :posID, :powerAllocation,
     :powerSupplySlots, :powerSupplies, :productId, :overallHealthState, :SecurityPolicy,
     :serialNumber, :status, :switches, :switchSlots, :tlsVersion, :type, :userDescription,
-    :uri, :uuid, :vpdID, :mmSlots, :displayName, :productName, :parent
+    :uri, :uuid, :vpdID, :mmSlots, :displayName, :productName, :parent, :fruNumber, :password, :recoveryPassword,
+    :username, :managementPorts, :ipAddresses
 
     def initialize(attributes)
       build_chassi(attributes)

@@ -7,7 +7,7 @@ module XClarityClient
     :fruSerialNumber, :hardwareRevision, :manufacturer, :manufacturerId,
     :name, :parent, :partNumber, :posID, :powerState, :uri, :uuid, :vpdID, :description,
     :errorFields,:leds,:machineType,:manufactureDate, :model, :powerAllocation,
-    :productId, :productName, :serialNumber, :slots, :type, :userDescription
+    :productId, :productName, :serialNumber, :slots, :type, :userDescription, :cmmHealthState
 
 
 

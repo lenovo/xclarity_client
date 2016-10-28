@@ -33,10 +33,6 @@ describe XClarityClient do
       expect(@client.discover_scalableComplexes.class).to eq(Array)
     end
 
-    it 'the response must have one or more scalableComplexes' do
-      expect(@client.discover_scalableComplexes).not_to be_empty
-    end
-
 =begin
     context "with includeAttributes" do
       before :each do
@@ -67,10 +63,6 @@ describe XClarityClient do
   end
 
   describe 'GET /scalable_complexes/UUID' do
-    it 'with includeAttributes' do
-      uuidArray = @client.discover_scalableComplexes.map { |scalableComplex| scalableComplex.uuid  }
-        expect(uuidArray.length).to be >= 2
-    end
 
 =begin
     context "with includeAttributes" do

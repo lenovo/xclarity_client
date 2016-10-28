@@ -27,12 +27,18 @@ module XClarityClient
                   get_object_fan_muxes_exclude_attributes(uuids, excludeAttributes)
                 elsif not uuids.nil?
                   response = connection(BASE_URI + "/" + uuids.join(","))
-                  fan_mux = JSON.parse(response.body)
-                  FanMux.new fan_mux
+                  body = JSON.parse(response.body)
+                  body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+                  body['fanMuxList'].map do |fan_mux|
+                    FanMux.new fan_mux
+                  end
                 else
                   response = connection(BASE_URI)
-                  fan_mux = JSON.parse(response.body)
-                  FanMux.new fan_mux
+                  body = JSON.parse(response.body)
+                  body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+                  body['fanMuxList'].map do |fan_mux|
+                    FanMux.new fan_mux
+                  end
                 end
     end
 
@@ -40,8 +46,11 @@ module XClarityClient
 
       response = if not uuids.nil?
               response =  connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
-                          fan_mux = JSON.parse(response.body)
-                          FanMux.new fan_mux
+                          body = JSON.parse(response.body)
+                          body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+                          body['fanMuxList'].map do |fan_mux|
+                            FanMux.new fan_mux
+                          end
                 else
               response =  connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
                           body = JSON.parse(response.body)
@@ -55,8 +64,11 @@ module XClarityClient
     def get_object_fan_muxes_include_attributes(uuids, attributes)
       if not uuids.nil?
         response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
-        fan_mux = JSON.parse(response.body)
-        FanMux.new fan_mux
+        body = JSON.parse(response.body)
+        body = {'fanMuxList' => [body]} unless body.has_key? 'fanMuxList'
+        body['fanMuxList'].map do |fan_mux|
+          FanMux.new fan_mux
+        end
       else
         response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
         body = JSON.parse(response.body)

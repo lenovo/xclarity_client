@@ -17,7 +17,7 @@ describe XClarityClient do
   end
 
   before :each do
-    @includeAttributes = %w(accessState activationKeys)
+    @includeAttributes = %w(type)
     @excludeAttributes = %w(accessState activationKeys)
     @uuidArray = @client.discover_chassis.map { |chassi| chassi.uuid  }
   end

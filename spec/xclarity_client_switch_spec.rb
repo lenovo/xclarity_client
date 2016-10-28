@@ -29,11 +29,7 @@ describe XClarityClient do
     it 'should respond with an array' do
       expect(@client.discover_switches.class).to eq(Array)
     end
-
-    it 'the response must have one or more switches' do
-      expect(@client.discover_switches).not_to be_empty
-    end
-
+    
     context "with includeAttributes" do
       before :each do
         @response = @client.fetch_switches(nil,@includeAttributes,nil)
@@ -66,10 +62,6 @@ describe XClarityClient do
   end
 
   describe 'GET /switches/UUID,UUID,...,UUID' do
-    it 'to multiples uuid, should return two or more switches' do
-      uuidArray = @client.discover_switches.map { |switch| switch.uuid  }
-      expect(uuidArray.length).to be >= 2
-    end
 
     context "with includeAttributes" do
       before :each do

@@ -1,4 +1,5 @@
 require 'json'
+require 'uuid'
 
 module XClarityClient
   class NodeManagement < XClarityBase
@@ -39,6 +40,7 @@ module XClarityClient
     end
 
     def get_object_nodes_exclude_attributes(uuids, attributes)
+      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
 
       response = if not uuids.nil?
                   connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
@@ -48,6 +50,8 @@ module XClarityClient
     end
 
     def get_object_nodes_include_attributes(uuids, attributes)
+      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
+
       response = if not uuids.nil?
                   connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
                 else

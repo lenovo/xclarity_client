@@ -31,11 +31,7 @@ describe XClarityClient do
     it 'should respond with an array' do
       expect(@client.discover_canisters.class).to eq(Array)
     end
-
-    it 'response should have one or more canisters' do
-      expect(@client.discover_canisters).not_to be_empty
-    end
-
+    
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
         response = @client.fetch_canisters(nil,@includeAttributes,nil)

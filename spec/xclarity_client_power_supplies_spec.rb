@@ -32,10 +32,6 @@ describe XClarityClient do
       expect(@client.discover_power_supplies.class).to eq(Array)
     end
 
-    it 'the response must have one or more Power Suplies' do
-      expect(@client.discover_power_supplies).not_to be_empty
-    end
-
     it 'with includeAttributes' do
       response = @client.fetch_power_supplies(nil, @includeAttributes, nil)
       response.map do |powerSupply|
@@ -58,15 +54,20 @@ describe XClarityClient do
   describe 'GET /powerSupplies/UUID' do
     it 'with includeAttributes' do
       response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
-      @includeAttributes.map do |attribute|
-        expect(response.send(attribute)).not_to be_nil
+      response.map do |power_supply|
+        @includeAttributes.map do |attribute|
+          expect(power_supply.send(attribute)).not_to be_nil
+        end
       end
+
     end
 
     it 'with excludeAttributes' do
       response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
-      @excludeAttributes.map do |attribute|
-        expect(response.send(attribute)).to be_nil
+      response.map do |power_supply|
+        @excludeAttributes.map do |attribute|
+          expect(power_supply.send(attribute)).to be_nil
+        end
       end
     end
   end

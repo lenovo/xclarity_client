@@ -18,8 +18,7 @@ module XClarityClient
     end
 
     def fetch_cabinet(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
-      array_cabinet = CabinetManagement.new(@connection)
-      .get_object_cabinet(uuids, includeAttributes, excludeAttributes)
+      CabinetManagement.new(@connection).get_object_cabinet(uuids, includeAttributes, excludeAttributes)
     end
 
     def discover_canisters
@@ -27,8 +26,7 @@ module XClarityClient
     end
 
     def fetch_canisters(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
-      array_nodes = CanisterManagement.new(@connection)
-      .get_object_canisters(uuids, includeAttributes, excludeAttributes)
+      CanisterManagement.new(@connection).get_object_canisters(uuids, includeAttributes, excludeAttributes)
     end
 
     def discover_cmms
@@ -36,14 +34,12 @@ module XClarityClient
     end
 
     def fetch_cmms(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
-      array_cmms = CmmManagement.new(@connection)
-      .get_object_cmms(uuids, includeAttributes, excludeAttributes)
+      CmmManagement.new(@connection).get_object_cmms(uuids, includeAttributes, excludeAttributes)
     end
 
     def fetch_fans(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
 
-      array_fans = FanManagement.new(@connection)
-      .get_object_fans(uuids, includeAttributes, excludeAttributes)
+      FanManagement.new(@connection).get_object_fans(uuids, includeAttributes, excludeAttributes)
     end
 
     def discover_fans
@@ -59,8 +55,7 @@ module XClarityClient
     end
 
     def fetch_fan_muxes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
-      array_nodes = FanMuxManagement.new(@connection)
-      .get_object_fan_muxes(uuids, includeAttributes, excludeAttributes)
+      FanMuxManagement.new(@connection).get_object_fan_muxes(uuids, includeAttributes, excludeAttributes)
     end
 
     def discover_chassis

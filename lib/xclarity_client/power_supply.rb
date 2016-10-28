@@ -8,7 +8,7 @@ module XClarityClient
     :inputVoltageIsAC, :inputVoltageMin, :leds, :machineType, :manufacturer, :manufacturerId,
     :manufactureDate, :model, :name, :parent, :powerAllocation, :partNumber, :posID,
     :powerState, :productId, :productName, :serialNumber, :slots, :type, :uri,
-    :userDescription, :uuid, :vpdID
+    :userDescription, :uuid, :vpdID, :description
 
     def initialize(attributes)
       build_power_supply(attributes)

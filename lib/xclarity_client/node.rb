@@ -12,7 +12,8 @@ module XClarityClient
       :overallHealthState, :partitionEnabled, :powerStatus, :pciExpressCards, :pciExpressCardSlots, :physicalID, :ports, :posID, :powerAllocation, :powerCappingPolicy,
       :powerSupplies, :primary, :processorSlots, :processors, :productId, :raidSettings, :secureBootMode, :serialNumber, :slots, :status, :subSlots,
       :thinkServerFru, :tlsVersion, :type, :uri ,:userDescription ,:vpdID,:contact, :description, :driveBays, :drives,:encapsulation, :FRU,:height,:leds,:location,:logicalID,
-      :macAddress,:name,:parent,:parentComplexID, :parentPartitionUUID,:partNumber,:partitionEnabled,:partitionID,:pciCapabilities,:pciDevices,:subType
+      :macAddress,:name,:parent,:parentComplexID, :parentPartitionUUID,:partNumber,:partitionEnabled,:partitionID,:pciCapabilities,:pciDevices,:subType, :fans, :fruNumber,
+      :password, :recoveryPassword, :username, :managementPorts, :displayName, :ipAddresses
 
 
     def initialize(attributes)
@@ -24,7 +25,7 @@ module XClarityClient
         begin
           send("#{key}=", value)
         rescue
-          $log.warn("UNEXISTING ATTRIBUTES FOR NODE: #{key}")
+          $log.warn("UNEXISTING ATTRIBUTES FOR NODE: #{key}") unless Rails.nil?
         end
       end
     end
