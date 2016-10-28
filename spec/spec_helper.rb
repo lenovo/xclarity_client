@@ -4,14 +4,14 @@ require 'apib/mock_server'
 require 'webmock/rspec'
 
 
+base_url = "http://example.com"
 #This environment variables must to be defined
 ENV['USERNAME_VALUE'] = ''
 ENV['PASSWORD_VALUE'] = ''
-ENV['HOST_VALUE'] = ''
+ENV['HOST_VALUE'] ||= base_url
 ENV['AUTH_TYPE_VALUE'] = ''
 ENV['VERIFY_SSL'] = ''
 
-base_url = "http://example.com"
 blueprints = ""
 Dir.glob('docs/apib/*.apib') do |blueprint|
   blueprints << File.open(blueprint).read
