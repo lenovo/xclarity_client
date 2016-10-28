@@ -29,7 +29,10 @@ module XClarityClient
                 elsif not uuids.nil?
                   response = connection(BASE_URI + "/" + uuids)
                   body = JSON.parse(response.body)
-                  Fan.new body
+                  body = {'fanList' => [body]} unless body.has_key? 'fanList'
+                  body['fanList'].map do |fan|
+                    Fan.new fan
+                  end
                 else
                   response = connection(BASE_URI)
                   body = JSON.parse(response.body)
@@ -45,7 +48,10 @@ module XClarityClient
       response = if not uuids.nil?
                   response = connection(BASE_URI + "/" + uuids + "?excludeAttributes="+ attributes.join(","))
                   body = JSON.parse(response.body)
-                  Fan.new body
+                  body = {'fanList' => [body]} unless body.has_key? 'fanList'
+                  body['fanList'].map do |fan|
+                    Fan.new fan
+                  end
                 else
                   response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
                   body = JSON.parse(response.body)
@@ -60,7 +66,10 @@ module XClarityClient
       response = if not uuids.nil?
                   response = connection(BASE_URI + "/" + uuids + "?includeAttributes="+ attributes.join(","))
                   body = JSON.parse(response.body)
-                  Fan.new body
+                  body = {'fanList' => [body]} unless body.has_key? 'fanList'
+                  body['fanList'].map do |fan|
+                    Fan.new fan
+                  end
                 else
                   response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
                   body = JSON.parse(response.body)

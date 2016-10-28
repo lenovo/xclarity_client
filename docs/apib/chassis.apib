@@ -12,10 +12,10 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /chassis?includeAttributes=accessState,activationKeys
+# GET /chassis?includeAttributes=type
 
 + Response 200 (application/json)
-{"chassisList":[{"accessState":"Online","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}]}
+{"chassisList":[{"accessState":"Online","type":"That Machine","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}]}
 + Response 400
 + Response 401
 + Response 404
@@ -32,11 +32,11 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /chassis/7F3E7E375B5747E0938969896B1CFDF5?includeAttributes=accessState,activationKeys
+# GET /chassis/7F3E7E375B5747E0938969896B1CFDF5?includeAttributes=type
 
 + Response 200 (application/json)
 
-{"accessState":"Online","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}
+{"accessState":"Online","type":"That Machine","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}
 + Response 400
 + Response 401
 + Response 404
@@ -54,11 +54,11 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /chassis/7F3E7E375B5747E0938969896B1CFDF5,3B058C775CE44FA6AC05608B196EDAB1?includeAttributes=accessState,activationKeys
+# GET /chassis/7F3E7E375B5747E0938969896B1CFDF5,3B058C775CE44FA6AC05608B196EDAB1?includeAttributes=type
 
 + Response 200 (application/json)
 
-{"chassisList":[{"accessState":"Online","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}]}
+{"chassisList":[{"accessState":"Online","type":"That Machine","activationKeys":[],"uuid":"7F3E7E375B5747E0938969896B1CFDF5","uri":"chassis/7F3E7E375B5747E0938969896B1CFDF5","dataHandle":1475529234174}]}
 + Response 400
 + Response 401
 + Response 404
