@@ -15,7 +15,11 @@ module XClarityClient
 
     def build_fan_mux(attributes)
       attributes.each do |key, value|
-        send("#{key}=", value)
+        begin
+          send("#{key}=", value)
+        rescue
+          $log.warn("UNEXISTING ATTRIBUTES FOR FAN_MUX: #{key}") unless Rails.nil?
+        end
       end
     end
 

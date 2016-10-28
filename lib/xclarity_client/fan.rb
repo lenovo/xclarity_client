@@ -16,9 +16,12 @@ module XClarityClient
     end
 
     def build_fan(attributes)
-
       attributes.each do |key, value|
-        send("#{key}=", value)
+        begin
+          send("#{key}=", value)
+        rescue
+          $log.warn("UNEXISTING ATTRIBUTES FOR FAN: #{key}") unless Rails.nil?
+        end
       end
     end
 

@@ -33,7 +33,6 @@ module XClarityClient
     private
 
     def connection(uri = "", options = {})
-      puts "==========>>> THIS IS URI: #{uri}"
       @conn.get(uri)
     end
 

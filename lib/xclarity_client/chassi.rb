@@ -20,7 +20,11 @@ module XClarityClient
 
     def build_chassi(attributes)
       attributes.each do |key, value|
-        send("#{key}=", value)
+        begin
+          send("#{key}=", value)
+        rescue
+          $log.warn("UNEXISTING ATTRIBUTES FOR CHASSI: #{key}") unless Rails.nil?
+        end
       end
     end
   end

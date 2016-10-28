@@ -13,7 +13,11 @@ module XClarityClient
 
     def build_scalableComplex(attributes)
       attributes.each do |key, value|
-        send("#{key}=", value)
+        begin
+          send("#{key}=", value)
+        rescue
+          $log.warn("UNEXISTING ATTRIBUTES FOR SCALABLE_COMPLEX: #{key}") unless Rails.nil?
+        end
       end
     end
 

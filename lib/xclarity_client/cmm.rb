@@ -16,7 +16,11 @@ module XClarityClient
 
       def build_cmm(attributes)
         attributes.each do |key, value|
-          send("#{key}=", value)
+          begin
+            send("#{key}=", value)
+          rescue
+            $log.warn("UNEXISTING ATTRIBUTES FOR CMM: #{key}") unless Rails.nil?
+          end
         end
       end
     end
