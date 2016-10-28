@@ -10,7 +10,7 @@ describe XClarityClient do
     :password => ENV['PASSWORD_VALUE'],
     :host     => ENV['HOST_VALUE'],
     :auth_type => ENV['AUTH_TYPE_VALUE'],
-    :ssl_verify => ENV['SSL_VERIFY']
+    :verify_ssl => ENV['VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
