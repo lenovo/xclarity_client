@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Julian Cheal"]
   spec.email         = ["jcheal@redhat.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Lenovo XClairty API Client}
   spec.homepage      = "https://github.com/juliancheal/xclarity_client"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
