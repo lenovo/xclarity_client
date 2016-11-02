@@ -1,5 +1,6 @@
 module XClarityClient
   class Canister
+    include XClarityClient::Resource
 
     BASE_URI = '/canisters'.freeze
 
@@ -13,14 +14,7 @@ module XClarityClient
       :subSlots
 
     def initialize(attributes)
-      build_canister(attributes)
+      build_resource(attributes)
     end
-
-    def build_canister(attributes)
-      attributes.each do |key, value|
-        send("#{key}=", value)
-      end
-    end
-
   end
 end

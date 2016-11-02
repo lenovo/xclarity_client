@@ -3,7 +3,7 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection or mock.
+    WebMock.allow_net_connect! #-- Uncomment this line if you're testing with a external mock.
 
     conf = XClarityClient::Configuration.new(
     :username => ENV['USERNAME_VALUE'],
@@ -14,30 +14,31 @@ describe XClarityClient do
     )
 
     @client = XClarityClient::Client.new(conf)
+
   end
 
   before :each do
-    @includeAttributes = %w(memorySlots)
-    @excludeAttributes = %w(memorySlots)
-    @uuidArray = @client.discover_canisters.map { |canister| canister.uuid  }
+    @includeAttributes = %w(cmmHealthState)
+    @excludeAttributes = %w(cmmHealthState)
+    @uuidArray = @client.discover_fans.map { |fan| fan.uuid  }
   end
 
   it 'has a version number' do
     expect(XClarityClient::VERSION).not_to be nil
   end
 
-  describe 'GET /canisters' do
+  describe 'GET /fans' do
 
     it 'should respond with an array' do
-      expect(@client.discover_canisters.class).to eq(Array)
+      expect(@client.discover_fans.class).to eq(Array)
     end
-    
+
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_canisters(nil,@includeAttributes,nil)
-        response.map do |canister|
+        response = @client.fetch_fans(nil,@includeAttributes,nil)
+        response.map do |fan|
           @includeAttributes.map do |attribute|
-            expect(canister.send(attribute)).not_to be_nil
+            expect(fan.send(attribute)).not_to be_nil
           end
         end
       end
@@ -45,25 +46,24 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_canisters(nil,nil,@excludeAttributes)
-        response.map do |canister|
+        response = @client.fetch_fans(nil,nil,@excludeAttributes)
+        response.map do |fan|
           @excludeAttributes.map do |attribute|
-            expect(canister.send(attribute)).to be_nil
+            expect(fan.send(attribute)).to be_nil
           end
         end
       end
     end
-
   end
 
-  describe 'GET /canisters/UUID' do
+  describe 'GET /fans/UUID' do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_canisters(@uuidArray[0], @includeAttributes,nil)
-        response.map do |canister|
+        response = @client.fetch_fans(@uuidArray[0], @includeAttributes,nil)
+        response.map do |fan|
           @includeAttributes.map do |attribute|
-          expect(canister.send(attribute)).not_to be_nil
+            expect(fan.send(attribute)).not_to be_nil
           end
         end
       end
@@ -71,10 +71,10 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_canisters(@uuidArray[0], nil, @excludeAttributes)
-        response.map do |canister|
+        response = @client.fetch_fans(@uuidArray[0], nil, @excludeAttributes)
+        response.map do |fan|
           @excludeAttributes.map do |attribute|
-          expect(canister.send(attribute)).to be_nil
+            expect(fan.send(attribute)).to be_nil
           end
         end
       end

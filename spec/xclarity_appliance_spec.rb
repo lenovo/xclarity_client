@@ -3,7 +3,7 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection with mock
+    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external mock.
 
     conf = XClarityClient::Configuration.new(
     :username => ENV['USERNAME_VALUE'],
@@ -14,6 +14,9 @@ describe XClarityClient do
     )
 
     @virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
+
+    @includeAttributes = %w(accessState activationKeys)
+    @excludeAttributes = %w(accessState activationKeys)
   end
 
   it 'has a version number' do
@@ -73,4 +76,5 @@ describe XClarityClient do
       expect(response.status).to eq(200)
     end
   end
+
 end

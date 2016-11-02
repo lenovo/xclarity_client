@@ -1,9 +1,11 @@
 require 'xclarity_client'
 
 conf = XClarityClient::Configuration.new(
-  :username => 'admin',
-  :password => 'pass',
-  :host     => 'http://127.0.0.1:3000'
+  :username => '',
+  :password => '',
+  :host     => '',
+  :auth_type => '',
+  :ssl_verify => ''
 )
 
 # virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
@@ -12,8 +14,9 @@ conf = XClarityClient::Configuration.new(
 
 client = XClarityClient::Client.new(conf)
 
-@includeAttributes = %w(accessState activationKeys)
-@excludeAttributes = %w(accessState activationKeys)
-@uuidArray = client.discover_nodes.map { |node| node.uuid  }
-
-puts client.fetch_nodes(@uuidArray, nil, @excludeAttributes)
+puts "============= CABINETS ==============="
+client.discover_cabinet.map do |cabinet|
+  cabinet.instance_variables.each do |att|
+    puts "#{att} - #{cabinet.instance_variable_get att}"
+  end
+end

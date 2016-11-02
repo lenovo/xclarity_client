@@ -1,10 +1,9 @@
 require 'json'
-require 'uuid'
 
 module XClarityClient
-  class NodeManagement < XClarityBase
+  class CabinetManagement < XClarityBase
 
-    BASE_URI = '/nodes'.freeze
+    BASE_URI = '/cabinet'.freeze
 
     def initialize(conf)
       super(conf, BASE_URI)
@@ -14,17 +13,18 @@ module XClarityClient
       response = connection(BASE_URI)
 
       body = JSON.parse(response.body)
-      body['nodeList'].map do |node|
-        Node.new node
+      body = {'cabinetList' => [body]} unless body.has_key? 'cabinetList'
+      body['cabinetList'].map do |cabinet|
+        Cabinet.new cabinet
       end
     end
 
-    def get_object_nodes(uuids, includeAttributes, excludeAttributes)
+    def get_object_cabinet(uuids, includeAttributes, excludeAttributes)
 
       response = if not includeAttributes.nil?
-                  get_object_nodes_include_attributes(uuids, includeAttributes)
+                  get_object_cabinet_include_attributes(uuids, includeAttributes)
                 elsif not excludeAttributes.nil?
-                  get_object_nodes_exclude_attributes(uuids, excludeAttributes)
+                  get_object_cabinet_exclude_attributes(uuids, excludeAttributes)
                 elsif not uuids.nil?
                   connection(BASE_URI + "/" + uuids.join(","))
                 else
@@ -32,15 +32,14 @@ module XClarityClient
                 end
 
       body = JSON.parse(response.body)
-      body = {'nodeList' => [body]} unless body.has_key? 'nodeList'
-      body['nodeList'].map do |node|
-        Node.new node
+      body = {'cabinetList' => [body]} unless body.has_key? 'cabinetList'
+      body['cabinetList'].map do |cabinet|
+        Cabinet.new cabinet
       end
 
     end
 
-    def get_object_nodes_exclude_attributes(uuids, attributes)
-      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
+    def get_object_cabinet_exclude_attributes(uuids, attributes)
 
       response = if not uuids.nil?
                   connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
@@ -49,9 +48,7 @@ module XClarityClient
                 end
     end
 
-    def get_object_nodes_include_attributes(uuids, attributes)
-      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
-
+    def get_object_cabinet_include_attributes(uuids, attributes)
       response = if not uuids.nil?
                   connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
                 else

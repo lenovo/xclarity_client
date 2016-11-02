@@ -8,20 +8,50 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Pre Configuration for Connection with LXCA
 
+
 Get up and running mongo database
 
 Execute rails console:
 
+```ruby
   $ bundle exec rails console
+```
 
-Add nodes to your database:
+Add resources to your database:
 
+Nodes:
+
+```ruby
   $ FactoryGirl.create(:node)
+```
+Switches:
+
+```ruby
+  $ FactoryGirl.create(:switch)
+```
+Scalable Complexes:
+
+```ruby
+  $ FactoryGirl.create(:scalable_complex)
+```
+
+Power Supplies:
+
+```ruby
+  $ FactoryGirl.create(:power_supply)
+```
+
+Chassis:
+
+```ruby
+  $ FactoryGirl.create(:chassi)
+```
 
 Get up LXCA-Mock server:
 
+```ruby
   $ bundle exec rails s
-
+```
 
 ## Installation
 
@@ -33,7 +63,7 @@ gem 'xclarity_client'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -47,9 +77,10 @@ To get basic information from the virtual appliance
 require 'xclarity_client'
 
 conf = XClarityClient::Configuration.new(
-  :username => 'admin',
-  :password => 'pass',
-  :host     => 'http://example.com'
+  :username   => 'admin',
+  :password   => 'pass',
+  :host       => 'http://example.com'
+  :auth_type  => 'token'
 )
 
 virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
@@ -60,6 +91,7 @@ client = XClarityClient::Client.new(conf)
 
 puts client.discover_nodes
 ```
+NOTE: `auth_type` variable must have 'token' or 'basic_auth' as value.
 
 ## Development
 
