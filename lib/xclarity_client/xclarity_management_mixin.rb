@@ -4,6 +4,9 @@ module XClarityClient
 
     def get_all_resources (resource)
       response = connection(resource::BASE_URI)
+
+      return [] unless response.success?
+      
       body = JSON.parse(response.body)
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|
@@ -24,6 +27,8 @@ module XClarityClient
       else
         connection(resource::BASE_URI)
       end
+
+      return [] unless response.success?
 
       body = JSON.parse(response.body)
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME

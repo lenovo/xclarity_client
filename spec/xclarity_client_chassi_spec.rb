@@ -37,7 +37,7 @@ describe XClarityClient do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_chassis([@uuidArray[0]], @includeAttributes,nil)
+        response = @client.fetch_chassis(@uuidArray, @includeAttributes,nil)
         response.map do |chassi|
           @includeAttributes.map do |attribute|
             expect(chassi.send(attribute)).not_to be_nil
@@ -48,7 +48,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_chassis([@uuidArray[0]], nil, @excludeAttributes)
+        response = @client.fetch_chassis(@uuidArray, nil, @excludeAttributes)
         response.map do |chassi|
           @excludeAttributes.map do |attribute|
             expect(chassi.send(attribute)).to be_nil

@@ -64,7 +64,7 @@ describe XClarityClient do
   describe 'GET /cabinet/UUID' do
     context 'with include attributes' do
       it 'required attributes should not be nil' do
-        response = @client.fetch_cabinet([@uuidArray[0]], @includeAttributes,nil)
+        response = @client.fetch_cabinet(@uuidArray, @includeAttributes,nil)
         response.map do |cabinet|
           @includeAttributes.map do |attribute|
             expect(cabinet.send(attribute)).not_to be_nil
@@ -75,7 +75,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'excluded attributes should to be nil' do
-        response = @client.fetch_cabinet([@uuidArray[0]], nil, @excludeAttributes)
+        response = @client.fetch_cabinet(@uuidArray, nil, @excludeAttributes)
         response.map do |cabinet|
           @excludeAttributes.map do |attribute|
             expect(cabinet.send(attribute)).to be_nil

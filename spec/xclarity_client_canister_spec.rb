@@ -60,7 +60,7 @@ describe XClarityClient do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_canisters(@uuidArray[0], @includeAttributes,nil)
+        response = @client.fetch_canisters(@uuidArray, @includeAttributes,nil)
         response.map do |canister|
           @includeAttributes.map do |attribute|
           expect(canister.send(attribute)).not_to be_nil
@@ -71,7 +71,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_canisters(@uuidArray[0], nil, @excludeAttributes)
+        response = @client.fetch_canisters(@uuidArray, nil, @excludeAttributes)
         response.map do |canister|
           @excludeAttributes.map do |attribute|
           expect(canister.send(attribute)).to be_nil

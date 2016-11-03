@@ -60,7 +60,7 @@ describe XClarityClient do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_fans(@uuidArray[0], @includeAttributes,nil)
+        response = @client.fetch_fans(@uuidArray, @includeAttributes,nil)
         response.map do |fan|
           @includeAttributes.map do |attribute|
             expect(fan.send(attribute)).not_to be_nil
@@ -71,7 +71,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_fans(@uuidArray[0], nil, @excludeAttributes)
+        response = @client.fetch_fans(@uuidArray, nil, @excludeAttributes)
         response.map do |fan|
           @excludeAttributes.map do |attribute|
             expect(fan.send(attribute)).to be_nil
