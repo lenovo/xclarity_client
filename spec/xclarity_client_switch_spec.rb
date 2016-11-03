@@ -29,7 +29,7 @@ describe XClarityClient do
     it 'should respond with an array' do
       expect(@client.discover_switches.class).to eq(Array)
     end
-    
+
     context "with includeAttributes" do
       before :each do
         @response = @client.fetch_switches(nil,@includeAttributes,nil)

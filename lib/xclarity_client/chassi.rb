@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/chassis'.freeze
+    LIST_NAME = 'chassisList'.freeze
 
     attr_accessor :properties, :_id, :accessState, :activationKeys, :activeAlerts, :backedBy, :bladeSlots,
     :cmmDisplayName, :cmmHealthState, :cmms, :cmmSlots, :complex, :contact, :dataHandle,

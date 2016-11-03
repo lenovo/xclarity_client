@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/cabinet'.freeze
+    LIST_NAME = 'cabinetList'.freeze
 
     attr_accessor :cabinetName, :chassisList, :complexList, :height, :location, :nodeList,
                   :placeholderList, :room, :storageList, :switchList, :UUID

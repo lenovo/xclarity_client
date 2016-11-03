@@ -5,6 +5,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/cmms'.freeze
+    LIST_NAME = 'cmmList'.freeze
 
     attr_accessor :_id, :properties, :accessState, :backedBy, :cmmDisplayName, :cmmHealthState, :dataHandle, :dnsHostnames, :domainName, :errorFields,
     :excludedHealthState, :firmware, :FRU, :fruSerialNumber, :hostConfig, :hostname, :ipInterfaces, :ipv4Addresses, :ipv6Addresses,

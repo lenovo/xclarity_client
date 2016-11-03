@@ -33,10 +33,6 @@ describe XClarityClient do
       expect(@client.discover_nodes.class).to eq(Array)
     end
 
-    it 'the response must have one or more nodes' do
-      expect(@client.discover_nodes).not_to be_empty
-    end
-
   end
 
   describe 'GET /nodes/UUID' do

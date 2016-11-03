@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/canisters'.freeze
+    LIST_NAME = 'canisterList'.freeze
 
     attr_accessor :cmmDisplayName, :backedBy, :contact, :dataHandle,  :description,
       :firmware, :FRU, :domainName, :driveBays, :drives, :errorFields, :ipInterfaces, :powerStatus,
