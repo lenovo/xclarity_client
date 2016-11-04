@@ -24,10 +24,10 @@ module XClarityClient
 
     def self.default
       new({
-        :username   => ENV['USERNAME_VALUE'],
-        :password   => ENV['PASSWORD_VALUE'],
-        :host       => ENV['HOST_VALUE'],
-        :verify_ssl => ENV['VERIFY_SSL'] == "true"
+        :username   => ENV['LXCA_USERNAME'],
+        :password   => ENV['LXCA_PASSWORD'],
+        :host       => ENV['LXCA_HOST'],
+        :verify_ssl => ENV['LXCA_VERIFY_SSL'] != "NONE"
       })
     end
   end
