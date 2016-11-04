@@ -5,7 +5,7 @@ require 'webmock/rspec'
 
 
 base_url = "http://example.com"
-# This environment variables must to be defined
+# These environment variables must be defined
 ENV['LXCA_USERNAME']   ||= ''
 ENV['LXCA_PASSWORD']   ||= ''
 ENV['LXCA_HOST']       ||= base_url
