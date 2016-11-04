@@ -6,6 +6,7 @@ module XClarityClient
     attr_accessor :username, :password, :host, :csrf_token, :auth_type, :generated_token, :verify_ssl
 
     def initialize(args)
+      puts "::> #{args}"
 
       args.each { |key, value| send("#{key}=", value) }
 
@@ -19,6 +20,15 @@ module XClarityClient
       end
 
       @csrf_token ||= SecureRandom.base64(120) if @auth_type == 'token'
+    end
+
+    def self.default
+      new({
+        :username   => ENV['USERNAME_VALUE'],
+        :password   => ENV['PASSWORD_VALUE'],
+        :host       => ENV['HOST_VALUE'],
+        :verify_ssl => ENV['VERIFY_SSL'] == "true"
+      })
     end
   end
 end

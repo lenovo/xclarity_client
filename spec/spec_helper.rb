@@ -6,11 +6,11 @@ require 'webmock/rspec'
 
 base_url = "http://example.com"
 #This environment variables must to be defined
-ENV['USERNAME_VALUE'] = ''
-ENV['PASSWORD_VALUE'] = ''
-ENV['HOST_VALUE'] ||= base_url
-ENV['AUTH_TYPE_VALUE'] = ''
-ENV['VERIFY_SSL'] = ''
+ENV['USERNAME_VALUE']  ||= ''
+ENV['PASSWORD_VALUE']  ||= ''
+ENV['HOST_VALUE']      ||= ''
+ENV['AUTH_TYPE_VALUE'] ||= ''
+ENV['VERIFY_SSL']      ||= ''
 
 blueprints = ""
 Dir.glob('docs/apib/*.apib') do |blueprint|
