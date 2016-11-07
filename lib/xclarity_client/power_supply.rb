@@ -2,7 +2,8 @@ module XClarityClient
   class PowerSupply
     include XClarityClient::Resource
 
-    BASE_URI = '/power_supplies'.freeze
+    BASE_URI = '/powerSupplies'.freeze
+    LIST_NAME = 'powerSupplyList'.freeze
 
     attr_accessor :properties, :_id, :cmmDisplayName, :cmmHealthState, :dataHandle,
     :description, :firmware, :FRU, :fruSerialNumber, :hardwareRevision, :inputVoltageMax,

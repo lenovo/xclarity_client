@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/fans'.freeze
+    LIST_NAME = 'fanList'.freeze
 
     attr_accessor :cmmDisplayName, :cmmHealthState, :dataHandle, :firmware, :FRU,
     :fruSerialNumber, :hardwareRevision, :manufacturer, :manufacturerId,

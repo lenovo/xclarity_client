@@ -2,88 +2,16 @@ require 'json'
 
 module XClarityClient
   class PowerSupplyManagement < XClarityBase
-    BASE_URI = '/powerSupplies'.freeze
+
+    include XClarityClient::ManagementMixin
 
     def initialize(conf)
-      super(conf, BASE_URI)
+      super(conf, PowerSupply::BASE_URI)
     end
 
     def population
-      response = connection(BASE_URI)
-
-      body = JSON.parse(response.body)
-      body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-      body['powerSupplyList'].map do |power_supply|
-        PowerSupply.new power_supply
-      end
+      get_all_resources(PowerSupply)
     end
 
-    def get_object_power_supplies(uuids, includeAttributes, excludeAttributes)
-      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
-
-      response = nil
-      if not includeAttributes.nil?
-        response = get_object_power_supplies_include_attributes(uuids, includeAttributes)
-      elsif not excludeAttributes.nil?
-        response = get_object_power_supplies_exclude_attributes(uuids, excludeAttributes)
-      elsif not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(","))
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-      else
-        response = connection(BASE_URI)
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-      end
-    end
-
-    def get_object_power_supplies_exclude_attributes(uuids, attributes)
-      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
-
-      response = nil
-      if not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(",") + "?excludeAttributes="+ attributes.join(","))
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-      else
-        response = connection(BASE_URI + "?excludeAttributes=" + attributes.join(","))
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-      end
-    end
-
-    def get_object_power_supplies_include_attributes(uuids, attributes)
-      uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
-
-      response = nil
-      if not uuids.nil?
-        response = connection(BASE_URI + "/" + uuids.join(",") + "?includeAttributes="+ attributes.join(","))
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-
-      else
-        response = connection(BASE_URI + "?includeAttributes=" + attributes.join(","))
-        body = JSON.parse(response.body)
-        body = {'powerSupplyList' => [body]} unless body.has_key? 'powerSupplyList'
-        body['powerSupplyList'].map do |power_supply|
-          PowerSupply.new power_supply
-        end
-      end
-    end
   end
 end

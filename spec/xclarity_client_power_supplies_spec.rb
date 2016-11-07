@@ -5,11 +5,11 @@ describe XClarityClient do
     WebMock.allow_net_connect! # -- uncomment this line if you're testing with external mock.
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['USERNAME_VALUE'],
-    :password => ENV['PASSWORD_VALUE'],
-    :host     => ENV['HOST_VALUE'],
-    :auth_type => ENV['AUTH_TYPE_VALUE'],
-    :verify_ssl => ENV['VERIFY_SSL']
+    :username => ENV['LXCA_USERNAME'],
+    :password => ENV['LXCA_PASSWORD'],
+    :host     => ENV['LXCA_HOST'],
+    :auth_type => ENV['LXCA_AUTH_TYPE'],
+    :verify_ssl => ENV['LXCA_VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -53,7 +53,7 @@ describe XClarityClient do
 
   describe 'GET /powerSupplies/UUID' do
     it 'with includeAttributes' do
-      response = @client.fetch_power_supplies([@uuidArray[0]], @includeAttributes, nil)
+      response = @client.fetch_power_supplies(@uuidArray, @includeAttributes, nil)
       response.map do |power_supply|
         @includeAttributes.map do |attribute|
           expect(power_supply.send(attribute)).not_to be_nil
@@ -63,7 +63,7 @@ describe XClarityClient do
     end
 
     it 'with excludeAttributes' do
-      response = @client.fetch_power_supplies([@uuidArray[0]], nil, @excludeAttributes)
+      response = @client.fetch_power_supplies(@uuidArray, nil, @excludeAttributes)
       response.map do |power_supply|
         @excludeAttributes.map do |attribute|
           expect(power_supply.send(attribute)).to be_nil

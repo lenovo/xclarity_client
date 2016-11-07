@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/nodes'.freeze
+    LIST_NAME = 'nodeList'.freeze
 
     attr_accessor :properties,:_uuid, :accessState, :activationKeys, :uuid, :addinCardSlots, :addinCards, :vnicMode, :productName, :arch, :backedBy, :bladeState_health, :bootMode,
       :bootOrder, :canisters, :canisterSlots, :cmmDisplayName, :cmmHealthState, :complexID, :dataHandle, :dnsHostnames, :domainName, :bladeState, :bladeState_string,

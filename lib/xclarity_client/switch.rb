@@ -3,6 +3,7 @@ module XClarityClient
     include XClarityClient::Resource
 
     BASE_URI = '/switches'.freeze
+    LIST_NAME = 'switchList'.freeze
 
     attr_accessor :properties, :_id, :accessState, :applyPending, :attachedNodes, :cmmDisplayName, :cmmHealthState, :entitleSerialNumber, :fans, :firmware, :hostname, :ipInterfaces,
     :leds, :macAddresses, :machineType, :manufacturer, :manufacturerId, :ports, :productId, :productName, :protectedMode, :serialNumber, :type, :upTime, :uuid, :accessState,

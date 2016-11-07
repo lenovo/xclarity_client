@@ -2,7 +2,8 @@ module XClarityClient
   class ScalableComplex
     include XClarityClient::Resource
 
-    BASE_URI = '/scalable_complexes'.freeze
+    BASE_URI = '/scalableComplex'.freeze
+    LIST_NAME = 'complex'.freeze
 
     attr_accessor :properties, :_id, :location, :nodeCount, :orphanNodes,
     :partition, :partitionCount, :uuid, :slots, :complexID

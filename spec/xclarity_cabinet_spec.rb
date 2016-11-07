@@ -6,11 +6,11 @@ describe XClarityClient do
     WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['USERNAME_VALUE'],
-    :password => ENV['PASSWORD_VALUE'],
-    :host     => ENV['HOST_VALUE'],
-    :auth_type => ENV['AUTH_TYPE_VALUE'],
-    :verify_ssl => ENV['VERIFY_SSL']
+    :username => ENV['LXCA_USERNAME'],
+    :password => ENV['LXCA_PASSWORD'],
+    :host     => ENV['LXCA_HOST'],
+    :auth_type => ENV['LXCA_AUTH_TYPE'],
+    :verify_ssl => ENV['LXCA_VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -64,7 +64,7 @@ describe XClarityClient do
   describe 'GET /cabinet/UUID' do
     context 'with include attributes' do
       it 'required attributes should not be nil' do
-        response = @client.fetch_cabinet([@uuidArray[0]], @includeAttributes,nil)
+        response = @client.fetch_cabinet(@uuidArray, @includeAttributes,nil)
         response.map do |cabinet|
           @includeAttributes.map do |attribute|
             expect(cabinet.send(attribute)).not_to be_nil
@@ -75,7 +75,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'excluded attributes should to be nil' do
-        response = @client.fetch_cabinet([@uuidArray[0]], nil, @excludeAttributes)
+        response = @client.fetch_cabinet(@uuidArray, nil, @excludeAttributes)
         response.map do |cabinet|
           @excludeAttributes.map do |attribute|
             expect(cabinet.send(attribute)).to be_nil
