@@ -10,8 +10,8 @@ module XClarityClient
       super(conf, Node::BASE_URI)
     end
 
-    def population
-      get_all_resources(Node)
+    def population(opts = {})
+      get_all_resources(Node, opts)
     end
 
   end

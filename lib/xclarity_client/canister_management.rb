@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, Canister::BASE_URI)
     end
 
-    def population
-      get_all_resources(Canister)
+    def population(opts = {})
+      get_all_resources(Canister, opts)
     end
 
   end

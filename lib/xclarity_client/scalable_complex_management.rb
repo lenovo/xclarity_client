@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, ScalableComplex::BASE_URI)
     end
 
-    def population
-      get_all_resources(ScalableComplex)
+    def population(opts = {})
+      get_all_resources(ScalableComplex, opts)
     end
 
   end

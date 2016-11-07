@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, Chassi::BASE_URI)
     end
 
-    def population
-      get_all_resources(Chassi)
+    def population(opts = {})
+      get_all_resources(Chassi, opts)
     end
 
   end
