@@ -5,32 +5,32 @@ module XClarityClient
       @connection = connection
     end
 
-    def discover_nodes
-      NodeManagement.new(@connection).population
+    def discover_nodes(opts = {})
+      NodeManagement.new(@connection).population opts
     end
 
-    def discover_scalableComplexes
-      ScalableComplexManagement.new(@connection).population
+    def discover_scalableComplexes(opts = {})
+      ScalableComplexManagement.new(@connection).population opts
     end
 
-    def discover_cabinet
-      CabinetManagement.new(@connection).population
+    def discover_cabinet(opts = {})
+      CabinetManagement.new(@connection).population opts
     end
 
     def fetch_cabinet(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
       CabinetManagement.new(@connection).get_object(uuids, includeAttributes, excludeAttributes, Cabinet)
     end
 
-    def discover_canisters
-      CanisterManagement.new(@connection).population
+    def discover_canisters(opts = {})
+      CanisterManagement.new(@connection).population opts
     end
 
     def fetch_canisters(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
       CanisterManagement.new(@connection).get_object(uuids, includeAttributes, excludeAttributes, Canister)
     end
 
-    def discover_cmms
-      CmmManagement.new(@connection).population
+    def discover_cmms(opts = {})
+      CmmManagement.new(@connection).population opts
     end
 
     def fetch_cmms(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
@@ -41,28 +41,28 @@ module XClarityClient
       FanManagement.new(@connection).get_object(uuids, includeAttributes, excludeAttributes, Fan)
     end
 
-    def discover_fans
-      FanManagement.new(@connection).population
+    def discover_fans(opts = {})
+      FanManagement.new(@connection).population opts
     end
 
-    def discover_switches
-      SwitchManagement.new(@connection).population
+    def discover_switches(opts = {})
+      SwitchManagement.new(@connection).population opts
     end
 
-    def discover_fan_muxes
-      FanMuxManagement.new(@connection).population
+    def discover_fan_muxes(opts = {})
+      FanMuxManagement.new(@connection).population opts
     end
 
     def fetch_fan_muxes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)
       FanMuxManagement.new(@connection).get_object(uuids, includeAttributes, excludeAttributes, FanMux)
     end
 
-    def discover_chassis
-      ChassiManagement.new(@connection).population
+    def discover_chassis(opts = {})
+      ChassiManagement.new(@connection).population opts
     end
 
-    def discover_power_supplies
-      PowerSupplyManagement.new(@connection).population
+    def discover_power_supplies(opts = {})
+      PowerSupplyManagement.new(@connection).population opts
     end
 
     def fetch_nodes(uuids = nil, includeAttributes = nil, excludeAttributes = nil)

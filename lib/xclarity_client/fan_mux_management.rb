@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, FanMux::BASE_URI)
     end
 
-    def population
-      get_all_resources(FanMux)
+    def population(opts = {})
+      get_all_resources(FanMux, opts)
     end
 
   end

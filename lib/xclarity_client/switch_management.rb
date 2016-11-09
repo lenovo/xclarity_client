@@ -8,8 +8,8 @@ module XClarityClient
       super(conf, Switch::BASE_URI)
     end
 
-    def population
-      get_all_resources(Switch)
+    def population(opts = {})
+      get_all_resources(Switch, opts)
     end
 
   end

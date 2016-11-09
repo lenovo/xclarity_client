@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, Fan::BASE_URI)
     end
 
-    def population
-      get_all_resources(Fan)
+    def population(opts = {})
+      get_all_resources(Fan, opts)
     end
 
   end

@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, Cabinet::BASE_URI)
     end
 
-    def population
-      get_all_resources(Cabinet)
+    def population(opts = {})
+      get_all_resources(Cabinet, opts)
     end
 
   end

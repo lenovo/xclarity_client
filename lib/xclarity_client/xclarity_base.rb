@@ -32,8 +32,9 @@ module XClarityClient
 
     private
 
-    def connection(uri = "", options = {})
-      @conn.get(uri)
+    def connection(uri = "", opts = {})
+      query = opts.size > 0 ? "?" + opts.map {|k, v| "#{k}=#{v}"}.join(",") : ""
+      @conn.get(uri + query)
     end
 
     def authentication(conf)

@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, Cmm::BASE_URI)
     end
 
-    def population
-      get_all_resources(Cmm)
+    def population(opts = {})
+      get_all_resources(Cmm, opts)
     end
 
   end

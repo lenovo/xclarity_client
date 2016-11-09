@@ -9,8 +9,8 @@ module XClarityClient
       super(conf, PowerSupply::BASE_URI)
     end
 
-    def population
-      get_all_resources(PowerSupply)
+    def population(opts = {})
+      get_all_resources(PowerSupply, opts)
     end
 
   end

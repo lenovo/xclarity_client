@@ -2,8 +2,8 @@ module XClarityClient
   module ManagementMixin
 
 
-    def get_all_resources (resource)
-      response = connection(resource::BASE_URI)
+    def get_all_resources (resource, opts = {})
+      response = connection(resource::BASE_URI, opts)
 
       return [] unless response.success?
       
