@@ -6,7 +6,6 @@ module XClarityClient
     attr_accessor :username, :password, :host, :csrf_token, :auth_type, :generated_token, :verify_ssl
 
     def initialize(args)
-      puts "::> #{args}"
 
       args.each { |key, value| send("#{key}=", value) }
 
