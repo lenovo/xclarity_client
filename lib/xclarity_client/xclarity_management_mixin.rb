@@ -6,7 +6,7 @@ module XClarityClient
       response = connection(resource::BASE_URI, opts)
 
       return [] unless response.success?
-      
+
       body = JSON.parse(response.body)
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|
@@ -61,5 +61,12 @@ module XClarityClient
 
     end
 
+    def set_node_power_state(uuid)
+      power_request = JSON.generate({:powerState =>"powerOff" })
+      response = do_put(BASE_URI + "/" + uuid, power_request)
+
+      # body = JSON.parse(response.body)
+
+    end
   end
 end
