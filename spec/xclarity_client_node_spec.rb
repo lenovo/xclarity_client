@@ -110,13 +110,10 @@ describe XClarityClient do
   end
 
   describe 'Get /node' do
-    it 'should power down system' do
-      response = @client.set_node_power_state(@uuidArray[0])
+    it 'should power on system' do
+      response = @client.power_on_node(@uuidArray[0])
       expect(response.status).to eq(200)
-
-      puts response.headers.location
-
     end
   end
-  
+
 end

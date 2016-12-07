@@ -1,12 +1,27 @@
 module XClarityClient
+
   class Client
 
     def initialize(connection)
       @connection = connection
     end
-
+    
     def discover_nodes(opts = {})
       NodeManagement.new(@connection).population opts
+    end
+
+
+        
+    def power_on_node(uuid = '')
+        NodeManagement.new(@connection).set_node_power_state(uuid, XClarityClient::POWER_ACTIONS[:powerOff])
+    end
+
+    def power_off_node(uuid = '')
+        NodeManagement.new(@connection).set_node_power_state(uuid, "powerOff")
+    end
+
+    def power_restart_node(uuid = '')
+        NodeManagement.new(@connection).set_node_power_state(uuid, "powerCycleSoftGrace")
     end
 
     def discover_scalableComplexes(opts = {})

@@ -63,6 +63,7 @@ module XClarityClient
 
     def set_node_power_state(uuid)
       power_request = JSON.generate({:powerState =>"powerOff" })
+      puts power_request
       response = do_put(BASE_URI + "/" + uuid, power_request)
 
       # body = JSON.parse(response.body)
