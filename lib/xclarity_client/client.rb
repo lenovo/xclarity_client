@@ -11,7 +11,7 @@ module XClarityClient
     end
         
     def power_on_node(uuid = '')
-        NodeManagement.new(@connection).set_node_power_state(uuid, XClarityClient::POWER_ACTIONS[:powerOff])
+        NodeManagement.new(@connection).set_node_power_state(uuid, "powerOn")
     end
 
     def power_off_node(uuid = '')
