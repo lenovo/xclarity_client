@@ -85,8 +85,12 @@ module XClarityClient
       PowerSupplyManagement.new(@connection).get_object(uuids, includeAttributes, excludeAttributes, PowerSupply)
     end
 
-    def discover_events(opts = {})
-      EventManagement.new(@connection).population opts
+    def discover_events
+      EventManagement.new(@connection).population
+    end
+
+    def fetch_events(opts = {})
+      EventManagement.new(@connection).fetch_events(opts)
     end
   end
 end

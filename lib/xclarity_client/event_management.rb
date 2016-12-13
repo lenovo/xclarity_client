@@ -9,8 +9,12 @@ module XClarityClient
       super(conf, Event::BASE_URI)
     end
 
-    def population(opts = {})
-      get_all_resources(Event, opts)
+    def population
+      get_all_resources(Event)
+    end
+
+    def fetch_events(opts)
+      fetch_events(opts)
     end
 
   end
