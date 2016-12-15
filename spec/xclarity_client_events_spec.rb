@@ -6,19 +6,18 @@ describe XClarityClient do
     WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection or mock.
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['LXCA_USERNAME'],
-    :password => ENV['LXCA_PASSWORD'],
-    :host     => ENV['LXCA_HOST'],
-    :auth_type => ENV['LXCA_AUTH_TYPE'],
-    :verify_ssl => ENV['LXCA_VERIFY_SSL']
+    :username => ENV['USERNAME_VALUE'],
+    :password => ENV['PASSWORD_VALUE'],
+    :host     => ENV['HOST_VALUE'],
+    :auth_type => ENV['AUTH_TYPE_VALUE'],
+    :verify_ssl => ENV['VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
   end
 
   before :each do
-    @includeAttributes = %w(memorySlots)
-    @excludeAttributes = %w(memorySlots)
+
     @uuidArray = @client.discover_events.map { |event| event.eventID  }
   end
 
@@ -32,12 +31,26 @@ describe XClarityClient do
       expect(@client.discover_events.class).to eq(Array)
     end
 
-    context 'with parameters' do
-      it 'include attributes should not be nil' do
-        response = @client.discover_events(type)
-        response.map do |events|
-          @includeAttributes.map do |attribute|
-            expect(events.send(attribute)).not_to be_nil
+    context 'with opts parameters' do
+      context 'where the opts is only sort' do
+
+        opts = {"sort" => "cn"}
+        puts opts
+
+        it 'the elemented used to sort should be greater or equal to second element' do
+
+          olderValue = nil
+          response = @client.fetch_events(opts)
+
+          response.map do |event|
+            if olderValue == nil
+              olderValue = event.send opts.first[1]
+              next
+            end
+
+            expect(event.send opts.first[1]).to be >= olderValue
+            olderValue = event.send opts.first[1]
+
           end
         end
       end

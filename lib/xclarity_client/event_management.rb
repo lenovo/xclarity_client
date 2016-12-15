@@ -13,9 +13,5 @@ module XClarityClient
       get_all_resources(Event)
     end
 
-    def fetch_events(opts)
-      fetch_events(opts)
-    end
-
   end
 end

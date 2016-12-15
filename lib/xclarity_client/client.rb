@@ -90,7 +90,7 @@ module XClarityClient
     end
 
     def fetch_events(opts = {})
-      EventManagement.new(@connection).fetch_events(opts)
+      EventManagement.new(@connection).get_object_with_opts(opts, Event)
     end
   end
 end
