@@ -107,5 +107,12 @@ module XClarityClient
       NodeManagement.new(@connection).set_loc_led_state(uuid, "Off")
     end
     
+    def discover_events
+      EventManagement.new(@connection).population
+    end
+
+    def fetch_events(opts = {})
+      EventManagement.new(@connection).get_object_with_opts(opts, Event)
+    end
   end
 end
