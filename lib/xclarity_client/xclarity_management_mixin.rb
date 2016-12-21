@@ -71,8 +71,8 @@ module XClarityClient
           if opts.has_key? "filterWith"
             filter += "?filterWith="
             filter += "#{opts["filterWith"]}"
-          end
-          if opts.has_key? "sort"
+
+          elsif opts.has_key? "sort"
             filter += ",sort=" if filter != ""
             filter += "?sort=" if filter == ""
             filter += "#{opts["sort"]}"
