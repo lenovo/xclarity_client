@@ -60,7 +60,7 @@ describe XClarityClient do
 
       context 'where the opts is only filterWith' do
 
-        opts = { 'filterWith' => '{"filterType":"FIELDNOTREGEXAND","fields":[{"operation":"GT","field":"cn", "value":"242328"}]}'}
+        opts = { 'filterWith' => '{"filterType":"FIELDNOTREGEXAND","fields":[{"operation":"GT","field":"cn","value":"242328"}]}'}
         oldValue =242328
         filed = "cn"
         puts opts
