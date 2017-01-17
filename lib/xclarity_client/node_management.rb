@@ -3,10 +3,8 @@ require 'uuid'
 
 module XClarityClient
   class NodeManagement < XClarityBase
-
-     OFF = 1
+    OFF = 1
     include XClarityClient::ManagementMixin
-
 
     def initialize(conf)
       super(conf, Node::BASE_URI)
@@ -16,24 +14,21 @@ module XClarityClient
       get_all_resources(Node, opts)
     end
 
-    def set_node_power_state (uuid, powerState= OFF)
-      power_request = ''
+    def set_node_power_state(uuid, powerState = OFF)
+      puts 'UUID to shutdown ' + uuid
+      power_request = case powerState
+                      when OFF
+                        JSON.generate(powerState: 'powerOff')
+                      else
+                        JSON.generate(powerState: 'powerOn')
+                      end
 
-      puts "UUID to shutdown " + uuid
-      case powerState
-      when OFF
-        power_request = JSON.generate({:powerState =>"powerOff" })
-      else
-        power_request = JSON.generate({:powerState =>"powerOn"})
-      end
-
-      response = do_put(Node::BASE_URI + "/" + uuid, power_request)
+      do_put(Node::BASE_URI + '/' + uuid, power_request)
     end
 
-    def set_loc_led_state(uuid, state, name = "Identify")
-      request = JSON.generate({:leds => [{:name => name, :state => state}]})
-      response = do_put("#{Node::BASE_URI}/#{uuid}", request)
+    def set_loc_led_state(uuid, state, name = 'Identify')
+      request = JSON.generate(leds:  [{ name: name, state: state }])
+      do_put("#{Node::BASE_URI}/#{uuid}", request)
     end
-
   end
 end

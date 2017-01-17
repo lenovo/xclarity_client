@@ -1,7 +1,5 @@
 module XClarityClient
   module ManagementMixin
-
-
     def get_all_resources (resource, opts = {})
       response = connection(resource::BASE_URI, opts)
 
@@ -91,15 +89,6 @@ module XClarityClient
       body[resource::LIST_NAME].map do |resource_params|
         resource.new resource_params
       end
-
-    end
-
-    def set_node_power_state(uuid)
-      power_request = JSON.generate({:powerState =>"powerOff" })
-      response = do_put(BASE_URI + "/" + uuid, power_request)
-
-      # body = JSON.parse(response.body)
-
     end
   end
 end

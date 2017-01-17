@@ -1,4 +1,4 @@
-require "xclarity_client/version"
+require 'xclarity_client/version'
 
 module XClarityClient
 end
