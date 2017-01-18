@@ -1,6 +1,6 @@
 # XClarity Client
 
-[![Build Status](https://travis-ci.org/juliancheal/xclarity_client.svg)](https://travis-ci.org/juliancheal/xclarity_client)
+[![Build Status](https://travis-ci.org/lenovo/xclarity_client.svg)](https://travis-ci.org/lenovo/xclarity_client)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/xclarity_client`. To experiment with that code, run `bin/console` for an interactive prompt.
 
