@@ -156,9 +156,12 @@ module XClarityClient
       EventManagement.new(@connection).get_object_with_opts(opts, Event)
     end
 
-    def turn_on_loc_led(uuid = '', enableBlinking = false)
-      state = enableBlinking ? 'Blinking' : 'On'
-      NodeManagement.new(@connection).set_loc_led_state(uuid, state)
+    def blink_loc_led(uuid = '')
+      NodeManagement.new(@connection).set_loc_led_state(uuid, 'Blinking')
+    end
+
+    def turn_on_loc_led(uuid = '')
+      NodeManagement.new(@connection).set_loc_led_state(uuid, 'On')
     end
 
     def turn_off_loc_led(uuid = '')

@@ -141,7 +141,7 @@ describe XClarityClient do
 
       context 'with state == "Blinking" and name == "Identify"' do
         it 'turns on the blinking location led' do
-          @client.turn_on_loc_led(@uuidArray[0], true)
+          @client.blink_loc_led(@uuidArray[0])
           uri = "http://example.com/nodes/#{@uuidArray[0]}"
           request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
                                                     'state' => 'Blinking' }] } }
