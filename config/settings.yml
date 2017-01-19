@@ -1318,6 +1318,7 @@
           :restart_interval: 2.hours
         :ems_refresh_worker_ansible_tower_configuration: {}
         :ems_refresh_worker_azure: {}
+        :ems_refresh_worker_lenovo_physical_infra: {}
         :ems_refresh_worker_azure_network: {}
         :ems_refresh_worker_foreman_configuration: {}
         :ems_refresh_worker_foreman_provisioning: {}
