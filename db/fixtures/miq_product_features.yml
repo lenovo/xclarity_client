@@ -1952,6 +1952,21 @@
         :description: Display Individual Alert Status
         :feature_type: view
         :identifier: alert_status_show
+  - :name: Alerts Status Actions
+    :description: Everything under Status Actions
+    :protected: true
+    :feature_type: node
+    :hidden: true
+    :identifier: alert_action
+    :children:
+    - :name: List
+      :description: Display Lists of Alert Status Actions
+      :feature_type: view
+      :identifier: alert_status_action_show_list
+    - :name: Add
+      :description: Display Individual Alert Status
+      :feature_type: admin
+      :identifier: alert_status_action_new
 # Policy Simulation
 - :name: Simulation
   :description: Policy Simulation
@@ -5483,6 +5498,10 @@
         :description: Display Timelines for VMs
         :feature_type: view
         :identifier: vm_timeline
+      - :name: VM's Chargeback
+        :description: Show Chargeback Preview for a VM
+        :feature_type: view
+        :identifier: vm_chargeback
     - :name: Operate
       :description: Perform Operations on VMs
       :feature_type: control

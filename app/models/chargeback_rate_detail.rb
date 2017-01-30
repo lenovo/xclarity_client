@@ -1,5 +1,6 @@
 class ChargebackRateDetail < ApplicationRecord
   belongs_to :chargeback_rate
+  belongs_to :chargeable_field
   belongs_to :detail_measure, :class_name => "ChargebackRateDetailMeasure", :foreign_key => :chargeback_rate_detail_measure_id
   belongs_to :detail_currency, :class_name => "ChargebackRateDetailCurrency", :foreign_key => :chargeback_rate_detail_currency_id
   has_many :chargeback_tiers, :dependent => :destroy, :autosave => true
@@ -11,7 +12,7 @@ class ChargebackRateDetail < ApplicationRecord
 
   delegate :rate_type, :to => :chargeback_rate, :allow_nil => true
 
-  FORM_ATTRIBUTES = %i(description per_time per_unit metric group source metric).freeze
+  FORM_ATTRIBUTES = %i(description per_time per_unit metric group source metric chargeable_field_id).freeze
   PER_TIME_TYPES = {
     "hourly"  => _("Hourly"),
     "daily"   => _("Daily"),
@@ -57,10 +58,7 @@ class ChargebackRateDetail < ApplicationRecord
   def find_rate(value)
     fixed_rate = 0.0
     variable_rate = 0.0
-    tier_found, = chargeback_tiers.select do |tier|
-      tier.starts_with_zero? && value.zero? ||
-      value > rate_adjustment(tier.start) && value <= rate_adjustment(tier.finish)
-    end
+    tier_found = chargeback_tiers.detect { |tier| tier.includes?(value / rate_adjustment) }
     unless tier_found.nil?
       fixed_rate = tier_found.fixed_rate
       variable_rate = tier_found.variable_rate
@@ -86,7 +84,7 @@ class ChargebackRateDetail < ApplicationRecord
     hourly_fixed_rate    = hourly(fixed_rate, consumption)
     hourly_variable_rate = hourly(variable_rate, consumption)
 
-    hourly_fixed_rate + rate_adjustment(hourly_variable_rate) * value
+    hourly_fixed_rate + rate_adjustment * value * hourly_variable_rate
   end
 
   def hourly(rate, consumption)
@@ -102,41 +100,23 @@ class ChargebackRateDetail < ApplicationRecord
     hourly_rate
   end
 
-  # Scale the rate in the unit difine by user to the default unit of the metric
-  # It showing the default units of the metrics:
-  # cpu_usagemhz_rate_average --> megahertz
-  # derived_memory_used --> megabytes
-  # derived_memory_available -->megabytes
-  # net_usage_rate_average --> kbps
-  # disk_usage_rate_average --> kbps
-  # derived_vm_allocated_disk_storage --> bytes
-  # derived_vm_used_disk_storage --> bytes
+  # Scale the rate in the unit defined by user -> to the default unit of the metric
+  METRIC_UNITS = {
+    'cpu_usagemhz_rate_average'         => 'megahertz',
+    'derived_memory_used'               => 'megabytes',
+    'derived_memory_available'          => 'megabytes',
+    'net_usage_rate_average'            => 'kbps',
+    'disk_usage_rate_average'           => 'kbps',
+    'derived_vm_allocated_disk_storage' => 'bytes',
+    'derived_vm_used_disk_storage'      => 'bytes'
+  }.freeze
 
-  def rate_adjustment(hr)
-    case metric
-    when "cpu_usagemhz_rate_average" then
-      per_unit == 'megahertz' ? hr : hr = adjustment_measure(hr, 'megahertz')
-    when "derived_memory_used", "derived_memory_available" then
-      per_unit == 'megabytes' ? hr : hr = adjustment_measure(hr, 'megabytes')
-    when "net_usage_rate_average", "disk_usage_rate_average" then
-      per_unit == 'kbps' ? hr : hr = adjustment_measure(hr, 'kbps')
-    when "derived_vm_allocated_disk_storage", "derived_vm_used_disk_storage" then
-      per_unit == 'bytes' ? hr : hr = adjustment_measure(hr, 'bytes')
-    else hr
-    end
-  end
-
-  # Adjusts the hourly rate to the per unit by default
-  def adjustment_measure(hr, pu_destiny)
-    measure = detail_measure
-    pos_pu_destiny = measure.units.index(pu_destiny)
-    pos_per_unit = measure.units.index(per_unit)
-    jumps = (pos_per_unit - pos_pu_destiny).abs
-    if pos_per_unit > pos_pu_destiny
-      hr.to_f / (measure.step**jumps)
-    else
-      hr * (measure.step**jumps)
-    end
+  def rate_adjustment
+    @rate_adjustment ||= if METRIC_UNITS[metric]
+                           detail_measure.adjust(per_unit, METRIC_UNITS[metric])
+                         else
+                           1
+                         end
   end
 
   def affects_report_fields(report_cols)
@@ -269,6 +249,8 @@ class ChargebackRateDetail < ApplicationRecord
         detail_new.detail_measure = ChargebackRateDetailMeasure.find_by(:name => detail[:measure])
         detail_new.detail_currency = ChargebackRateDetailCurrency.find_by(:name => detail[:type_currency])
         detail_new.metric = detail[:metric]
+        chargeable_metric = detail[:metric] || "#{detail[:group]}_#{detail[:source]}"
+        detail_new.chargeable_field = ChargeableField.find_by(:metric => chargeable_metric)
 
         detail[:tiers].sort_by { |tier| tier[:start] }.each do |tier|
           detail_new.chargeback_tiers << ChargebackTier.new(tier.slice(*ChargebackTier::FORM_ATTRIBUTES))

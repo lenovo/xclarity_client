@@ -720,11 +720,6 @@ class MiqExpression
     end
   end
 
-  def self.merge_includes(*incl_list)
-    return nil if incl_list.blank?
-    incl_list.compact.each_with_object({}) { |i, result| result.deep_merge!(i) }
-  end
-
   def self.get_cols_from_expression(exp, options = {})
     result = {}
     if exp.kind_of?(Hash)
@@ -1139,7 +1134,10 @@ class MiqExpression
 
     result = []
     unless opts[:typ] == "count" || opts[:typ] == "find"
-      result = get_column_details(relats[:columns], model, model, opts).sort! { |a, b| a.to_s <=> b.to_s }
+      @column_cache ||= {}
+      key = "#{model}_#{opts[:interval]}_#{opts[:include_model] || false}"
+      @column_cache[key] ||= get_column_details(relats[:columns], model, model, opts).sort! { |a, b| a.to_s <=> b.to_s }
+      result.concat(@column_cache[key])
 
       unless opts[:disallow_loading_virtual_custom_attributes]
         custom_details = _custom_details_for(model, opts)
@@ -1234,18 +1232,15 @@ class MiqExpression
   def self.reporting_available_fields(model, interval = nil)
     @reporting_available_fields ||= {}
     if model.to_s == "VimPerformanceTrend"
-      @reporting_available_fields[model.to_s] ||= {}
-      @reporting_available_fields[model.to_s][interval.to_s] ||= VimPerformanceTrend.trend_model_details(interval.to_s)
+      VimPerformanceTrend.trend_model_details(interval.to_s)
     elsif model.ends_with?("Performance")
-      @reporting_available_fields[model.to_s] ||= {}
-      @reporting_available_fields[model.to_s][interval.to_s] ||= MiqExpression.model_details(model, :include_model => false, :include_tags => true, :interval => interval)
+      MiqExpression.model_details(model, :include_model => false, :include_tags => true, :interval => interval)
     elsif Chargeback.db_is_chargeback?(model)
       cb_model = Chargeback.report_cb_model(model)
-      @reporting_available_fields[model.to_s] ||=
         MiqExpression.model_details(model, :include_model => false, :include_tags => true).select { |c| c.last.ends_with?(*ReportController::Reports::Editor::CHARGEBACK_ALLOWED_FIELD_SUFFIXES) } +
         MiqExpression.tag_details(cb_model, model, {}) + _custom_details_for(cb_model, {})
     else
-      @reporting_available_fields[model.to_s] ||= MiqExpression.model_details(model, :include_model => false, :include_tags => true)
+      MiqExpression.model_details(model, :include_model => false, :include_tags => true)
     end
   end
 
@@ -1626,9 +1621,10 @@ class MiqExpression
 
       if (val = expression["field"] || expression["count"] || expression["tag"])
         ret = []
-        ret << Field.parse(val) if Field.is_field?(val)
-        val = expression["value"]
-        ret << Field.parse(val) if Field.is_field?(val)
+        tg = self.class.parse_field_or_tag(val)
+        ret << tg if tg
+        tg = self.class.parse_field_or_tag(expression["value"].to_s)
+        ret << tg if tg
         ret
       else
         fields(expression.values)

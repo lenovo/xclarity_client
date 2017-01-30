@@ -121,8 +121,8 @@ end
 #
 unless ENV["APPLIANCE"]
   group :development do
-    gem "haml_lint",        "~>0.18.0", :require => false
-    gem "rubocop",          "~>0.37.2", :require => false
+    gem "haml_lint",        "~>0.20.0", :require => false
+    gem "rubocop",          "~>0.47.0", :require => false
     gem "scss_lint",        "~>0.48.0", :require => false
   end
 
@@ -154,9 +154,12 @@ end
 # override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__))
 #
 def override_gem(name, *args)
-  raise "Trying to override unknown gem #{name}" unless (dependency = dependencies.find { |d| d.name == name })
-  dependencies.delete(dependency)
-  gem name, *args
+  if dependencies.any?
+    raise "Trying to override unknown gem #{name}" unless (dependency = dependencies.find { |d| d.name == name })
+    dependencies.delete(dependency)
+
+    gem name, *args
+  end
 end
 
 # Load developer specific Gemfile
