@@ -50,7 +50,7 @@ gem "gettext_i18n_rails",             "~>1.7.2"
 gem "gettext_i18n_rails_js",          "~>1.1.0"
 gem "google-api-client",              "~>0.8.6",       :require => false
 gem "hamlit",                         "~>2.7.0"
-gem "hashie",                         ">=3.4.6",       :require => false
+gem "hashie",                         "~>3.4.6",       :require => false
 gem "high_voltage",                   "~>2.4.0"
 gem "htauth",                         "2.0.0",         :require => false
 gem "inifile",                        "~>3.0",         :require => false
@@ -151,7 +151,7 @@ end
 # To develop a gem locally and override its source to a checked out repo
 #   you can use this helper method in Gemfile.dev.rb e.g.
 #
-# override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__))
+# override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__)
 #
 def override_gem(name, *args)
   if dependencies.any?
