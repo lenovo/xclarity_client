@@ -198,15 +198,16 @@ class MiqAlert < ApplicationRecord
     # If we are alerting, invoke the alert actions, then add a status so we can limit how often to alert
     # Otherwise, destroy this alert's statuses for our target
     invoke_actions(target, inputs) if result
-    add_status_post_evaluate(target, result)
+    add_status_post_evaluate(target, result, inputs[:description])
 
     result
   end
 
-  def add_status_post_evaluate(target, result)
+  def add_status_post_evaluate(target, result, status_description)
     status = miq_alert_statuses.find_or_initialize_by(:resource => target)
     status.result = result
     status.ems_id = target.try(:ems_id)
+    status.description = status_description || description
     status.evaluated_on = Time.now.utc
     status.save
     miq_alert_statuses << status
@@ -425,17 +426,17 @@ class MiqAlert < ApplicationRecord
           }},
           {:name => :operator, :description => _("Operator"), :values => ["Changed"]}
         ]},
-      {:name => "mw_heap_used", :description => _("JVM Heap Used"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_event",
+      {:name => "mw_heap_used", :description => _("JVM Heap Used"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_alert",
         :options => [
           {:name => :value_mw_greater_than, :description => _("> Heap Max (%)"), :numeric => true},
           {:name => :value_mw_less_than, :description => _("< Heap Max (%)"), :numeric => true}
         ]},
-      {:name => "mw_non_heap_used", :description => _("JVM Non Heap Used"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_event",
+      {:name => "mw_non_heap_used", :description => _("JVM Non Heap Used"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_alert",
         :options => [
           {:name => :value_mw_greater_than, :description => _("> Non Heap Committed (%)"), :numeric => true},
           {:name => :value_mw_less_than, :description => _("< Non Heap Committed (%)"), :numeric => true}
         ]},
-      {:name => "mw_accumulated_gc_duration", :description => _("JVM Accumulated GC Duration"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_event",
+      {:name => "mw_accumulated_gc_duration", :description => _("JVM Accumulated GC Duration"), :db => ["MiddlewareServer"], :responds_to_events => "hawkular_alert",
         :options => [
           {:name => :mw_operator, :description => _("Operator"), :values => [">", ">=", "<", "<=", "="]},
           {:name => :value_mw_garbage_collector, :description => _("Duration Per Minute (ms)"), :numeric => true}
@@ -501,7 +502,7 @@ class MiqAlert < ApplicationRecord
 
   def self.raw_events
     @raw_events ||= expression_by_name("event_threshold")[:options].find { |h| h[:name] == :event_types }[:values] +
-                    ['hawkular_event']
+                    ['hawkular_alert']
   end
 
   def self.event_alertable?(event)

@@ -7,6 +7,8 @@ module Rbac
     # 3. Class contains acts_as_miq_taggable
     CLASSES_THAT_PARTICIPATE_IN_RBAC = %w(
       AvailabilityZone
+      CloudNetwork
+      CloudSubnet
       CloudTenant
       CloudVolume
       ConfigurationProfile
@@ -27,8 +29,12 @@ module Rbac
       EmsFolder
       ExtManagementSystem
       Flavor
+      FloatingIp
       Host
+      LoadBalancer
       MiqCimInstance
+      NetworkPort
+      NetworkRouter
       OrchestrationTemplate
       OrchestrationStack
       ResourcePool
@@ -50,6 +56,13 @@ module Rbac
       ResourcePool
       Storage
     )
+
+    # key: MiqUserRole#name - user's role
+    # value:
+    #   array - disallowed roles for the user's role
+    DISALLOWED_ROLES_FOR_USER_ROLE = {
+      'EvmRole-tenant_administrator' => %w(EvmRole-super_administrator)
+    }.freeze
 
     # key: descendant::klass
     # value:
@@ -441,6 +454,9 @@ module Rbac
       elsif klass == MiqGroup && miq_group.try!(:self_service?)
         # Self Service users searching for groups only see their group
         scope.where(:id => miq_group.id)
+      elsif [MiqUserRole, MiqGroup].include?(klass) && (user_or_group = miq_group || user) &&
+            user_or_group.disallowed_roles
+        scope.with_allowed_roles_for(user_or_group)
       else
         scope
       end
