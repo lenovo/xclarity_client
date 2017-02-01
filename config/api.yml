@@ -42,6 +42,20 @@
     - :subcollection
     :verbs: *g
     :klass: Account
+  :configuration_script_payloads:
+    :description: Configuration Script Payloads
+    :options:
+    - :collection
+    :verbs: *g
+    :klass: ConfigurationScriptPayload
+    :collection_actions:
+      :get:
+      - :name: read
+        :identifier: configuration_script_view
+    :resource_actions:
+      :get:
+      - :name: read
+        :identifier: configuration_script_view
   :auth:
     :description: REST API Authentication
     :options:
@@ -654,6 +668,8 @@
     - :collection
     :verbs: *g
     :klass: MiqAlertStatus
+    :subcollections:
+    - :alert_actions
     :collection_actions:
       :get:
       - :name: read
@@ -662,6 +678,20 @@
       :get:
       - :name: read
         :identifier: alert_status_show
+  :alert_actions:
+     :description: Alert Actions
+     :identifier: alert_action
+     :options:
+     - :subcollection
+     :verbs: *gp
+     :klass: MiqAlertStatusAction
+     :subcollection_actions:
+       :get:
+       - :name: read
+         :identifier: alert_status_action_show_list
+       :post:
+       - :name: create
+         :identifier: alert_status_action_new
   :notifications:
     :description: "User's past notifications"
     :options:
@@ -1372,6 +1402,8 @@
         :identifier: miq_request_delete
       - :name: add_approver
         :identifier: miq_request_approval
+      - :name: remove_approver
+        :identifier: miq_request_approval
       - :name: edit
         :identifier: miq_request_edit
     :resource_actions:
@@ -1386,6 +1418,8 @@
       - :name: delete
         :identifier: miq_request_delete
       - :name: add_approver
+        :identifier: miq_request_approval
+      - :name: remove_approver
         :identifier: miq_request_approval
       - :name: edit
         :identifier: miq_request_edit
@@ -1516,6 +1550,8 @@
         :identifier: service_admin
       - :name: suspend
         :identifier: service_admin
+      - :name: assign_tags
+        :identifier: service_tag
     :resource_actions:
       :get:
       - :name: read
@@ -1563,6 +1599,31 @@
       :get:
       - :name: read
         :identifier: ops_settings
+  :snapshots:
+    :description: Snapshots
+    :options:
+    - :subcollection
+    :verbs: *gpd
+    :klass: Snapshot
+    :subcollection_actions:
+      :get:
+      - :name: read
+        :identifier: vm_snapshot_view
+      :post:
+      - :name: create
+        :identifier: vm_snapshot_add
+      - :name: delete
+        :identifier: vm_snapshot_delete
+    :subresource_actions:
+      :get:
+      - :name: read
+        :identifier: vm_snapshot_view
+      :post:
+      - :name: delete
+        :identifier: vm_snapshot_delete
+      :delete:
+      - :name: delete
+        :identifier: vm_snapshot_delete
   :software:
     :description: Software
     :options:
@@ -1856,6 +1917,7 @@
     - :accounts
     - :custom_attributes
     - :software
+    - :snapshots
     :collection_actions:
       :get:
       - :name: read
@@ -1905,6 +1967,8 @@
         :identifier: vm_scan
       - :name: delete
         :identifier: vm_delete
+      - :name: assign_tags
+        :identifier: vm_tag
     :resource_actions:
       :get:
       - :name: read

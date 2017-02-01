@@ -117,7 +117,7 @@ RUN ${APPLIANCE_ROOT}/setup && \
 WORKDIR ${APP_ROOT}
 RUN source /etc/default/evm && \
     export RAILS_USE_MEMORY_STORE="true" && \
-    npm install gulp bower yarn -g && \
+    npm install bower yarn -g && \
     gem install bundler --conservative && \
     bower install --allow-root -F --silent --config.analytics=false && \
     bundle install && \
@@ -132,13 +132,14 @@ RUN source /etc/default/evm && \
     rm -rvf ${RUBY_GEMS_ROOT}/gems/rugged-*/vendor/libgit2/build && \
     rm -rvf ${RUBY_GEMS_ROOT}/cache/* && \
     rm -rvf /root/.bundle/cache && \
-    rm -rvf ${APP_ROOT}/tmp/cache/assets
+    rm -rvf ${APP_ROOT}/tmp/cache/assets && \
+    rm -rf ${APP_ROOT}/log/*
 
 ## Build SUI
 RUN source /etc/default/evm && \
     cd ${SUI_ROOT} && \
     yarn install && \
-    gulp build
+    yarn run build
 
 ## Copy appliance-initialize script and service unit file
 COPY docker-assets/appliance-initialize.service /usr/lib/systemd/system

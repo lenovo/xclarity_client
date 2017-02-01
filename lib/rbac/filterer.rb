@@ -7,6 +7,8 @@ module Rbac
     # 3. Class contains acts_as_miq_taggable
     CLASSES_THAT_PARTICIPATE_IN_RBAC = %w(
       AvailabilityZone
+      CloudNetwork
+      CloudSubnet
       CloudTenant
       CloudVolume
       ConfigurationProfile
@@ -27,8 +29,12 @@ module Rbac
       EmsFolder
       ExtManagementSystem
       Flavor
+      FloatingIp
       Host
+      LoadBalancer
       MiqCimInstance
+      NetworkPort
+      NetworkRouter
       OrchestrationTemplate
       OrchestrationStack
       ResourcePool
@@ -50,6 +56,13 @@ module Rbac
       ResourcePool
       Storage
     )
+
+    # key: MiqUserRole#name - user's role
+    # value:
+    #   array - disallowed roles for the user's role
+    DISALLOWED_ROLES_FOR_USER_ROLE = {
+      'EvmRole-tenant_administrator' => %w(EvmRole-super_administrator)
+    }.freeze
 
     # key: descendant::klass
     # value:
@@ -179,6 +192,7 @@ module Rbac
 
       if targets.nil?
         scope = apply_scope(klass, scope)
+        scope = apply_select(klass, scope, options[:extra_cols]) if options[:extra_cols]
       elsif targets.kind_of?(Array)
         if targets.first.kind_of?(Numeric)
           target_ids = targets
@@ -188,6 +202,7 @@ module Rbac
           klass            = targets.first.class.base_class unless klass.respond_to?(:find)
         end
         scope = apply_scope(klass, scope)
+        scope = apply_select(klass, scope, options[:extra_cols]) if options[:extra_cols]
 
         ids_clause = ["#{klass.table_name}.id IN (?)", target_ids] if klass.respond_to?(:table_name)
       else # targets is a class_name, scope, class, or acts_as_ar_model class (VimPerformanceDaily in particular)
@@ -200,6 +215,7 @@ module Rbac
           # working around MiqAeDomain not being in rbac_class
           klass = klass.base_class if klass.respond_to?(:base_class) && rbac_class(klass).nil? && rbac_class(klass.base_class)
         end
+        scope = apply_select(klass, scope, options[:extra_cols]) if options[:extra_cols]
       end
 
       user_filters['match_via_descendants'] = to_class(options[:match_via_descendants])
@@ -438,6 +454,9 @@ module Rbac
       elsif klass == MiqGroup && miq_group.try!(:self_service?)
         # Self Service users searching for groups only see their group
         scope.where(:id => miq_group.id)
+      elsif [MiqUserRole, MiqGroup].include?(klass) && (user_or_group = miq_group || user) &&
+            user_or_group.disallowed_roles
+        scope.with_allowed_roles_for(user_or_group)
       else
         scope
       end
@@ -513,6 +532,10 @@ module Rbac
       else
         klass.send(*scope)
       end
+    end
+
+    def apply_select(klass, scope, extra_cols)
+      scope.select(scope.select_values.blank? ? klass.arel_table[Arel.star] : nil).select(extra_cols)
     end
 
     def get_belongsto_matches(blist, klass)

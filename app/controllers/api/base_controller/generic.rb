@@ -5,8 +5,25 @@ module Api
       # Primary Methods
       #
 
+      def index
+        klass = collection_class(@req.subject)
+        res = collection_search(@req.subcollection?, @req.subject, klass)
+        opts = {
+          :name             => @req.subject,
+          :is_subcollection => @req.subcollection?,
+          :expand_actions   => true,
+          :count            => klass.count,
+          :expand_resources => @req.expand?(:resources),
+          :subcount         => res.length
+        }
+
+        render_collection(@req.subject, res, opts)
+      end
+
       def show
-        render_collection_type @req.subject.to_sym, @req.subject_id
+        klass = collection_class(@req.subject)
+        opts  = {:name => @req.subject, :is_subcollection => @req.subcollection?, :expand_actions => true}
+        render_resource(@req.subject, resource_search(@req.subject_id, @req.subject, klass), opts)
       end
 
       def update
@@ -44,13 +61,13 @@ module Api
             data.delete(sc.to_s)
           end
         end
-        rsc = klass.create(data)
-        if rsc.id.nil?
-          raise BadRequestError, "Failed to add a new #{type} resource - #{rsc.errors.full_messages.join(', ')}"
+        resource = klass.new(data)
+        if resource.save
+          add_subcollection_data_to_resource(resource, type, subcollection_data)
+          resource
+        else
+          raise BadRequestError, "Failed to add a new #{type} resource - #{resource.errors.full_messages.join(', ')}"
         end
-        rsc.save
-        add_subcollection_data_to_resource(rsc, type, subcollection_data)
-        klass.find(rsc.id)
       end
 
       alias_method :create_resource, :add_resource

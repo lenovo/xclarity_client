@@ -37,13 +37,25 @@ Vmdb::Application.routes.draw do
           if collection.options.include?(:arbitrary_resource_path)
             match "(/*c_suffix)", :action => API_ACTIONS[verb], :via => verb
           else
-            match "(/:c_id)", :action => API_ACTIONS[verb], :via => verb
+            case verb
+            when :get
+              root :action => :index
+              get "/:c_id", :action => :show
+            else
+              match "(/:c_id)", :action => API_ACTIONS[verb], :via => verb
+            end
           end
         end
 
         Array(collection.subcollections).each do |subcollection_name|
           Api::ApiConfig.collections[subcollection_name].verbs.each do |verb|
-            match("/:c_id/#{subcollection_name}(/:s_id)", :action => API_ACTIONS[verb], :via => verb)
+            case verb
+            when :get
+              get "/:c_id/#{subcollection_name}", :action => :index
+              get "/:c_id/#{subcollection_name}/:s_id", :action => :show
+            else
+              match("/:c_id/#{subcollection_name}(/:s_id)", :action => API_ACTIONS[verb], :via => verb)
+            end
           end
         end
       end
@@ -56,8 +68,8 @@ Vmdb::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create", :via => :get
 
   if Rails.env.development? && defined?(Rails::Server)
-    mount WebsocketServer.new(:logger => Logger.new(STDOUT)) => '/ws'
+    logger = Logger.new(STDOUT)
+    logger.level = ::Settings.log.level_websocket
+    mount WebsocketServer.new(:logger => logger) => '/ws'
   end
-  # rubocop:enable MultilineOperationIndentation
-  # rubocop:enable AlignHash
 end

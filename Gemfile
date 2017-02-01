@@ -34,7 +34,7 @@ gem "activerecord-session_store",     "~>1.0.0"
 gem "acts_as_list",                   "~>0.7.2"
 gem "acts_as_tree",                   "~>2.1.0" # acts_as_tree needs to be required so that it loads before ancestry
 gem "ancestry",                       "~>2.2.1",       :require => false
-gem "ansible_tower_client",           "~>0.4.1",       :require => false
+gem "ansible_tower_client",           "~>0.5.0",       :require => false
 gem "aws-sdk",                        "~>2",           :require => false
 gem "bundler",                        ">=1.11.1",      :require => false
 gem "color",                          "~>1.8"
@@ -50,7 +50,7 @@ gem "gettext_i18n_rails",             "~>1.7.2"
 gem "gettext_i18n_rails_js",          "~>1.1.0"
 gem "google-api-client",              "~>0.8.6",       :require => false
 gem "hamlit",                         "~>2.7.0"
-gem "hashie",                         ">=3.4.6",       :require => false
+gem "hashie",                         "~>3.4.6",       :require => false
 gem "high_voltage",                   "~>2.4.0"
 gem "htauth",                         "2.0.0",         :require => false
 gem "inifile",                        "~>3.0",         :require => false
@@ -121,8 +121,8 @@ end
 #
 unless ENV["APPLIANCE"]
   group :development do
-    gem "haml_lint",        "~>0.18.0", :require => false
-    gem "rubocop",          "~>0.37.2", :require => false
+    gem "haml_lint",        "~>0.20.0", :require => false
+    gem "rubocop",          "~>0.47.0", :require => false
     gem "scss_lint",        "~>0.48.0", :require => false
   end
 
@@ -151,12 +151,15 @@ end
 # To develop a gem locally and override its source to a checked out repo
 #   you can use this helper method in Gemfile.dev.rb e.g.
 #
-# override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__))
+# override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__)
 #
 def override_gem(name, *args)
-  raise "Trying to override unknown gem #{name}" unless (dependency = dependencies.find { |d| d.name == name })
-  dependencies.delete(dependency)
-  gem name, *args
+  if dependencies.any?
+    raise "Trying to override unknown gem #{name}" unless (dependency = dependencies.find { |d| d.name == name })
+    dependencies.delete(dependency)
+
+    gem name, *args
+  end
 end
 
 # Load developer specific Gemfile

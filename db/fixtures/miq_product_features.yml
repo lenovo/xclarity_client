@@ -1952,6 +1952,21 @@
         :description: Display Individual Alert Status
         :feature_type: view
         :identifier: alert_status_show
+  - :name: Alerts Status Actions
+    :description: Everything under Status Actions
+    :protected: true
+    :feature_type: node
+    :hidden: true
+    :identifier: alert_action
+    :children:
+    - :name: List
+      :description: Display Lists of Alert Status Actions
+      :feature_type: view
+      :identifier: alert_status_action_show_list
+    - :name: Add
+      :description: Display Individual Alert Status
+      :feature_type: admin
+      :identifier: alert_status_action_new
 # Policy Simulation
 - :name: Simulation
   :description: Policy Simulation
@@ -5108,6 +5123,92 @@
           :description: Edit Job Templates Tags
           :feature_type: control
           :identifier: configuration_script_tag
+# Automation Manager
+- :name: Automation Manager
+  :description: Everything under Automation Manager
+  :feature_type: node
+  :identifier: automation_manager
+  :children:
+  - :name: Automation Management Providers
+    :description: Everything under the Automation Management Providers accordion
+    :feature_type: node
+    :identifier: automation_manager_providers
+    :children:
+    - :name: View
+      :description: View Providers, Inventory Groups, Configured Systems
+      :feature_type: view
+      :identifier: automation_manager_providers_view
+    - :name: Operate
+      :description: Perform Operations on Providers and Configured Systems
+      :feature_type: control
+      :identifier: automation_manager_providers_control
+      :children:
+        - :name: Edit Tags
+          :description: Edit Configured Systems Tags
+          :feature_type: control
+          :identifier: automation_manager_provider_configured_system_tag
+        - :name: Refresh Providers
+          :description: Refresh relationships for all items related of Provider
+          :feature_type: control
+          :identifier: automation_manager_refresh_provider
+    - :name: Modify
+      :description: Modify Providers
+      :feature_type: admin
+      :identifier: automation_manager_admin
+      :children:
+        - :name: Remove Providers
+          :description: Remove Provier
+          :feature_type: admin
+          :identifier: automation_manager_delete_provider
+        - :name: Edit Provider
+          :description: Edit a Provider
+          :feature_type: admin
+          :identifier: automation_manager_edit_provider
+        - :name: Add Provider
+          :description: Add a Provider
+          :feature_type: admin
+          :identifier: automation_manager_add_provider
+  - :name: Configured Systems
+    :description: Everything under Configured Systems accordion
+    :feature_type: node
+    :identifier: automation_manager_configured_system
+    :children:
+      - :name: View
+        :description: View Configured Systems
+        :feature_type: view
+        :identifier: automation_manager_configured_system_view
+      - :name: Operate
+        :description: Perform Operations on Configured Systems
+        :feature_type: control
+        :identifier: automation_manager_configured_system_control
+        :children:
+          - :name: Edit Tags
+            :description: Edit Configured Systems Tags
+            :feature_type: control
+            :identifier: automation_manager_configured_system_tag
+  - :name: Automation Scripts
+    :description: Everything under Automation Scripts accordion
+    :feature_type: node
+    :identifier: automation_manager_configuration_scripts_accord
+    :children:
+    - :name: View
+      :description: View Automation Scripts
+      :feature_type: view
+      :identifier: automation_manager_configuration_script_view
+    - :name: Operate
+      :description: Perform Operations on Providers and Configured Systems
+      :feature_type: control
+      :identifier: automation_manager_configuration_script_control
+      :children:
+        - :name: Create Service Dialog
+          :description: Create Service Dialog
+          :feature_type: admin
+          :identifier: automation_manager_configuration_script_service_dialog
+        - :name: Edit Tags
+          :description: Edit Job Templates Tags
+          :feature_type: control
+          :identifier: automation_manager_configuration_script_tag
+
 # Configuration Jobs
 - :name: Configuration Jobs
   :description: Everything under Configuration Jobs
@@ -5483,6 +5584,10 @@
         :description: Display Timelines for VMs
         :feature_type: view
         :identifier: vm_timeline
+      - :name: VM's Chargeback
+        :description: Show Chargeback Preview for a VM
+        :feature_type: view
+        :identifier: vm_chargeback
     - :name: Operate
       :description: Perform Operations on VMs
       :feature_type: control
@@ -6010,6 +6115,92 @@
       :description: Display Timelines for Object Storage Managers
       :feature_type: view
       :identifier: ems_object_storage_timeline
+
+# EmsPhysicalInfra
+- :name: Physical Infrastructure Providers
+  :description: Everything under Physical Infrastructure Providers
+  :feature_type: node
+  :identifier: ems_physical_infra
+  :children:
+  - :name: View
+    :description: View Physical Infrastructure Providers
+    :feature_type: view
+    :identifier: ems_physical_infra_view
+    :children:
+    - :name: List
+      :description: Display List of Physical Infrastructure Providers
+      :feature_type: view
+      :identifier: ems_physical_infra_show_list
+    - :name: Show
+      :description: Display Individual Physical Infrastructure Providers
+      :feature_type: view
+      :identifier: ems_physical_infra_show
+    - :name: Timeline
+      :description: Display Timelines for Physical Infrastructure Providers
+      :feature_type: view
+      :identifier: ems_physical_infra_timeline
+  - :name: Operate
+    :description: Perform Operations on Physical Infrastructure Providers
+    :feature_type: control
+    :identifier: ems_physical_infra_control
+    :children:
+    - :name: Edit Tags
+      :description: Edit Tags of Physical Infrastructure Providers
+      :feature_type: control
+      :identifier: ems_physical_infra_tag
+    - :name: Manage Policies
+      :description: Manage Policies of Physical Infrastructure Providers
+      :feature_type: control
+      :identifier: ems_physical_infra_protect
+    - :name: Check Compliance
+      :description: Check Compliance of Last Known Configuration
+      :feature_type: control
+      :identifier: ems_physical_infra_check_compliance
+    - :name: Refresh
+      :description: Refresh Physical Infrastructure Providers
+      :feature_type: control
+      :identifier: ems_physical_infra_refresh
+    - :name: Re-check Authentication Status
+      :description: Re-check Authentication Status of Physical Infrastructure Providers
+      :feature_type: control
+      :identifier: ems_physical_infra_recheck_auth_status
+  - :name: Modify
+    :description: Modify Physical Infrastructure Providers
+    :feature_type: admin
+    :identifier: ems_physical_infra_admin
+    :children:
+    - :name: Remove
+      :description: Remove Physical Infrastructure Providers
+      :feature_type: admin
+      :identifier: ems_physical_infra_delete
+    - :name: Edit
+      :description: Edit a Physical Infrastructure Provider
+      :feature_type: admin
+      :identifier: ems_physical_infra_edit
+    - :name: Add
+      :description: Add a Physical Infrastructure Provider
+      :feature_type: admin
+      :identifier: ems_physical_infra_new
+
+# Physical Servers
+- :name: Physical Servers
+  :description: Everything under Physical Infra Servers
+  :feature_type: node
+  :identifier: physical_server
+  :children:
+  - :name: View
+    :description: View Physical Server
+    :feature_type: view
+    :identifier: physical_server_view
+    :children:
+    - :name: List
+      :description: Display Lists of Physical Servers
+      :feature_type: view
+      :identifier: shosical_server_show_list
+    - :name: Show
+      :description: Display Individual Physical Server
+      :feature_type: view
+      :identifier: physical_server_show
 
 # Monitor
 - :name: Monitor
