@@ -1,0 +1,4 @@
+module MiqAeMethodService
+  class MiqAeServiceManageIQ_Providers_Lenovo_PhysicalInfraManager < MiqAeServiceManageIQ_Providers_InfraManager
+  end
+end
