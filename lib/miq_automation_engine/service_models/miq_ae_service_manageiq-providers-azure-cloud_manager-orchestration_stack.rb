@@ -1,0 +1,4 @@
+module MiqAeMethodService
+  class MiqAeServiceManageIQ_Providers_Azure_CloudManager_OrchestrationStack < MiqAeServiceManageIQ_Providers_CloudManager_OrchestrationStack
+  end
+end

@@ -1,0 +1,2 @@
+class ContainerEnvVar < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AuthPrivateKey < Authentication
+end
