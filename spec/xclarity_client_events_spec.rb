@@ -3,17 +3,24 @@ require 'spec_helper'
 describe XClarityClient do
 
   before :all do
-    WebMock.allow_net_connect! # -- Uncomment this line if you're using a external connection or mock.
+    WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['USERNAME_VALUE'],
-    :password => ENV['PASSWORD_VALUE'],
-    :host     => ENV['HOST_VALUE'],
-    :auth_type => ENV['AUTH_TYPE_VALUE'],
-    :verify_ssl => ENV['VERIFY_SSL']
+      username:   ENV['LXCA_USERNAME'],
+      password:   ENV['LXCA_PASSWORD'],
+      host:       ENV['LXCA_HOST'],
+      auth_type:  ENV['LXCA_AUTH_TYPE'],
+      verify_ssl: ENV['LXCA_VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
+
+    @includeAttributes = %w(accessState activationKeys)
+    @excludeAttributes = %w(accessState activationKeys)
+  end
+
+  before :each do
+    @uuidArray = @client.discover_nodes.map { |node| node.uuid  }
   end
 
   before :each do
