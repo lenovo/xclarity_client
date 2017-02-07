@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe XClarityClient do
-
   before :all do
     WebMock.allow_net_connect! # -- This line should be uncommented if you're using external mock test
 
     conf = XClarityClient::Configuration.new(
-    :username => ENV['LXCA_USERNAME'],
-    :password => ENV['LXCA_PASSWORD'],
-    :host     => ENV['LXCA_HOST'],
-    :auth_type => ENV['LXCA_AUTH_TYPE'],
-    :verify_ssl => ENV['LXCA_VERIFY_SSL']
+      username:   ENV['LXCA_USERNAME'],
+      password:   ENV['LXCA_PASSWORD'],
+      host:       ENV['LXCA_HOST'],
+      auth_type:  ENV['LXCA_AUTH_TYPE'],
+      verify_ssl: ENV['LXCA_VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
@@ -104,6 +103,48 @@ describe XClarityClient do
           @excludeAttributes.map do |attribute|
             expect(node.send(attribute)).to be_nil
           end
+        end
+      end
+    end
+  end
+
+  describe 'Get /node' do
+    it 'should power down system' do
+      response = @client.power_off_node(@uuidArray[0])
+      expect(response.status).to eq(200)
+
+    end
+  end
+
+  describe 'PUT /nodes/UUID' do
+    context 'with a leds object' do
+      context 'with state == "On" and name == "Identify"' do
+        it 'turns on the location led' do
+          @client.turn_on_loc_led(@uuidArray[0])
+          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
+                                                    'state' => 'On' }] } }
+          expect(a_request(:put, uri).with(request_body)).to have_been_made
+        end
+      end
+
+      context 'with state == "Off" and name == "Identify"' do
+        it 'turns off the location led' do
+          @client.turn_off_loc_led(@uuidArray[0])
+          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
+                                                    'state' => 'Off' }] } }
+          expect(a_request(:put, uri).with(request_body)).to have_been_made
+        end
+      end
+
+      context 'with state == "Blinking" and name == "Identify"' do
+        it 'turns on the blinking location led' do
+          @client.blink_loc_led(@uuidArray[0])
+          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
+                                                    'state' => 'Blinking' }] } }
+          expect(a_request(:put, uri).with(request_body)).to have_been_made
         end
       end
     end

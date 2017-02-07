@@ -37,6 +37,14 @@ module XClarityClient
       @conn.get(uri + query)
     end
 
+    def do_put (uri="", request = {})
+      @conn.put do |req|
+        req.url uri
+        req.headers['Content-Type'] = 'application/json'
+        req.body = request
+      end
+    end
+
     def authentication(conf)
       response = @conn.post do |request|
         request.url '/session'

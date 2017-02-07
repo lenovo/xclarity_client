@@ -1,4 +1,4 @@
-require "xclarity_client/version"
+require 'xclarity_client/version'
 
 module XClarityClient
 end
@@ -29,3 +29,5 @@ require 'xclarity_client/canister'
 require 'xclarity_client/canister_management'
 require 'xclarity_client/cabinet'
 require 'xclarity_client/cabinet_management'
+require 'xclarity_client/event'
+require 'xclarity_client/event_management'
