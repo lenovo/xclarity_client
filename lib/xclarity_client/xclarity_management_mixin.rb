@@ -1,13 +1,12 @@
 module XClarityClient
   module ManagementMixin
-
-
     def get_all_resources (resource, opts = {})
       response = connection(resource::BASE_URI, opts)
 
       return [] unless response.success?
-      
+
       body = JSON.parse(response.body)
+      body = {resource::LIST_NAME => body} if body.is_a? Array
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|
         resource.new resource_params
@@ -31,6 +30,7 @@ module XClarityClient
       return [] unless response.success?
 
       body = JSON.parse(response.body)
+      body = {resource::LIST_NAME => body} if body.is_a? Array
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|
         resource.new resource_params
@@ -58,8 +58,37 @@ module XClarityClient
       else
         connection(resource::BASE_URI + "?excludeAttributes=" + attributes.join(","))
       end
-
     end
 
+    def get_object_with_opts(opts, resource)
+      raise "The opts cannot be empty" if opts.empty?
+      filter = ""
+
+      response = if not opts.empty?
+        if not opts.has_key? "type"
+          if opts.has_key? "filterWith"
+            filter += "?filterWith="
+            filter += "#{opts["filterWith"]}"
+
+          elsif opts.has_key? "sort"
+            filter += ",sort=" if filter != ""
+            filter += "?sort=" if filter == ""
+            filter += "#{opts["sort"]}"
+          end
+        else
+          filter += "?type=#{opts["type"]}"
+        end
+        connection(resource::BASE_URI + filter)
+      end
+
+      return [] unless response.success?
+
+      body = JSON.parse(response.body)
+      body = {resource::LIST_NAME => body} if body.is_a? Array
+      body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
+      body[resource::LIST_NAME].map do |resource_params|
+        resource.new resource_params
+      end
+    end
   end
 end
