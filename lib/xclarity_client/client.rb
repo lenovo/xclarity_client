@@ -156,6 +156,18 @@ module XClarityClient
       EventManagement.new(@connection).get_object_with_opts(opts, Event)
     end
 
+    def power_on_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid, "powerOn")
+    end
+
+    def power_off_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid, "powerOff")
+    end
+
+    def power_restart_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid, "powerCycleSoftGrace")
+    end
+
     def blink_loc_led(uuid = '')
       NodeManagement.new(@connection).set_loc_led_state(uuid, 'Blinking')
     end
