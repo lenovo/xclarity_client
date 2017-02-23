@@ -8,20 +8,6 @@ module XClarityClient
       NodeManagement.new(@connection).population opts
     end
 
-    def power_on_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOn')
-    end
-
-    def power_off_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOff')
-    end
-
-    def power_restart_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid,
-                                                           'powerCycleSoftGrace'
-                                                          )
-    end
-
     def discover_scalableComplexes(opts = {})
       ScalableComplexManagement.new(@connection).population opts
     end
@@ -154,6 +140,20 @@ module XClarityClient
 
     def fetch_events(opts = {})
       EventManagement.new(@connection).get_object_with_opts(opts, Event)
+    end
+
+    def power_on_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOn')
+    end
+
+    def power_off_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOff')
+    end
+
+    def power_restart_node(uuid = '')
+      NodeManagement.new(@connection).set_node_power_state(uuid,
+                                                           'powerCycleSoftGrace'
+                                                          )
     end
 
     def blink_loc_led(uuid = '')
