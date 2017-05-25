@@ -8,7 +8,7 @@ module XClarityClient
       @log = $lenovo_log ||= $log ||= global_log
 
       if not @log
-        file = File.open('../../logs/lxca_client.log', 'a+')
+        file = File.open('logs/lxca_client.log', 'a+')
         file.sync = true
         @log = Logger.new file
       end
