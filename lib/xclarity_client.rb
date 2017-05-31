@@ -2,7 +2,7 @@ require 'xclarity_client/version'
 require 'utils/logger'
 
 module XClarityClient
-  LOG = (XClarityClient::XClarityLogger.new).freeze
+  $log = (XClarityClient::XClarityLogger.new).freeze
 end
 
 require 'xclarity_client/configuration'
