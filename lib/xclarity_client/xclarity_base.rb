@@ -14,7 +14,7 @@ module XClarityClient
     end
 
     def connection_builder(conf, uri)
-      $log.info 'XClarity Client', "Creating connection to #{conf.host + uri}" 
+      $log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{conf.host + uri}" 
       #Building configuration
       @conn = Faraday.new(url: conf.host + uri) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
@@ -26,7 +26,7 @@ module XClarityClient
       response = authentication(conf) unless conf.auth_type != 'token'
       #TODO: What's to do with the response of authentication request?
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
-      $log.info 'XClarity Client', "Connection created Successfuly"
+      $log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
       @conn
     end
 
