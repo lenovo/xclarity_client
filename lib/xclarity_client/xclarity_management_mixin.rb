@@ -1,8 +1,13 @@
 module XClarityClient
   module ManagementMixin
     def get_all_resources (resource, opts = {})
+
+      $log.info "XclarityClient::ManagementMixin get_all_resources", "Sending request to #{resource} resource"
+
       response = connection(resource::BASE_URI, opts)
 
+      $log.info "XclarityClient::ManagementMixin get_all_resources", "Response received from #{resource::BASE_URI}"
+      
       return [] unless response.success?
 
       body = JSON.parse(response.body)
@@ -14,6 +19,8 @@ module XClarityClient
     end
 
     def get_object(uuids, includeAttributes, excludeAttributes, resource)
+
+      $log.info "XclarityClient::ManagementMixin get_object", "Sending request to #{resource} resource"
 
       uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
 
@@ -39,6 +46,8 @@ module XClarityClient
 
     def get_object_with_include_attributes(uuids, attributes, resource)
 
+      $log.info "XclarityClient::ManagementMixin get_object_with_include", "Sending request to #{resource} resource including the following attributes: #{attributes.join(",")}"
+
       uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
 
       response = if not uuids.nil?
@@ -50,6 +59,8 @@ module XClarityClient
     end
 
     def get_object_with_exclude_attributes(uuids, attributes, resource)
+
+      $log.info "XclarityClient::ManagementMixin get_object_with_include", "Sending request to #{resource} resource excluding the following attributes: #{attributes.join(",")}"
 
       uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
 
@@ -78,6 +89,7 @@ module XClarityClient
         else
           filter += "?type=#{opts["type"]}"
         end
+      $log.info "XclarityClient::ManagementMixin get_object_with_include", "Sending request to #{resource} resource using the following filter: #{filter}"
         connection(resource::BASE_URI + filter)
       end
 

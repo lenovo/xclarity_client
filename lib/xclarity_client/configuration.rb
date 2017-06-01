@@ -10,6 +10,7 @@ module XClarityClient
       args.each { |key, value| send("#{key}=", value) }
 
       if [username, password, host, verify_ssl].any? { |item| item.nil? }
+        $log.error "XClarityClient::Configuration initialize","username, password, host, and verify_ssl must all be specified"
         raise ArgumentError, "username, password, host, and verify_ssl must all be specified"
       end
 
@@ -18,6 +19,8 @@ module XClarityClient
         @auth_type = 'basic_auth'
       end
 
+      $log.info "XClarityClient::Configuration initialize","Configuration built successfuly"
+      
       @csrf_token ||= SecureRandom.base64(120) if @auth_type == 'token'
     end
 
