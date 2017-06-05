@@ -23,7 +23,7 @@ module XClarityClient
 
     def ip_enablement_state
       uri = BASE_URI+NETWORK_URI+IPDISABLE_URI
-      $log.info "XclarityClient::VirtualApplianceManagement ip_enablement_state", "Action has been sent to #{uri}"
+      $lxca_log.info "XclarityClient::VirtualApplianceManagement ip_enablement_state", "Action has been sent to #{uri}"
       response = connection(uri)
       response
     end
@@ -34,7 +34,7 @@ module XClarityClient
 
     def host_settings
       uri = BASE_URI+NETWORK_URI+IPDISABLE_URI
-      $log.info "XclarityClient::VirtualApplianceManagement host_settings", "Action has been sent to #{uri}"
+      $lxca_log.info "XclarityClient::VirtualApplianceManagement host_settings", "Action has been sent to #{uri}"
       response = connection(uri)
       response
     end
@@ -45,7 +45,7 @@ module XClarityClient
 
     def network_interface_settings(interface)
       uri = BASE_URI+NETWORK_URI+INTERFACES_URI+"/#{interface}"
-      $log.info "XclarityClient::VirtualApplianceManagement network_interface_settings", "Action has been sent to #{uri}"
+      $lxca_log.info "XclarityClient::VirtualApplianceManagement network_interface_settings", "Action has been sent to #{uri}"
       response = connection(uri)
       response
     end
@@ -56,7 +56,7 @@ module XClarityClient
 
     def route_settings
       uri = BASE_URI+NETWORK_URI+ROUTES_URI
-      $log.info "XclarityClient::VirtualApplianceManagement route_settings", "Action has been sent to #{uri}"
+      $lxca_log.info "XclarityClient::VirtualApplianceManagement route_settings", "Action has been sent to #{uri}"
       response = connection(uri)
       response
     end
@@ -67,7 +67,7 @@ module XClarityClient
 
     def subscriptions
       uri = BASE_URI+SUBSCRIPTIONS_URI
-      $log.info "XclarityClient::VirtualApplianceManagement subscriptions", "Action has been sent to #{uri}"
+      $lxca_log.info "XclarityClient::VirtualApplianceManagement subscriptions", "Action has been sent to #{uri}"
       response = connection(uri)
       response
     end

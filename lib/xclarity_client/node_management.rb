@@ -22,7 +22,7 @@ module XClarityClient
                       else
                         JSON.generate(powerState: 'powerOn')
                       end
-      $log.info "XclarityClient::ManagementMixin set_node_power_state", "Power state action has been sent"
+      $lxca_log.info "XclarityClient::ManagementMixin set_node_power_state", "Power state action has been sent"
 
       do_put(Node::BASE_URI + '/' + uuid, power_request)
     end
@@ -30,7 +30,7 @@ module XClarityClient
     def set_loc_led_state(uuid, state, name = 'Identify')
       request = JSON.generate(leds:  [{ name: name, state: state }])
 
-      $log.info "XclarityClient::ManagementMixin set_loc_led_state", "Loc led state action has been sent"
+      $lxca_log.info "XclarityClient::ManagementMixin set_loc_led_state", "Loc led state action has been sent"
 
       do_put("#{Node::BASE_URI}/#{uuid}", request)
     end
