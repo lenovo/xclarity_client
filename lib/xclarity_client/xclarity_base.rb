@@ -14,7 +14,7 @@ module XClarityClient
     end
 
     def connection_builder(conf, uri)
-      $log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{conf.host + uri}" 
+      $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{conf.host + uri}" 
       #Building configuration
       @conn = Faraday.new(url: conf.host + uri) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
@@ -26,7 +26,7 @@ module XClarityClient
       response = authentication(conf) unless conf.auth_type != 'token'
       #TODO: What's to do with the response of authentication request?
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
-      $log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
+      $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
       @conn
     end
 
@@ -34,14 +34,25 @@ module XClarityClient
 
     def connection(uri = "", opts = {})
       query = opts.size > 0 ? "?" + opts.map {|k, v| "#{k}=#{v}"}.join(",") : ""
-      @conn.get(uri + query)
+      begin
+        @conn.get(uri + query)
+      rescue Faraday::Error::ConnectionFailed => e
+        $lxca_log.error "XClarityClient::XclarityBase connection", "Error trying to send a GET to #{uri + query}"
+        Faraday::Response.new
+      end
     end
 
     def do_put (uri="", request = {})
-      @conn.put do |req|
-        req.url uri
-        req.headers['Content-Type'] = 'application/json'
-        req.body = request
+      begin
+        @conn.put do |req|
+          req.url uri
+          req.headers['Content-Type'] = 'application/json'
+          req.body = request
+        end
+      rescue Faraday::Error::ConnectionFailed => e
+        $lxca_log.error "XClarityClient::XclarityBase do_put", "Error trying to send a PUT to #{uri}"
+        $lxca_log.error "XClarityClient::XclarityBase do_put", "Request sent: #{request}"
+        Faraday::Response.new
       end
     end
 
