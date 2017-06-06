@@ -5,6 +5,9 @@ module XClarityClient
   class XClarityLogger
     
     def initialize(global_log=nil)
+      # This block below looks for a log in the project which uses 
+      # this client or a defined log coming from initialize param.
+      # If none of these logs exists, is created a log by default.
       @log = $lenovo_log ||= $log ||= global_log
 
       if not @log
