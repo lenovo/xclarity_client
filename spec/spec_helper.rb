@@ -4,7 +4,7 @@ require 'apib/mock_server'
 require 'webmock/rspec'
 
 
-base_url = "http://example.com"
+base_url = "https://example.com"
 # These environment variables must be defined
 ENV['LXCA_USERNAME']   ||= ''
 ENV['LXCA_PASSWORD']   ||= ''

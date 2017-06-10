@@ -16,7 +16,11 @@ module XClarityClient
     def connection_builder(conf, uri)
       $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{conf.host + uri}" 
       #Building configuration
-      @conn = Faraday.new(url: conf.host + uri) do |faraday|
+      host = conf.host;
+      if !host.start_with?('https://') && !host.start_with?('http://')
+         host = 'https://' + host
+      end
+      @conn = Faraday.new(url: host + uri) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP

@@ -7,12 +7,13 @@ describe XClarityClient do
     conf = XClarityClient::Configuration.new(
       username:   ENV['LXCA_USERNAME'],
       password:   ENV['LXCA_PASSWORD'],
-      host:       ENV['LXCA_HOST'],
+      host:       "example.com",
       auth_type:  ENV['LXCA_AUTH_TYPE'],
       verify_ssl: ENV['LXCA_VERIFY_SSL']
     )
 
     @client = XClarityClient::Client.new(conf)
+    @host = ENV['LXCA_HOST']
 
     @includeAttributes = %w(accessState activationKeys)
     @excludeAttributes = %w(accessState activationKeys)
@@ -121,7 +122,7 @@ describe XClarityClient do
       context 'with state == "On" and name == "Identify"' do
         it 'turns on the location led' do
           @client.turn_on_loc_led(@uuidArray[0])
-          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          uri = "#{@host}/nodes/#{@uuidArray[0]}"
           request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
                                                     'state' => 'On' }] } }
           expect(a_request(:put, uri).with(request_body)).to have_been_made
@@ -131,7 +132,7 @@ describe XClarityClient do
       context 'with state == "Off" and name == "Identify"' do
         it 'turns off the location led' do
           @client.turn_off_loc_led(@uuidArray[0])
-          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          uri = "#{@host}/nodes/#{@uuidArray[0]}"
           request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
                                                     'state' => 'Off' }] } }
           expect(a_request(:put, uri).with(request_body)).to have_been_made
@@ -141,7 +142,7 @@ describe XClarityClient do
       context 'with state == "Blinking" and name == "Identify"' do
         it 'turns on the blinking location led' do
           @client.blink_loc_led(@uuidArray[0])
-          uri = "http://example.com/nodes/#{@uuidArray[0]}"
+          uri = "#{@host}/nodes/#{@uuidArray[0]}"
           request_body = { 'body' => { 'leds' => [{ 'name'  => 'Identify',
                                                     'state' => 'Blinking' }] } }
           expect(a_request(:put, uri).with(request_body)).to have_been_made
