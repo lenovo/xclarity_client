@@ -9,7 +9,7 @@ describe XClarityClient do
     conf = XClarityClient::Configuration.new(
       username:   ENV['LXCA_USERNAME'],
       password:   ENV['LXCA_PASSWORD'],
-      host:       'example.com',
+      host:       ENV['LXCA_HOST'],
       auth_type:  ENV['LXCA_AUTH_TYPE'],
       verify_ssl: ENV['LXCA_VERIFY_SSL']
     )
