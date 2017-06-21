@@ -1,12 +1,12 @@
 require 'faraday'
 require 'json'
 require 'uri'
+require 'uri/https'
 
 module XClarityClient
   class XClarityBase
 
     token_auth = '/session'.freeze
-
     attr_reader :conn
     
     def initialize(conf, uri)
@@ -14,9 +14,18 @@ module XClarityClient
     end
 
     def connection_builder(conf, uri)
-      $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{conf.host + uri}" 
+      $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Building the url"
       #Building configuration
-      @conn = Faraday.new(url: conf.host + uri) do |faraday|
+      hostname = URI.parse(conf.host)
+      url = URI::HTTPS.build({ :host     => hostname.scheme ? hostname.host : hostname.path,
+                               :port     => conf.port.to_i,
+                               :path     => uri,
+                               :query    => hostname.query,
+                               :fragment => hostname.fragment }).to_s
+
+      $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{url}"
+
+      @conn = Faraday.new(url: url) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
