@@ -5,17 +5,20 @@ module XClarityClient
     BASE_URI = '/chassis'.freeze
     LIST_NAME = 'chassisList'.freeze
 
-    attr_accessor :properties, :_id, :accessState, :activationKeys, :activeAlerts, :backedBy, :bladeSlots,
-    :cmmDisplayName, :cmmHealthState, :cmms, :cmmSlots, :complex, :contact, :dataHandle,
-    :description, :domainName, :encapsulation, :energyPolicies, :errorFields,
-    :excludedHealthState, :fanMuxes, :fanMuxSlots, :fans, :fanSlots, :height, :hostname,
-    :isConnectionTrusted, :ledCardSlots, :leds, :location, :machineType, :managerName,
-    :managerUuid, :manufacturer, :manufacturerId, :mgmtProcIPaddress, :model, :name,
-    :nist, :nodes, :partNumber, :passThroughModules, :posID, :powerAllocation,
-    :powerSupplySlots, :powerSupplies, :productId, :overallHealthState, :SecurityPolicy,
-    :serialNumber, :status, :switches, :switchSlots, :tlsVersion, :type, :userDescription,
-    :uri, :uuid, :vpdID, :mmSlots, :displayName, :productName, :parent, :fruNumber, :password, :recoveryPassword,
-    :username, :managementPorts, :ipAddresses
+    attr_accessor :accessState, :activationKeys, :activeAlerts, :backedBy,
+                  :bladeSlots, :cmmDisplayName, :cmmHealthState, :cmms, :complex,
+                  :contact, :dataHandle, :description, :displayName, :domainName,
+                  :energyPolicies, :errorFields, :excludedHealthState, :fanMuxes,
+                  :fanMuxSlots, :fans, :fanSlots, :fruNumber, :height, :hostname,
+                  :ipAddresses, :isConnectionTrusted, :ledCardSlots, :leds,
+                  :location, :machineType, :managementPorts, :managerName, 
+                  :managerUuid, :manufacturer, :manufacturerId, :mgmtProcIPaddress,
+                  :mmSlots, :model, :name, :nist, :nodes, :overallHealthState, 
+                  :partNumber, :passThroughModules, :password, :posID,
+                  :powerAllocation, :powerSupplies, :powerSupplySlots, :productId,
+                  :productName, :recoveryPassword, :SecurityPolicy, :serialNumber,
+                  :status, :switches, :switchSlots, :tlsVersion, :type, :uri,
+                  :userDescription, :username, :uuid, :vpdID
 
     def initialize(attributes)
       build_resource(attributes)
