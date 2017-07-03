@@ -8,6 +8,7 @@ base_url = 'https://example.com'
 ENV['LXCA_USERNAME']   ||= ''
 ENV['LXCA_PASSWORD']   ||= ''
 ENV['LXCA_HOST']       ||= base_url
+ENV['LXCA_PORT']       ||= '443'
 ENV['LXCA_AUTH_TYPE']  ||= ''
 ENV['LXCA_VERIFY_SSL'] ||= 'NONE'
 
