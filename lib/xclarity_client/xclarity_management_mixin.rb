@@ -60,6 +60,42 @@ module XClarityClient
       end
     end
 
+    def get_object_with_id(ids, includeAttributes, excludeAttributes, resource)
+      response = if not includeAttributes.nil?
+        get_object_with_id_include_attributes(ids, includeAttributes, resource)
+      elsif not excludeAttributes.nil?
+        get_object_with_id_exclude_attributes(ids, excludeAttributes, resource)
+      elsif not ids.nil?
+        connection(resource::BASE_URI + "/" + ids.join(","))
+      else
+        connection(resource::BASE_URI)
+      end
+
+      return [] unless response.success?
+      body = JSON.parse(response.body)
+      body = {resource::LIST_NAME => body} if body.is_a? Array
+      body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
+      body[resource::LIST_NAME].map do |resource_params|
+        resource.new resource_params
+      end
+    end
+
+    def get_object_with_id_include_attributes(uuids, attributes, resource)
+      response = if not uuids.nil?
+        connection(resource::BASE_URI + "/" + uuids.join(",") + "?includeAttributes=" + attributes.join(","))
+      else
+        connection(resource::BASE_URI + "?includeAttributes=" + attributes.join(","))
+      end
+    end
+
+    def get_object_with_id_exclude_attributes(uuids, attributes, resource)
+      response = if not uuids.nil?
+        connection(resource::BASE_URI + "/#{uuids.join(",")}"+"?excludeAttributes=#{attributes.join(",")}")
+      else
+        connection(resource::BASE_URI + "?excludeAttributes=" + attributes.join(","))
+      end
+    end
+
     def get_object_with_opts(opts, resource)
       raise "The opts cannot be empty" if opts.empty?
       filter = ""

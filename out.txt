@@ -1,0 +1,1054 @@
+/usr/local/rvm/rubies/ruby-2.3.0/bin/ruby -I/usr/local/rvm/gems/ruby-2.3.0/gems/rspec-core-3.6.0/lib:/usr/local/rvm/gems/ruby-2.3.0/gems/rspec-support-3.6.0/lib /usr/local/rvm/gems/ruby-2.3.0/gems/rspec-core-3.6.0/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
+{"sort"=>"cn"}
+{"filterWith"=>"{\"filterType\":\"FIELDNOTREGEXAND\",\"fields\":[{\"operation\":\"GT\",\"field\":\"cn\",\"value\":\"242328\"}]}"}
+
+XClarityClient
+  has a version number
+  GET /aicc
+I, [2017-07-04T06:38:01.156700 #31206]  INFO -- : get http://example.com/aicc
+D, [2017-07-04T06:38:01.156763 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.167293 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.167335 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with information about the Lenovo XClarity Administrator
+  GET /aicc/network/ipdisable
+I, [2017-07-04T06:38:01.168453 #31206]  INFO -- : get http://example.com/aicc/network/ipdisable
+D, [2017-07-04T06:38:01.168496 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.171665 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.171703 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with the IPv6 and IPv6 addresses enablement state.
+  GET /aicc/network/host
+I, [2017-07-04T06:38:01.172256 #31206]  INFO -- : get http://example.com/aicc/network/ipdisable
+D, [2017-07-04T06:38:01.172296 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.174262 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.174301 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with the XClarity Administrator host settings.
+  GET /aicc/network/interfaces/{interface}
+I, [2017-07-04T06:38:01.174820 #31206]  INFO -- : get http://example.com/aicc/network/interfaces/eth0
+D, [2017-07-04T06:38:01.174858 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.177930 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.178025 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with information about a specific network interface.
+  GET /aicc/network/routes
+I, [2017-07-04T06:38:01.178386 #31206]  INFO -- : get http://example.com/aicc/network/routes
+D, [2017-07-04T06:38:01.178425 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.181208 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.181247 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with all XClarity Administrator routes.
+  GET /aicc/network/host
+I, [2017-07-04T06:38:01.181641 #31206]  INFO -- : get http://example.com/aicc/subscriptions
+D, [2017-07-04T06:38:01.181679 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.184470 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.184508 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with all XClarity Administrator subscriptions.
+
+XClarityClient
+I, [2017-07-04T06:38:01.185211 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.185252 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.188872 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.188909 #31206] DEBUG -- response: 
+  has a version number
+  GET /cabinet
+I, [2017-07-04T06:38:01.190154 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.190196 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.193301 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.193339 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.194338 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.194379 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.197767 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.197817 #31206] DEBUG -- response: 
+    should respond with an array
+I, [2017-07-04T06:38:01.199000 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.199043 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.202507 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.202546 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.203569 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.203610 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.207103 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.207139 #31206] DEBUG -- response: 
+    the response must have one or more cabinet
+    with includeAttributes
+I, [2017-07-04T06:38:01.209914 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.209979 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.213398 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.213446 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.214656 #31206]  INFO -- : get http://example.com/cabinet?includeAttributes=storageList%2Cheight
+D, [2017-07-04T06:38:01.214698 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.220264 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.220316 #31206] DEBUG -- response: content-type: "application/json"
+      required attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.220983 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.221026 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.225801 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.225838 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.226603 #31206]  INFO -- : get http://example.com/cabinet?excludeAttributes=storageList%2Cheight
+D, [2017-07-04T06:38:01.226644 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.231036 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.231073 #31206] DEBUG -- response: 
+      excluded attributes should be nil
+  GET /cabinet/UUID
+    with include attributes
+I, [2017-07-04T06:38:01.232179 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.232221 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.234989 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.235026 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.236058 #31206]  INFO -- : get http://example.com/cabinet/A18C32CF-851B-44C4-B177-9A2A1C481142?includeAttributes=storageList%2Cheight
+D, [2017-07-04T06:38:01.236100 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.241310 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.241386 #31206] DEBUG -- response: content-type: "application/json"
+      required attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.241954 #31206]  INFO -- : get http://example.com/cabinet
+D, [2017-07-04T06:38:01.242004 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.244640 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.244675 #31206] DEBUG -- response: 
+I, [2017-07-04T06:38:01.245479 #31206]  INFO -- : get http://example.com/cabinet/A18C32CF-851B-44C4-B177-9A2A1C481142?excludeAttributes=storageList%2Cheight
+D, [2017-07-04T06:38:01.245518 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.250313 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.250364 #31206] DEBUG -- response: content-type: "application/json"
+      excluded attributes should to be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.251477 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.251517 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.257692 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.257730 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /canisters
+I, [2017-07-04T06:38:01.258678 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.258717 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.264331 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.264369 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.264989 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.265027 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.270769 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.270807 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with includeAttributes
+I, [2017-07-04T06:38:01.271681 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.271721 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.277256 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.277295 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.277980 #31206]  INFO -- : get http://example.com/canisters?includeAttributes=memorySlots
+D, [2017-07-04T06:38:01.278019 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.285124 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.285161 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.285736 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.285774 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.291408 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.291446 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.292106 #31206]  INFO -- : get http://example.com/canisters?excludeAttributes=memorySlots
+D, [2017-07-04T06:38:01.292144 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.299293 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.299330 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /canisters/UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.300311 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.300351 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.306017 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.306055 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.306689 #31206]  INFO -- : get http://example.com/canisters/457784225BA511E18290B4F27BD253A5,E0D47B8A5BC511E1B5D1D13BF6351882?includeAttributes=memorySlots
+D, [2017-07-04T06:38:01.306727 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.314409 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.314445 #31206] DEBUG -- response: 
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.314982 #31206]  INFO -- : get http://example.com/canisters
+D, [2017-07-04T06:38:01.315024 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.320715 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.320765 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.321465 #31206]  INFO -- : get http://example.com/canisters/457784225BA511E18290B4F27BD253A5,E0D47B8A5BC511E1B5D1D13BF6351882?excludeAttributes=memorySlots
+D, [2017-07-04T06:38:01.321505 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.329506 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.329547 #31206] DEBUG -- response: 
+      exclude attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.330181 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.330221 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.333066 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.333105 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /chassis
+I, [2017-07-04T06:38:01.334233 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.334274 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.336590 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.336628 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.337408 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.337447 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.339856 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.339919 #31206] DEBUG -- response: content-type: "application/json"
+    should response 200 code
+  GET /chassis/UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.341131 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.341171 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.343500 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.343551 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.344549 #31206]  INFO -- : get http://example.com/chassis/7F3E7E375B5747E0938969896B1CFDF5?includeAttributes=type
+D, [2017-07-04T06:38:01.344591 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.349076 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.349127 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.349747 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.349786 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.352337 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.352374 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.355333 #31206]  INFO -- : get http://example.com/chassis/7F3E7E375B5747E0938969896B1CFDF5?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.355373 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.360078 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.360116 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /chassis/UUID,UUID,...,UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.361445 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.361484 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.363987 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.364025 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.365152 #31206]  INFO -- : get http://example.com/chassis/7F3E7E375B5747E0938969896B1CFDF5?includeAttributes=type
+D, [2017-07-04T06:38:01.365192 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.368335 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.368373 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.369092 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.369144 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.371656 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.371694 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.372878 #31206]  INFO -- : get http://example.com/chassis/7F3E7E375B5747E0938969896B1CFDF5?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.372918 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.376251 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.376289 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /chassis
+    with includeAttributes
+I, [2017-07-04T06:38:01.377443 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.377481 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.380027 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.380065 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.381078 #31206]  INFO -- : get http://example.com/chassis?includeAttributes=type
+D, [2017-07-04T06:38:01.381117 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.385042 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.385079 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.385788 #31206]  INFO -- : get http://example.com/chassis
+D, [2017-07-04T06:38:01.385827 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.388604 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.388643 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.389533 #31206]  INFO -- : get http://example.com/chassis?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.389572 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.393428 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.393466 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.394635 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.394718 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.399989 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.400027 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /cmms
+I, [2017-07-04T06:38:01.400798 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.400836 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.405949 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.405996 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.406580 #31206]  INFO -- : get http://example.com/cmms/80C0B2F6B84011E0B504EC89B07DB965,256466549E0611E0A2F6872F34D5CCC9?includeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.406617 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.413541 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.413578 #31206] DEBUG -- response: content-type: "application/json"
+    with includeAttributes params
+  GET /cmms/UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.414239 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.414279 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.419062 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.419115 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.419666 #31206]  INFO -- : get http://example.com/cmms/80C0B2F6B84011E0B504EC89B07DB965,256466549E0611E0A2F6872F34D5CCC9?includeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.419703 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.425349 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.425386 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.426044 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.426085 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.431016 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.431054 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.431643 #31206]  INFO -- : get http://example.com/cmms/80C0B2F6B84011E0B504EC89B07DB965,256466549E0611E0A2F6872F34D5CCC9?excludeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.431684 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.438751 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.438790 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /cmms/UUID,UUID,...,UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.439552 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.439591 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.444061 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.444099 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.444579 #31206]  INFO -- : get http://example.com/cmms/80C0B2F6B84011E0B504EC89B07DB965,256466549E0611E0A2F6872F34D5CCC9?includeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.444617 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.449655 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.449693 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.450260 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.450299 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.454627 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.454665 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.455168 #31206]  INFO -- : get http://example.com/cmms/80C0B2F6B84011E0B504EC89B07DB965,256466549E0611E0A2F6872F34D5CCC9?excludeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.455208 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.460182 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.460219 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /cmms
+    with includeAttributes
+I, [2017-07-04T06:38:01.460968 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.461009 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.465355 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.465393 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.465848 #31206]  INFO -- : get http://example.com/cmms?includeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.465900 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.471626 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.471664 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.472243 #31206]  INFO -- : get http://example.com/cmms
+D, [2017-07-04T06:38:01.472294 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.476672 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.476710 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.477193 #31206]  INFO -- : get http://example.com/cmms?excludeAttributes=accessState%2CbackedBy
+D, [2017-07-04T06:38:01.477232 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.482889 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.482927 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.483688 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.483728 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.488230 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.488268 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.491157 #31206]  INFO -- : get http://example.com/events
+D, [2017-07-04T06:38:01.491196 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.493969 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.494007 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /events
+I, [2017-07-04T06:38:01.494730 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.494769 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.499571 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.499608 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.501780 #31206]  INFO -- : get http://example.com/events
+D, [2017-07-04T06:38:01.501891 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.504576 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.504614 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.505265 #31206]  INFO -- : get http://example.com/events
+D, [2017-07-04T06:38:01.505304 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.507951 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.507998 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with opts parameters
+      where the opts is only sort
+I, [2017-07-04T06:38:01.508826 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.508879 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.513852 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.513904 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.515800 #31206]  INFO -- : get http://example.com/events
+D, [2017-07-04T06:38:01.515839 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.517939 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.517984 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.518557 #31206]  INFO -- : get http://example.com/events?sort=cn
+D, [2017-07-04T06:38:01.518594 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.521790 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.521828 #31206] DEBUG -- response: content-type: "application/json"
+        the elemented used to sort should be greater or equal to second element on response
+      where the opts is only filterWith
+I, [2017-07-04T06:38:01.522685 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.522736 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.527521 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.527560 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.529288 #31206]  INFO -- : get http://example.com/events
+D, [2017-07-04T06:38:01.529327 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.531375 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.531413 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.531988 #31206]  INFO -- : get http://example.com/events?filterWith=%7B%22filterType%22%3A%22FIELDNOTREGEXAND%22%2C%22fields%22%3A%5B%7B%22operation%22%3A%22GT%22%2C%22field%22%3A%22cn%22%2C%22value%22%3A%22242328%22%7D%5D%7D
+D, [2017-07-04T06:38:01.532034 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.540902 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.540937 #31206] DEBUG -- response: 
+        the element used to filterWith should be greater than it self on response OR the response will be none
+
+XClarityClient
+I, [2017-07-04T06:38:01.541547 #31206]  INFO -- : get http://example.com/fanMuxes
+D, [2017-07-04T06:38:01.541587 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.547340 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.547391 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /fanMuxes
+I, [2017-07-04T06:38:01.548070 #31206]  INFO -- : get http://example.com/fanMuxes
+D, [2017-07-04T06:38:01.548112 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.553200 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.553239 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.553590 #31206]  INFO -- : get http://example.com/fanMuxes
+D, [2017-07-04T06:38:01.553627 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.558929 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.558976 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with excludeAttributes
+I, [2017-07-04T06:38:01.559620 #31206]  INFO -- : get http://example.com/fanMuxes
+D, [2017-07-04T06:38:01.559659 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.564855 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.564916 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.565326 #31206]  INFO -- : get http://example.com/fanMuxes?excludeAttributes=productName
+D, [2017-07-04T06:38:01.565364 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.572121 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.572159 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /fanMuxes/UUID
+    with excludeAttributes
+I, [2017-07-04T06:38:01.572887 #31206]  INFO -- : get http://example.com/fanMuxes
+D, [2017-07-04T06:38:01.572927 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.578140 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.578178 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.578546 #31206]  INFO -- : get http://example.com/fanMuxes/08F010AC32A811E38EC187BED4950FD7,F40B548FA17811E092C5D2CFEE48E2A3?excludeAttributes=productName
+D, [2017-07-04T06:38:01.578583 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.585607 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.585642 #31206] DEBUG -- response: 
+      exclude attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.586220 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.586261 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.587736 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.587773 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /fans
+I, [2017-07-04T06:38:01.588407 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.588447 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.589463 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.589501 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.589845 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.589896 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.591039 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.591077 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with includeAttributes
+I, [2017-07-04T06:38:01.591667 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.591705 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.592777 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.592814 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.593222 #31206]  INFO -- : get http://example.com/fans?includeAttributes=cmmHealthState
+D, [2017-07-04T06:38:01.593260 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.595479 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.595518 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.596131 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.596174 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.597278 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.597317 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.597720 #31206]  INFO -- : get http://example.com/fans?excludeAttributes=cmmHealthState
+D, [2017-07-04T06:38:01.597758 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.599951 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.600000 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /fans/UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.600690 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.600732 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.601828 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.601882 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.602322 #31206]  INFO -- : get http://example.com/fans/57B16D219DB211E0AEBDBBC70E13DA7F,C4EDAE619DB411E0AB85FF10F8AF18C2?includeAttributes=cmmHealthState
+D, [2017-07-04T06:38:01.602363 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.610177 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.610214 #31206] DEBUG -- response: 
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.610725 #31206]  INFO -- : get http://example.com/fans
+D, [2017-07-04T06:38:01.610767 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.611902 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.611942 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.612385 #31206]  INFO -- : get http://example.com/fans/57B16D219DB211E0AEBDBBC70E13DA7F,C4EDAE619DB411E0AB85FF10F8AF18C2?excludeAttributes=cmmHealthState
+D, [2017-07-04T06:38:01.612425 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.620306 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.620344 #31206] DEBUG -- response: 
+      exclude attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:01.620972 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:01.621015 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.626818 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.626859 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /ffdc/ID
+I, [2017-07-04T06:38:01.628041 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:01.628084 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.632067 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.632117 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.632802 #31206]  INFO -- : get http://example.com/ffdc/endpoint/1B33D6D13F267A614567A897DC784F00
+D, [2017-07-04T06:38:01.632842 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.637063 #31206]  INFO -- Status: 201
+D, [2017-07-04T06:38:01.637160 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with a array containing jobURL
+
+XClarityClient
+I, [2017-07-04T06:38:01.637851 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.637907 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.643045 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.643083 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /jobs
+I, [2017-07-04T06:38:01.645010 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.645193 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.649747 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.649785 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.651240 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.651278 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.655709 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.655748 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with option uuid
+I, [2017-07-04T06:38:01.657771 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.657810 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.661534 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.661572 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.662812 #31206]  INFO -- : get http://example.com/jobs?uuid=FEE5C5988F23453F8367597C3561DC54
+D, [2017-07-04T06:38:01.662850 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.668615 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.668651 #31206] DEBUG -- response: 
+      should return an array
+    with option state
+I, [2017-07-04T06:38:01.670096 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.670138 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.673732 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.673770 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.675022 #31206]  INFO -- : get http://example.com/jobs?state=Stopped_With_Error
+D, [2017-07-04T06:38:01.675060 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.680441 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.680476 #31206] DEBUG -- response: 
+      should return an array
+    with includeAttributes
+I, [2017-07-04T06:38:01.681174 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.681241 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.684769 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.684807 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.685922 #31206]  INFO -- : get http://example.com/jobs?includeAttributes=isCancelable%2Cstatus
+D, [2017-07-04T06:38:01.685975 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.691250 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.691288 #31206] DEBUG -- response: content-type: "application/json"
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.692784 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.692831 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.696727 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.696765 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.698009 #31206]  INFO -- : get http://example.com/jobs?excludeAttributes=isCancelable%2Cstatus
+D, [2017-07-04T06:38:01.698048 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.703354 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.703392 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  GET /jobs/UUID
+    without include or exclude
+I, [2017-07-04T06:38:01.704094 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.704152 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.707798 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.707836 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.709056 #31206]  INFO -- : get http://example.com/jobs/5
+D, [2017-07-04T06:38:01.709095 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.713566 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.713601 #31206] DEBUG -- response: 
+      include attributes should not be nil
+    with includeAttributes
+I, [2017-07-04T06:38:01.714305 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.714346 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.718238 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.718277 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.719608 #31206]  INFO -- : get http://example.com/jobs/5?includeAttributes=isCancelable%2Cstatus
+D, [2017-07-04T06:38:01.719647 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.725141 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.725176 #31206] DEBUG -- response: 
+      include attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.725746 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.725785 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.729102 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.729140 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.730055 #31206]  INFO -- : get http://example.com/jobs/5?excludeAttributes=isCancelable%2Cstatus
+D, [2017-07-04T06:38:01.730095 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.735181 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.735220 #31206] DEBUG -- response: content-type: "application/json"
+      exclude attributes should be nil
+  PUT /jobs/UUID
+    cancel the job
+I, [2017-07-04T06:38:01.735815 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.735854 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.739164 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.739201 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.740042 #31206]  INFO -- : put http://example.com/jobs/5
+D, [2017-07-04T06:38:01.740082 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.743668 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.743702 #31206] DEBUG -- response: 
+
+      cancels the job
+  DELETE /jobs/UUID
+    delete the job
+I, [2017-07-04T06:38:01.745306 #31206]  INFO -- : get http://example.com/jobs
+D, [2017-07-04T06:38:01.745347 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.748743 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.748782 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.749628 #31206]  INFO -- : delete http://example.com/jobs/5
+D, [2017-07-04T06:38:01.749678 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.753332 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.753366 #31206] DEBUG -- response: 
+
+      deletes the job
+
+XClarityClient
+I, [2017-07-04T06:38:01.756103 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.756144 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.761013 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.761052 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /nodes
+I, [2017-07-04T06:38:01.763309 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.763349 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.768678 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.768716 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.770571 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.770609 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.775195 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.775233 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+  GET /nodes/UUID
+    with include attributes
+I, [2017-07-04T06:38:01.777525 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.777564 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.782249 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.782288 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.784219 #31206]  INFO -- : get http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030,5799094A1B8111E1982B5CF3FC6E3E48?includeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.784259 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.791346 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.791384 #31206] DEBUG -- response: content-type: "application/json"
+      required attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.791992 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.792033 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.796565 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.796603 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.798424 #31206]  INFO -- : get http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030,5799094A1B8111E1982B5CF3FC6E3E48?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.798464 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.805377 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.805415 #31206] DEBUG -- response: content-type: "application/json"
+      excluded attributes should to be nil
+  GET /nodes/UUID,UUID,...,UUID
+    with includeAttributes
+I, [2017-07-04T06:38:01.807447 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.807486 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.811913 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.811951 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.813769 #31206]  INFO -- : get http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030,5799094A1B8111E1982B5CF3FC6E3E48?includeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.813808 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.819311 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.819355 #31206] DEBUG -- response: content-type: "application/json"
+      required attributes shoud not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.819996 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.820036 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.824528 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.824566 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.826373 #31206]  INFO -- : get http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030,5799094A1B8111E1982B5CF3FC6E3E48?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.826413 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.831785 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.831823 #31206] DEBUG -- response: content-type: "application/json"
+      excluded attributes shoud to be nil
+  GET /nodes
+    with includeAttributes
+I, [2017-07-04T06:38:01.833970 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.834011 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.838449 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.838505 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.840530 #31206]  INFO -- : get http://example.com/nodes?includeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.840569 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.846470 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.846508 #31206] DEBUG -- response: content-type: "application/json"
+      required attributes should not be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:01.847066 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.847107 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.851139 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.851178 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.852464 #31206]  INFO -- : get http://example.com/nodes?excludeAttributes=accessState%2CactivationKeys
+D, [2017-07-04T06:38:01.852505 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.857972 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.858011 #31206] DEBUG -- response: content-type: "application/json"
+      excluded attributes should be nil
+  Get /node
+I, [2017-07-04T06:38:01.859586 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.859626 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.863711 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.863749 #31206] DEBUG -- response: content-type: "application/json"
+UUID to shutdown 6B538D351B8211E193F65CF3FC6E4030
+I, [2017-07-04T06:38:01.865025 #31206]  INFO -- : put http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030
+D, [2017-07-04T06:38:01.865065 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.872028 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.872066 #31206] DEBUG -- response: content-type: "application/json"
+    should power down system
+  PUT /nodes/UUID
+    with a leds object
+      with state == "On" and name == "Identify"
+I, [2017-07-04T06:38:01.872673 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.872712 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.877550 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.877588 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.879928 #31206]  INFO -- : put http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030
+D, [2017-07-04T06:38:01.879978 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.885233 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.885303 #31206] DEBUG -- response: content-type: "application/json"
+        turns on the location led
+      with state == "Off" and name == "Identify"
+I, [2017-07-04T06:38:01.887312 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.887353 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.892020 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.892059 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.893791 #31206]  INFO -- : put http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030
+D, [2017-07-04T06:38:01.893831 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.898800 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.898838 #31206] DEBUG -- response: content-type: "application/json"
+        turns off the location led
+      with state == "Blinking" and name == "Identify"
+I, [2017-07-04T06:38:01.900229 #31206]  INFO -- : get http://example.com/nodes
+D, [2017-07-04T06:38:01.900270 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.904703 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.904741 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.906680 #31206]  INFO -- : put http://example.com/nodes/6B538D351B8211E193F65CF3FC6E4030
+D, [2017-07-04T06:38:01.906720 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+Content-Type: "application/json"
+I, [2017-07-04T06:38:01.911455 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.911493 #31206] DEBUG -- response: content-type: "application/json"
+        turns on the blinking location led
+
+XClarityClient
+I, [2017-07-04T06:38:01.912996 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.913037 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.916925 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.916971 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /power_supplies
+I, [2017-07-04T06:38:01.917660 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.917723 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.921307 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.921345 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.921791 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.921881 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.925424 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.925462 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+I, [2017-07-04T06:38:01.926142 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.926182 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.929579 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.929616 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.930121 #31206]  INFO -- : get http://example.com/powerSupplies?includeAttributes=description%2CdataHandle
+D, [2017-07-04T06:38:01.930194 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.935046 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.935084 #31206] DEBUG -- response: content-type: "application/json"
+    with includeAttributes
+I, [2017-07-04T06:38:01.935610 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.935649 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.938934 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.938981 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.939478 #31206]  INFO -- : get http://example.com/powerSupplies?excludeAttributes=description%2CdataHandle
+D, [2017-07-04T06:38:01.939516 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.944503 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.944541 #31206] DEBUG -- response: content-type: "application/json"
+    with excludeAttributes
+  GET /powerSupplies/UUID
+I, [2017-07-04T06:38:01.945276 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.945316 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.948709 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.948746 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.949257 #31206]  INFO -- : get http://example.com/powerSupplies/735425074A8511E200FB00FB00FB00FB,C2890E051CFF11E200AB00AB00AB00AB?includeAttributes=description%2CdataHandle
+D, [2017-07-04T06:38:01.949297 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.957743 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.957777 #31206] DEBUG -- response: 
+    with includeAttributes
+I, [2017-07-04T06:38:01.958264 #31206]  INFO -- : get http://example.com/powerSupplies
+D, [2017-07-04T06:38:01.958314 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.961635 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.961672 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.962190 #31206]  INFO -- : get http://example.com/powerSupplies/735425074A8511E200FB00FB00FB00FB,C2890E051CFF11E200AB00AB00AB00AB?excludeAttributes=description%2CdataHandle
+D, [2017-07-04T06:38:01.962229 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.970561 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:01.970595 #31206] DEBUG -- response: 
+    with excludeAttributes
+
+XClarityClient
+I, [2017-07-04T06:38:01.971199 #31206]  INFO -- : get http://example.com/scalableComplex
+D, [2017-07-04T06:38:01.971262 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.977538 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.977576 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /scalableComplexes
+I, [2017-07-04T06:38:01.982773 #31206]  INFO -- : get http://example.com/scalableComplex
+D, [2017-07-04T06:38:01.982813 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:01.987749 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:01.987787 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:01.993426 #31206]  INFO -- : get http://example.com/scalableComplex
+D, [2017-07-04T06:38:01.993465 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.000037 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.000076 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with excludeAttributes
+I, [2017-07-04T06:38:02.006546 #31206]  INFO -- : get http://example.com/scalableComplex
+D, [2017-07-04T06:38:02.006586 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.012112 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.012150 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.017666 #31206]  INFO -- : get http://example.com/scalableComplex?excludeAttributes=nodeCount%2Cpartition
+D, [2017-07-04T06:38:02.017706 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.024885 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.024923 #31206] DEBUG -- response: content-type: "application/json"
+      missing attributes should be nil
+  GET /scalable_complexes/UUID
+    with excludeAttributes
+I, [2017-07-04T06:38:02.028662 #31206]  INFO -- : get http://example.com/scalableComplex
+D, [2017-07-04T06:38:02.028701 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.034305 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.034343 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.040031 #31206]  INFO -- : get http://example.com/scalableComplex/FA74120712FD11E48C000090FA75DCE8,06FFADB512E311E49F9F0090FA75F1BE,E0CEB525F651481D95A8D6B5945762BB,645553F8894011E3A5F36CAE8B704B20,74AFACA188F811E394A46CAE8B703F60,5DC9CC7A68DA11E39D666CAE8B703720,894A722870C811E382C76CAE8B702850?excludeAttributes=nodeCount%2Cpartition
+D, [2017-07-04T06:38:02.040071 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.050267 #31206]  INFO -- Status: 404
+D, [2017-07-04T06:38:02.050302 #31206] DEBUG -- response: 
+      missing attributes should be nil
+
+XClarityClient
+I, [2017-07-04T06:38:02.050934 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.050983 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.054363 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.054401 #31206] DEBUG -- response: content-type: "application/json"
+  has a version number
+  GET /switches
+I, [2017-07-04T06:38:02.055400 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.055440 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.058890 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.058928 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.059626 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.059663 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.063270 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.063325 #31206] DEBUG -- response: content-type: "application/json"
+    should respond with an array
+    with includeAttributes
+I, [2017-07-04T06:38:02.064303 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.064350 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.068132 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.068171 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.069022 #31206]  INFO -- : get http://example.com/switches?includeAttributes=accessState%2CattachedNodes
+D, [2017-07-04T06:38:02.069066 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.074346 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.074384 #31206] DEBUG -- response: content-type: "application/json"
+      missing attributes should be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:02.074968 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.075009 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.078099 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.078136 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.078730 #31206]  INFO -- : get http://example.com/switches?excludeAttributes=accessState%2CattachedNodes
+D, [2017-07-04T06:38:02.078769 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.083510 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.083548 #31206] DEBUG -- response: content-type: "application/json"
+      missing attributes should be nil
+  GET /switches/UUID,UUID,...,UUID
+    with includeAttributes
+I, [2017-07-04T06:38:02.084983 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.085025 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.089650 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.089688 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.090574 #31206]  INFO -- : get http://example.com/switches/1B33D6D13F267A614567A897DC784F00,2BB054971DD2B201663F0027F8870F10,1B33D6CE6D58C30145BA0817F4B11400?includeAttributes=accessState%2CattachedNodes
+D, [2017-07-04T06:38:02.090614 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.098914 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.098952 #31206] DEBUG -- response: content-type: "application/json"
+      missing attributes should be nil
+    with excludeAttributes
+I, [2017-07-04T06:38:02.099746 #31206]  INFO -- : get http://example.com/switches
+D, [2017-07-04T06:38:02.099785 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.103665 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.103703 #31206] DEBUG -- response: content-type: "application/json"
+I, [2017-07-04T06:38:02.104538 #31206]  INFO -- : get http://example.com/switches/1B33D6D13F267A614567A897DC784F00,2BB054971DD2B201663F0027F8870F10,1B33D6CE6D58C30145BA0817F4B11400?excludeAttributes=accessState%2CattachedNodes
+D, [2017-07-04T06:38:02.104579 #31206] DEBUG -- request: User-Agent: "Faraday v0.9.2"
+Authorization: "Basic Og=="
+I, [2017-07-04T06:38:02.112752 #31206]  INFO -- Status: 200
+D, [2017-07-04T06:38:02.112798 #31206] DEBUG -- response: content-type: "application/json"
+      missing attributes should be nil
+
+Finished in 0.96393 seconds (files took 9.23 seconds to load)
+91 examples, 0 failures
+
