@@ -15,7 +15,6 @@ describe XClarityClient do
 
     @client = XClarityClient::Client.new(conf)
 
-    @host = ENV['LXCA_HOST']
   end
 
   it 'has a version number' do

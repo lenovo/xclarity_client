@@ -28,6 +28,7 @@ describe XClarityClient do
   describe 'GET /ffdc/ID' do
     it 'should respond with a array containing jobURL' do
       response = @client.fetch_ffdc([@device_uuidArray[0]], nil, nil)
+      expect(response).not_to be_empty
       response.map do |ffdc|
         expect(ffdc.send("jobURL")).not_to be_nil
       end
