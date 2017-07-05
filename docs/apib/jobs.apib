@@ -1,8 +1,69 @@
 FORMAT: 1A
 
-# XClarity Nodes
+# XClarity Jobs
 
-# GET /jobs
+# Job with id 5 [/jobs/5]
+
+## Retrieve [GET]
++ Response 200
+{
+        "isCancelable": false,
+        "status": {
+                "substatus": [],
+                "percentage": 100,
+                "description": [],
+                "state": "Complete"
+        },
+        "cancelledBy": "",
+        "messageDisplay": "Starting",
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "endTime": "2017-05-19T15:08:34Z",
+        "messageParameters": [],
+        "id": "6",
+        "startTime": "2017-05-19T15:08:34Z",
+        "category": "MANAGEMENT",
+        "messageID": "1000_SHORT",
+        "createdBy": "ADMIN",
+        "cancelURI": "",
+        "uuid": "FEE5C5988F23453F8367597C3561DC54",
+        "typeId": -1,
+        "legacy": false
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Update [PUT]
+
++ Request (application/json)
+{
+  "cancelRequest" : true
+}
++ Response 200
+
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+
+## Delete [DELETE]
+
++ Response 200
+
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+
+## GET /jobs
 
 + Response 200 (application/json)
 [{
@@ -1171,7 +1232,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /jobs?includeAttributes=isCancelable,status
+## GET /jobs?includeAttributes=isCancelable,status
 
 + Response 200 (application/json)
 [{
@@ -2340,7 +2401,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /jobs?excludeAttributes=isCancelable,status
+## GET /jobs?excludeAttributes=isCancelable,status
 
 + Response 200 (application/json)
 [
@@ -2398,7 +2459,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-#GET /jobs?uuid=FEE5C5988F23453F8367597C3561DC54
+## GET /jobs?uuid=FEE5C5988F23453F8367597C3561DC54
 + Response 200
 [{
         "isCancelable": false,
@@ -3566,7 +3627,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-#GET /jobs?state=Stopped_With_Error
+## GET /jobs?state=Stopped_With_Error
 + Response 200
 [{
         "isCancelable": false,
@@ -3638,38 +3699,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-#GET /jobs/5
-+ Response 200
-{
-        "isCancelable": false,
-        "status": {
-                "substatus": [],
-                "percentage": 100,
-                "description": [],
-                "state": "Complete"
-        },
-        "cancelledBy": "",
-        "messageDisplay": "Starting",
-        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
-        "endTime": "2017-05-19T15:08:34Z",
-        "messageParameters": [],
-        "id": "6",
-        "startTime": "2017-05-19T15:08:34Z",
-        "category": "MANAGEMENT",
-        "messageID": "1000_SHORT",
-        "createdBy": "ADMIN",
-        "cancelURI": "",
-        "uuid": "FEE5C5988F23453F8367597C3561DC54",
-        "typeId": -1,
-        "legacy": false
-}
-+ Response 400
-+ Response 401
-+ Response 404
-+ Response 409
-+ Response 500
-
-# GET /jobs/5?includeAttributes=isCancelable,status
+## GET /jobs/5?includeAttributes=isCancelable,status
 
 + Response 200
 {
@@ -3701,7 +3731,7 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
-# GET /jobs/5?excludeAttributes=isCancelable,status
+## GET /jobs/5?excludeAttributes=isCancelable,status
 
 + Response 200 (application/json)
 {
@@ -3722,20 +3752,6 @@ FORMAT: 1A
 }
 + Response 401
 + Response 404
-+ Response 404
-+ Response 409
-+ Response 500
-
-# PUT /jobs/5
-
-+ Response 200 (application/json)
-
-+Headers
-
-    Location: "/jobs/1"
-
-+ Response 400
-+ Response 401
 + Response 404
 + Response 409
 + Response 500

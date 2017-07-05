@@ -107,8 +107,10 @@ describe XClarityClient do
   describe 'PUT /jobs/UUID' do
     context 'cancel the job' do
       it 'cancels the job' do
-        @client.cancel_job(@uuidArray[0])
-        uri = "#{@host}/jobs/#{@uuidArray[0]}"
+#        @client.cancel_job(@uuidArray[0])
+#        uri = "#{@host}/jobs/#{@uuidArray[0]}"
+         @client.cancel_job('5')
+         uri = "#{@host}/jobs/5"
         request_body = { 'body' => {'cancelRequest' => 'true'} }
         expect(a_request(:put, uri).with(request_body)).to have_been_made
       end
