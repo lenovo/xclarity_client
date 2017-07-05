@@ -18,11 +18,6 @@ describe XClarityClient do
     @host = ENV['LXCA_HOST']
   end
 
-  before :each do
-    @includeAttributes = %w(importDir)
-    @excludeAttributes = %w(importDir)
-  end
-
   it 'has a version number' do
     expect(XClarityClient::VERSION).not_to be nil
   end
