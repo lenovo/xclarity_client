@@ -197,6 +197,10 @@ module XClarityClient
     def delete_job(id = '')
       JobManagement.new(@connection).delete_job(id)
     end
+
+    def discover_update_repo(opts = {})
+      UpdateRepoManagement.new(@connection).population opts
+    end
   
   end
 end

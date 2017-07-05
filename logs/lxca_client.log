@@ -1,0 +1,3 @@
+I, [2017-07-05T04:44:25.176791 #1487]  INFO -- : [XClarityClient::Configuration initialize] - Configuration built successfuly
+I, [2017-07-05T04:44:25.176904 #1487]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/updateRepositories/firmware
+I, [2017-07-05T04:44:25.200019 #1487]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
