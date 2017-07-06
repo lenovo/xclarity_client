@@ -6,6 +6,10 @@ module XClarityClient
       return [] unless response.success?
 
       body = JSON.parse(response.body)
+      if resource == XClarityClient::User
+        body = body['response']
+      end
+
       body = {resource::LIST_NAME => body} if body.is_a? Array
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|
@@ -72,7 +76,13 @@ module XClarityClient
       end
 
       return [] unless response.success?
+
       body = JSON.parse(response.body)
+
+      if resource == XClarityClient::User
+        body = body['response']
+      end
+
       body = {resource::LIST_NAME => body} if body.is_a? Array
       body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
       body[resource::LIST_NAME].map do |resource_params|

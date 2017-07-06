@@ -37,3 +37,6 @@ require 'xclarity_client/job'
 require 'xclarity_client/job_management'
 require 'xclarity_client/update_repo'
 require 'xclarity_client/update_repo_management'
+require 'xclarity_client/user'
+require 'xclarity_client/user_management'
+

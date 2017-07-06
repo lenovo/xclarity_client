@@ -201,6 +201,19 @@ module XClarityClient
     def discover_update_repo(opts = {})
       UpdateRepoManagement.new(@connection).population opts
     end
+
+    def discover_users(opts = {})
+      UserManagement.new(@connection).population
+    end
+
+    def fetch_users(ids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      UserManagement.new(@connection).get_object_with_id(ids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                User)
+    end
   
   end
 end
