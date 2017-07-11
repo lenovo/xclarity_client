@@ -1,0 +1,27 @@
+I, [2017-07-05T04:44:25.176791 #1487]  INFO -- : [XClarityClient::Configuration initialize] - Configuration built successfuly
+I, [2017-07-05T04:44:25.176904 #1487]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/updateRepositories/firmware
+I, [2017-07-05T04:44:25.200019 #1487]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:30:09.672773 #2908]  INFO -- : [XClarityClient::Configuration initialize] - Configuration built successfuly
+I, [2017-07-05T06:30:09.672892 #2908]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:30:09.695319 #2908]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:30:09.695372 #2908]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Sending request to XClarityClient::User resource
+I, [2017-07-05T06:30:09.845592 #2908]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Response received from /userAccounts
+I, [2017-07-05T06:30:09.846061 #2908]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:30:09.846411 #2908]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:30:09.846479 #2908]  INFO -- : [XclarityClient::ManagementMixin get_object_with_id] - Sending request to XClarityClient::User resource
+I, [2017-07-05T06:30:49.803739 #2945]  INFO -- : [XClarityClient::Configuration initialize] - Configuration built successfuly
+I, [2017-07-05T06:30:49.803845 #2945]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:30:49.827245 #2945]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:30:49.827297 #2945]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Sending request to XClarityClient::User resource
+I, [2017-07-05T06:30:49.982918 #2945]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Response received from /userAccounts
+I, [2017-07-05T06:30:49.983538 #2945]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:30:49.984315 #2945]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:30:49.984410 #2945]  INFO -- : [XclarityClient::ManagementMixin get_object_with_id] - Sending request to XClarityClient::User resource
+I, [2017-07-05T06:31:18.675277 #2950]  INFO -- : [XClarityClient::Configuration initialize] - Configuration built successfuly
+I, [2017-07-05T06:31:18.676297 #2950]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:31:18.698648 #2950]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:31:18.698701 #2950]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Sending request to XClarityClient::User resource
+I, [2017-07-05T06:31:18.827568 #2950]  INFO -- : [XclarityClient::ManagementMixin get_all_resources] - Response received from /userAccounts
+I, [2017-07-05T06:31:18.828412 #2950]  INFO -- : [XClarityClient::XClarityBase connection_builder] - Creating connection to https://10.243.10.75/userAccounts
+I, [2017-07-05T06:31:18.828833 #2950]  INFO -- : [XClarityClient::XclarityBase connection_builder] - Connection created Successfuly
+I, [2017-07-05T06:31:18.828941 #2950]  INFO -- : [XclarityClient::ManagementMixin get_object_with_id] - Sending request to XClarityClient::User resource
