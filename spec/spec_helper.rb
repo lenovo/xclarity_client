@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'xclarity_client'
 require 'apib/mock_server'
 require 'webmock/rspec'
+require 'faker'
 
 base_url = 'https://example.com'
 # These environment variables must be defined
