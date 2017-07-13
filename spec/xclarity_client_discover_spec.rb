@@ -4,8 +4,8 @@ describe XClarityClient::Discover do
   context '#responds?' do
     context 'without the correct appliance IPAddress' do
       it 'should return false' do
-        res = XClarityClient::Discover.responds?(Faker::Internet.ip_v4_address, Faker::Number.number(4))
-        expect(res).not_to be_truthy
+        response = XClarityClient::Discover.responds?(Faker::Internet.ip_v4_address, Faker::Number.number(4))
+        expect(response).not_to be_truthy
       end
     end
 
@@ -18,8 +18,8 @@ describe XClarityClient::Discover do
       end
 
       it 'should return true' do
-        res = XClarityClient::Discover.responds?(@address.host, @port)
-        expect(res).to be_truthy
+        response = XClarityClient::Discover.responds?(@address.host, @port)
+        expect(response).to be_truthy
       end
     end
   end

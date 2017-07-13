@@ -21,8 +21,8 @@ module XClarityClient
         return false
       end
 
-      return false if %w(200 302).include? response.status
-      true
+      return true if %w(200 302).include? response.status.to_s
+      false
     end
 
     private
