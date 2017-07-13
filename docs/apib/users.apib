@@ -1,0 +1,387 @@
+FORMAT: 1A
+
+# XClarity Users
+
+# GET /userAccounts
+
++ Response 200 (application/json)
+{
+        "response": [{
+                "ldapDn": "cn=SYSMGR_MK0XRF2I,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"],
+                "loginAttempts": 1
+        }, {
+                "ldapDn": "cn=ADMIN,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 1,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 2211,
+                "PasswordChangeFirstAccess": false,
+                "reserved": false,
+                "timeBeforeExpirationInDays": 34,
+                "modifyTimestamp": "2017-07-06T07:43:24Z",
+                "id": "aad6a497-566c-4323-a08e-6fd939defb54",
+                "createTimestamp": "2017-05-11T13:11:26Z",
+                "supervisor": true,
+                "lastLoginTimestamp": "2017-07-06T07:43:24Z",
+                "userPw": "NA",
+                "description": "",
+                "pwExpirationWarning": false,
+                "pwdAge": 4818730,
+                "userName": "ADMIN",
+                "groups": ["lxc-supervisor"],
+                "loginAttempts": 2211
+        }, {
+                "ldapDn": "cn=SYSRDR_BWMH0XO0,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "6a3ca55b-5bf1-406d-87fb-e0f44d5c0897",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System reader",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSRDR_BWMH0XO0",
+                "groups": ["lxc-sysrdr"],
+                "loginAttempts": 1
+        }],
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /userAccounts?includeAttributes=ldapDn,loginAttempts
+
++ Response 200 (application/json)
+{
+        "response": [{
+                "ldapDn": "cn=SYSMGR_MK0XRF2I,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"],
+                "loginAttempts": 1
+        }, {
+                "ldapDn": "cn=ADMIN,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 1,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 2211,
+                "PasswordChangeFirstAccess": false,
+                "reserved": false,
+                "timeBeforeExpirationInDays": 34,
+                "modifyTimestamp": "2017-07-06T07:43:24Z",
+                "id": "aad6a497-566c-4323-a08e-6fd939defb54",
+                "createTimestamp": "2017-05-11T13:11:26Z",
+                "supervisor": true,
+                "lastLoginTimestamp": "2017-07-06T07:43:24Z",
+                "userPw": "NA",
+                "description": "",
+                "pwExpirationWarning": false,
+                "pwdAge": 4818730,
+                "userName": "ADMIN",
+                "groups": ["lxc-supervisor"],
+                "loginAttempts": 2211
+        }, {
+                "ldapDn": "cn=SYSRDR_BWMH0XO0,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "6a3ca55b-5bf1-406d-87fb-e0f44d5c0897",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System reader",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSRDR_BWMH0XO0",
+                "groups": ["lxc-sysrdr"],
+                "loginAttempts": 1
+        }],
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /userAccounts?excludeAttributes=ldapDn,loginAttempts
+
++ Response 200 (application/json)
+{
+        "response": [{
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"]
+        }, {
+                "activeSessions": 1,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 2211,
+                "PasswordChangeFirstAccess": false,
+                "reserved": false,
+                "timeBeforeExpirationInDays": 34,
+                "modifyTimestamp": "2017-07-06T07:43:24Z",
+                "id": "aad6a497-566c-4323-a08e-6fd939defb54",
+                "createTimestamp": "2017-05-11T13:11:26Z",
+                "supervisor": true,
+                "lastLoginTimestamp": "2017-07-06T07:43:24Z",
+                "userPw": "NA",
+                "description": "",
+                "pwExpirationWarning": false,
+                "pwdAge": 4818730,
+                "userName": "ADMIN",
+                "groups": ["lxc-supervisor"]
+        }, {
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "6a3ca55b-5bf1-406d-87fb-e0f44d5c0897",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System reader",
+                "pwExpirationWarning": false,
+                "pwdAge": 1815701,
+                "userName": "SYSRDR_BWMH0XO0",
+                "groups": ["lxc-sysrdr"]
+        }],
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /userAccounts/d5d12b7b-45d9-444a-bda0-7801f6a782ed
+
++ Response 200 (application/json)
+{
+        "response": {
+                "ldapDn": "cn=SYSMGR_MK0XRF2I,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1818070,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"],
+                "loginAttempts": 1
+        },
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /userAccounts/d5d12b7b-45d9-444a-bda0-7801f6a782ed?includeAttributes=ldapDn,loginAttempts
+
++ Response 200 (application/json)
+{
+        "response": {
+                "ldapDn": "cn=SYSMGR_MK0XRF2I,ou=Users,dc=ibmbase,dc=com",
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1818070,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"],
+                "loginAttempts": 1
+        },
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# GET /userAccounts/d5d12b7b-45d9-444a-bda0-7801f6a782ed?excludeAttributes=ldapDn,loginAttempts
+
++ Response 200 (application/json)
+{
+        "response": {
+                "activeSessions": 0,
+                "pwExpired": false,
+                "state": "Active",
+                "loginCount": 1,
+                "PasswordChangeFirstAccess": false,
+                "reserved": true,
+                "timeBeforeExpirationInDays": 68,
+                "modifyTimestamp": "2017-06-15T07:21:55Z",
+                "id": "d5d12b7b-45d9-444a-bda0-7801f6a782ed",
+                "createTimestamp": "2017-06-15T07:21:55Z",
+                "supervisor": false,
+                "lastLoginTimestamp": "",
+                "userPw": "NA",
+                "description": "System Manager",
+                "pwExpirationWarning": false,
+                "pwdAge": 1818070,
+                "userName": "SYSMGR_MK0XRF2I",
+                "groups": ["lxc-sysmgr"]
+        },
+        "result": "success",
+        "messages": [{
+                "id": "FQXHMSE0001I",
+                "text": "The request completed successfully.",
+                "explanation": "",
+                "recovery": {
+                        "text": "Information only. No action is required.",
+                        "URL": ""
+                }
+        }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+

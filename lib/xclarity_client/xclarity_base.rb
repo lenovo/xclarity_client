@@ -65,6 +65,13 @@ module XClarityClient
       end
     end
 
+    def do_delete (uri="")
+      @conn.delete do |req|
+        req.url uri
+        req.headers['Content-Type'] = 'application/json'
+      end
+    end
+
     def authentication(conf)
       response = @conn.post do |request|
         request.url '/session'
