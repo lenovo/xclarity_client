@@ -1,6 +1,8 @@
 require 'xclarity_client/version'
+require 'utils/logger'
 
 module XClarityClient
+  $lxca_log = XClarityClient::XClarityLogger.new
 end
 
 require 'xclarity_client/configuration'
@@ -39,4 +41,4 @@ require 'xclarity_client/update_repo'
 require 'xclarity_client/update_repo_management'
 require 'xclarity_client/user'
 require 'xclarity_client/user_management'
-
+require 'xclarity_client/discover'

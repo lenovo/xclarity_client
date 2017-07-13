@@ -5,8 +5,8 @@ module XClarityClient
     BASE_URI = '/scalableComplex'.freeze
     LIST_NAME = 'complex'.freeze
 
-    attr_accessor :properties, :_id, :location, :nodeCount, :orphanNodes,
-    :partition, :partitionCount, :uuid, :slots, :complexID
+    attr_accessor :complexID, :location, :nodeCount, :orphanNodes,
+                  :partition, :partitionCount, :uuid
 
 
     def initialize(attributes)
