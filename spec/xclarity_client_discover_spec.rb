@@ -10,16 +10,32 @@ describe XClarityClient::Discover do
     end
 
     context 'with the correct appliance IPAddress' do
-      before do
-        @port = Faker::Number.number(4)
-        @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
-        WebMock.allow_net_connect!
-        stub_request(:get, File.join(@address.to_s, '/aicc')).to_return(:status => [200, 'OK'])
+      context 'with response 200' do
+        before do
+          @port = Faker::Number.number(4)
+          @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
+          WebMock.allow_net_connect!
+          stub_request(:get, File.join(@address.to_s, '/aicc')).to_return(:status => [200, 'OK'])
+        end
+
+        it 'should return true' do
+          response = XClarityClient::Discover.responds?(@address.host, @port)
+          expect(response).to be_truthy
+        end
       end
 
-      it 'should return true' do
-        response = XClarityClient::Discover.responds?(@address.host, @port)
-        expect(response).to be_truthy
+      context 'with response 302' do
+        before do
+          @port = Faker::Number.number(4)
+          @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
+          WebMock.allow_net_connect!
+          stub_request(:get, File.join(@address.to_s, '/aicc')).to_return(:status => [302, 'FOUND'])
+        end
+
+        it 'should return true' do
+          response = XClarityClient::Discover.responds?(@address.host, @port)
+          expect(response).to be_truthy
+        end
       end
     end
   end
