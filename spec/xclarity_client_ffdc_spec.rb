@@ -10,6 +10,7 @@ describe XClarityClient do
       username:   ENV['LXCA_USERNAME'],
       password:   ENV['LXCA_PASSWORD'],
       host:       ENV['LXCA_HOST'],
+      port:       ENV['LXCA_PORT'],
       auth_type:  ENV['LXCA_AUTH_TYPE'],
       verify_ssl: ENV['LXCA_VERIFY_SSL']
     )
