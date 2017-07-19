@@ -3,7 +3,6 @@ require 'uuid'
 
 module XClarityClient
   class NodeManagement < XClarityBase
-    OFF = 1
     include XClarityClient::ManagementMixin
 
     def initialize(conf)
@@ -14,17 +13,17 @@ module XClarityClient
       get_all_resources(Node, opts)
     end
 
-    def set_node_power_state(uuid, powerState = OFF)
-      puts 'UUID to shutdown ' + uuid
-      power_request = case powerState
-                      when OFF
-                        JSON.generate(powerState: 'powerOff')
-                      else
-                        JSON.generate(powerState: 'powerOn')
-                      end
-      $lxca_log.info "XclarityClient::ManagementMixin set_node_power_state", "Power state action has been sent"
+    def set_node_power_state(uuid, requested_state = nil)
+      if [uuid, requested_state].any? { |item| item.nil? }
+        error = 'Invalid target or power state requested'
+        $lxca_log.info 'XclarityClient::NodeManagement set_node_power_state', error
+        raise ArgumentError, error
+      end
 
-      do_put(Node::BASE_URI + '/' + uuid, power_request)
+      power_request = JSON.generate(powerState: requested_state) 
+      response = do_put(Node::BASE_URI + '/' + uuid, power_request)
+      $lxca_log.info 'XclarityClient::NodeManagement set_node_power_state', "Power state action has been sent with request #{power_request}"
+      response
     end
 
     def set_loc_led_state(uuid, state, name = 'Identify')
