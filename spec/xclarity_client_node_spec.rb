@@ -108,10 +108,32 @@ describe XClarityClient do
     end
   end
 
-  describe 'Get /node' do
-    it 'should power down system' do
-      response = @client.power_off_node(@uuid_array[0])
-      expect(response.status).to eq(200)
+  describe 'Power Operations' do
+    context 'with a nodes object' do
+      it 'should power down system' do
+        response = @client.power_off_node(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'powerOff' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should power up system' do
+        response = @client.power_on_node(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'powerOn' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should restart system' do
+        response = @client.power_restart_node(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'powerCycleSoftGrace' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should throw exception' do
+        expect { @client.power_off_node(nil) }.to raise_error(ArgumentError)
+      end
     end
   end
 
