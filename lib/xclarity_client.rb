@@ -6,10 +6,10 @@ module XClarityClient
 end
 
 require 'xclarity_client/configuration'
-require 'xclarity_client/client'
 require 'xclarity_client/xclarity_base'
 require 'xclarity_client/xclarity_resource'
 require 'xclarity_client/xclarity_management_mixin'
+require 'xclarity_client/xclarity_power_management_mixin'
 require 'xclarity_client/virtual_appliance_management'
 require 'xclarity_client/node'
 require 'xclarity_client/node_management'
@@ -34,3 +34,4 @@ require 'xclarity_client/cabinet_management'
 require 'xclarity_client/event'
 require 'xclarity_client/event_management'
 require 'xclarity_client/discover'
+require 'xclarity_client/client'

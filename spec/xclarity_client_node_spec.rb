@@ -131,6 +131,34 @@ describe XClarityClient do
         expect(a_request(:put, uri).with(request_body)).to have_been_made
         expect(response.status).to eq(200)
       end
+      it 'should power down system now' do
+        response = @client.power_off_node_now(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'powerNMI' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should restart system now' do
+        response = @client.power_restart_node_now(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'powerCycleSoft' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should restart system management controller' do
+        response = @client.power_restart_node_controller(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}/bmc"
+        request_body = { 'body' => { 'powerState' => 'restart' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
+      it 'should restart system to F1 setup' do
+        response = @client.power_restart_node_to_setup(@uuid_array[0])
+        uri = "#{@host}/nodes/#{@uuid_array[0]}"
+        request_body = { 'body' => { 'powerState' => 'bootToF1' } }
+        expect(a_request(:put, uri).with(request_body)).to have_been_made
+        expect(response.status).to eq(200)
+      end
       it 'should throw exception' do
         expect { @client.power_off_node(nil) }.to raise_error(ArgumentError)
       end
