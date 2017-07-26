@@ -50,8 +50,9 @@ module XClarityClient
     def send_power_request(uri, requested_state = nil)
       power_request = JSON.generate(powerState: requested_state)
       response = do_put(uri, power_request)
-      msg = 'Power state action has been sent with request #{power_request}'
-      $lxca_log.info "XclarityClient::NodeManagement set_node_power_state", msg
+      msg = "Power state action has been sent with request #{power_request}"
+
+      $lxca_log.info 'XclarityClient::NodeManagement set_node_power_state', msg
       response
     end
   end
