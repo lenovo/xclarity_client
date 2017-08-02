@@ -155,5 +155,53 @@ module XClarityClient
     def turn_off_loc_led(uuid = '')
       NodeManagement.new(@connection).set_loc_led_state(uuid, 'Off')
     end
+  
+    def fetch_ffdc(uuids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      FfdcManagement.new(@connection).get_object(uuids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                Ffdc)
+    end
+
+    def discover_jobs(opts = {})
+      JobManagement.new(@connection).population opts
+    end
+
+    def fetch_jobs(ids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      JobManagement.new(@connection).get_object_with_id(ids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                Job)
+    end
+
+    def cancel_job(id = '')
+      JobManagement.new(@connection).cancel_job(id)
+    end
+
+    def delete_job(id = '')
+      JobManagement.new(@connection).delete_job(id)
+    end
+
+    def discover_update_repo(opts = {})
+      UpdateRepoManagement.new(@connection).population opts
+    end
+
+    def discover_users(opts = {})
+      UserManagement.new(@connection).population
+    end
+
+    def fetch_users(ids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      UserManagement.new(@connection).get_object_with_id(ids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                User)
+    end
+  
   end
 end
