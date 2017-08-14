@@ -6,7 +6,7 @@ require 'uri/https'
 module XClarityClient
   class XClarityBase
 
-    token_auth = '/session'.freeze
+    token_auth = '/sessions'.freeze
     attr_reader :conn
     
     def initialize(conf, uri)
@@ -32,8 +32,11 @@ module XClarityClient
         faraday.ssl[:verify] = conf.verify_ssl == 'PEER'
       end
 
-      response = authentication(conf) unless conf.auth_type != 'token'
-      #TODO: What's to do with the response of authentication request?
+      response = conf.auth_type == 'token' ? true : authentication(conf)
+      if response == false 
+          raise Faraday::Error::ConnectionFailed, 'Unable to connect to endpoint.'
+      end
+
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
       $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
       @conn
@@ -74,7 +77,7 @@ module XClarityClient
 
     def authentication(conf)
       response = @conn.post do |request|
-        request.url '/session'
+        request.url '/sessions' 
         request.headers['Content-Type'] = 'application/json'
         request.body = {:UserId => conf.username,
                         :password => conf.password,
@@ -82,6 +85,7 @@ module XClarityClient
                         :maxLostHeartBeats => 3,
                         :csrf => conf.csrf_token}.to_json
       end
+      response.success?
     end
   end
 end
