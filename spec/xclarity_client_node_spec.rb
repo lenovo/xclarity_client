@@ -113,7 +113,7 @@ describe XClarityClient do
       it 'should power down system' do
         response = @client.power_off_node(@uuid_array[0])
         uri = "#{@host}/nodes/#{@uuid_array[0]}"
-        request_body = { 'body' => { 'powerState' => 'powerOff' } }
+        request_body = { 'body' => { 'powerState' => 'powerOffSoftGraceful' } }
         expect(a_request(:put, uri).with(request_body)).to have_been_made
         expect(response.status).to eq(200)
       end
@@ -134,7 +134,7 @@ describe XClarityClient do
       it 'should power down system now' do
         response = @client.power_off_node_now(@uuid_array[0])
         uri = "#{@host}/nodes/#{@uuid_array[0]}"
-        request_body = { 'body' => { 'powerState' => 'powerNMI' } }
+        request_body = { 'body' => { 'powerState' => 'powerOff' } }
         expect(a_request(:put, uri).with(request_body)).to have_been_made
         expect(response.status).to eq(200)
       end

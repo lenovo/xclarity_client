@@ -7,11 +7,11 @@ module XClarityClient
     end
 
     def power_off_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, :powerOff)
+      NodeManagement.new(@connection).set_node_power_state(uuid, :powerOffSoftGraceful)
     end
 
     def power_off_node_now(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, :powerNMI)
+      NodeManagement.new(@connection).set_node_power_state(uuid, :powerOff)
     end
 
     def power_restart_node(uuid = '')
