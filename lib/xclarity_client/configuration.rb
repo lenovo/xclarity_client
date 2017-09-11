@@ -1,9 +1,7 @@
-require 'securerandom'
-
 module XClarityClient
   class Configuration
 
-    attr_accessor :username, :password, :host, :csrf_token, :auth_type, :generated_token, :port, :verify_ssl
+    attr_accessor :username, :password, :host, :auth_type, :port, :verify_ssl
 
     def initialize(args)
 
@@ -24,8 +22,7 @@ module XClarityClient
       end
 
       $lxca_log.info "XClarityClient::Configuration initialize","Configuration built successfuly"
-      
-      @csrf_token ||= SecureRandom.base64(120) if @auth_type == 'token'
+
     end
 
     def self.default
