@@ -8,7 +8,7 @@ module XClarityClient
   class XClarityBase
 
     attr_reader :conn
-    
+
     def initialize(conf, uri)
       connection_builder(conf, uri)
     end
@@ -81,7 +81,21 @@ module XClarityClient
                         :password => conf.password}.to_json
       end
       if not response.success?
-        raise Faraday::Error::ConnectionFailed, 'Unable to connect to endpoint.'
+        raise Faraday::Error::ConnectionFailed
+      end
+
+    rescue => err
+      cause = err.cause.to_s.downcase
+      if cause.include?('connection refused')
+        raise XClarityClient::Error::ConnectionRefused
+      elsif cause.include?('name or service not known')
+        raise XClarityClient::Error::HostnameUnknown
+      elsif response.nil?
+        raise XClarityClient::Error::ConnectionFailed
+      elsif response.status == 403
+        raise XClarityClient::Error::AuthenticationError
+      else
+        raise XClarityClient::Error::ConnectionFailedUnknown.new("status #{response.status}")
       end
     end
   end

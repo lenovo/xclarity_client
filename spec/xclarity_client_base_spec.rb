@@ -28,13 +28,23 @@ describe XClarityClient::XClarityBase do
         end
       end
 
-      context 'with response 302' do
+      context 'with response 404' do
         before do
           WebMock.allow_net_connect!
-          stub_request(:post, File.join(host, uri)).to_return(:status => [302, 'Found'])
+          stub_request(:post, File.join(host, uri)).to_return(:status => [404, 'NOT FOUND'])
         end
         it 'should respond with an exception' do
-          expect{XClarityClient::XClarityBase.new(conf,'/')}.to raise_error(Faraday::Error::ConnectionFailed)
+          expect{XClarityClient::XClarityBase.new(conf,'/')}.to raise_error(XClarityClient::Error::ConnectionFailedUnknown)
+        end
+      end
+
+      context 'with response 403' do
+        before do
+          WebMock.allow_net_connect!
+          stub_request(:post, File.join(host, uri)).to_return(:status => [403, 'UNAUTHORIZED'])
+        end
+        it 'should respond with an exception' do
+          expect{XClarityClient::XClarityBase.new(conf,'/')}.to raise_error(XClarityClient::Error::AuthenticationError)
         end
       end
     end
