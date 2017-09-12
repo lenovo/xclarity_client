@@ -1,5 +1,7 @@
 module XClarityClient
   class Client
+    include XClarityClient::PowerManagementMixin
+
     def initialize(connection)
       @connection = connection
     end
@@ -142,20 +144,6 @@ module XClarityClient
       EventManagement.new(@connection).get_object_with_opts(opts, Event)
     end
 
-    def power_on_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOn')
-    end
-
-    def power_off_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid, 'powerOff')
-    end
-
-    def power_restart_node(uuid = '')
-      NodeManagement.new(@connection).set_node_power_state(uuid,
-                                                           'powerCycleSoftGrace'
-                                                          )
-    end
-
     def blink_loc_led(uuid = '')
       NodeManagement.new(@connection).set_loc_led_state(uuid, 'Blinking')
     end
@@ -167,5 +155,125 @@ module XClarityClient
     def turn_off_loc_led(uuid = '')
       NodeManagement.new(@connection).set_loc_led_state(uuid, 'Off')
     end
+  
+    def fetch_ffdc(uuids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      FfdcManagement.new(@connection).get_object(uuids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                Ffdc)
+    end
+
+    def discover_jobs(opts = {})
+      JobManagement.new(@connection).population opts
+    end
+
+    def fetch_jobs(ids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      JobManagement.new(@connection).get_object_with_id(ids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                Job)
+    end
+
+    def cancel_job(id = '')
+      JobManagement.new(@connection).cancel_job(id)
+    end
+
+    def delete_job(id = '')
+      JobManagement.new(@connection).delete_job(id)
+    end
+
+    def discover_update_repo(opts = {})
+      UpdateRepoManagement.new(@connection).population opts
+    end
+
+    def discover_users(opts = {})
+      UserManagement.new(@connection).population
+    end
+
+    def fetch_users(ids = nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      UserManagement.new(@connection).get_object_with_id(ids,
+                                                includeAttributes,
+                                                excludeAttributes,
+                                                User)
+    end
+
+    def fetch_configtarget(ids=nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigtargetManagement.new(@connection).get_object_with_id(ids, 
+                                                        includeAttributes, 
+                                                        excludeAttributes,
+                                                        Configtarget)
+    end
+
+    def fetch_configprofile(ids=nil, 
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigprofileManagement.new(@connection).get_object_with_id(ids, 
+                                                        includeAttributes,
+                                                        excludeAttributes,
+                                                        Configprofile)
+    end
+
+    def discover_configprofile
+      ConfigprofileManagement.new(@connection).population
+    end
+
+    def rename_configprofile(id='', name='')
+      ConfigprofileManagement.new(@connection).rename_configprofile(id,
+						      name)
+    end
+  
+    def activate_configprofile(id='', endpoint_uuid='', restart='')
+      ConfigprofileManagement.new(@connection).activate_configprofile(id,
+							endpoint_uuid,
+							restart)
+    end
+
+    def unassign_configprofile(id='', powerDown='',resetImm='',force='')
+      ConfigprofileManagement.new(@connection).unassign_configprofile(id,
+							powerDown,
+							resetImm,
+							force)
+    end
+
+    def delete_configprofile(id='')
+      ConfigprofileManagement.new(@connection).delete_configprofile(id)
+    end
+  
+    def fetch_configpattern(ids=nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigpatternManagement.new(@connection).get_object_with_id(ids,
+                                                        includeAttributes,
+                                                        excludeAttributes,
+                                                        Configpattern)
+    end
+
+    def discover_configpattern
+      ConfigpatternManagement.new(@connection).population
+    end
+ 
+    def export_configpattern(id='')
+      ConfigpatternManagement.new(@connection).export(id)
+    end   
+
+    def deploy_configpattern(id='',endpoints=nil,restart='',etype='')
+      ConfigpatternManagement.new(@connection).deploy_configpattern(id,
+						      endpoints,
+                                                      restart,
+                                                      etype)
+    end
+   
+    def import_configpattern(configpattern = {})
+      ConfigpatternManagement.new(@connection).import_configpattern(configpattern)
+    end
+
   end
 end
