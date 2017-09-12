@@ -5,12 +5,13 @@ module XClarityClient
     BASE_URI = '/switches'.freeze
     LIST_NAME = 'switchList'.freeze
 
-    attr_accessor :properties, :_id, :accessState, :applyPending, :attachedNodes, :cmmDisplayName, :cmmHealthState, :entitleSerialNumber, :fans, :firmware, :hostname, :ipInterfaces,
-    :leds, :macAddresses, :machineType, :manufacturer, :manufacturerId, :ports, :productId, :productName, :protectedMode, :serialNumber, :type, :upTime, :uuid, :accessState,
-    :cmmHealthState, :excludedHealthState, :memoryUtilization, :model, :overallHealthState, :panicDump, :powerState, :savePending, :slots, :posID, :stackMode, :stackedMode,
-    :stackRole, :sysObjectID, :temperatureSensors, :userDescription, :vpdID, :contact, :cpuUtilization, :dataHandle, :description, :dnsHostnames, :domainName, :errorFields,
-    :FRU, :fruSerialNumber, :ipv4Addresses, :ipv6Addresses, :ipInterfaces, :manufacturingDate, :name, :resetReason, :uri, :backedBy, :partNumber, :parent, :powerAllocation
-
+    attr_accessor :accessState, :attachedNodes, :backedBy, :cmmDisplayName, :cmmHealthState,
+                  :dataHandle, :description, :dnsHostnames, :errorFields, :excludedHealthState,
+                  :firmware, :FRU, :fruSerialNumber, :hostname, :ipInterfaces, :ipv4Addresses,
+                  :ipv6Addresses, :leds, :macAddresses, :machineType, :manufacturer, :manufacturerId,
+                  :model, :name, :overallHealthState, :parent, :partNumber, :posID, :powerAllocation,
+                  :powerState, :productId, :productName, :protectedMode, :serialNumber, :slots,
+                  :stackMode, :type, :uri, :userDescription, :uuid, :vpdID
 
     def initialize(attributes)
       build_resource(attributes)

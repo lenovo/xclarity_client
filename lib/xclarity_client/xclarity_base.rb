@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday-cookie_jar'
 require 'json'
 require 'uri'
 require 'uri/https'
@@ -6,7 +7,6 @@ require 'uri/https'
 module XClarityClient
   class XClarityBase
 
-    token_auth = '/session'.freeze
     attr_reader :conn
     
     def initialize(conf, uri)
@@ -28,12 +28,13 @@ module XClarityClient
       @conn = Faraday.new(url: url) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
+        faraday.use :cookie_jar if conf.auth_type == 'token'
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.ssl[:verify] = conf.verify_ssl == 'PEER'
       end
 
-      response = authentication(conf) unless conf.auth_type != 'token'
-      #TODO: What's to do with the response of authentication request?
+      authentication(conf) if conf.auth_type == 'token'
+
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
       $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
       @conn
@@ -88,13 +89,13 @@ module XClarityClient
 
     def authentication(conf)
       response = @conn.post do |request|
-        request.url '/session'
+        request.url '/sessions'
         request.headers['Content-Type'] = 'application/json'
         request.body = {:UserId => conf.username,
-                        :password => conf.password,
-                        :heartBeatEnabled => true,
-                        :maxLostHeartBeats => 3,
-                        :csrf => conf.csrf_token}.to_json
+                        :password => conf.password}.to_json
+      end
+      if not response.success?
+        raise Faraday::Error::ConnectionFailed, 'Unable to connect to endpoint.'
       end
     end
   end
