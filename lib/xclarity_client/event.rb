@@ -5,13 +5,14 @@ module XClarityClient
     BASE_URI = '/events'.freeze
     LIST_NAME = 'eventList'.freeze
 
-    attr_accessor :action, :args, :bayText, :chassisText, :cn, :componentID, :eventClass, :eventDate,
-                  :eventSourceText, :eventID, :failFRUs, :failSNs, :flags, :fruSerialNumberText, :localLogID,
-                  :localLogSequence, :location, :msg, :msgID, :mtm, :originatorUUID, :parameters,
-                  :serialnum, :severity, :severityText, :service, :serviceabilityText, :sourceID,
+    attr_accessor :action, :args, :bayText, :chassisText, :cn, :commonEventID, :componentID,
+                  :eventClass, :eventDate, :eventID, :eventSourceText, :failFRUs, :failSNs,
+                  :flags, :fruSerialNumberText, :localLogID, :localLogSequence, :location,
+                  :msg, :msgID, :mtm, :originatorUUID, :parameters, :senderUUID, :serialnum,
+                  :service, :serviceabilityText, :severity, :severityText, :sourceID,
                   :sourceLogID, :sourceLogSequence, :systemFruNumberText, :systemName,
-                  :systemSerialNumberText, :systemText, :systemTypeModelText, :systemTypeText, :timeStamp,
-                  :typeText, :userid, :userIDIndex
+                  :systemSerialNumberText, :systemText, :systemTypeModelText, :systemTypeText,
+                  :timeStamp, :typeText, :userid, :userIDIndex
 
     def initialize(attributes)
       build_resource(attributes)
