@@ -202,6 +202,9 @@ module XClarityClient
                                                 excludeAttributes,
                                                 User)
     end
-  
+
+    def validate_configuration
+      XClarityBase.new(@connection, '/')
+    end
   end
 end
