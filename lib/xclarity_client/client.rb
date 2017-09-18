@@ -275,5 +275,8 @@ module XClarityClient
       ConfigPatternManagement.new(@connection).import_config_pattern(config_pattern)
     end
 
+    def validate_configuration
+      XClarityBase.new(@connection, '/')
+    end
   end
 end
