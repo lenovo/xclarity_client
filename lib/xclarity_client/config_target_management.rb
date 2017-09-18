@@ -2,11 +2,11 @@ require 'json'
 require 'uuid'
 
 module XClarityClient
-  class ConfigtargetManagement < XClarityBase
+  class ConfigTargetManagement < XClarityBase
     include XClarityClient::ManagementMixin
 
     def initialize(conf)
-      super(conf, Configtarget::BASE_URI)
+      super(conf, ConfigTarget::BASE_URI)
     end
 
   end

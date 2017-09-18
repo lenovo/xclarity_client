@@ -203,76 +203,76 @@ module XClarityClient
                                                 User)
     end
 
-    def fetch_configtarget(ids=nil,
+    def fetch_config_target(ids=nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
-      ConfigtargetManagement.new(@connection).get_object_with_id(ids, 
+      ConfigTargetManagement.new(@connection).get_object_with_id(ids, 
                                                         includeAttributes, 
                                                         excludeAttributes,
-                                                        Configtarget)
+                                                        ConfigTarget)
     end
 
-    def fetch_configprofile(ids=nil, 
+    def fetch_config_profile(ids=nil, 
                    includeAttributes = nil,
                    excludeAttributes = nil)
-      ConfigprofileManagement.new(@connection).get_object_with_id(ids, 
+      ConfigProfileManagement.new(@connection).get_object_with_id(ids, 
                                                         includeAttributes,
                                                         excludeAttributes,
-                                                        Configprofile)
+                                                        ConfigProfile)
     end
 
-    def discover_configprofile
-      ConfigprofileManagement.new(@connection).population
+    def discover_config_profile
+      ConfigProfileManagement.new(@connection).population
     end
 
-    def rename_configprofile(id='', name='')
-      ConfigprofileManagement.new(@connection).rename_configprofile(id,
+    def rename_config_profile(id='', name='')
+      ConfigProfileManagement.new(@connection).rename_config_profile(id,
 						      name)
     end
   
-    def activate_configprofile(id='', endpoint_uuid='', restart='')
-      ConfigprofileManagement.new(@connection).activate_configprofile(id,
+    def activate_config_profile(id='', endpoint_uuid='', restart='')
+      ConfigProfileManagement.new(@connection).activate_config_profile(id,
 							endpoint_uuid,
 							restart)
     end
 
-    def unassign_configprofile(id='', powerDown='',resetImm='',force='')
-      ConfigprofileManagement.new(@connection).unassign_configprofile(id,
+    def unassign_config_profile(id='', powerDown='',resetImm='',force='')
+      ConfigProfileManagement.new(@connection).unassign_config_profile(id,
 							powerDown,
 							resetImm,
 							force)
     end
 
-    def delete_configprofile(id='')
-      ConfigprofileManagement.new(@connection).delete_configprofile(id)
+    def delete_config_profile(id='')
+      ConfigProfileManagement.new(@connection).delete_config_profile(id)
     end
   
-    def fetch_configpattern(ids=nil,
+    def fetch_config_pattern(ids=nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
-      ConfigpatternManagement.new(@connection).get_object_with_id(ids,
+      ConfigPatternManagement.new(@connection).get_object_with_id(ids,
                                                         includeAttributes,
                                                         excludeAttributes,
-                                                        Configpattern)
+                                                        ConfigPattern)
     end
 
-    def discover_configpattern
-      ConfigpatternManagement.new(@connection).population
+    def discover_config_pattern
+      ConfigPatternManagement.new(@connection).population
     end
  
-    def export_configpattern(id='')
-      ConfigpatternManagement.new(@connection).export(id)
+    def export_config_pattern(id='')
+      ConfigPatternManagement.new(@connection).export(id)
     end   
 
-    def deploy_configpattern(id='',endpoints=nil,restart='',etype='')
-      ConfigpatternManagement.new(@connection).deploy_configpattern(id,
+    def deploy_config_pattern(id='',endpoints=nil,restart='',etype='')
+      ConfigPatternManagement.new(@connection).deploy_config_pattern(id,
 						      endpoints,
                                                       restart,
                                                       etype)
     end
    
-    def import_configpattern(configpattern = {})
-      ConfigpatternManagement.new(@connection).import_configpattern(configpattern)
+    def import_config_pattern(config_pattern = {})
+      ConfigPatternManagement.new(@connection).import_config_pattern(config_pattern)
     end
 
   end

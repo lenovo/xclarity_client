@@ -22,7 +22,7 @@ describe XClarityClient do
   before :each do
     @includeAttributes = %w(rackId unit)
     @excludeAttributes = %w(rackId unit)
-    @idArray = @client.discover_configprofile.map { |profile| profile.id  }
+    @idArray = @client.discover_config_profile.map { |profile| profile.id  }
   end
 
   it 'has a version number' do
@@ -32,12 +32,12 @@ describe XClarityClient do
   describe 'GET /profiles' do
 
     it 'should respond with an array' do
-      expect(@client.discover_configprofile).not_to be_empty
+      expect(@client.discover_config_profile).not_to be_empty
     end
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configprofile(nil,@includeAttributes,nil)
+        response = @client.fetch_config_profile(nil,@includeAttributes,nil)
         expect(response).not_to be_empty
         response.map do |profile|
           @includeAttributes.map do |attribute|
@@ -49,7 +49,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_configprofile(nil,nil,@excludeAttributes)
+        response = @client.fetch_config_profile(nil,nil,@excludeAttributes)
         expect(response).not_to be_empty
         response.map do |profile|
           @excludeAttributes.map do |attribute|
@@ -63,7 +63,7 @@ describe XClarityClient do
   describe 'GET /profiles/ID' do
     context 'without include or exclude' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configprofile([@idArray[0]], nil,nil)
+        response = @client.fetch_config_profile([@idArray[0]], nil,nil)
         expect(response).not_to be_empty
         response.map do |profile|
           @includeAttributes.map do |attribute|
@@ -75,7 +75,7 @@ describe XClarityClient do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configprofile([@idArray[0]], @includeAttributes,nil)
+        response = @client.fetch_config_profile([@idArray[0]], @includeAttributes,nil)
         expect(response).not_to be_empty
         response.map do |profile|
           @includeAttributes.map do |attribute|
@@ -87,7 +87,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_configprofile([@idArray[0]], nil, @excludeAttributes)
+        response = @client.fetch_config_profile([@idArray[0]], nil, @excludeAttributes)
         expect(response).not_to be_empty
         response.map do |profile|
           @excludeAttributes.map do |attribute|
@@ -101,7 +101,7 @@ describe XClarityClient do
   describe 'POST /profiles/ID' do
     context 'activate the profile' do
       it 'activates the profile' do
-        @client.activate_configprofile(@idArray[0],"46920C143355486F97C19A34ABC7D746_bay10", "immediate")
+        @client.activate_config_profile(@idArray[0],"46920C143355486F97C19A34ABC7D746_bay10", "immediate")
         uri = "#{@host}/profiles/#{@idArray[0]}"
         request_body = { 'body' => {'restart' => 'immediate', 'uuid' => '46920C143355486F97C19A34ABC7D746_bay10'} }
         expect(a_request(:post, uri).with(request_body)).to have_been_made
@@ -112,7 +112,7 @@ describe XClarityClient do
   describe 'POST /profiles/unassign/ID' do
     context 'unassign the profile' do
       it 'unassigns the profile' do
-        @client.unassign_configprofile(@idArray[0],"False", "False", "False")
+        @client.unassign_config_profile(@idArray[0],"False", "False", "False")
         uri = "#{@host}/profiles/unassign/#{@idArray[0]}"
         expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'), :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>'Faraday v0.9.2'})).to have_been_made
       end
@@ -122,7 +122,7 @@ describe XClarityClient do
   describe 'PUT /profiles/ID' do
     context 'rename the profile' do
       it 'renames the profile' do
-        @client.rename_configprofile(@idArray[0],"New name")
+        @client.rename_config_profile(@idArray[0],"New name")
         uri = "#{@host}/profiles/#{@idArray[0]}"
         request_body = { 'body' => {'profileName' => 'New name'} }
         expect(a_request(:put, uri).with(request_body)).to have_been_made
@@ -133,7 +133,7 @@ describe XClarityClient do
   describe 'DELETE /profiles/ID' do
     context 'delete the profile' do
       it 'deletes the profile' do
-        @client.delete_configprofile(@idArray[0])
+        @client.delete_config_profile(@idArray[0])
         uri = "#{@host}/profiles/#{@idArray[0]}"
         expect(a_request(:delete, uri)).to have_been_made
       end

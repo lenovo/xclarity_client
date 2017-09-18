@@ -1,5 +1,5 @@
 module XClarityClient
-  class Configpattern
+  class ConfigPattern
     include XClarityClient::Resource
 
     BASE_URI = '/patterns'.freeze

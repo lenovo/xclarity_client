@@ -26,7 +26,7 @@ describe XClarityClient do
 
   describe 'GET /config/target/ID' do
     it 'should respond with a array' do
-      response = @client.fetch_configtarget(['65'], @include_attributes, nil)
+      response = @client.fetch_config_target(['65'], @include_attributes, nil)
       response.map do |target|
         @include_attributes.map do |attribute|
           expect(target.send(attribute)).not_to be_nil

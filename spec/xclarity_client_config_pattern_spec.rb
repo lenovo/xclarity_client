@@ -23,7 +23,7 @@ describe XClarityClient do
     @includeAttributes = %w(formFactor inUse)
     @excludeAttributes = %w(formFactor inUse)
     @settingsAttributes = %w(template_type server_template)
-    @idArray = @client.discover_configpattern.map { |pattern| pattern.id  }
+    @idArray = @client.discover_config_pattern.map { |pattern| pattern.id  }
   end
 
   it 'has a version number' do
@@ -33,12 +33,12 @@ describe XClarityClient do
   describe 'GET /patterns' do
 
     it 'should respond with an array' do
-      expect(@client.discover_configpattern).not_to be_empty
+      expect(@client.discover_config_pattern).not_to be_empty
     end
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configpattern(nil,@includeAttributes,nil)
+        response = @client.fetch_config_pattern(nil,@includeAttributes,nil)
         expect(response).not_to be_empty
         response.map do |pattern|
           @includeAttributes.map do |attribute|
@@ -50,7 +50,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_configpattern(nil,nil,@excludeAttributes)
+        response = @client.fetch_config_pattern(nil,nil,@excludeAttributes)
         expect(response).not_to be_empty
         response.map do |pattern|
           @excludeAttributes.map do |attribute|
@@ -64,7 +64,7 @@ describe XClarityClient do
   describe 'GET /patterns/ID' do
     context 'without include or exclude' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configpattern([@idArray[0]], nil,nil)
+        response = @client.fetch_config_pattern([@idArray[0]], nil,nil)
         expect(response).not_to be_empty
         response.map do |pattern|
           @includeAttributes.map do |attribute|
@@ -76,7 +76,7 @@ describe XClarityClient do
 
     context 'with includeAttributes' do
       it 'include attributes should not be nil' do
-        response = @client.fetch_configpattern([@idArray[0]], @includeAttributes,nil)
+        response = @client.fetch_config_pattern([@idArray[0]], @includeAttributes,nil)
         expect(response).not_to be_empty
         response.map do |pattern|
           @includeAttributes.map do |attribute|
@@ -88,7 +88,7 @@ describe XClarityClient do
 
     context 'with excludeAttributes' do
       it 'exclude attributes should be nil' do
-        response = @client.fetch_configpattern([@idArray[0]], nil, @excludeAttributes)
+        response = @client.fetch_config_pattern([@idArray[0]], nil, @excludeAttributes)
         expect(response).not_to be_empty
         response.map do |pattern|
           @excludeAttributes.map do |attribute|
@@ -102,7 +102,7 @@ describe XClarityClient do
   describe 'GET /patterns/ID/includeSettings' do
     context 'export configpatterns' do
       it 'should respond with all the settings about the pattern' do
-        response = @client.export_configpattern(@idArray[0])
+        response = @client.export_config_pattern(@idArray[0])
         expect(response).not_to be_empty
         response.map do |pattern|
           @settingsAttributes.map do |attribute|
@@ -117,7 +117,7 @@ describe XClarityClient do
     context 'import a config pattern' do
       it 'imports a config patterns' do
         importString = File.read(File.expand_path(__FILE__,"configpattern_input.json"))
-        @client.import_configpattern(importString)
+        @client.import_config_pattern(importString)
         uri = "#{@host}/patterns"
         expect(a_request(:post, uri).with(:body => importString)).to have_been_made
       end
@@ -127,7 +127,7 @@ describe XClarityClient do
   describe 'POST /patterns/ID' do
     context 'deploy a config pattern' do
       it 'deploys a config pattern' do
-        @client.deploy_configpattern(@idArray[0],['B918EDCA1B5F11E2803EBECB82710ADE'],'pending','node')
+        @client.deploy_config_pattern(@idArray[0],['B918EDCA1B5F11E2803EBECB82710ADE'],'pending','node')
         uri = "#{@host}/patterns/#{@idArray[0]}"
         expect(a_request(:post, uri).with(:body => JSON.generate(uuid: ['B918EDCA1B5F11E2803EBECB82710ADE'], restart: 'pending'))).to have_been_made
       end

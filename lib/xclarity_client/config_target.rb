@@ -1,5 +1,5 @@
 module XClarityClient
-  class Configtarget
+  class ConfigTarget
     include XClarityClient::Resource
 
     BASE_URI = '/config/target'.freeze

@@ -1,5 +1,5 @@
 module XClarityClient
-  class Configprofile
+  class ConfigProfile
     include XClarityClient::Resource
 
     BASE_URI = '/profiles'.freeze
