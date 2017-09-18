@@ -36,13 +36,13 @@ module XClarityClient
       puts deployHash
       puts JSON.generate(deployHash)
       response = do_post(ConfigPattern::BASE_URI + '/' +id, JSON.generate(deployHash))
-      puts response.body
+      response
 
     end
 
     def import_config_pattern(config_pattern)
       response = do_post(ConfigPattern::BASE_URI, config_pattern)
-      puts response.body
+      response
     end
 
   end
