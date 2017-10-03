@@ -33,8 +33,6 @@ module XClarityClient
         deployHash = {:endpointIds => endpoints}
       end
       deployHash.merge!({:restart => restart})
-      puts deployHash
-      puts JSON.generate(deployHash)
       response = do_post(ConfigPattern::BASE_URI + '/' +id, JSON.generate(deployHash))
       response
 
