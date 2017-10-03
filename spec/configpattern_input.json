@@ -1,0 +1,17 @@
+{
+                                    "template_type" : "SystemInfo",
+                                    "template" : {
+                                        "contact" : "contact",
+                                        "description" : "Pattern created by ruby test API ",
+                                        "location" : "location",
+                                        "name" : "Learned-System_Info-99",
+                                        "systemName" : {
+                                            "autogen" : "Disable",
+                                            "hyphenChecked" : "FALSE"
+                                        },
+                                        "type" : "SystemInfo",
+                                        "uri" : "\/config\/template\/62",
+                                        "userDefined" : "TRUE"
+                                    }
+                            }
+

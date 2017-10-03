@@ -16,12 +16,12 @@ module XClarityClient
     def cancel_job(uuid='')
       cancelReq = JSON.generate(cancelRequest: 'true')
       response = do_put(Job::BASE_URI + '/' + uuid, cancelReq)
-      puts response.body
+      response
     end
 
     def delete_job(uuid='')
       response = do_delete(Job::BASE_URI + '/' + uuid)
-      puts response.body
+      response
     end
 
   end
