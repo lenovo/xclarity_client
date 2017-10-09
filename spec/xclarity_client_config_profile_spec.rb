@@ -114,7 +114,7 @@ describe XClarityClient do
       it 'unassigns the profile' do
         @client.unassign_config_profile(@idArray[0],"False", "False", "False")
         uri = "#{@host}/profiles/unassign/#{@idArray[0]}"
-        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'), :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>'Faraday v0.9.2'})).to have_been_made
+        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'))).to have_been_made
       end
     end
   end
