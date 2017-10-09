@@ -1,7 +1,7 @@
 module XClarityClient
   class Configuration
 
-    attr_accessor :username, :password, :host, :auth_type, :port, :verify_ssl, :user_agent_label
+    attr_accessor :username, :password, :host, :auth_type, :port, :verify_ssl
 
     def initialize(args)
 

@@ -33,7 +33,6 @@ module XClarityClient
         faraday.ssl[:verify] = conf.verify_ssl == 'PEER'
       end
 
-      @conn.headers[:user_agent] = "ruby/#{XClarityClient::VERSION}" + (conf.user_agent_label.nil? ? "" : " (#{conf.user_agent_label})")
       authentication(conf) if conf.auth_type == 'token'
 
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
