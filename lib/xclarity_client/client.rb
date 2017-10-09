@@ -203,6 +203,78 @@ module XClarityClient
                                                 User)
     end
 
+    def fetch_config_target(ids=nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigTargetManagement.new(@connection).get_object_with_id(ids, 
+                                                        includeAttributes, 
+                                                        excludeAttributes,
+                                                        ConfigTarget)
+    end
+
+    def fetch_config_profile(ids=nil, 
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigProfileManagement.new(@connection).get_object_with_id(ids, 
+                                                        includeAttributes,
+                                                        excludeAttributes,
+                                                        ConfigProfile)
+    end
+
+    def discover_config_profile
+      ConfigProfileManagement.new(@connection).population
+    end
+
+    def rename_config_profile(id='', name='')
+      ConfigProfileManagement.new(@connection).rename_config_profile(id,
+						      name)
+    end
+  
+    def activate_config_profile(id='', endpoint_uuid='', restart='')
+      ConfigProfileManagement.new(@connection).activate_config_profile(id,
+							endpoint_uuid,
+							restart)
+    end
+
+    def unassign_config_profile(id='', powerDown='',resetImm='',force='')
+      ConfigProfileManagement.new(@connection).unassign_config_profile(id,
+							powerDown,
+							resetImm,
+							force)
+    end
+
+    def delete_config_profile(id='')
+      ConfigProfileManagement.new(@connection).delete_config_profile(id)
+    end
+  
+    def fetch_config_pattern(ids=nil,
+                   includeAttributes = nil,
+                   excludeAttributes = nil)
+      ConfigPatternManagement.new(@connection).get_object_with_id(ids,
+                                                        includeAttributes,
+                                                        excludeAttributes,
+                                                        ConfigPattern)
+    end
+
+    def discover_config_pattern
+      ConfigPatternManagement.new(@connection).population
+    end
+ 
+    def export_config_pattern(id='')
+      ConfigPatternManagement.new(@connection).export(id)
+    end   
+
+    def deploy_config_pattern(id='',endpoints=nil,restart='',etype='')
+      ConfigPatternManagement.new(@connection).deploy_config_pattern(id,
+						      endpoints,
+                                                      restart,
+                                                      etype)
+    end
+   
+    def import_config_pattern(config_pattern = {})
+      ConfigPatternManagement.new(@connection).import_config_pattern(config_pattern)
+    end
+
     def validate_configuration
       XClarityBase.new(@connection, '/')
     end

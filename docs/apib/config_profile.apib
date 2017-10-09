@@ -1,0 +1,371 @@
+FORMAT: 1A
+
+# XClarity ConfigProfiles
+
+# Profiles with id 68 [/profiles/68]
+
+## Retrieve [GET]
++ Response 200
+{
+    "ID": "68",
+    "name": "X222 changed again profile2-Manasa",
+    "displayName": "X222 changed again profile2-Manasa",
+    "displayId": "68",
+    "endPointType": "LOCATION",
+    "endPointId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "profilePath": ["bay10", "46920C143355486F97C19A34ABC7D746", "system01", "pod01", "datacenter01"],
+    "templateId": "67",
+    "forScalableSecondaryNode": false,
+    "secondaryProfileIDs": [],
+    "managementPatternPresent": false,
+    "addressPresent": false,
+    "serverTemplateId": "67",
+    "commands": ["#08/07/2017 3:50:08 AM"],
+    "rackId": "",
+    "unit": 0,
+    "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "dynamicProperties": {},
+    "primaryProfileID": "",
+    "forScalableNode": false,
+    "forScalablePrimaryNode": false
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Activate [POST]
++ Request (application/json)
+{
+  "restart" : "immediate",
+  "uuid" : "46920C143355486F97C19A34ABC7D746_bay10"
+}
++ Response 200
+{
+    "identifier": "id",
+    "label": "id",
+    "items": [{
+        "message": null,
+        "jobName": "Server Profile activation: Sep 12, 2017",
+        "jobRecordId": "11798640",
+        "endPointIds": [],
+        "endPointNames": [],
+        "locationIds": ["46920C143355486F97C19A34ABC7D746_bay10"],
+        "locationIdsFailed": [],
+        "uuidsFailed": [],
+        "locationNames": ["Bay10"],
+        "redeployedNodeUuids": []
+    }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Update [PUT]
+
++ Request (application/json)
+{
+  "profileName" : "New name"
+}
++ Response 204
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+
+## Delete [DELETE]
+
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+
+## GET /profiles
+
++ Response 200 (application/json)
+{
+    "identifier": "id",
+    "label": "id",
+    "items": [{
+            "profileName": "X222 changed again profile2-Manasa2",
+            "serverName": "",
+            "uuid": "",
+            "chassisName": "SN#Y033BG24B00Z",
+            "bayId": "10",
+            "subBayId": null,
+            "profileStatus": "PENDING_ACTIVATION",
+            "templateName": "test1",
+            "templateId": "67",
+            "type": "root",
+            "id": "68",
+            "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+            "managementPatternPresent": false,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        },
+        {
+            "profileName": "new  name 4",
+            "serverName": "",
+            "uuid": "",
+            "chassisName": "",
+            "bayId": "",
+            "subBayId": null,
+            "profileStatus": "UNASSIGNED",
+            "templateName": "Test X222 from node1",
+            "templateId": "59",
+            "type": "root",
+            "id": "64",
+            "externalId": null,
+            "managementPatternPresent": true,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        }, {
+            "profileName": "test-profile8",
+            "serverName": "abcdefg",
+            "uuid": "B918EDCA1B5F11E2803EBECB82710ADE",
+            "chassisName": "SN#Y033BG24B00Z",
+            "bayId": "11 , 12",
+            "subBayId": null,
+            "profileStatus": "PENDING_ACTIVATION",
+            "templateName": "test",
+            "templateId": "65",
+            "type": "root",
+            "id": "81",
+            "externalId": "46920C143355486F97C19A34ABC7D746_bay11",
+            "managementPatternPresent": false,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        }
+    ]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## GET /profiles?includeAttributes=rackId,unit
+
++ Response 200 (application/json)
+{
+    "identifier": "id",
+    "label": "id",
+    "items": [{
+            "profileName": "X222 changed again profile2-Manasa2",
+            "serverName": "",
+            "uuid": "",
+            "chassisName": "SN#Y033BG24B00Z",
+            "bayId": "10",
+            "subBayId": null,
+            "profileStatus": "PENDING_ACTIVATION",
+            "templateName": "test1",
+            "templateId": "67",
+            "type": "root",
+            "id": "68",
+            "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+            "managementPatternPresent": false,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        },
+        {
+            "profileName": "new  name 4",
+            "serverName": "",
+            "uuid": "",
+            "chassisName": "",
+            "bayId": "",
+            "subBayId": null,
+            "profileStatus": "UNASSIGNED",
+            "templateName": "Test X222 from node1",
+            "templateId": "59",
+            "type": "root",
+            "id": "64",
+            "externalId": null,
+            "managementPatternPresent": true,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        }, {
+            "profileName": "test-profile8",
+            "serverName": "abcdefg",
+            "uuid": "B918EDCA1B5F11E2803EBECB82710ADE",
+            "chassisName": "SN#Y033BG24B00Z",
+            "bayId": "11 , 12",
+            "subBayId": null,
+            "profileStatus": "PENDING_ACTIVATION",
+            "templateName": "test",
+            "templateId": "65",
+            "type": "root",
+            "id": "81",
+            "externalId": "46920C143355486F97C19A34ABC7D746_bay11",
+            "managementPatternPresent": false,
+            "addressPresent": false,
+            "rackId": "",
+            "unit": 0
+        }
+    ]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## GET /profiles?excludeAttributes=rackId,unit
+
++ Response 200 (application/json)
+{
+    "identifier": "id",
+    "label": "id",
+    "items": [{
+        "profileName": "new  name 4",
+        "serverName": "",
+        "uuid": "",
+        "chassisName": "",
+        "bayId": "",
+        "subBayId": null,
+        "profileStatus": "UNASSIGNED",
+        "templateName": "Test X222 from node1",
+        "templateId": "59",
+        "type": "root",
+        "id": "64",
+        "externalId": null,
+        "managementPatternPresent": true,
+        "addressPresent": false
+    }, {
+        "profileName": "test-profile8",
+        "serverName": "abcdefg",
+        "uuid": "B918EDCA1B5F11E2803EBECB82710ADE",
+        "chassisName": "SN#Y033BG24B00Z",
+        "bayId": "11 , 12",
+        "subBayId": null,
+        "profileStatus": "PENDING_ACTIVATION",
+        "templateName": "test",
+        "templateId": "65",
+        "type": "root",
+        "id": "81",
+        "externalId": "46920C143355486F97C19A34ABC7D746_bay11",
+        "managementPatternPresent": false,
+        "addressPresent": false
+    }, {
+        "profileName": "X222 changed again profile2-Manasa2",
+        "serverName": "",
+        "uuid": "",
+        "chassisName": "SN#Y033BG24B00Z",
+        "bayId": "10",
+        "subBayId": null,
+        "profileStatus": "PENDING_ACTIVATION",
+        "templateName": "test1",
+        "templateId": "67",
+        "type": "root",
+        "id": "68",
+        "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+        "managementPatternPresent": false,
+        "addressPresent": false
+    }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## GET /profiles/68?includeAttributes=rackId,unit
+
++ Response 200
+{
+    "ID": "68",
+    "name": "X222 changed again profile2-Manasa2",
+    "displayName": "X222 changed again profile2-Manasa2",
+    "displayId": "68",
+    "endPointType": "LOCATION",
+    "endPointId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "profilePath": ["bay10", "46920C143355486F97C19A34ABC7D746", "system01", "pod01", "datacenter01"],
+    "templateId": "67",
+    "forScalableSecondaryNode": false,
+    "secondaryProfileIDs": [],
+    "managementPatternPresent": false,
+    "addressPresent": false,
+    "serverTemplateId": "67",
+    "commands": ["#08/07/2017 3:50:08 AM"],
+    "rackId": "",
+    "unit": 0,
+    "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "dynamicProperties": {},
+    "primaryProfileID": "",
+    "forScalableNode": false,
+    "forScalablePrimaryNode": false
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## GET /profiles/68?excludeAttributes=rackId,unit
+
++ Response 200 (application/json)
+{
+    "ID": "68",
+    "name": "X222 changed again profile2-Manasa2",
+    "displayName": "X222 changed again profile2-Manasa2",
+    "displayId": "68",
+    "endPointType": "LOCATION",
+    "endPointId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "profilePath": ["bay10", "46920C143355486F97C19A34ABC7D746", "system01", "pod01", "datacenter01"],
+    "templateId": "67",
+    "forScalableSecondaryNode": false,
+    "secondaryProfileIDs": [],
+    "managementPatternPresent": false,
+    "addressPresent": false,
+    "serverTemplateId": "67",
+    "commands": ["#08/07/2017 3:50:08 AM"],
+    "externalId": "46920C143355486F97C19A34ABC7D746_bay10",
+    "dynamicProperties": {},
+    "primaryProfileID": "",
+    "forScalableNode": false,
+    "forScalablePrimaryNode": false
+}
+
++ Response 401
++ Response 404
++ Response 404
++ Response 409
++ Response 500
+
+# Profiles with id 68 with unassign [/profiles/unassign/68]
+
+## Unassign [POST]
++ Request (application/json)
+{
+  "force" : "False",
+  "powerDownITE" : "False",
+  "resetIMM" : "False",
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+

@@ -53,6 +53,20 @@ module XClarityClient
       end
     end
 
+    def do_post(uri="", request = {})
+      begin
+        @conn.post do |req|
+          req.url uri
+          req.headers['Content-Type'] = 'application/json'
+          req.body = request
+        end
+      rescue Faraday::Error::ConnectionFailed => e
+        $lxca_log.error "XClarityClient::XclarityBase do_post", "Error trying to send a POST to #{uri}"
+        $lxca_log.error "XClarityClient::XclarityBase do_post", "Request sent: #{request}"
+        Faraday::Response.new
+      end
+    end
+
     def do_put (uri="", request = {})
       begin
         @conn.put do |req|

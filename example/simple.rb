@@ -4,6 +4,7 @@ conf = XClarityClient::Configuration.new(
   :username => '',
   :password => '',
   :host     => '',
+  :port => '',
   :auth_type => '',
   :verify_ssl => ''
 )
