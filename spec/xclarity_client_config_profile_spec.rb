@@ -11,11 +11,12 @@ describe XClarityClient do
     :host     => ENV['LXCA_HOST'],
     :port     => ENV['LXCA_PORT'],
     :auth_type => ENV['LXCA_AUTH_TYPE'],
-    :verify_ssl => ENV['LXCA_VERIFY_SSL']
+    :verify_ssl => ENV['LXCA_VERIFY_SSL'],
+    :user_agent_label => ENV['LXCA_USER_AGENT_LABEL']
     )
 
     @client = XClarityClient::Client.new(conf)
-
+    @user_agent = ENV['LXCA_USER_AGENT_LABEL']
     @host = ENV['LXCA_HOST']
   end
 
@@ -114,7 +115,9 @@ describe XClarityClient do
       it 'unassigns the profile' do
         @client.unassign_config_profile(@idArray[0],"False", "False", "False")
         uri = "#{@host}/profiles/unassign/#{@idArray[0]}"
-        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'))).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        puts user_agent
+        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'), :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=> user_agent})).to have_been_made
       end
     end
   end
