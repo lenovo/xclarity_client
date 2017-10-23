@@ -278,5 +278,10 @@ module XClarityClient
     def validate_configuration
       XClarityBase.new(@connection, '/')
     end
+
+    def discover_devices_by_slp
+      DiscoveryManagement.new(@connection).population
+    end
+
   end
 end
