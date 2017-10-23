@@ -59,4 +59,5 @@ require 'xclarity_client/error/connection_refused'
 require 'xclarity_client/error/hostname_unknown'
 require 'xclarity_client/discover_request'
 require 'xclarity_client/discover_request_management'
-
+require 'xclarity_client/discovery'
+require 'xclarity_client/discovery_management'
