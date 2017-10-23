@@ -278,5 +278,14 @@ module XClarityClient
     def validate_configuration
       XClarityBase.new(@connection, '/')
     end
+
+    def discover_manageable_devices(ip_addresses)
+      DiscoverRequestManagement.new(@connection).discover_manageable_devices(ip_addresses)
+    end
+
+    def monitor_discover_request(job_id)
+      DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
+    end
+
   end
 end

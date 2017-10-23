@@ -1,0 +1,40 @@
+FORMAT: 1A
+
+# XClarity discoverRequest
+
+# Discovery request with job id 215 [/discoverRequest/jobs/215]
+
+## Retrieve [GET]
++ Response 200
+[{
+    "result": 100,
+    "storageList": [],
+    "rackswitchList": [],
+    "serverList": [],
+    "xhmcList": [],
+    "progress": 100.0,
+    "chassisList": []
+}]
+
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Post a discovery request [/discoverRequest]
+
+## Monitor [POST]
++ Request (application/json)
+[
+  {
+    "ipAddresses" : [""]
+  }
+]
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
