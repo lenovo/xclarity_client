@@ -1,0 +1,181 @@
+FORMAT: 1A
+
+# XClarity SLP discovery
+
+# GET /discovery
+
++ Response 200 (application/json)
+{
+    "lastUpdateElapsedTime": 77662963,
+    "storageList": [],
+    "discoveryInProgress": false,
+    "rackswitchList": [],
+    "xhmcList": [],
+    "chassisList": [],
+    "nodeList": [{
+        "securityDescriptor": {
+            "managedAuthSupported": true,
+            "uri": "nodes/909145e6dc9411e4a97b6eae8b4bd9a3",
+            "roleGroups": ["lxc-supervisor", "lxc-recovery", "lxc-operator", "lxc-sysrdr", "lxc-os-admin", "lxc-security-admin", "lxc-hw-manager", "lxc-admin", "lxc-fw-admin", "lxc-hw-admin", "lxc-sysmgr"],
+            "managedAuthEnabled": true
+        },
+        "serialNumber": "23EF191",
+        "displayName": "SN#23EF191",
+        "enclosure-form-factor": "rack-tower",
+        "managementPorts": [{
+            "protocol": "cimxml-http",
+            "port": 5988,
+            "enabled": true
+        }, {
+            "protocol": "cimxml-https",
+            "port": 5989,
+            "enabled": true
+        }, {
+            "protocol": "http",
+            "port": 80,
+            "enabled": true
+        }, {
+            "protocol": "https",
+            "port": 443,
+            "enabled": true
+        }, {
+            "protocol": "snmpv1",
+            "port": 161,
+            "enabled": true
+        }, {
+            "protocol": "snmpv3",
+            "port": 161,
+            "enabled": true
+        }, {
+            "protocol": "ssh",
+            "port": 22,
+            "enabled": true
+        }, {
+            "protocol": "telnet",
+            "port": 23,
+            "enabled": true
+        }, {
+            "protocol": "rem-pres",
+            "port": 3900,
+            "enabled": true
+        }, {
+            "protocol": "rmcp",
+            "port": 623,
+            "enabled": true
+        }],
+        "type": "Rack-Tower Server",
+        "server-type": "Rack-Tower Server",
+        "uuid": "909145e6dc9411e4a97b6eae8b4bd9a3",
+        "password": null,
+        "hostname": "IMM2-6cae8b4bd9a1",
+        "management-processor-type": "integrated-management-module2",
+        "fruNumber": "00FN856     ",
+        "recoveryPassword": null,
+        "name": "SN#23EF191",
+        "subType": "",
+        "model": "AC2",
+        "ipAddresses": ["10.240.28.246", "fd55:faaf:e1ab:20fb:6eae:8bff:fe4b:d9a1", "fe80::6eae:8bff:fe4b:d9a1"],
+        "firmware": [{
+            "date": "2015/03/23",
+            "build": "TCOO51X",
+            "version": "9.00"
+        }, {
+            "date": "2015/03/26",
+            "build": "A9E121UUS",
+            "version": "1.00"
+        }],
+        "machineType": "6241",
+        "username": null,
+        "status": {
+            "name": "UNMANAGED",
+            "message": "Unmanaged",
+            "manageable": true
+        }
+    }, {
+        "securityDescriptor": {
+            "managedAuthSupported": true,
+            "uri": "nodes/ef362cf0fb4511e397ab40f2e9af01d0",
+            "roleGroups": ["lxc-supervisor", "lxc-recovery", "lxc-operator", "lxc-sysrdr", "lxc-os-admin", "lxc-security-admin", "lxc-hw-manager", "lxc-admin", "lxc-fw-admin", "lxc-hw-admin", "lxc-sysmgr"],
+            "managedAuthEnabled": true
+        },
+        "serialNumber": "06BNEBV",
+        "displayName": "XinYi_28.135",
+        "enclosure-form-factor": "rack-tower",
+        "managementPorts": [{
+            "protocol": "cimxml-http",
+            "port": 5988,
+            "enabled": true
+        }, {
+            "protocol": "cimxml-https",
+            "port": 5989,
+            "enabled": true
+        }, {
+            "protocol": "http",
+            "port": 80,
+            "enabled": true
+        }, {
+            "protocol": "https",
+            "port": 443,
+            "enabled": true
+        }, {
+            "protocol": "snmpv1",
+            "port": 161,
+            "enabled": true
+        }, {
+            "protocol": "snmpv3",
+            "port": 161,
+            "enabled": true
+        }, {
+            "protocol": "ssh",
+            "port": 22,
+            "enabled": true
+        }, {
+            "protocol": "telnet",
+            "port": 23,
+            "enabled": true
+        }, {
+            "protocol": "rem-pres",
+            "port": 3900,
+            "enabled": true
+        }, {
+            "protocol": "rmcp",
+            "port": 623,
+            "enabled": true
+        }],
+        "type": "Rack-Tower Server",
+        "server-type": "Rack-Tower Server",
+        "uuid": "ef362cf0fb4511e397ab40f2e9af01d0",
+        "password": null,
+        "hostname": "IMM2-40f2e9af01d5",
+        "management-processor-type": "integrated-management-module2",
+        "fruNumber": "XXXXXXX     ",
+        "recoveryPassword": null,
+        "name": "XinYi_28.135",
+        "subType": "",
+        "model": "AC1",
+        "ipAddresses": ["10.240.28.135", "fd55:faaf:e1ab:20fb:42f2:e9ff:feaf:1d5", "fe80::42f2:e9ff:feaf:1d5"],
+        "firmware": [{
+            "date": "2015/05/07",
+            "build": "TCOO09H",
+            "version": "1.72"
+        }, {
+            "date": "2015/04/17",
+            "build": "TCE105KUS",
+            "version": "1.10"
+        }],
+        "machineType": "5462",
+        "username": null,
+        "status": {
+            "name": "UNMANAGED",
+            "message": "Unmanaged",
+            "manageable": true
+        }
+    }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
