@@ -276,7 +276,7 @@ module XClarityClient
     end
 
     def validate_configuration
-      XClarityBase.new(@connection, '/')
+      XClarityCredentialsValidator.new(@connection).validate
     end
   end
 end
