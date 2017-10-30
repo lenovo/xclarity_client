@@ -10,6 +10,10 @@ module XClarityClient
       NodeManagement.new(@connection).population opts
     end
 
+    def discover_aicc(opts = {})
+      AiccManagement.new(@connection).population opts
+    end
+
     def discover_scalableComplexes(opts = {})
       ScalableComplexManagement.new(@connection).population opts
     end
