@@ -10,7 +10,7 @@ module XClarityClient
     end
 
     def discover_manageable_devices(ip_addresses)
-      postReq = JSON.generate(["ipAddresses":ip_addresses])
+      postReq = JSON.generate([ipAddresses: ip_addresses])
       response = do_post(DiscoverRequest::BASE_URI, postReq)
       response
     end
