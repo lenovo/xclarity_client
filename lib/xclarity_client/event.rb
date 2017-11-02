@@ -6,8 +6,8 @@ module XClarityClient
     LIST_NAME = 'eventList'.freeze
 
     attr_accessor :action, :args, :bayText, :chassisText, :cn, :commonEventID, :componentID,
-                  :eventClass, :eventDate, :eventID, :eventSourceText, :failFRUs, :failSNs,
-                  :flags, :fruSerialNumberText, :localLogID, :localLogSequence, :location,
+                  :componentIdentifierText, :eventClass, :eventDate, :eventID, :eventSourceText, :failFRUs,
+                  :failSNs, :flags, :fruSerialNumberText, :localLogID, :localLogSequence, :location,
                   :msg, :msgID, :mtm, :originatorUUID, :parameters, :senderUUID, :serialnum,
                   :service, :serviceabilityText, :severity, :severityText, :sourceID,
                   :sourceLogID, :sourceLogSequence, :systemFruNumberText, :systemName,

@@ -57,6 +57,20 @@ describe XClarityClient do
         end
       end
     end
+
+    context 'attributes included in the version 1.4' do
+      it 'getting new attributes' do
+        uuid = "3B058C775CE44FA6AC05608B196EDAB1"
+        response = @client.fetch_chassis([uuid])
+        response.each do |chassi|
+          chassi.FQDN.should_not be_nil
+          chassi.parent.should_not be_nil
+          chassi.encapsulation.should_not be_nil
+          chassi.securityDescriptor.should_not be_nil
+          chassi.powerCappingPolicy.should_not be_nil
+        end
+      end
+    end
   end
 
   describe 'GET /chassis/UUID,UUID,...,UUID' do

@@ -32,6 +32,27 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
+# GET /chassis/3B058C775CE44FA6AC05608B196EDAB1
+
++ Response 200 (application/json)
+
+{
+  "FQDN": "plugfest11.labs.lenovo.com",
+  "parent": {
+      "uuid": "E1C2D040-07F3-4DC1-84E6-3960F4F236FE",
+      "uri": "cabinet/E1C2D040-07F3-4DC1-84E6-3960F4F236FE"
+  },
+  "encapsulation": {
+        "encapsulationMode": "notSupported"
+  },
+  "securityDescriptor": {
+      "managedAuthEnabled": true,
+      "uri": "chassis/3B058C775CE44FA6AC05608B196EDAB1",
+      "managedAuthSupported": true
+  },
+  "powerCappingPolicy": {}
+}
+
 # GET /chassis/7F3E7E375B5747E0938969896B1CFDF5?includeAttributes=type
 
 + Response 200 (application/json)

@@ -40,7 +40,7 @@ describe XClarityClient do
         expect(@client.discover_jobs({"uuid":"FEE5C5988F23453F8367597C3561DC54"})).not_to be_empty
       end
     end
-    
+
     context 'with option state' do
       it 'should return an array' do
         expect(@client.discover_jobs({"state":"Stopped_With_Error"})).not_to be_empty
@@ -92,6 +92,17 @@ describe XClarityClient do
         response.map do |job|
           @includeAttributes.map do |attribute|
             expect(job.send(attribute)).not_to be_nil
+          end
+        end
+      end
+
+      context 'attributes included in the version 1.4' do
+        it 'getting new attributes' do
+          uuid = "D5C0EC910776473997B2E2A5DD9171DE"
+          response = @client.fetch_jobs([uuid])
+          response.each do |job|
+            job.rebootPersistent.should_not be_nil
+            job.hidden.should_not be_nil
           end
         end
       end
