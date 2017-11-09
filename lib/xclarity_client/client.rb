@@ -10,6 +10,10 @@ module XClarityClient
       NodeManagement.new(@connection).population opts
     end
 
+    def discover_aicc(opts = {})
+      AiccManagement.new(@connection).population opts
+    end
+
     def discover_scalableComplexes(opts = {})
       ScalableComplexManagement.new(@connection).population opts
     end
@@ -276,11 +280,18 @@ module XClarityClient
     end
 
     def validate_configuration
-      XClarityBase.new(@connection, '/')
+      XClarityCredentialsValidator.new(@connection).validate
+    end
+
+    def discover_manageable_devices(ip_addresses)
+      DiscoverRequestManagement.new(@connection).discover_manageable_devices(ip_addresses)
     end
 
     def discover_devices_by_slp
       DiscoveryManagement.new(@connection).population
+
+    def monitor_discover_request(job_id)
+      DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
   end

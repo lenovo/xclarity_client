@@ -1,6 +1,5 @@
 require 'faraday'
 require 'faraday-cookie_jar'
-require 'json'
 require 'uri'
 require 'uri/https'
 
@@ -32,9 +31,8 @@ module XClarityClient
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.ssl[:verify] = conf.verify_ssl == 'PEER'
       end
-
-      authentication(conf) if conf.auth_type == 'token'
-
+      
+      @conn.headers[:user_agent] = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (conf.user_agent_label.nil? ? "" : " (#{conf.user_agent_label})")
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
       $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
       @conn
@@ -84,32 +82,6 @@ module XClarityClient
       @conn.delete do |req|
         req.url uri
         req.headers['Content-Type'] = 'application/json'
-      end
-    end
-
-    def authentication(conf)
-      response = @conn.post do |request|
-        request.url '/sessions'
-        request.headers['Content-Type'] = 'application/json'
-        request.body = {:UserId => conf.username,
-                        :password => conf.password}.to_json
-      end
-      if not response.success?
-        raise Faraday::Error::ConnectionFailed
-      end
-
-    rescue => err
-      cause = err.cause.to_s.downcase
-      if cause.include?('connection refused')
-        raise XClarityClient::Error::ConnectionRefused
-      elsif cause.include?('name or service not known')
-        raise XClarityClient::Error::HostnameUnknown
-      elsif response.nil?
-        raise XClarityClient::Error::ConnectionFailed
-      elsif response.status == 403
-        raise XClarityClient::Error::AuthenticationError
-      else
-        raise XClarityClient::Error::ConnectionFailedUnknown.new("status #{response.status}")
       end
     end
   end
