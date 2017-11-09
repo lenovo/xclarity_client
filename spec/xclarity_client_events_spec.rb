@@ -39,6 +39,18 @@ describe XClarityClient do
       expect(@client.discover_events.class).to eq(Array)
     end
 
+    context 'attributes included in the version 2.0' do
+      it 'getting new attributes' do
+        response = @client.discover_events
+        response.each do |event|
+          event.descriptionArgs.should_not be_nil
+          event.userActionArgs.should_not be_nil
+          event.groupUUID.should_not be_nil
+          event.groupName.should_not be_nil
+        end
+      end
+    end
+
     context 'with opts parameters' do
       context 'where the opts is only sort' do
 

@@ -5,7 +5,61 @@ FORMAT: 1A
 # GET /events
 
 + Response 200 (application/json)
-[ { "eventDate": "2016-12-21T17:13:58Z", "systemTypeText": "Management", "chassisText": "Not Available", "timeStamp": "2016-12-21T17:13:58Z", "location": "", "args": [ "EAAC33576492E511B46A70E28412CA06" ], "originatorUUID": "", "systemName": "Management Server", "bayText": "Not Available", "mtm": "", "userid": "", "fruSerialNumberText": "Not Available", "eventSourceText": "Management", "senderUUID": "", "serialnum": "", "sourceLogID": "", "action": 100, "parameters": {}, "localLogSequence": "", "localLogID": "", "sourceID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "systemTypeModelText": "Not Available", "commonEventID": "FQXHMTS0012X", "flags": "", "userIDIndex": 0, "failSNs": "", "severityText": "Warning", "severity": 300, "serviceabilityText": "User", "failFRUs": "", "msg": "Endpoint EAAC33576492E511B46A70E28412CA06 could not be accessed because credentials were refused.", "componentID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "eventClass": 800, "eventID": "FQXHMTS0009G", "sourceLogSequence": 0, "systemSerialNumberText": "Not Available", "cn": "242679", "service": 300, "typeText": "System", "msgID": "", "systemFruNumberText": "Not Available", "systemText": "Management Server" }, { "eventDate": "2016-12-21T17:13:58Z", "systemTypeText": "Management", "chassisText": "Not Available", "timeStamp": "2016-12-21T17:13:58Z", "location": "", "args": [ "EAAC33576492E511B46A70E28412CA06", "03.76.208", "TB5TS381" ], "originatorUUID": "", "systemName": "Management Server", "bayText": "Not Available", "mtm": "", "userid": "", "fruSerialNumberText": "Not Available", "eventSourceText": "Management", "senderUUID": "", "serialnum": "", "sourceLogID": "", "action": 100, "parameters": {}, "localLogSequence": "", "localLogID": "", "sourceID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "systemTypeModelText": "Not Available", "commonEventID": "FQXHMTS0012X", "flags": "", "userIDIndex": 0, "failSNs": "", "severityText": "Warning", "severity": 300, "serviceabilityText": "User", "failFRUs": "", "msg": "Inventory data could not be retrieved from the endpoint EAAC33576492E511B46A70E28412CA06. BIOS: 03.76.208, BMC: TB5TS381", "componentID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "eventClass": 800, "eventID": "FQXHMTS0003G", "sourceLogSequence": 0, "systemSerialNumberText": "Not Available", "cn": "242678", "service": 300, "typeText": "System", "msgID": "", "systemFruNumberText": "Not Available", "systemText": "Management Server" }, { "eventDate": "2016-12-21T17:13:58Z", "systemTypeText": "Management", "chassisText": "Not Available", "timeStamp": "2016-12-21T17:13:58Z", "location": "", "args": [ "EAAC33576492E511B46A70E28412CA06" ], "originatorUUID": "", "systemName": "Management Server", "bayText": "Not Available", "mtm": "", "userid": "", "fruSerialNumberText": "Not Available", "eventSourceText": "Management", "senderUUID": "", "serialnum": "", "sourceLogID": "", "action": 100, "parameters": {}, "localLogSequence": "", "localLogID": "", "sourceID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "systemTypeModelText": "Not Available", "commonEventID": "FQXHMTS0012X", "flags": "", "userIDIndex": 0, "failSNs": "", "severityText": "Warning", "severity": 300, "serviceabilityText": "User", "failFRUs": "", "msg": "Endpoint EAAC33576492E511B46A70E28412CA06 could not be accessed because credentials were refused.", "componentID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "eventClass": 800, "eventID": "FQXHMTS0009G", "sourceLogSequence": 0, "systemSerialNumberText": "Not Available", "cn": "242677", "service": 300, "typeText": "System", "msgID": "", "systemFruNumberText": "Not Available", "systemText": "Management Server" } ]
+[
+  {
+        "msg": "O log de eventos foi encapsulado porque atingiu o limite de tamanho máximo de 5000.",
+        "eventID": "FQXHMEM0201I",
+        "chassisText": "Não Disponível",
+        "serialnum": "",
+        "descriptionArgs": "",
+        "senderUUID": "",
+        "serviceabilityText": "Não Necessário",
+        "componentIdentifierText": "Gerenciamento de sistemas",
+        "flags": "",
+        "userid": "",
+        "userActionArgs": "",
+        "systemTypeModelText": "Não Disponível",
+        "localLogID": "",
+        "severityText": "Informativo",
+        "systemName": "Servidor de gerenciamento",
+        "action": 100,
+        "failFRUs": "",
+        "bayText": "Não Disponível",
+        "originatorUUID": "",
+        "severity": 200,
+        "sourceID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        "sourceLogSequence": 0,
+        "groupUUID": [],
+        "failSNs": "",
+        "sourceLogID": "",
+        "eventClass": 800,
+        "componentID": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        "localLogSequence": "",
+        "fruSerialNumberText": "Não Disponível",
+        "mtm": "",
+        "eventSourceText": "Gerenciamento",
+        "msgID": "",
+        "cn": "5096",
+        "systemText": "Servidor de gerenciamento",
+        "timeStamp": "2017-09-27T12:15:29Z",
+        "args": [
+            "5000"
+        ],
+        "groupName": [
+            "Não Disponível"
+        ],
+        "systemTypeText": "Gerenciamento",
+        "service": 100,
+        "typeText": "Sistema",
+        "location": "",
+        "commonEventID": "FQXHMEM0201I",
+        "systemSerialNumberText": "Não Disponível",
+        "systemFruNumberText": "Não Disponível",
+        "userIDIndex": 0,
+        "parameters": {},
+        "eventDate": "2017-09-27T12:15:28Z"
+    }
+]
 
 + Response 400
 + Response 401
