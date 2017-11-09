@@ -289,7 +289,8 @@ module XClarityClient
 
     def discover_devices_by_slp
       DiscoveryManagement.new(@connection).population
-
+    end
+	  
     def monitor_discover_request(job_id)
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
