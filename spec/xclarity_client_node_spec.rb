@@ -58,6 +58,29 @@ describe XClarityClient do
         end
       end
     end
+
+    context 'attributes included in the version 1.4' do
+      it 'getting new attributes' do
+        uuid = "5D3237D000A711E787D30894EF3C1E99"
+        response = @client.fetch_nodes([uuid])
+        response.each do |node|
+          node.securityDescriptor.should_not be_nil
+          node.primary.should_not be_nil
+          node.logicalID.should_not be_nil
+          node.FeaturesOnDemand.should_not be_nil
+        end
+      end
+    end
+
+    context 'attributes included in the version 2.0' do
+      it 'getting new attributes' do
+        uuid = "D33E9F13B0DA3EF090BF58BD22C30DC4"
+        response = @client.fetch_nodes([uuid])
+        response.each do |node|
+          node.groupMembership.should_not be_nil
+        end
+      end
+    end
   end
 
   describe 'GET /nodes/UUID,UUID,...,UUID' do

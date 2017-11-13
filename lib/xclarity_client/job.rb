@@ -6,7 +6,8 @@ module XClarityClient
     LIST_NAME = 'jobsList'.freeze
 
     attr_accessor :status, :cancelledBy, :createdBy, :category, :typeId, :messageDisplay, :cancelURI,
-    :messageParameters, :startTime, :messageID, :messageBundle, :endTime, :id, :isCancelable, :uuid
+    :messageParameters, :startTime, :messageID, :messageBundle, :endTime, :id, :isCancelable, :rebootPersistent,
+    :uuid, :hidden
 
     def initialize(attributes)
       build_resource(attributes)

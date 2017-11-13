@@ -2,6 +2,36 @@ FORMAT: 1A
 
 # XClarity Nodes
 
+# GET /nodes/D33E9F13B0DA3EF090BF58BD22C30DC4
+
++ Response 200
+
+{
+  "groupMembership": []
+}
+
+# GET /nodes/5D3237D000A711E787D30894EF3C1E99
+
++ Response 200
+
+{
+  "primary": true,
+  "securityDescriptor": {
+      "managedAuthEnabled": true,
+      "uri": "nodes/5D3237D000A711E787D30894EF3C1E99",
+      "managedAuthSupported": true
+  },
+  "FeaturesOnDemand": {
+  "tierLevel": 3,
+  "features": [
+      "RDOC",
+      "REMOTE CONTROL 6 USERS",
+      "REMOTE MEDIA"
+  ]
+  },
+  "logicalID": 1
+}
+
 # GET /nodes/6B538D351B8211E193F65CF3FC6E4030?includeAttributes=accessState,activationKeys
 
 + Response 200

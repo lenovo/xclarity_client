@@ -94,4 +94,37 @@ describe XClarityClient do
       end
     end
   end
+
+  describe 'GET /switches/UUID' do
+    context 'attributes included in the version 1.4' do
+      it 'getting new attributes' do
+        uuid = "F5710BE70F223D8C91D74D9161159617"
+        response = @client.fetch_switches([uuid])
+        response.each do |switch|
+          switch.ntpPushEnabled.should_not be_nil
+          switch.ntpPushFrequency.should_not be_nil
+          switch.location.should_not be_nil
+          switch.height.should_not be_nil
+          switch.memoryUtilization.should_not be_nil
+          switch.mgmtProcIPaddress.should_not be_nil
+          switch.temperatureSensors.should_not be_nil
+          switch.entitleSerialNumber.should_not be_nil
+          switch.manufacturingDate.should_not be_nil
+          switch.panicDump.should_not be_nil
+          switch.powerSupply.should_not be_nil
+          switch.stackRole.should_not be_nil
+          switch.fans.should_not be_nil
+          switch.contact.should_not be_nil
+          switch.sysObjectID.should_not be_nil
+          switch.savePending.should_not be_nil
+          switch.resetReason.should_not be_nil
+          switch.applyPending.should_not be_nil
+          switch.OS.should_not be_nil
+          switch.cpuUtilization.should_not be_nil
+          switch.ports.should_not be_nil
+          switch.upTime.should_not be_nil
+        end
+      end
+    end
+  end
 end

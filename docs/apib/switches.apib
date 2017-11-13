@@ -500,6 +500,70 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
+# GET /switches/F5710BE70F223D8C91D74D9161159617
+
++ Response 200 (application/json)
+{
+  "ntpPushEnabled": false,
+  "ntpPushFrequency": 17,
+  "location": {
+      "lowestRackUnit": 0,
+      "location": "",
+      "rack": "",
+      "room": ""
+  },
+  "height": 1,
+  "memoryUtilization": "15.2%(Total : 4186705920 B, Free : 3546865664 B)",
+  "mgmtProcIPaddress": "10.243.14.96",
+  "temperatureSensors": [
+      {
+          "sensorName": "Sensor 1",
+          "sensorState": " 36.0 C"
+      }
+  ],
+  "entitleSerialNumber": "J11D32E",
+  "manufacturingDate": "17/11",
+  "panicDump": "No",
+  "powerSupply": "Power Supply 1: on;Power Supply 2: Off.",
+  "stackRole": "none",
+  "fans": [
+      {
+          "fanName": "Fan 1",
+          "fanSpeed": " 4326 RPM (63 PWM)",
+          "fanState": "Fans are in Front-To-Back AirFlow, Warning at 85 C and Recover at 95 C\r\n"
+      }
+  ],
+  "contact": "",
+  "sysObjectID": "1.3.6.1.4.1.19046.1.7.24",
+  "savePending": "No",
+  "resetReason": "1",
+  "applyPending": "No",
+  "OS": "ENOS",
+  "cpuUtilization": "9%",
+  "ports": [
+      {
+          "port": "1",
+          "configuredStatus": "up",
+          "PVID": "1",
+          "tagPVID": "untagged",
+          "peerMacAddress": "",
+          "portSpeed": "any",
+          "interfaceIndex": "129",
+          "vLAN": "untagged",
+          "portState": "down",
+          "portName": "",
+          "operationalStatus": "notPresent"
+      }
+  ],
+  "upTime": "6 days, 22:02:48.00"
+}
+
++ Response 200 (application/json)
+{
+        "rebootPersistent": false,
+        "hidden": false
+}
+
 # GET /switches/1B33D6D13F267A614567A897DC784F00,2BB054971DD2B201663F0027F8870F10,1B33D6CE6D58C30145BA0817F4B11400?includeAttributes=accessState,attachedNodes
 
 + Response 200 (application/json)
