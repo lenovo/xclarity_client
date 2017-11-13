@@ -16,7 +16,8 @@ module XClarityClient
                   :parentComplexID, :parentPartitionUUID, :partitionEnabled, :partitionID, :partNumber, :password, :pciCapabilities, :pciDevices, :physicalID, :ports,
                   :posID, :powerAllocation, :powerCappingPolicy, :powerStatus, :powerSupplies, :processors, :processorSlots, :productId, :productName, :raidSettings,
                   :recoveryPassword, :secureBootMode, :serialNumber, :server_type, :slots, :status, :subSlots, :subType, :thinkServerFru, :tlsVersion, :type, :uri,
-                  :userDescription, :username, :uuid, :vnicMode, :vpdID
+                  :userDescription, :username, :uuid, :vnicMode, :vpdID, :securityDescriptor, :primary, :logicalID, :FeaturesOnDemand,
+                  :canisterSlots, :canisters
 
     def initialize(attributes)
       build_resource(attributes)

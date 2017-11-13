@@ -6,7 +6,7 @@ module XClarityClient
       response = connection(resource::BASE_URI, opts)
 
       $lxca_log.info "XclarityClient::ManagementMixin get_all_resources", "Response received from #{resource::BASE_URI}"
-      
+
       return [] unless response.success?
 
       body = JSON.parse(response.body)
@@ -14,9 +14,9 @@ module XClarityClient
         body = body['response']
       end
 
-      body = {resource::LIST_NAME => body} if body.is_a? Array
-      body = {resource::LIST_NAME => [body]} unless body.has_key? resource::LIST_NAME
-      body[resource::LIST_NAME].map do |resource_params|
+      list_name, body = add_listname_on_body(resource, body)
+
+      body[list_name].map do |resource_params|
         resource.new resource_params
       end
     end
@@ -146,6 +146,23 @@ module XClarityClient
       body[resource::LIST_NAME].map do |resource_params|
         resource.new resource_params
       end
+    end
+
+    private
+
+    # Discover which list name is present on the response body.
+    # Util for cases that list name was changed on different api versions
+    # in this cases need to provide a list of list names
+    def add_listname_on_body(resource, body)
+      list_name = resource::LIST_NAME.kind_of?(Array) ? resource::LIST_NAME.first : resource::LIST_NAME
+      return list_name, { list_name => body } if body.kind_of? Array
+
+      result = body # body is a Hash
+      if resource::LIST_NAME.kind_of? Array # need to search which list name is present on body
+        list_name = resource::LIST_NAME.find { |name| body.keys.include?(name) && body[name].kind_of?(Array) }
+      end
+      result = {list_name => [body]} unless body.has_key? list_name
+      return list_name, result
     end
   end
 end

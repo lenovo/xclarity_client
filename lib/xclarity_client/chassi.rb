@@ -11,14 +11,15 @@ module XClarityClient
                   :energyPolicies, :errorFields, :excludedHealthState, :fanMuxes,
                   :fanMuxSlots, :fans, :fanSlots, :fruNumber, :height, :hostname,
                   :ipAddresses, :isConnectionTrusted, :ledCardSlots, :leds,
-                  :location, :machineType, :managementPorts, :managerName, 
+                  :location, :machineType, :managementPorts, :managerName,
                   :managerUuid, :manufacturer, :manufacturerId, :mgmtProcIPaddress,
-                  :mmSlots, :model, :name, :nist, :nodes, :overallHealthState, 
+                  :mmSlots, :model, :name, :nist, :nodes, :overallHealthState,
                   :partNumber, :passThroughModules, :password, :posID,
                   :powerAllocation, :powerSupplies, :powerSupplySlots, :productId,
                   :productName, :recoveryPassword, :SecurityPolicy, :serialNumber,
                   :status, :switches, :switchSlots, :tlsVersion, :type, :uri,
-                  :userDescription, :username, :uuid, :vpdID
+                  :userDescription, :username, :uuid, :vpdID, :FQDN, :parent, :encapsulation,
+                  :securityDescriptor, :powerCappingPolicy
 
     def initialize(attributes)
       build_resource(attributes)
