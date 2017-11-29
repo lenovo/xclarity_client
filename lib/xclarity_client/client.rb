@@ -295,5 +295,29 @@ module XClarityClient
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
+    def discover_update_policy(opts = {})
+      UpdatePolicyManagement.new(@connection).population opts
+    end
+
+    def discover_application_firmware()
+      UpdatePolicyManagement.new(@connection).get_applicable_firmware
+    end
+
+    def discover_persisted_compare_results(opts = {})
+      UpdatePolicyManagement.new(@connection).get_persisted_compare_results opts
+    end
+
+    def discover_compare_results(opts = {})
+      UpdatePolicyManagement.new(@connection).get_compare_results opts
+    end
+
+    def assign_compliance_policy(policy_name, type, uuid, keep=nil, auto_assign=nil)
+      UpdatePolicyManagement.new(@connection).assign_compliance_policy(policy_name, type, uuid, keep, auto_assign)
+    end
+
+    def delete_compliance_policy(policyName, removePackage=nil)
+      UpdatePolicyManagement.new(@connection).delete_compliance_policy(policyName, removePackage)
+    end
+
   end
 end
