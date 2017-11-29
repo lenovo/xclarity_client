@@ -295,5 +295,37 @@ module XClarityClient
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
+    def discover_firmware_update_status
+      UpdateCompManagement.new(@connection).population
+    end
+
+    def discover_updatable_device_comp
+      UpdateCompManagement.new(@connection).get_updatable_device_comp
+    end
+
+    def apply_firmware_update(activationMode=nil, forceUpdateMode=nil, onErrorMode=nil, server=nil, switch=nil, storage=nil, cmm=nil)
+      UpdateCompManagement.new(@connection).apply_firmware_update(activationMode,
+                                                           forceUpdateMode,
+                                                           onErrorMode,
+                                                           server,
+                                                           switch,
+                                                           storage,
+                                                           cmm)
+    end
+
+    def cancel_firmware_update(server=nil, switch=nil, storage=nil, cmm=nil)
+      UpdateCompManagement.new(@connection).cancel_firmware_update(server,
+                                                            switch,
+                                                            storage,
+                                                            cmm)
+    end
+
+    def modify_power_state(server=nil, switch=nil, storage=nil, cmm=nil)
+      UpdateCompManagement.new(@connection).modify_power_state(server,
+                                                         switch,
+                                                         storage,
+                                                         cmm)
+    end
+
   end
 end
