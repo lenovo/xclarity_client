@@ -18,8 +18,7 @@ module XClarityClient
                   :powerAllocation, :powerSupplies, :powerSupplySlots, :productId,
                   :productName, :recoveryPassword, :SecurityPolicy, :serialNumber,
                   :status, :switches, :switchSlots, :tlsVersion, :type, :uri,
-                  :userDescription, :username, :uuid, :vpdID, :FQDN, :parent, :encapsulation,
-                  :securityDescriptor, :powerCappingPolicy
+                  :userDescription, :username, :uuid, :vpdID, :securityDescriptor
 
     def initialize(attributes)
       build_resource(attributes)
