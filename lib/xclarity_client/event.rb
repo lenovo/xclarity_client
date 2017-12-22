@@ -12,7 +12,8 @@ module XClarityClient
                   :service, :serviceabilityText, :severity, :severityText, :sourceID,
                   :sourceLogID, :sourceLogSequence, :systemFruNumberText, :systemName,
                   :systemSerialNumberText, :systemText, :systemTypeModelText, :systemTypeText,
-                  :timeStamp, :typeText, :userid, :userIDIndex
+                  :timeStamp, :typeText, :userid, :userIDIndex, :descriptionArgs, :userActionArgs, :failFRUNames,
+                  :failFRUUUIDs, :failFRUPartNumbers
 
     def initialize(attributes)
       build_resource(attributes)
