@@ -384,4 +384,30 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
+# PUT /userAccounts/passwordChange
 
++ Response 200 (application/json)
+{
+    "result": "success",
+    "response": {
+        "authenticated": true,
+        "changed": true
+    },
+    "messages": [
+        {
+            "id": "FQXHMSE0001I",
+            "text": "The request completed successfully.",
+            "recovery": {
+                "text": "Information only. No action is required.",
+                "URL": ""
+            },
+            "explanation": ""
+        }
+    ]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
