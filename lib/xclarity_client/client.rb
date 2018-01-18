@@ -295,5 +295,13 @@ module XClarityClient
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
+    def fetch_manage_request(job_id)
+      ManageRequestManagement.new(@connection).fetch_manage_request(job_id)
+    end
+
+    def manage_discovered_devices(ip_address, username, password, recovery_password, force)
+      ManageRequestManagement.new(@connection).manage_discovered_devices(ip_address, username, password, recovery_password, force)
+    end
+
   end
 end
