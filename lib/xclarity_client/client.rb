@@ -295,5 +295,13 @@ module XClarityClient
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
+    def fetch_unmanage_request(job_id)
+      UnmanageRequestManagement.new(@connection).fetch_unmanage_request(job_id)
+    end
+
+    def unmanage_discovered_devices(endpoints, force)
+      UnmanageRequestManagement.new(@connection).unmanage_discovered_devices(endpoints, force)
+    end
+
   end
 end
