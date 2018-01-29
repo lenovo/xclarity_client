@@ -325,7 +325,8 @@ module XClarityClient
                                                          switch,
                                                          storage,
                                                          cmm)
-
+    end
+	  
     def fetch_unmanage_request(job_id)
       UnmanageRequestManagement.new(@connection).fetch_unmanage_request(job_id)
     end
