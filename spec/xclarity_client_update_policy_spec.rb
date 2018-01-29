@@ -58,8 +58,8 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash = {:policyname => @policy_name, :type => "IOSwitch", :uuid => @uuid}
         assign_hash_str = assign_hash.to_json
-
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -69,8 +69,8 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash = {:policyname => @policy_name, :type => "IOSwitch", :uuid => @uuid, :autoAssign => true}
         assign_hash_str = assign_hash.to_json
-
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -80,8 +80,8 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash = {:policyname => @policy_name, :type => "IOSwitch", :uuid => @uuid, :keep => false}
         assign_hash_str = assign_hash.to_json
-
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -91,7 +91,8 @@ describe XClarityClient do
       it 'deletes the policy' do
         @client.delete_compliance_policy(@policy_name,"true")
         uri = "#{@host}/compliancePolicies?policyName=#{@policy_name}&removePackage=true"
-        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -99,7 +100,8 @@ describe XClarityClient do
       it 'deletes the policy' do
         @client.delete_compliance_policy(@policy_name,"false")
         uri = "#{@host}/compliancePolicies?policyName=#{@policy_name}&removePackage=false"
-        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
