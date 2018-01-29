@@ -11,7 +11,11 @@ module XClarityClient
                   :ipv6Addresses, :leds, :macAddresses, :machineType, :manufacturer, :manufacturerId,
                   :model, :name, :overallHealthState, :parent, :partNumber, :posID, :powerAllocation,
                   :powerState, :productId, :productName, :protectedMode, :serialNumber, :slots,
-                  :stackMode, :type, :uri, :userDescription, :uuid, :vpdID
+                  :stackMode, :type, :uri, :userDescription, :uuid, :vpdID, :ntpPushEnabled,
+                  :ntpPushFrequency, :location, :height, :memoryUtilization, :mgmtProcIPaddress,
+                  :temperatureSensors, :entitleSerialNumber, :manufacturingDate, :panicDump,
+                  :powerSupply, :stackRole, :fans, :contact, :sysObjectID, :savePending, :resetReason,
+                  :applyPending, :OS, :cpuUtilization, :ports, :upTime
 
     def initialize(attributes)
       build_resource(attributes)

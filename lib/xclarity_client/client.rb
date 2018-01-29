@@ -318,6 +318,14 @@ module XClarityClient
     def delete_compliance_policy(policyName, removePackage=nil)
       UpdatePolicyManagement.new(@connection).delete_compliance_policy(policyName, removePackage)
     end
+    
+    def fetch_unmanage_request(job_id)
+      UnmanageRequestManagement.new(@connection).fetch_unmanage_request(job_id)
+    end
+
+    def unmanage_discovered_devices(endpoints, force)
+      UnmanageRequestManagement.new(@connection).unmanage_discovered_devices(endpoints, force)
+    end
 
   end
 end
