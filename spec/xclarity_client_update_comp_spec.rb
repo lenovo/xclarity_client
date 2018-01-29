@@ -82,7 +82,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -98,7 +99,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -114,7 +116,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -130,7 +133,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -146,7 +150,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -162,7 +167,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{server_json},#{switch_json},#{storage_json},#{cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -178,7 +184,8 @@ describe XClarityClient do
 
         apply_json = "{\"DeviceList\": [#{power_state_server_json},#{power_state_switch_json},#{power_state_storage_json},#{power_state_cmm_json}]}"
 
-        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => apply_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
