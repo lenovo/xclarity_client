@@ -96,7 +96,8 @@ describe XClarityClient do
       it 'Reloads the repository files' do
         @client.read_update_repo
         uri = "#{@host}/updateRepositories/firmware?action=read"
-        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made         
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made         
       end
     end
   end
@@ -114,8 +115,8 @@ describe XClarityClient do
         uri = "#{@host}/updateRepositories/firmware?action=refresh&with=all"
 
         refresh_json = JSON.generate(mt: ["1234"], os: "", type: "catalog")
-
-        expect(a_request(:put, uri).with(:body => refresh_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => refresh_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -133,8 +134,8 @@ describe XClarityClient do
         uri = "#{@host}/updateRepositories/firmware?action=acquire&with=payloads"
 
         acquire_json = JSON.generate(mt: ["1234"], fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"], type: "latest")
-
-        expect(a_request(:put, uri).with(:body => acquire_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => acquire_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -152,8 +153,8 @@ describe XClarityClient do
         uri = "#{@host}/updateRepositories/firmware?action=delete&filetypes=payloads"
 
         delete_json = JSON.generate(fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"])
-
-        expect(a_request(:put, uri).with(:body => delete_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:body => delete_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -169,8 +170,8 @@ describe XClarityClient do
       it 'Compresses the specified firmware updates from the firmware-updates repository into a ZIP file, and downloads the ZIP file to your local system.' do
         @client.export_firmware_updates("payloads")
         uri = "#{@host}/updateRepositories/firmware?action=export&filetypes=payloads"
-
-        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
+        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
