@@ -311,8 +311,8 @@ module XClarityClient
       UpdateRepoManagement.new(@connection).delete_firmware_updates(file_types, fixids)
     end
 
-    def export_firmware_updates(file_types)
-      UpdateRepoManagement.new(@connection).export_firmware_updates(file_types)
+    def export_firmware_updates(file_types, fixids)
+      UpdateRepoManagement.new(@connection).export_firmware_updates(file_types, fixids)
     end
     
     def fetch_unmanage_request(job_id)
