@@ -19,7 +19,7 @@ describe XClarityClient do
     @client = XClarityClient::Client.new(conf)
 
     @host = ENV['LXCA_HOST']
-    @user_agent = "ruby/0.5.4"
+    @user_agent = ENV['LXCA_USER_AGENT_LABEL']
 
   end
 
