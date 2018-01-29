@@ -1,0 +1,163 @@
+FORMAT: 1A
+
+# XClarity Users
+
+# GET /unmanageRequest/jobs/4685
+
++ Response 200 (application/json)
+{
+ "progress": 10.0,
+ "results": [{
+  "result": "INCOMPLETE",
+  "resultLongDescription": "Management job is incomplete",
+  "messageBundle": "com.lenovo.lxca.discovery.bundle.rest.messages",
+  "messageParameters": "10.240.72.172",
+  "resultShortDescription": "Incomplete",
+  "progress": 10.0,
+  "messageID": "0510_LONG",
+  "uuid": "46920C143355486F97C19A34ABC7D746",
+  "time_spent": 8305,
+  "status": {
+   "substatus": [{
+    "longDescription": "Verifying there is network connectivity to the endpoint.",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1058_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "CONNECTION_CHECK",
+    "shortDescription": "Verifying network connectivity.",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Starting to unmanage this endpoint",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1050_SHORT",
+    "progress": 0.0,
+    "started": true,
+    "id": "UNMANAGESTART",
+    "shortDescription": "Starting UnManage",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Running"
+    }
+   }, {
+    "longDescription": "Setting Encapsulation Mode to Normal",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1110_SHORT",
+    "progress": 0.0,
+    "started": true,
+    "id": "ENCAPSULATION_EXIT",
+    "shortDescription": "Exiting Encapsulation",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Running"
+    }
+   }, {
+    "longDescription": "Clear the configuration for managed authentication.",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1051_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "STOP_CENTRAL_MANAGEMENT",
+    "shortDescription": "Clearing managed authentication",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Pending"
+    }
+   }, {
+    "longDescription": "Remove CMM certificate from the management server trust store.",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1052_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "REMOVE_CMM_CERT",
+    "shortDescription": "Removing CMM Certificate",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Pending"
+    }
+   }, {
+    "longDescription": "Remove CIM subscriptions from the management server.",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1054_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "STOP_CIM_SUBCRIPTION",
+    "shortDescription": "Stopping CIM Subscriptions",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Pending"
+    }
+   }, {
+    "longDescription": "Raising unmanage event for the server",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1055_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "RAISE_UNMANAGE_EVENT",
+    "shortDescription": "Raising UnManage Event",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Pending"
+    }
+   }, {
+    "longDescription": "Unmanaging the chassis is complete.",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1057_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "UNMANAGESTOP",
+    "shortDescription": "UnManaging the chassis is complete",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "state": "Pending"
+    }
+   }],
+   "percentage": 10.0,
+   "description": [{
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1014_LONG"
+   }],
+   "state": "Running"
+  }
+ }],
+ "status": "INCOMPLETE"
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# POST /unmanageRequest
++ Request (application/json)
+
++ Response 201 (application/json)
+  + Headers 
+    Location: /unmanageRequest/jobs/4685
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
