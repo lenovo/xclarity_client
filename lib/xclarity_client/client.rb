@@ -295,6 +295,26 @@ module XClarityClient
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end
 
+    def read_update_repo
+      UpdateRepoManagement.new(@connection).read_update_repo
+    end
+
+    def refresh_update_repo(scope, mt, os)
+      UpdateRepoManagement.new(@connection).refresh_update_repo(scope, mt, os)
+    end
+
+    def acquire_firmware_updates(scope, fixids, mt)
+      UpdateRepoManagement.new(@connection).acquire_firmware_updates(scope, fixids, mt)
+    end
+
+    def delete_firmware_updates(file_types, fixids)
+      UpdateRepoManagement.new(@connection).delete_firmware_updates(file_types, fixids)
+    end
+
+    def export_firmware_updates(file_types, fixids)
+      UpdateRepoManagement.new(@connection).export_firmware_updates(file_types, fixids)
+    end
+    
     def fetch_unmanage_request(job_id)
       UnmanageRequestManagement.new(@connection).fetch_unmanage_request(job_id)
     end

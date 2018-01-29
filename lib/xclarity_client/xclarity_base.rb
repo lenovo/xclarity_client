@@ -64,12 +64,12 @@ module XClarityClient
       end
     end
 
-    def do_put (uri="", request = {})
+    def do_put (uri="", request = nil)
       begin
         @conn.put do |req|
           req.url uri
           req.headers['Content-Type'] = 'application/json'
-          req.body = request
+          req.body = request if !request.nil?
         end
       rescue Faraday::Error::ConnectionFailed => e
         $lxca_log.error "XClarityClient::XclarityBase do_put", "Error trying to send a PUT to #{uri}"
