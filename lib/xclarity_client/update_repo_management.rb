@@ -55,12 +55,13 @@ module XClarityClient
       puts response.body
     end
 
-    def export_firmware_updates(file_types)
+    def export_firmware_updates(file_types, fixids)
       if !file_types.downcase.eql? "payloads" and !file_types.downcase.eql? "all"
         raise "Invalid value for argument file_types. Allowed values are - all and payloads"
       end
 
-      response = do_put(UpdateRepo::BASE_URI + '?action=export&filetypes=' +file_types.downcase)
+      export_req = JSON.generate(fixids: fixids)
+      response = do_put(UpdateRepo::BASE_URI + '?action=export&filetypes=' +file_types.downcase, export_req)
       puts response.body
     end
 
