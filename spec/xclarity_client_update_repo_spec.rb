@@ -174,7 +174,7 @@ describe XClarityClient do
         
         export_json = JSON.generate(fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"])
 
-        expect(a_request(:put, uri).with(:body => export_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>@user_agent})).to have_been_made
+        expect(a_request(:put, uri).with(:body => export_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
