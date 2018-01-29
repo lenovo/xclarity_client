@@ -41,7 +41,7 @@ describe XClarityClient do
 
   describe 'GET /compliancePolicies/compareResult' do
     it 'should respond with an array' do
-      expect(@client.discover_compare_results).not_to be_empty
+      expect(@client.discover_compare_results({"jobid":"1"})).not_to be_empty
     end
   end
 
