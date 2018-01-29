@@ -18,7 +18,7 @@ describe XClarityClient do
     @client = XClarityClient::Client.new(conf)
 
     @host = ENV['LXCA_HOST']
-    @user_agent = "ruby/0.5.4" 
+    @user_agent = ENV['LXCA_USER_AGENT_LABEL']
 
     @server = [{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]}]
     @switch = [{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_scsw_en4093r-8.3.9.0_anyons_noarch","Component": "Main application"}]}]
