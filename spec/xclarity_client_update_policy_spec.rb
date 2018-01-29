@@ -20,7 +20,7 @@ describe XClarityClient do
     @host = ENV['LXCA_HOST']
     @policy_name = "DEFAULT-11"
     @uuid = "A3F8482B012B32188E68375DD5FF40EE"
-    @user_agent = "ruby/0.5.4" 
+    @user_agent = ENV['LXCA_USER_AGENT_LABEL']
   end
 
   it 'has a version number' do
