@@ -314,6 +314,14 @@ module XClarityClient
     def export_firmware_updates(file_types)
       UpdateRepoManagement.new(@connection).export_firmware_updates(file_types)
     end
+    
+    def fetch_unmanage_request(job_id)
+      UnmanageRequestManagement.new(@connection).fetch_unmanage_request(job_id)
+    end
+
+    def unmanage_discovered_devices(endpoints, force)
+      UnmanageRequestManagement.new(@connection).unmanage_discovered_devices(endpoints, force)
+    end
 
   end
 end
