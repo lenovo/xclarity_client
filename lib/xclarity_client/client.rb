@@ -159,7 +159,7 @@ module XClarityClient
     def turn_off_loc_led(uuid = '')
       NodeManagement.new(@connection).set_loc_led_state(uuid, 'Off')
     end
-  
+
     def fetch_ffdc(uuids = nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
@@ -207,19 +207,23 @@ module XClarityClient
                                                 User)
     end
 
+    def change_user_password(current_password, new_password)
+      UserManagement.new(@connection).change_password(current_password, new_password)
+    end
+
     def fetch_config_target(ids=nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
-      ConfigTargetManagement.new(@connection).get_object_with_id(ids, 
-                                                        includeAttributes, 
+      ConfigTargetManagement.new(@connection).get_object_with_id(ids,
+                                                        includeAttributes,
                                                         excludeAttributes,
                                                         ConfigTarget)
     end
 
-    def fetch_config_profile(ids=nil, 
+    def fetch_config_profile(ids=nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
-      ConfigProfileManagement.new(@connection).get_object_with_id(ids, 
+      ConfigProfileManagement.new(@connection).get_object_with_id(ids,
                                                         includeAttributes,
                                                         excludeAttributes,
                                                         ConfigProfile)
@@ -233,7 +237,7 @@ module XClarityClient
       ConfigProfileManagement.new(@connection).rename_config_profile(id,
 						      name)
     end
-  
+
     def activate_config_profile(id='', endpoint_uuid='', restart='')
       ConfigProfileManagement.new(@connection).activate_config_profile(id,
 							endpoint_uuid,
@@ -250,7 +254,7 @@ module XClarityClient
     def delete_config_profile(id='')
       ConfigProfileManagement.new(@connection).delete_config_profile(id)
     end
-  
+
     def fetch_config_pattern(ids=nil,
                    includeAttributes = nil,
                    excludeAttributes = nil)
@@ -263,10 +267,10 @@ module XClarityClient
     def discover_config_pattern
       ConfigPatternManagement.new(@connection).population
     end
- 
+
     def export_config_pattern(id='')
       ConfigPatternManagement.new(@connection).export(id)
-    end   
+    end
 
     def deploy_config_pattern(id='',endpoints=nil,restart='',etype='')
       ConfigPatternManagement.new(@connection).deploy_config_pattern(id,
@@ -274,7 +278,7 @@ module XClarityClient
                                                       restart,
                                                       etype)
     end
-   
+
     def import_config_pattern(config_pattern = {})
       ConfigPatternManagement.new(@connection).import_config_pattern(config_pattern)
     end
@@ -290,7 +294,7 @@ module XClarityClient
     def discover_devices_by_slp
       DiscoveryManagement.new(@connection).population
     end
-	  
+
     def monitor_discover_request(job_id)
       DiscoverRequestManagement.new(@connection).monitor_discover_request(job_id)
     end

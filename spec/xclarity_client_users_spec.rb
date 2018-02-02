@@ -97,4 +97,26 @@ describe XClarityClient do
     end
   end
 
+  describe 'PUT /users/changePassword' do
+    context 'with new and old password' do
+      before do
+        old_pass = 'sample_pass'
+        new_pass = 'pass_sample'
+        @uri = "#{@host}/userAccounts/passwordChange"
+        @response = @client.change_user_password(old_pass, new_pass)
+        @request_body = {
+          'body' => {
+            'password' => old_pass,
+            'newPassword' => new_pass,
+            'confirmPassword' => new_pass
+          }
+        }
+      end
+
+      it 'should change user password' do
+        expect(a_request(:put, @uri).with(@request_body)).to have_been_made
+        expect(@response[:changed]).to be_truthy
+      end
+    end
+  end
 end
