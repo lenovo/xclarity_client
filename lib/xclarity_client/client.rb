@@ -307,5 +307,8 @@ module XClarityClient
       UnmanageRequestManagement.new(@connection).unmanage_discovered_devices(endpoints, force)
     end
 
+    def fetch_compliance_policies
+      PersistedResultManagement.new(@connection).population
+    end
   end
 end

@@ -1,0 +1,196 @@
+FORMAT: 1A
+
+# XClarity persistedResult
+
+# GET /compliancePolicies/persistedResult
+
++ Response 200
+{
+   "all":[
+      {
+         "switches":[
+            {
+               "policyName":"DEFAULT-CMM-switches-storage-2018-01-08",
+               "endpointCompliant":"no",
+               "targetFirmware":[
+                  {
+                     "date":"2017-10-17",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"1B33D6CF56D490C14567749975D48000",
+                     "level":"HIGHER",
+                     "build":"0708",
+                     "versionList":[
+                        "7.8.18.0"
+                     ],
+                     "compliant":"no",
+                     "componentName":"IO Module 01",
+                     "packageExistence":"yes",
+                     "category":"Switches",
+                     "fixid":"ibm_fw_scsw_en2092-7.8.18.0_anyos_noarch"
+                  }
+               ],
+               "message":[
+
+               ],
+               "uuid":"1B33D6CF56D490C14567749975D48000",
+               "supported":"true"
+            }
+         ],
+         "chassis":"C70EEC7420F64158BE8B42208820B7EA",
+         "xITEs":[
+            {
+               "policyName":"DEV-ThinkSystem-Without-UEFI-2018-01-08",
+               "endpointCompliant":"no",
+               "targetFirmware":[
+                  {
+                     "date":"2018-01-04",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:XCC (Primary)",
+                     "level":"HIGHER",
+                     "build":"tei321l",
+                     "versionList":[
+                        "1.60"
+                     ],
+                     "compliant":"no",
+                     "componentName":"XCC (Primary)",
+                     "packageExistence":"yes",
+                     "category":"XCC",
+                     "fixid":"lnvgy_fw_xcc_tei321l-1.60_anyos_noarch"
+                  },
+                  {
+                     "date":"2018-01-02",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:LXPM Windows Drivers",
+                     "level":"HIGHER",
+                     "build":"PDL311O",
+                     "versionList":[
+                        "1.20"
+                     ],
+                     "compliant":"no",
+                     "componentName":"LXPM Windows Drivers",
+                     "packageExistence":"yes",
+                     "category":"DRVWN",
+                     "fixid":"lnvgy_fw_drvwn_pdl311o-1.20_anyos_noarch"
+                  },
+                  {
+                     "date":"2017-12-26",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:LXPM Linux Drivers",
+                     "level":"HIGHER",
+                     "build":"PDL211O",
+                     "versionList":[
+                        "1.20"
+                     ],
+                     "compliant":"no",
+                     "componentName":"LXPM Linux Drivers",
+                     "packageExistence":"yes",
+                     "category":"DRVLN",
+                     "fixid":"lnvgy_fw_drvln_pdl211o-1.20_anyos_noarch"
+                  },
+                  {
+                     "date":"2018-01-02",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:LXPM Diagnostic Software",
+                     "level":"HIGHER",
+                     "build":"PDL111O",
+                     "versionList":[
+                        "1.20"
+                     ],
+                     "compliant":"no",
+                     "componentName":"LXPM Diagnostic Software",
+                     "packageExistence":"yes",
+                     "category":"LXPM",
+                     "fixid":"lnvgy_fw_lxpm_pdl111o-1.20_anyos_noarch"
+                  },
+                  {
+                     "date":"",
+                     "reason":"Não atualize o componente conforme definido na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:XCC (Backup)",
+                     "level":"",
+                     "build":"",
+                     "versionList":[
+
+                     ],
+                     "compliant":"DoNotUpdate",
+                     "componentName":"XCC (Backup)",
+                     "packageExistence":"no",
+                     "category":"XCC",
+                     "fixid":"Do Not Update"
+                  },
+                  {
+                     "date":"",
+                     "reason":"Não atualize o componente conforme definido na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:UEFI (Primary)",
+                     "level":"",
+                     "build":"",
+                     "versionList":[
+
+                     ],
+                     "compliant":"DoNotUpdate",
+                     "componentName":"UEFI (Primary)",
+                     "packageExistence":"no",
+                     "category":"UEFI",
+                     "fixid":"Do Not Update"
+                  },
+                  {
+                     "date":"2018-01-01",
+                     "reason":"A versão instalada não é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"0191E7014C8E11E79521C26C504CB1F3:Disk Drive Update Program",
+                     "level":"same",
+                     "build":"sas-1.25.02",
+                     "versionList":[
+                        "sas-1.25.02"
+                     ],
+                     "compliant":"yes",
+                     "componentName":"Disk Drive Update Program",
+                     "packageExistence":"yes",
+                     "category":"Hard Disk Drive",
+                     "fixid":"lnvgy_fw_hdd_sas-1.25.02_linux_x86-64"
+                  }
+               ],
+               "message":[
+
+               ],
+               "uuid":"0191E7014C8E11E79521C26C504CB1F3",
+               "supported":"true"
+            }
+         ],
+         "message":{
+
+         },
+         "cmms":[
+            {
+               "policyName":"DEFAULT-Thinksystem-Servers-2018-01-08",
+               "endpointCompliant":"no",
+               "targetFirmware":[
+                  {
+                     "date":"2017-10-16",
+                     "reason":"A versão instalada é de um nível inferior à versão definida na política de conformidade.",
+                     "componentID":"47F32577243A11E49088F269D65F0920",
+                     "level":"HIGHER",
+                     "build":"2PET14K",
+                     "versionList":[
+                        "2PET14K-v2.5.10k"
+                     ],
+                     "compliant":"no",
+                     "componentName":"MM40F2E9BF46C0",
+                     "packageExistence":"yes",
+                     "category":"CMM",
+                     "fixid":"ibm_fw_cmm_2pet14k-2.5.10k_anyos_noarch"
+                  }
+               ],
+               "message":[
+
+               ],
+               "uuid":"47F32577243A11E49088F269D65F0920",
+               "supported":"true"
+            }
+         ]
+      }
+   ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
