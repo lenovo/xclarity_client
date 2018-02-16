@@ -1,0 +1,91 @@
+FORMAT: 1A
+
+# XClarity UpdateComp
+
+# Components [/updatableComponents]
+
+## Retrieve [GET]
++ Response 200
+{
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Components [/updatableComponents?action=getComponents]
+
+## Retrieve [GET]
++ Response 200
+{
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Components [/updatableComponents{?action,activationMode,onErrorMode,forceUpdateMode}]
+
++ Parameters
+  + action - The action to take. This can be one of the following values - apply, cancelApply, powerState
+  + activationMode - Indicates when to activate the update. This can be one of the following values - immediate, delayed
+  + forceUpdateMode - Indicates whether to apply the update if firmware is already compliant. This can be one of the following values - true, false
+  + onErrorMode - Indicates how to handle errors during the firmware update. This can be one of the following values - stopOnError, stopdeviceOnError, continueOnError
+
+## Apply [PUT]
++ Request (application/json)
+{   
+   "DeviceList": [
+     {
+      "ServerList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]}]
+     },
+     {
+      "SwitchList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_scsw_en4093r-8.3.9.0_anyons_noarch","Component": "Main application"}]}]
+     },
+     {
+      "StorageList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]}]
+     },
+     {
+      "CMMList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]
+     }
+   ]
+} 
+
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
++ Request (application/json)
+{
+   "DeviceList": [
+     {
+      "ServerList":[{"PowerState": "reset","UUID": "8BFBADCC33CB11E499F740F2E9972457"}]
+     },
+     {
+      "SwitchList":[{"PowerState": "powerOn","UUID": "8BFBADCC33CB11E499F740F2E9972458"}]
+     },
+     {
+      "StorageList":[{"PowerState": "powerCycleSoft","UUID": "8BFBADCC33CB11E499F740F2E9972457"}]
+     },
+     {
+      "CMMList":[{"PowerState": "reset","UUID": "8BFBADCC33CB11E499F740F2E213123"}]
+     }
+   ]
+}
+
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
