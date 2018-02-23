@@ -3,6 +3,7 @@ require 'fileutils'
 module XClarityClient
 
   class XClarityLogger
+    attr_accessor :log
     
     def initialize(global_log=nil)
       # This block below looks for a log in the project which uses 
