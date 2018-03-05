@@ -1,0 +1,539 @@
+FORMAT: 1A
+
+# XClarity UpdatePolicy
+
+# Policies [/compliancePolicies]
+
+## Retrieve [GET]
++ Response 200
+{
+  "policies": [{
+    "deviceslist": [],
+    "userDefined": "yes",
+    "name": "x22_imm_update",
+    "inUse": "false",
+    "description": "",
+    "id": "1506509369571",
+    "lastModified": "This policy was created by USERID on 2017-09-27 06:49:29",
+    "filterType": "managed",
+    "updateRule": ""
+  }, {
+    "deviceslist": [],
+    "userDefined": "yes",
+    "name": "x440imm",
+    "inUse": "false",
+    "description": "",
+    "id": "1507027795876",
+    "lastModified": "This policy was edited by USERID on 2017-10-03 06:49:55",
+    "filterType": "managed",
+    "updateRule": ""
+  }, {
+    "deviceslist": [],
+    "userDefined": "yes",
+    "name": "sn850_xcc_update",
+    "inUse": "false",
+    "description": "",
+    "id": "1506510174988",
+    "lastModified": "This policy was created by USERID on 2017-09-27 07:02:54",
+    "filterType": "managed",
+    "updateRule": ""
+  }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Policies [/compliancePolicies?policyName=DEFAULT-11&removePackage=true]
+
+## Delete [DELETE]
++ Response 200
+{"success":"success","messages":[]}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Policies [/compliancePolicies?policyName=DEFAULT-11&removePackage=false]
+
+## Delete [DELETE]
++ Response 200
+{"success":"success","messages":[]}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Policies [/compliancePolicies/applicableFirmware]
+
+## Retrieve [GET]
++ Response 200
+{
+  "componentTypes": [{
+    "uuid": "282A3B9C6C3411E4B05A90D5997F93A7",
+    "machineType": "7385",
+    "applicableFirmware": []
+  }, {
+    "uuid": "39C9DBA633CA11E4953340F2E99030D0",
+    "machineType": "9532",
+    "applicableFirmware": []
+  }, {
+    "uuid": "EECCF6BFEAD011E08560B49D3DCB2B7E",
+    "machineType": "8737",
+    "applicableFirmware": [{
+      "available": [],
+      "name": "IMM2 (Primary)",
+      "category": "IMM2"
+    }, {
+      "available": [],
+      "name": "IMM2 (Backup)",
+      "category": "IMM2-BACKUP"
+    }, {
+      "available": [],
+      "name": "UEFI (Primary)",
+      "category": "UEFI"
+    }, {
+      "available": [],
+      "name": "UEFI (Backup)",
+      "category": "UEFI-BACKUP"
+    }, {
+      "available": [],
+      "name": "Diagnostics",
+      "category": "Diagnostics"
+    }, {
+      "available": [],
+      "name": "LSI2004",
+      "category": "Firmware"
+    }, {
+      "available": [],
+      "name": "IBM Flex System 2-port 10Gb LOM Virtual Fabric Adapter",
+      "category": "Software Bundle"
+    }]
+  }, {
+    "uuid": "B6E2AB7AC3A411E08B8D5CF3FC6E2488",
+    "machineType": "8737",
+    "applicableFirmware": [{
+      "available": [{
+        "buildNum": "1AOO78J",
+        "buildType": "production",
+        "name": "Integrated Management Module 2 (IMM2) Update",
+        "driverFileClassificationList": [],
+        "versionList": ["6.20"],
+        "softwareIDList": ["IMM2"],
+        "releasedate": "2017-06-29",
+        "version": "6.20",
+        "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+      }],
+      "name": "IMM2 (Primary)",
+      "category": "IMM2"
+    }, {
+      "available": [{
+        "buildNum": "1AOO78J",
+        "buildType": "production",
+        "name": "Integrated Management Module 2 (IMM2) Update",
+        "driverFileClassificationList": [],
+        "versionList": ["6.20"],
+        "softwareIDList": ["IMM2"],
+        "releasedate": "2017-06-29",
+        "version": "6.20",
+        "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+      }],
+      "name": "IMM2 (Backup)",
+      "category": "IMM2-BACKUP"
+    }, {
+      "available": [{
+        "buildNum": "B2E156C",
+        "buildType": "production",
+        "name": "IBM Flex System x240 UEFI Flash Update",
+        "driverFileClassificationList": [],
+        "versionList": ["2.00"],
+        "softwareIDList": ["UEFI"],
+        "releasedate": "2017-04-03",
+        "version": "2.00",
+        "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+      }],
+      "name": "UEFI (Primary)",
+      "category": "UEFI"
+    }, {
+      "available": [{
+        "buildNum": "B2E156C",
+        "buildType": "production",
+        "name": "IBM Flex System x240 UEFI Flash Update",
+        "driverFileClassificationList": [],
+        "versionList": ["2.00"],
+        "softwareIDList": ["UEFI"],
+        "releasedate": "2017-04-03",
+        "version": "2.00",
+        "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+      }],
+      "name": "UEFI (Backup)",
+      "category": "UEFI-BACKUP"
+    }, {
+      "available": [],
+      "name": "Diagnostics",
+      "category": "Diagnostics"
+    }]
+  }, {
+    "uuid": "1B33D6D34DD5B4214567A897DCB85000",
+    "machineType": "0x0130-0x0026",
+    "applicableFirmware": []
+  }, {
+    "uuid": "1B33D6D20E5A18A14567A897DC24C300",
+    "machineType": "0x0130-0x0026",
+    "applicableFirmware": []
+  }, {
+    "uuid": "1B33D6C7B1F478C14567A897DC5DB700",
+    "machineType": "0x0130-0x0029",
+    "applicableFirmware": []
+  }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Policies [/compliancePolicies/persistedResult]
+
+## Retrieve [GET]
++ Response 200
+{
+  "all": [{
+    "switches": [{
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "1B33D6D34DD5B4214567A897DCB85000",
+      "supported": "true"
+    }, {
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "1B33D6D20E5A18A14567A897DC24C300",
+      "supported": "true"
+    }, {
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "1B33D6C7B1F478C14567A897DC5DB700",
+      "supported": "true"
+    }],
+    "chassis": "792812BA57B24337821B72AC27CF2055",
+    "xITEs": [{
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "39C9DBA633CA11E4953340F2E99030D0",
+      "supported": "true"
+    }, {
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "EECCF6BFEAD011E08560B49D3DCB2B7E",
+      "supported": "true"
+    }, {
+      "policyName": "mantest",
+      "endpointCompliant": "no",
+      "targetFirmware": [{
+        "date": "2017-04-03",
+        "reason": "The installed version is down level than the version defined in compliance policy.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:UEFI (Primary)",
+        "level": "HIGHER",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "B2E156C",
+        "versionList": ["2.00"],
+        "compliant": "no",
+        "componentName": "UEFI (Primary)",
+        "packageExistence": "yes",
+        "installed_date": "",
+        "category": "UEFI",
+        "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+      }, {
+        "date": "2017-06-29",
+        "reason": "The installed version is down level than the version defined in compliance policy.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:IMM2 (Primary)",
+        "level": "HIGHER",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "1AOO78J",
+        "versionList": ["6.20"],
+        "compliant": "no",
+        "componentName": "IMM2 (Primary)",
+        "packageExistence": "yes",
+        "installed_date": "",
+        "category": "IMM2",
+        "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+      }, {
+        "date": "2017-04-03",
+        "reason": "The installed version is down level than the version defined in compliance policy.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:UEFI (Backup)",
+        "level": "HIGHER",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "B2E156C",
+        "versionList": ["2.00"],
+        "compliant": "no",
+        "componentName": "UEFI (Backup)",
+        "packageExistence": "yes",
+        "installed_date": "",
+        "category": "UEFI",
+        "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+      }, {
+        "date": "2017-06-29",
+        "reason": "The installed version is down level than the version defined in compliance policy.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:IMM2 (Backup)",
+        "level": "HIGHER",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "1AOO78J",
+        "versionList": ["6.20"],
+        "compliant": "no",
+        "componentName": "IMM2 (Backup)",
+        "packageExistence": "yes",
+        "installed_date": "",
+        "category": "IMM2",
+        "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+      }, {
+        "date": "",
+        "reason": "There is no update package for this component in repository or inventory data of this component is invalid.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:Diagnostics",
+        "level": "",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "",
+        "versionList": [],
+        "compliant": "NoResult_3",
+        "componentName": "Diagnostics",
+        "packageExistence": "no",
+        "installed_date": "",
+        "category": "Diagnostics",
+        "fixid": ""
+      }, {
+        "date": "2016-12-12",
+        "reason": "The installed version is not down level than the version defined in compliance policy.",
+        "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:Disk Drive Update Program",
+        "level": "same",
+        "installed_version": "",
+        "installed_build": "",
+        "build": "1.23.01",
+        "versionList": ["1.23.01"],
+        "compliant": "yes",
+        "componentName": "Disk Drive Update Program",
+        "packageExistence": "yes",
+        "installed_date": "",
+        "category": "Hard Disk Drive",
+        "fixid": "ibm_fw_hddlenovo_sas-1.23.01_linux_32-64"
+      }],
+      "message": [{
+        "result": "minor",
+        "messages": [{
+          "id": "FQXHMUP3013J",
+          "text": "The compliance result is incomplete for device in slot 2 of Chassis SN#Y030BG4BA00N.",
+          "recovery": {
+            "text": "check if updates exist for this component. Also check if the assigned update packages in the compliance policy exist in the repository and reacquire them if necessary."
+          },
+          "explanation": "Unable to find update packages corresponding to each component."
+        }]
+      }],
+      "uuid": "B6E2AB7AC3A411E08B8D5CF3FC6E2488",
+      "supported": "true"
+    }],
+    "message": [],
+    "cmms": [{
+      "policyName": "",
+      "endpointCompliant": "",
+      "targetFirmware": [],
+      "message": [],
+      "uuid": "282A3B9C6C3411E4B05A90D5997F93A7",
+      "supported": "true"
+    }]
+  }, {
+    "racklist": []
+  }, {
+    "complexlist": []
+  }, {
+    "rackswitchlist": []
+  }, {
+    "storagelist": []
+  }]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Policies [/compliancePolicies/compareResult?jobid=1]
+
+## Retrieve [GET]
++ Response 200
+{
+  "result": [{
+    "endpointCompliant": "no",
+    "targetFirmware": [{
+      "date": "2017-04-03",
+      "reason": "The installed version is down level than the version defined in compliance policy.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:UEFI (Primary)",
+      "level": "HIGHER",
+      "build": "B2E156C",
+      "versionList": ["2.00"],
+      "compliant": "no",
+      "componentName": "UEFI (Primary)",
+      "packageExistence": "yes",
+      "category": "UEFI",
+      "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+    }, {
+      "date": "2017-06-29",
+      "reason": "The installed version is down level than the version defined in compliance policy.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:IMM2 (Primary)",
+      "level": "HIGHER",
+      "build": "1AOO78J",
+      "versionList": ["6.20"],
+      "compliant": "no",
+      "componentName": "IMM2 (Primary)",
+      "packageExistence": "yes",
+      "category": "IMM2",
+      "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+    }, {
+      "date": "2017-04-03",
+      "reason": "The installed version is down level than the version defined in compliance policy.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:UEFI (Backup)",
+      "level": "HIGHER",
+      "build": "B2E156C",
+      "versionList": ["2.00"],
+      "compliant": "no",
+      "componentName": "UEFI (Backup)",
+      "packageExistence": "yes",
+      "category": "UEFI",
+      "fixid": "ibm_fw_uefi_b2e156c-2.00_anyos_32-64"
+    }, {
+      "date": "2017-06-29",
+      "reason": "The installed version is down level than the version defined in compliance policy.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:IMM2 (Backup)",
+      "level": "HIGHER",
+      "build": "1AOO78J",
+      "versionList": ["6.20"],
+      "compliant": "no",
+      "componentName": "IMM2 (Backup)",
+      "packageExistence": "yes",
+      "category": "IMM2",
+      "fixid": "ibm_fw_imm2_1aoo78j-6.20_anyos_noarch"
+    }, {
+      "date": "",
+      "reason": "There is no update package for this component in repository or inventory data of this component is invalid.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:Diagnostics",
+      "level": "",
+      "build": "",
+      "versionList": [],
+      "compliant": "NoResult_3",
+      "componentName": "Diagnostics",
+      "packageExistence": "no",
+      "category": "Diagnostics",
+      "fixid": ""
+    }, {
+      "date": "2016-12-12",
+      "reason": "The installed version is not down level than the version defined in compliance policy.",
+      "componentID": "B6E2AB7AC3A411E08B8D5CF3FC6E2488:Disk Drive Update Program",
+      "level": "same",
+      "build": "1.23.01",
+      "versionList": ["1.23.01"],
+      "compliant": "yes",
+      "componentName": "Disk Drive Update Program",
+      "packageExistence": "yes",
+      "category": "Hard Disk Drive",
+      "fixid": "ibm_fw_hddlenovo_sas-1.23.01_linux_32-64"
+    }],
+    "message": [{
+      "result": "minor",
+      "messages": [{
+        "id": "FQXHMUP3013J",
+        "text": "The compliance result is incomplete for device in slot 2 of Chassis SN#Y030BG4BA00N.",
+        "recovery": {
+          "text": "check if updates exist for this component. Also check if the assigned update packages in the compliance policy exist in the repository and reacquire them if necessary."
+        },
+        "explanation": "Unable to find update packages corresponding to each component."
+      }]
+    }],
+    "uuid": "B6E2AB7AC3A411E08B8D5CF3FC6E2488",
+    "taskid": "0",
+    "status": "finished"
+  }],
+  "jobid": "1",
+  "percentage": 100,
+  "status": "finished",
+  "aggregate": []
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Assign [POST]
++ Request (application/json)
+{
+    "compliance":[{
+        "policyName":"DEFAULT-11",
+        "type":"IOSwitch",
+        "uuid":"A3F8482B012B32188E68375DD5FF40EE"
+    }]
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Assign [POST]
++ Request (application/json)
+{
+    "compliance":[{
+        "autoAssign":true,
+        "policyName":"DEFAULT-11",
+        "type":"IOSwitch",
+        "uuid":"A3F8482B012B32188E68375DD5FF40EE"
+    }]
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+## Assign [POST]
++ Request (application/json)
+{
+    "compliance":[{
+        "keep":false,
+        "policyName":"DEFAULT-11",
+        "type":"IOSwitch",
+        "uuid":"A3F8482B012B32188E68375DD5FF40EE"
+    }]
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
