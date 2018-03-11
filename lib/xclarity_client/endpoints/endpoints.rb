@@ -3,6 +3,7 @@ module XClarityClient
   end
 end
 
+require 'xclarity_client/endpoints/xclarity_endpoint'
 require 'xclarity_client/endpoints/aicc'
 require 'xclarity_client/endpoints/cabinet'
 require 'xclarity_client/endpoints/canister'

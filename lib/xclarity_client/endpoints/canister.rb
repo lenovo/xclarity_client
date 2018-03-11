@@ -1,7 +1,5 @@
 module XClarityClient
-  class Canister
-    include XClarityClient::Resource
-
+  class Canister < Endpoints::XclarityEndpoint
     BASE_URI = '/canisters'.freeze
     LIST_NAME = 'canisterList'.freeze
 
@@ -13,9 +11,5 @@ module XClarityClient
       :hostname, :ipv4Addresses, :ipv4ServiceAddress,:ipv6Addresses, :ipv6ServiceAddress, :lanOverUsb, :leds, :location,
       :macAddress, :machineType, :memoryModules, :memorySlots, :model, :partNumber, :posId,:serialNumber,:slots, :subType,
       :subSlots
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
   end
 end

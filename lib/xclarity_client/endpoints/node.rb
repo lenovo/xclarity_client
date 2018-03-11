@@ -1,7 +1,5 @@
 module XClarityClient
-  class Node
-    include XClarityClient::Resource
-
+  class Node < Endpoints::XclarityEndpoint
     BASE_URI = '/nodes'.freeze
     LIST_NAME = 'nodeList'.freeze
 
@@ -18,10 +16,5 @@ module XClarityClient
                   :recoveryPassword, :secureBootMode, :serialNumber, :server_type, :slots, :status, :subSlots, :subType, :thinkServerFru, :tlsVersion, :type, :uri,
                   :userDescription, :username, :uuid, :vnicMode, :vpdID, :securityDescriptor, :primary, :logicalID, :FeaturesOnDemand,
                   :canisterSlots, :canisters, :userDefinedName, :management_processor_type
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

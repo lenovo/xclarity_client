@@ -1,9 +1,7 @@
 require "pp"
 
 module XClarityClient
-  class Cmm
-    include XClarityClient::Resource
-
+  class Cmm < Endpoints::XclarityEndpoint
     BASE_URI = '/cmms'.freeze
     LIST_NAME = 'cmmList'.freeze
 
@@ -13,9 +11,5 @@ module XClarityClient
                   :leds, :macAddresses, :machineType, :manufacturer, :manufacturerId, :mgmtProcIPaddress,
                   :model, :name, :overallHealthState, :parent, :partNumber, :powerAllocation, :productId,
                   :role, :serialNumber, :slots, :type, :uri, :userDescription, :uuid
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
   end
 end

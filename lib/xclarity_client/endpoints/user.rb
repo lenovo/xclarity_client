@@ -1,7 +1,5 @@
 module XClarityClient
-  class User
-    include XClarityClient::Resource
-
+  class User < Endpoints::XclarityEndpoint
     BASE_URI = '/userAccounts'.freeze
     LIST_NAME = 'usersList'.freeze
     SUB_URIS = {
@@ -12,10 +10,5 @@ module XClarityClient
     :id, :lastLoginTimestamp, :ldapDn, :loginAttempts, :loginCount, :modifyTimestamp, :pwExpirationWarning,
     :pwExpired, :pwdAge, :reserved, :state, :supervisor, :timeBeforeExpirationInDays, :userName, :userPw,
     :result, :messages
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

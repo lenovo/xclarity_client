@@ -1,7 +1,5 @@
 module XClarityClient
-  class ConfigProfile
-    include XClarityClient::Resource
-
+  class ConfigProfile < Endpoints::XclarityEndpoint
     BASE_URI = '/profiles'.freeze
     LIST_NAME = 'items'.freeze
 
@@ -11,11 +9,6 @@ module XClarityClient
     :profilePath, :forScalableSecondaryNode, :secondaryProfileIDs, :serverTemplateId, :commands, :dynamicProperties,
     :primaryProfileID, :forScalableNode, :forScalablePrimaryNode, :deviceId, :deviceType, :managementPatternPresent,
     :rackID, :templateID, :complianceStatus
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end
 
