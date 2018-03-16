@@ -1,7 +1,5 @@
 module XClarityClient
-  class Switch
-    include XClarityClient::Resource
-
+  class Switch < Endpoints::XclarityEndpoint
     BASE_URI = '/switches'.freeze
     LIST_NAME = 'switchList'.freeze
 
@@ -16,10 +14,5 @@ module XClarityClient
                   :temperatureSensors, :entitleSerialNumber, :manufacturingDate, :panicDump,
                   :powerSupply, :stackRole, :fans, :contact, :sysObjectID, :savePending, :resetReason,
                   :applyPending, :OS, :cpuUtilization, :ports, :upTime
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

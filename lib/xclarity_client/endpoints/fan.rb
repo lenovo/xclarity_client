@@ -1,7 +1,5 @@
 module XClarityClient
-  class Fan
-    include XClarityClient::Resource
-
+  class Fan < Endpoints::XclarityEndpoint
     BASE_URI = '/fans'.freeze
     LIST_NAME = 'fanList'.freeze
 
@@ -11,11 +9,5 @@ module XClarityClient
                   :model, :name, :parent, :partNumber, :posID, :powerAllocation, :powerState,
                   :productId, :productName, :serialNumber, :slots, :type, :uri, :userDescription,
                   :uuid, :vpdID
-
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

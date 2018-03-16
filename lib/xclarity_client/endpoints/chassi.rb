@@ -1,7 +1,5 @@
 module XClarityClient
-  class Chassi
-    include XClarityClient::Resource
-
+  class Chassi < Endpoints::XclarityEndpoint
     BASE_URI = '/chassis'.freeze
     LIST_NAME = 'chassisList'.freeze
 
@@ -20,10 +18,5 @@ module XClarityClient
                   :status, :switches, :switchSlots, :tlsVersion, :type, :uri,
                   :userDescription, :username, :uuid, :vpdID, :FQDN, :parent, :encapsulation,
                   :securityDescriptor, :powerCappingPolicy
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

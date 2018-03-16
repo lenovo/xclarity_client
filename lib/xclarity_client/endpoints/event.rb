@@ -1,7 +1,5 @@
 module XClarityClient
-  class Event
-    include XClarityClient::Resource
-
+  class Event < Endpoints::XclarityEndpoint
     BASE_URI = '/events'.freeze
     LIST_NAME = 'eventList'.freeze
 
@@ -14,9 +12,5 @@ module XClarityClient
                   :systemSerialNumberText, :systemText, :systemTypeModelText, :systemTypeText,
                   :timeStamp, :typeText, :userid, :userIDIndex, :descriptionArgs, :userActionArgs, :failFRUNames,
                   :failFRUUUIDs, :failFRUPartNumbers
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
   end
 end
