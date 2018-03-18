@@ -31,7 +31,7 @@ module XClarityClient
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         faraday.ssl[:verify] = conf.verify_ssl == 'PEER'
       end
-      
+
       @conn.headers[:user_agent] = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (conf.user_agent_label.nil? ? "" : " (#{conf.user_agent_label})")
       @conn.basic_auth(conf.username, conf.password) if conf.auth_type == 'basic_auth'
       $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
