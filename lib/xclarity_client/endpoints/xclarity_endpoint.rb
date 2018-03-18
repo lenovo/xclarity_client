@@ -1,10 +1,12 @@
+require 'xclarity_client/endpoints/buildable_resource_mixin'
+
 module XClarityClient
   module Endpoints
     class XclarityEndpoint
-      include Resource
+      include BuildableResourceMixin
 
       def initialize(attributes)
-        build_resource(attributes)
+        build_resource!(attributes)
       end
     end
   end
