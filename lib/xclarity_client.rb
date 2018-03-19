@@ -5,6 +5,8 @@ module XClarityClient
   $lxca_log = XClarityClient::XClarityLogger.new
 end
 
+require 'xclarity_client/errors/errors'
+
 require 'xclarity_client/configuration'
 require 'xclarity_client/xclarity_base'
 require 'xclarity_client/xclarity_resource'
@@ -33,11 +35,6 @@ require 'xclarity_client/client'
 require 'xclarity_client/config_target_management'
 require 'xclarity_client/config_profile_management'
 require 'xclarity_client/config_pattern_management'
-require 'xclarity_client/error/authentication_error'
-require 'xclarity_client/error/connection_failed'
-require 'xclarity_client/error/connection_failed_unknown'
-require 'xclarity_client/error/connection_refused'
-require 'xclarity_client/error/hostname_unknown'
 require 'xclarity_client/discover_request_management'
 require 'xclarity_client/discovery_management'
 require 'xclarity_client/unmanage_request_management'
