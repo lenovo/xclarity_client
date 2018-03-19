@@ -310,5 +310,9 @@ module XClarityClient
     def fetch_compliance_policies
       PersistedResultManagement.new(@connection).population
     end
+
+    def remote_control(uuid)
+      RemoteAccessManagement.new(@connection).remote_control uuid
+    end
   end
 end
