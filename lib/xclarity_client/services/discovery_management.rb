@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class DiscoveryManagement < XClarityBase
+  class DiscoveryManagement  < Services::XClarityService
+    manages_endpoint Discovery
 
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Discovery::BASE_URI)
+    def population(opts = {})
+      fetch_all(opts)
     end
-
-    def population()
-      get_all_resources(Discovery)
-    end
-
   end
 end

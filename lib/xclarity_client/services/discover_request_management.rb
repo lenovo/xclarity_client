@@ -1,32 +1,30 @@
 require 'json'
 
 module XClarityClient
-  class DiscoverRequestManagement < XClarityBase
+  class DiscoverRequestManagement < Services::XClarityService
+    manages_endpoint DiscoverRequest
 
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, DiscoverRequest::BASE_URI)
+    def population(opts = {})
+      fetch_all(opts)
     end
 
     def discover_manageable_devices(ip_addresses)
       post_req = JSON.generate([ipAddresses: ip_addresses])
-      response = do_post(DiscoverRequest::BASE_URI, post_req)
+      response = @connection.do_post(managed_resource::BASE_URI, post_req)
       response
     end
 
     def monitor_discover_request(job_id)
-      response = connection(DiscoverRequest::BASE_URI + "/jobs/" + job_id)
+      response = @connection.do_get(managed_resource::BASE_URI + "/jobs/" + job_id)
       return [] unless response.success?
 
       body = JSON.parse(response.body)
 
-      body = {DiscoverRequest::LIST_NAME => body} if body.is_a? Array
-      body = {DiscoverRequest::LIST_NAME => [body]} unless body.has_key? DiscoverRequest::LIST_NAME
-      body[DiscoverRequest::LIST_NAME].map do |resource_params|
-        DiscoverRequest.new resource_params
+      body = {managed_resource::LIST_NAME => body} if body.is_a? Array
+      body = {managed_resource::LIST_NAME => [body]} unless body.has_key? managed_resource::LIST_NAME
+      body[managed_resource::LIST_NAME].map do |resource_params|
+        managed_resource.new resource_params
       end
     end
-
   end
 end

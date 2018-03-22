@@ -1,28 +1,23 @@
 require 'json'
 
 module XClarityClient
-  class ConfigPatternManagement < XClarityBase
+  class ConfigPatternManagement < Services::XClarityService
+    manages_endpoint ConfigPattern
 
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, ConfigPattern::BASE_URI)
-    end
-
-    def population()
-      get_all_resources(ConfigPattern)
+    def population(opts = {})
+      fetch_all(opts)
     end
 
     def export(id)
-      response = connection(ConfigPattern::BASE_URI + "/" + id + "/includeSettings" )      
+      response = @connection.do_get(managed_resource::BASE_URI + "/" + id + "/includeSettings" )
       return [] unless response.success?
 
       body = JSON.parse(response.body)
 
-      body = {ConfigPattern::LIST_NAME => body} if body.is_a? Array
-      body = {ConfigPattern::LIST_NAME => [body]} unless body.has_key? ConfigPattern::LIST_NAME
-      body[ConfigPattern::LIST_NAME].map do |resource_params|
-        ConfigPattern.new resource_params
+      body = {managed_resource::LIST_NAME => body} if body.is_a? Array
+      body = {managed_resource::LIST_NAME => [body]} unless body.has_key? managed_resource::LIST_NAME
+      body[managed_resource::LIST_NAME].map do |resource_params|
+        managed_resource.new resource_params
       end
     end
 
@@ -33,16 +28,14 @@ module XClarityClient
         deployHash = {:endpointIds => endpoints}
       end
       deployHash.merge!({:restart => restart})
-      response = do_post(ConfigPattern::BASE_URI + '/' +id, JSON.generate(deployHash))
+      response = @connection.do_post(managed_resource::BASE_URI + '/' +id, JSON.generate(deployHash))
       response
 
     end
 
     def import_config_pattern(config_pattern)
-      response = do_post(ConfigPattern::BASE_URI, config_pattern)
+      response = @connection.do_post(managed_resource::BASE_URI, config_pattern)
       response
     end
-
   end
 end
-

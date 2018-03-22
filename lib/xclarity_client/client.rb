@@ -27,8 +27,7 @@ module XClarityClient
                       excludeAttributes = nil)
       CabinetManagement.new(@connection).get_object(uuids,
                                                     includeAttributes,
-                                                    excludeAttributes,
-                                                    Cabinet)
+                                                    excludeAttributes)
     end
 
     def discover_canisters(opts = {})
@@ -40,8 +39,7 @@ module XClarityClient
                         excludeAttributes = nil)
       CanisterManagement.new(@connection).get_object(uuids,
                                                      includeAttributes,
-                                                     excludeAttributes,
-                                                     Canister)
+                                                     excludeAttributes)
     end
 
     def discover_cmms(opts = {})
@@ -53,8 +51,7 @@ module XClarityClient
                    excludeAttributes = nil)
       CmmManagement.new(@connection).get_object(uuids,
                                                 includeAttributes,
-                                                excludeAttributes,
-                                                Cmm)
+                                                excludeAttributes)
     end
 
     def fetch_fans(uuids = nil,
@@ -62,8 +59,7 @@ module XClarityClient
                    excludeAttributes = nil)
       FanManagement.new(@connection).get_object(uuids,
                                                 includeAttributes,
-                                                excludeAttributes,
-                                                Fan)
+                                                excludeAttributes)
     end
 
     def discover_fans(opts = {})
@@ -83,8 +79,7 @@ module XClarityClient
                         excludeAttributes = nil)
       FanMuxManagement.new(@connection).get_object(uuids,
                                                    includeAttributes,
-                                                   excludeAttributes,
-                                                   FanMux)
+                                                   excludeAttributes)
     end
 
     def discover_chassis(opts = {})
@@ -100,8 +95,7 @@ module XClarityClient
                     excludeAttributes = nil)
       NodeManagement.new(@connection).get_object(uuids,
                                                  includeAttributes,
-                                                 excludeAttributes,
-                                                 Node)
+                                                 excludeAttributes)
     end
 
     def fetch_chassis(uuids = nil,
@@ -109,8 +103,7 @@ module XClarityClient
                       excludeAttributes = nil)
       ChassiManagement.new(@connection).get_object(uuids,
                                                    includeAttributes,
-                                                   excludeAttributes,
-                                                   Chassi)
+                                                   excludeAttributes)
     end
 
     def fetch_scalableComplexes(uuids = nil,
@@ -118,8 +111,7 @@ module XClarityClient
                                 excludeAttributes = nil)
       ScalableComplexManagement.new(@connection).get_object(uuids,
                                                             includeAttributes,
-                                                            excludeAttributes,
-                                                            ScalableComplex)
+                                                            excludeAttributes)
     end
 
     def fetch_switches(uuids = nil,
@@ -127,8 +119,7 @@ module XClarityClient
                        excludeAttributes = nil)
       SwitchManagement.new(@connection).get_object(uuids,
                                                    includeAttributes,
-                                                   excludeAttributes,
-                                                   Switch)
+                                                   excludeAttributes)
     end
 
     def fetch_power_supplies(uuids = nil,
@@ -136,8 +127,7 @@ module XClarityClient
                              excludeAttributes = nil)
       PowerSupplyManagement.new(@connection).get_object(uuids,
                                                         includeAttributes,
-                                                        excludeAttributes,
-                                                        PowerSupply)
+                                                        excludeAttributes)
     end
 
     def discover_events
@@ -165,8 +155,7 @@ module XClarityClient
                    excludeAttributes = nil)
       FfdcManagement.new(@connection).get_object(uuids,
                                                 includeAttributes,
-                                                excludeAttributes,
-                                                Ffdc)
+                                                excludeAttributes)
     end
 
     def discover_jobs(opts = {})
@@ -178,8 +167,7 @@ module XClarityClient
                    excludeAttributes = nil)
       JobManagement.new(@connection).get_object_with_id(ids,
                                                 includeAttributes,
-                                                excludeAttributes,
-                                                Job)
+                                                excludeAttributes)
     end
 
     def cancel_job(id = '')
@@ -207,8 +195,7 @@ module XClarityClient
                    excludeAttributes = nil)
       UserManagement.new(@connection).get_object_with_id(ids,
                                                 includeAttributes,
-                                                excludeAttributes,
-                                                User)
+                                                excludeAttributes)
     end
 
     def change_user_password(current_password, new_password)
@@ -220,8 +207,7 @@ module XClarityClient
                    excludeAttributes = nil)
       ConfigTargetManagement.new(@connection).get_object_with_id(ids,
                                                         includeAttributes,
-                                                        excludeAttributes,
-                                                        ConfigTarget)
+                                                        excludeAttributes)
     end
 
     def fetch_config_profile(ids=nil,
@@ -229,8 +215,7 @@ module XClarityClient
                    excludeAttributes = nil)
       ConfigProfileManagement.new(@connection).get_object_with_id(ids,
                                                         includeAttributes,
-                                                        excludeAttributes,
-                                                        ConfigProfile)
+                                                        excludeAttributes)
     end
 
     def discover_config_profile
@@ -264,8 +249,7 @@ module XClarityClient
                    excludeAttributes = nil)
       ConfigPatternManagement.new(@connection).get_object_with_id(ids,
                                                         includeAttributes,
-                                                        excludeAttributes,
-                                                        ConfigPattern)
+                                                        excludeAttributes)
     end
 
     def discover_config_pattern

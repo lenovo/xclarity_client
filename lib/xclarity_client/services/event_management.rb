@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class EventManagement < XClarityBase
+  class EventManagement < Services::XClarityService
+    manages_endpoint Event
 
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Event::BASE_URI)
+    def population(opts = {})
+      fetch_all(opts)
     end
-
-    def population
-      get_all_resources(Event)
-    end
-
   end
 end

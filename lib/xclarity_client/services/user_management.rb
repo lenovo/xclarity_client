@@ -1,16 +1,11 @@
 require 'json'
 
 module XClarityClient
-  class UserManagement < XClarityBase
+  class UserManagement < Services::XClarityService
+    manages_endpoint User
 
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, User::BASE_URI)
-    end
-
-    def population()
-      get_all_resources(User)
+    def population(opts = {})
+      fetch_all(opts)
     end
 
     def change_password(current_password, new_password)
@@ -22,7 +17,7 @@ module XClarityClient
 
       request_body = JSON.generate(payload)
 
-      response = do_put(User::SUB_URIS[:changePassword], request_body)
+      response = @connection.do_put(managed_resource::SUB_URIS[:changePassword], request_body)
 
       mount_response_change_password(response)
     end

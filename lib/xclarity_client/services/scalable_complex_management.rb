@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class ScalableComplexManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, ScalableComplex::BASE_URI)
-    end
+  class ScalableComplexManagement< Services::XClarityService
+    manages_endpoint ScalableComplex
 
     def population(opts = {})
-      get_all_resources(ScalableComplex, opts)
+      fetch_all(opts)
     end
-
   end
 end

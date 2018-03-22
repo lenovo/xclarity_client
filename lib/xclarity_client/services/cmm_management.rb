@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class CmmManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Cmm::BASE_URI)
-    end
+  class CmmManagement < Services::XClarityService
+    manages_endpoint Cmm
 
     def population(opts = {})
-      get_all_resources(Cmm, opts)
+      fetch_all(opts)
     end
-
   end
 end

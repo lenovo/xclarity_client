@@ -1,26 +1,21 @@
 require 'json'
 
 module XClarityClient
-  class JobManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Job::BASE_URI)
-    end
+  class JobManagement < Services::XClarityService
+    manages_endpoint Job
 
     def population(opts = {})
-      get_all_resources(Job, opts)
+      fetch_all(opts)
     end
 
     def cancel_job(uuid='')
       cancelReq = JSON.generate(cancelRequest: 'true')
-      response = do_put(Job::BASE_URI + '/' + uuid, cancelReq)
+      response = @connection.do_put(managed_resource::BASE_URI + '/' + uuid, cancelReq)
       response
     end
 
     def delete_job(uuid='')
-      response = do_delete(Job::BASE_URI + '/' + uuid)
+      response = @connection.do_delete(managed_resource::BASE_URI + '/' + uuid)
       response
     end
 
@@ -28,6 +23,5 @@ module XClarityClient
       response = connection(Job::BASE_URI + '/' + job_id)
       response = JSON.parse(response.body)
     end
-
   end
 end

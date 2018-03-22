@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class CanisterManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Canister::BASE_URI)
-    end
+  class CanisterManagement < Services::XClarityService
+    manages_endpoint Canister
 
     def population(opts = {})
-      get_all_resources(Canister, opts)
+      fetch_all(opts)
     end
-
   end
 end
