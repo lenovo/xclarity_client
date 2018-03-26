@@ -28,6 +28,14 @@ describe XClarityClient do
       it { is_expected.to have_attributes(:type => :url, :resource => 'my_url') }
     end
 
+    context 'when the API responds with Content-Type application/com.lenovo.lxca-v2.0.0+json; charset=ISO-8859-1' do
+      before do
+        @req_stub.to_return(:body => {:url => 'my_url'}.to_json, :headers => { 'Content-Type' => 'application/com.lenovo.lxca-v2.0.0+json; charset=ISO-8859-1' })
+      end
+
+      it { is_expected.to have_attributes(:type => :url, :resource => 'my_url') }
+    end
+
     context 'when the API responds with Content-Type application/x-java-jnlp-file' do
       before do
         @req_stub.to_return(:body => '<my_jnlp></my_jnlp>', :headers => { 'Content-Type' => 'other;application/x-java-jnlp-file;other' })
