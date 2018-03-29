@@ -15,10 +15,14 @@ module XClarityClient
     end
 
     def import_osimage(serverId, path)
-        if (not serverId.kind_of?(String)) or (not path.kind_of?(String))
-           puts "Invalid input, serverId and path must be of type string"
+        if not Schemas.validate_input_parameter("serverId", serverId, String)
            return
         end
+
+        if not Schemas.validate_input_parameter("path", path, String)
+           return
+        end
+ 
         msg="inputs serverId=#{serverId},path=#{path}"
         $lxca_log.info self.class.to_s+" "+__method__.to_s, msg
         opts = { "Action": "Init" }

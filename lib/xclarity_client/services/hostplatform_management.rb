@@ -16,9 +16,8 @@ module XClarityClient
     end
 
     def get_osimage_deployment_status(uuid)
-        if not uuid.kind_of?(String)
-           puts "Invalid input, uuid must be of type string"
-           return
+        if not Schemas.validate_input_parameter("uuid", uuid, String)
+          return
         end
         response = connection("#{HostPlatform::BASE_URI}/#{uuid}")
         response = JSON.parse(response.body)
@@ -26,14 +25,7 @@ module XClarityClient
 
     def deploy_osimage(opts=[])
         request_body = JSON.generate(opts)
-        x=JSON::Validator.fully_validate(Schemas::REQ_SCHEMA["hostPlatforms_put"], request_body)
-        if not x.empty?
-          errmsg = "input validation failed for"+self.class.to_s+" "+__method__.to_s
-          puts "input validation failed"
-          for k in x
-            $lxca_log.error errmsg, k
-            puts k
-          end
+        if not Schemas.validate_input("deploy_osimage", request_body)
           return
         end
         response = do_put("#{HostPlatform::BASE_URI}", request_body)

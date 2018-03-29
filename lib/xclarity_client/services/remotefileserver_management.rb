@@ -16,14 +16,7 @@ module XClarityClient
 
     def create_remotefileserver_profile(opts) 
       request_body = JSON.generate(opts)
-      x=JSON::Validator.fully_validate(Schemas::REQ_SCHEMA["remoteFileServers_post"], request_body) 
-      if not x.empty?
-         errmsg = "input validation failed for"+self.class.to_s+" "+__method__.to_s
-         puts "input validation failed"
-         for k in x
-            $lxca_log.error errmsg, k 
-            puts k
-         end
+      if not Schemas.validate_input("create_remotefileserver_profile", request_body)
          return
       end
       response = do_post(RemoteFileServer::BASE_URI, request_body)
@@ -33,9 +26,8 @@ module XClarityClient
     end
 
     def delete_remotefileserver_profile(serverId)
-      if not serverId.kind_of?(String)
-           puts "Invalid input, serverId must be of type string"
-           return
+      if not Schemas.validate_input_parameter("serverId", serverId, String)
+         return
       end
       response = do_delete("#{RemoteFileServer::BASE_URI}/#{serverId}")
       msg = "remote file server profile deleted for serverid #{serverId}"
@@ -44,9 +36,8 @@ module XClarityClient
     end
 
     def get_remotefileserver_profile(serverId)
-      if not serverId.kind_of?(String)
-           puts "Invalid input, serverId must be of type string"
-           return
+      if not Schemas.validate_input_parameter("serverId", serverId, String)
+         return
       end
       response = connection("#{RemoteFileServer::BASE_URI}/#{serverId}")
       msg = "for serverid #{serverId}"
