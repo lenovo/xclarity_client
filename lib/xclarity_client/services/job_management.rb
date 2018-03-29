@@ -24,5 +24,10 @@ module XClarityClient
       response
     end
 
+    def get_job(job_id = "")
+      response = connection(Job::BASE_URI + '/' + job_id)
+      response = JSON.parse(response.body)
+    end
+
   end
 end

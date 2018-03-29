@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency             "faraday-cookie_jar", "~> 0.0.6"
   spec.add_dependency             "uuid", "~> 2.3.8"
   spec.add_dependency             "faker", "~> 1.8.3"
+  spec.add_dependency             "json-schema", "~> 2.8.0"
 end
