@@ -24,19 +24,16 @@ module XClarityClient
     end
 
     def delete_remotefileserver_profile(serverId)
-      if Schemas.validate_input_parameter("serverId", serverId, String)
-        response = do_delete("#{RemoteFileServer::BASE_URI}/#{serverId}")
-        msg = "remote file server profile deleted for serverid #{serverId}"
-        $lxca_log.info self.class.to_s+" "+__method__.to_s, msg
-        response = JSON.parse(response.body)
+      if not Schemas.validate_input_parameter("serverId", serverId, String)
+         return
       end
+      response = do_delete("#{RemoteFileServer::BASE_URI}/#{serverId}")
+      response = JSON.parse(response.body)
     end
 
     def get_remotefileserver_profile(serverId)
       if Schemas.validate_input_parameter("serverId", serverId, String)
         response = connection("#{RemoteFileServer::BASE_URI}/#{serverId}")
-	msg = "for serverid #{serverId}"
-	$lxca_log.info self.class.to_s+" "+__method__.to_s, msg
         response = JSON.parse(response.body)
       end
     end
