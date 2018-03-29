@@ -1,6 +1,5 @@
 require 'json'
 require 'pathname'
-require 'xclarity_client/schemas'
 
 module XClarityClient
   class HostPlatformManagement < XClarityBase

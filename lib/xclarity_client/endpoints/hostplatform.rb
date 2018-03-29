@@ -1,7 +1,5 @@
 module XClarityClient
-  class HostPlatform
-    include XClarityClient::Resource
-
+  class HostPlatform < Endpoints::XclarityEndpoint
     BASE_URI = '/hostPlatforms'.freeze
     LIST_NAME = 'items'.freeze
 

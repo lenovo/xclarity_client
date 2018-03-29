@@ -1,7 +1,5 @@
 module XClarityClient
-  class GlobalSetting
-    include XClarityClient::Resource
-
+  class GlobalSetting < Endpoints::XclarityEndpoint
     BASE_URI = '/osdeployment/globalSettings'.freeze
 
     attr_accessor :activeDirectory, :credentials, :ipAssignment,

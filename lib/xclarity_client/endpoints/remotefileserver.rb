@@ -1,7 +1,5 @@
 module XClarityClient
-  class RemoteFileServer
-    include XClarityClient::Resource
-
+  class RemoteFileServer < Endpoints::XclarityEndpoint
     BASE_URI = '/osImages/remoteFileServers'.freeze
     LIST_NAME = 'serverList'.freeze
 

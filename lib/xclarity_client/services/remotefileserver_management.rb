@@ -1,5 +1,4 @@
 require 'json'
-require 'xclarity_client/schemas'
 
 module XClarityClient
   class RemoteFileServerManagement < XClarityBase

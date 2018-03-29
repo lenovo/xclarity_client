@@ -1,7 +1,8 @@
 require 'json-schema'
 
-class Schemas
-   @remotefs = {
+module XClarityClient
+  class Schemas
+     @remotefs = {
 	        "id" => "create_remotefileserver_profile",
 	        "type" => "object",
 	        "required" => ["address", "displayName", "port", "protocol"],
@@ -39,7 +40,7 @@ class Schemas
                                }
                      }
  
-   @hostplatforms = {
+     @hostplatforms = {
                     "id" => "deploy_osimage",
                     "type" => "array",
                     "items" => { 
@@ -113,7 +114,7 @@ class Schemas
                                   }
                                }
 
-   @globalsettings = {
+     @globalsettings = {
                        "id" => "set_globalsettings",
                        "type" => "object",
                        "required" => ["activeDirectory", "ipAssignment", "isVLANMode", "licenseKeys", "credentials"],
@@ -161,13 +162,13 @@ class Schemas
                                                                   }
                                                              }
 
-   REQ_SCHEMA={
+     REQ_SCHEMA={
                  "deploy_osimage" => @hostplatforms,
                  "set_globalsettings" => @globalsettings,
                  "create_remotefileserver_profile" => @remotefs 
                 }
 
-   def Schemas.validate_input(schema_name, data)
+     def Schemas.validate_input(schema_name, data)
          x=JSON::Validator.fully_validate(Schemas::REQ_SCHEMA[schema_name], data)
          if not x.empty?
             errmsg = "input validation failed for data #{data}" 
@@ -181,10 +182,10 @@ class Schemas
          else
             return 1
          end
-   end
+     end
 
-   #parameter name should be string
-   def Schemas.validate_input_parameter(name, value, exp_type)
+     #parameter name should be string
+     def Schemas.validate_input_parameter(name, value, exp_type)
          if not value.kind_of?(exp_type)
             errmsg = "invalid #{name} #{value}, expected #{name} of type #{exp_type}"
             $lxca_log.error errmsg, ""
@@ -193,6 +194,6 @@ class Schemas
          else
             return 1
          end
-   end
-
+     end
+  end
 end
