@@ -354,7 +354,7 @@ module XClarityClient
     def deploy_osimage(opts = [])
       HostPlatformManagement.new(@connection).deploy_osimage(opts)
     end
-                                                                                                                            115,1         24%
+
     def get_globalsettings
       GlobalSettingManagement.new(@connection).population
     end
