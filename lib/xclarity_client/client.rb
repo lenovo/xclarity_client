@@ -190,6 +190,10 @@ module XClarityClient
       JobManagement.new(@connection).delete_job(id)
     end
 
+    def get_job(job_id = "")
+        JobManagement.new(@connection).get_job(job_id)
+    end
+
     def discover_update_repo(opts = {})
       UpdateRepoManagement.new(@connection).population opts
     end
@@ -314,5 +318,50 @@ module XClarityClient
     def remote_control(uuid)
       RemoteAccessManagement.new(@connection).remote_control uuid
     end
+
+    def get_remotefileserver_profiles
+      RemoteFileServerManagement.new(@connection).population
+    end
+
+    def create_remotefileserver_profile(opts = {})
+      RemoteFileServerManagement.new(@connection).create_remotefileserver_profile(opts)
+    end
+
+    def delete_remotefileserver_profile(serverId = "")
+      RemoteFileServerManagement.new(@connection).delete_remotefileserver_profile(serverId)
+    end
+
+    def get_remotefileserver_profile(serverId = "")
+      RemoteFileServerManagement.new(@connection).get_remotefileserver_profile(serverId)
+    end
+
+    def import_osimage(serverId = "", path = "")
+      OsImageManagement.new(@connection).import_osimage(serverId, path)
+    end
+
+    def get_osimages
+        OsImageManagement.new(@connection).population
+    end
+
+    def get_hostplatforms
+      HostPlatformManagement.new(@connection).population
+    end
+
+    def get_osimage_deployment_status(uuid = "")
+      HostPlatformManagement.new(@connection).get_osimage_deployment_status(uuid)
+    end
+
+    def deploy_osimage(opts = [])
+      HostPlatformManagement.new(@connection).deploy_osimage(opts)
+    end
+
+    def get_globalsettings
+      GlobalSettingManagement.new(@connection).population
+    end
+
+    def set_globalsettings(opts = {})
+      GlobalSettingManagement.new(@connection).set_globalsettings(opts)
+    end
+
   end
 end

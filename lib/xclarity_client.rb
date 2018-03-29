@@ -13,6 +13,7 @@ require 'xclarity_client/xclarity_power_management_mixin'
 require 'xclarity_client/xclarity_credentials_validator'
 require 'xclarity_client/discover'
 require 'xclarity_client/client'
+require 'xclarity_client/schemas'
 
 require 'xclarity_client/endpoints/endpoints'
 require 'xclarity_client/services/services'
