@@ -17,11 +17,10 @@ module XClarityClient
 
     def set_globalsettings(opts={})
         request_body = JSON.generate(opts)
-        if not Schemas.validate_input("set_globalsettings", request_body)
-          return
+        if Schemas.validate_input("set_globalsettings", request_body)
+          response = do_put("#{GlobalSetting::BASE_URI}", request_body)
+          response = JSON.parse(response.body)
         end
-        response = do_put("#{GlobalSetting::BASE_URI}", request_body)
-        response = JSON.parse(response.body)
     end
   end
 end
