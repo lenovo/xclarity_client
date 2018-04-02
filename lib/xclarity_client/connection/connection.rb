@@ -5,18 +5,29 @@ require 'uri/https'
 
 module XClarityClient
   #
-  # TODO: doc this
+  # Handles the LXCA connection providing some services to interact
+  # with the API.
   #
   class Connection
     #
-    # TODO: doc this
+    # @param [Hash] configuration - the data to create a connection with the LXCA
+    # @option configuration [String] :host             the LXCA host
+    # @option configuration [String] :username         the LXCA username
+    # @option configuration [String] :password         the username password
+    # @option configuration [String] :port             the LXCA port
+    # @option configuration [String] :auth_type        the type of the authentication ('token', 'basic_auth')
+    # @option configuration [String] :verify_ssl       ('PEER', 'NONE')
+    # @option configuration [String] :user_agent_label Api gem client identification
     #
     def initialize(configuration)
       @connection = build(configuration)
     end
 
     #
-    # TODO: doc this
+    # Does a GET request to an LXCA endpoint
+    #
+    # @param [String] uri - endpoint to do the request
+    # @param [Hash] query - params to query the endpoint resources
     #
     def do_get(uri = "", query = "")
       url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join(",") : ""
@@ -27,7 +38,10 @@ module XClarityClient
     end
 
     #
-    # TODO: doc this
+    # Does a POST request to an LXCA endpoint
+    #
+    # @param [String] uri - endpoint to do the request
+    # @param [JSON] body  - json to be sent in request body
     #
     def do_post(uri = "", body = "")
       @connection.post do |req|
@@ -42,7 +56,10 @@ module XClarityClient
     end
 
     #
-    # TODO: doc this
+    # Does a PUT request to an LXCA endpoint
+    #
+    # @param [String] uri - endpoint to do the request
+    # @param [JSON] body  - json to be sent in request body
     #
     def do_put(uri = "", body = "")
       @connection.put do |req|
@@ -57,7 +74,9 @@ module XClarityClient
     end
 
     #
-    # TODO: doc this
+    # Does a DELETE request to an LXCA endpoint
+    #
+    # @param [String] uri - endpoint to do the request
     #
     def do_delete(uri = "")
       @connection.delete do |req|
@@ -68,9 +87,6 @@ module XClarityClient
 
     private
 
-    #
-    # TODO: doc this
-    #
     def build(configuration)
       $lxca_log.info "XClarityClient::Connection build", "Building the connection"
 
