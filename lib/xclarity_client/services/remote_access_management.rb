@@ -21,12 +21,12 @@ module XClarityClient
 
     private
 
-    SUPPORTED_MIME_TYPES = ['application/json', 'application/x-java-jnlp-file']
+    SUPPORTED_MIME_TYPES = ['application/*json', 'application/x-java-jnlp-file']
 
     def build_remote_access_object(connection)
       content_type = connection.headers['Content-Type']
       case content_type
-      when /application\/json/
+      when /application\/.*json/
         build_json_remote_access_object(connection.body)
       when /application\/x-java-jnlp-file/
         build_jnlp_remote_access_object(connection.body)
