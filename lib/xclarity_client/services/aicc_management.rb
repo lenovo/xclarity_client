@@ -1,16 +1,9 @@
-# XClarityClient module/namespace
 module XClarityClient
-  # Aicc Management class
-  class AiccManagement < XClarityBase
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Aicc::BASE_URI)
-    end
+  class AiccManagement < Services::XClarityService
+    manages_endpoint Aicc
 
     def population(opts = {})
-      get_all_resources(Aicc, opts)
+      fetch_all(opts)
     end
-
   end
 end

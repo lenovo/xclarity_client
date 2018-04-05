@@ -4,6 +4,7 @@ module XClarityClient
 end
 
 require 'xclarity_client/services/xclarity_management_mixin'
+require 'xclarity_client/services/xclarity_service'
 
 require 'xclarity_client/services/aicc_management'
 require 'xclarity_client/services/cabinet_management'

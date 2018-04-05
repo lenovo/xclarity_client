@@ -1,16 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class SwitchManagement < XClarityBase
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Switch::BASE_URI)
-    end
+  class SwitchManagement< Services::XClarityService
+    manages_endpoint Switch
 
     def population(opts = {})
-      get_all_resources(Switch, opts)
+      fetch_all(opts)
     end
-
   end
 end

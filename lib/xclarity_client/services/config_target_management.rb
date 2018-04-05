@@ -1,14 +1,9 @@
-require 'json'
-require 'uuid'
-
 module XClarityClient
-  class ConfigTargetManagement < XClarityBase
-    include XClarityClient::ManagementMixin
+  class ConfigTargetManagement < Services::XClarityService
+    manages_endpoint ConfigTarget
 
-    def initialize(conf)
-      super(conf, ConfigTarget::BASE_URI)
+    def population(opts = {})
+      fetch_all(opts)
     end
-
   end
 end
-

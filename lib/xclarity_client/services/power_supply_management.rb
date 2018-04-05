@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class PowerSupplyManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, PowerSupply::BASE_URI)
-    end
+  class PowerSupplyManagement< Services::XClarityService
+    manages_endpoint PowerSupply
 
     def population(opts = {})
-      get_all_resources(PowerSupply, opts)
+      fetch_all(opts)
     end
-
   end
 end

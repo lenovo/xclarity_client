@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class FanMuxManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, FanMux::BASE_URI)
-    end
+  class FanMuxManagement < Services::XClarityService
+    manages_endpoint FanMux
 
     def population(opts = {})
-      get_all_resources(FanMux, opts)
+      fetch_all(opts)
     end
-
   end
 end

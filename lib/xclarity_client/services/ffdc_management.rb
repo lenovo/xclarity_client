@@ -1,13 +1,9 @@
-require 'json'
-require 'uuid'
-
 module XClarityClient
-  class FfdcManagement < XClarityBase
-    include XClarityClient::ManagementMixin
+  class FfdcManagement  < Services::XClarityService
+    manages_endpoint Ffdc
 
-    def initialize(conf)
-      super(conf, Ffdc::BASE_URI)
+    def population(opts = {})
+      fetch_all(opts)
     end
-
   end
 end

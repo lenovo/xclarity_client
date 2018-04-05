@@ -1,17 +1,9 @@
-require 'json'
-
 module XClarityClient
-  class ChassiManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, Chassi::BASE_URI)
-    end
+  class ChassiManagement < Services::XClarityService
+    manages_endpoint Chassi
 
     def population(opts = {})
-      get_all_resources(Chassi, opts)
+      fetch_all(opts)
     end
-
   end
 end
