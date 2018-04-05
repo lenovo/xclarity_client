@@ -4,10 +4,6 @@ module XClarityClient
   class ConfigProfileManagement < Services::XClarityService
     manages_endpoint ConfigProfile
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def rename_config_profile(id='', name='')
       renameReq = JSON.generate(profileName: name)
       response = @connection.do_put(managed_resource::BASE_URI + '/' +id, renameReq)
