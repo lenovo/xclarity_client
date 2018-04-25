@@ -347,5 +347,28 @@ module XClarityClient
       GlobalSettingManagement.new(@connection).set_globalsettings(opts)
     end
 
+    def discover_update_policy(opts = {})
+      CompliancePolicyManagement.new(@connection).fetch_all opts
+    end
+
+    def discover_application_firmware
+      CompliancePolicyManagement.new(@connection).get_applicable_firmware
+    end
+
+    def discover_persisted_compare_results(opts = {})
+      CompliancePolicyManagement.new(@connection).get_persisted_compare_results opts
+    end
+
+    def discover_compare_results(opts = {})
+      CompliancePolicyManagement.new(@connection).get_compare_results opts
+    end
+
+    def assign_compliance_policy(opts = {}, keep=nil, auto_assign=nil)
+      CompliancePolicyManagement.new(@connection).assign_compliance_policy(opts, keep, auto_assign)
+    end
+
+    def delete_compliance_policy(policyName, removePackage=nil)
+      CompliancePolicyManagement.new(@connection).delete_compliance_policy(policyName, removePackage)
+    end
   end
 end

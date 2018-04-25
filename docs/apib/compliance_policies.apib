@@ -1,0 +1,214 @@
+FORMAT: 1A
+
+# XClarity compliancePolicies
+
+# get details of all policies
+
+## GET /compliancePolicies
++ Response 200
+{
+   "policies":[{
+      "description":"DEV ONLY",
+      "id":"1427930734934",
+      "inUse":"true",
+      "filterType":"all",
+      "lastModified":"2015-04-01 16:25:34",
+      "name":"DEFAULT-2015-04-01",
+      "updateRule":"",
+      "userDefined":"no"
+   },
+   {"updateRule":"",
+      "description":"ddddd",
+      "id":"1428397839104",
+      "inUse":"false",
+      "filterType":"managed",
+      "lastModified":"This policy was created by USERID on 2015-04-07 05:10:39",
+      "name":"aaaa",
+      "updateRule":"",
+      "userDefined":"yes"
+   }]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# retrieve the persisted compare result for servers to which a compliance policy is assigned.
+
+## GET /compliancePolicies/persistedResult
++ Response 200
+{
+   "all": [{
+      "chassis": "FBEF740B178F4EFAA846E7225EE256DC",
+      "cmms": [{
+         "deviceCompliant": "no",
+         "message": [],
+         "policyName": "",
+         "supported": "true",
+         "targetFirmware": [],
+         "uuid": "387E51D69EC311E0A4C8E87E4D6C0479"
+      }],
+      "switches": [{
+         "deviceCompliant": "no",
+         "message": [],
+         "policyName": "DEFAULT-2015-04-25",
+         "supported": "true",
+         "targetFirmware": [{
+            "build": "0802",
+            "category": "Switches",
+            "compliant": "no",
+            "componentID": "1B33D6C57ECB04C14567A897DC604900",
+            "componentName": "IO Module 02",
+            "date": "2015-04-22",
+            "fixid": "lnvgy_fw_scsw_si4093-8.2.1.0_anyos_noarch",
+            "level": "higher",
+            "packageExistence": "yes",
+            "reason": "The installed version is down level than the version defined in compliance policy.",
+            "versionList": ["8.2.1.0"]
+         }],
+         "uuid": "1B33D6C57ECB04C14567A897DC604900"
+      }],
+      "xITEs": [{
+         "deviceCompliant": "no",
+         "message": [],
+         "policyName": "",
+         "supported": "true",
+         "targetFirmware": [],
+         "uuid": "69BDF8912E5211E4998B40F2E99033F0"
+      }],
+   "message": []
+   },
+   {
+      "racklist": [{
+         "deviceCompliant": "no",
+         "message": [],
+         "policyName": "",
+         "targetFirmware": [],
+         "uuid": "C29379AA380E11E39DF3000AF7256714"
+      }]
+   },
+   {
+      "rackswitchlist": [{
+         "deviceCompliant": "",
+         "message": [],
+         "policyName": "",
+         "targetFirmware": [],
+         "uuid": "242CFF20453641238D2B8FEDFB0F056F"
+      }]
+   },
+   {
+      "storagelist": [{
+         "deviceCompliant": "",
+         "message": [],
+         "policyName": "",
+         "targetFirmware": [],
+         "uuid": "208000C0FF25E476"
+      }]
+   }]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# determine whether devices are compliant with the assigned compliance policy using the job or task ID that was returned when the compliance policy was assigned
+
+## GET /compliancePolicies/compareResult?jobid=1
++ Response 200
+{
+    "jobid": "1",
+    "percentage": 100,
+    "result": [{
+        "endpointCompliant": "no",
+        "message": [],
+        "status": "finished",
+        "targetFirmware": [{
+            "build": "0708",
+            "category": "Switches",
+            "compliant": "no",
+            "componentID": "A3F8482B012B32188E68375DD5FF40EE",
+            "componentName": "Demo - 00004X4093",
+            "date": "2015-02-13",
+            "fixid": "fw_scsw_en4093r-7.8.9.0_anyos_noarch",
+            "level": "higher",
+            "packageExistence": "yes",
+            "reason":"The installed version is down level than the version defined in compliance policy.",
+            "versionList": ["7.8.9.0"]
+        }],
+        "taskid": "0",
+        "uuid": "A3F8482B012B32188E68375DD5FF40EE"
+    }],
+    "status": "finished"
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# retrieve information about firmware that is applicable to each managed device.
+ 
+## GET /compliancePolicies/applicableFirmware
++ Response 200
+{
+   "componentTypes": [{
+      "applicableFirmware": [{
+         "available": [{
+            "buildNum": "TCOO15M",
+            "buildType": "development",
+            "fixid": "lnvgy_fw_imm2_tcoo15m-2.50_anyos_noarch",
+            "name": "Integrated Management Module 2 (IMM2) Update",
+            "releasedate": "2016-01-09",
+            "softwareIDList": ["IMM2-Backup"],
+            "version": "2.50",
+            "versionList": ["2.50"]
+         }],
+         "category": "IMM2-Backup",
+         "installedVersion": "1.95",
+         "name": "IMM2 (Backup)"
+      }],
+      "machineType": "5463",
+      "uuid": "208C0140DF7F11D4AE0FF3F3F3797979"
+   }]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# delete one or more compliance policies.
+
+## DELETE /compliancePolicies
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# assign a compliance policy to one or more devices and to return the 
+# job ID and task IDs for monitoring the status of the job and tasks.
+
+## POST /compliancePolicies/compareResult
++ Response 200
+{
+    "errorDetail": [],
+    "errorMessage": "",
+    "message": [{
+        "tasks": [{
+            "taskid": 0,
+            "uuid": "A3F8482B012B32188E68375DD5FF40EE"
+        }],
+        "jobid": 14
+    }],
+    "status": "success"
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
