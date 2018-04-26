@@ -1,0 +1,41 @@
+---
+exclude_paths:
+- ".git/"
+- "**.gif"
+- "**.html"
+- "**.json"
+- "**.png"
+- "**.svg"
+- "**.xml"
+- "**.yaml"
+- "**.yml"
+- "bin/"
+- "coverage/"
+- "spec/"
+engines:
+  brakeman:
+    enabled: false
+  bundler-audit:
+    enabled: false
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      concurrency: 1
+      languages:
+      - ruby
+  eslint:
+    enabled: false
+  fixme:
+    enabled: false
+  markdownlint:
+    enabled: false
+  rubocop:
+    enabled: true
+    config: '.rubocop_cc.yml'
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.rake"
+  - "**.rb"
