@@ -4,10 +4,10 @@ module XClarityClient
     BASE_URI = '/compliancePolicies'.freeze
     LIST_NAME = 'updatePolicyList'.freeze
     SUB_URIS = {
-                 applicableFirmware: "#{BASE_URI}/applicableFirmware",
-                 persistedResult: "#{BASE_URI}/persistedResult",
-                 compareResult: "#{BASE_URI}/compareResult"
-               }
+      applicableFirmware: "#{BASE_URI}/applicableFirmware",
+      persistedResult: "#{BASE_URI}/persistedResult",
+      compareResult: "#{BASE_URI}/compareResult"
+    }
 
     attr_accessor :policies, :id, :inUse, :lastModified, :name, :updateRule, :userDefined,
                   :description, :details, :componentTypes, :applicableFirmware,
