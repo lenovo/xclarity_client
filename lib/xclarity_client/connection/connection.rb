@@ -29,8 +29,8 @@ module XClarityClient
     # @param [String] uri - endpoint to do the request
     # @param [Hash] query - params to query the endpoint resources
     #
-    def do_get(uri = "", query = "")
-      url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join(",") : ""
+    def do_get(uri = "", query = {})
+      url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join("&") : ""
       @connection.get(uri + url_query)
     rescue Faraday::Error::ConnectionFailed => e
       $lxca_log.error "XClarityClient::XclarityBase connection", "Error trying to send a GET to #{uri + url_query}"
