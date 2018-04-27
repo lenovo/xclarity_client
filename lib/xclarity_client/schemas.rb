@@ -119,22 +119,22 @@ module XClarityClient
                        "type" => "object",
                        "required" => ["activeDirectory", "ipAssignment", "isVLANMode", "licenseKeys", "credentials"],
                        "properties" => {
-                                          "activeDirectory": {
+                                          "activeDirectory" => {
                                                               "type" => "object"
                                                              },
-                                           "ipAssignment":{
+                                           "ipAssignment" => {
                                                             "type" => "string"
                                                           },
-                                           "isVLANMode": {
+                                           "isVLANMode" => {
                                                            "type" => "boolean"
                                                          },
-                                           "licenseKeys":{
+                                           "licenseKeys" => {
                                                            "type" => "object"
                                                          },
-                                           "deploySettings":{
+                                           "deploySettings" => {
                                                               "type" => "string"
                                                             },
-                                           "credentials":{
+                                           "credentials" => {
                                                            "type" => "array",
                                                             "items" => {
                                                                           "type" => "object",
@@ -144,16 +144,16 @@ module XClarityClient
                                                                                          "passwordChanged"],
                                                                           "properties" =>
                                                                                   {
-                                                                                    "type":{
+                                                                                    "type" => {
                                                                                              "type"=> "string"
                                                                                            },
-                                                                                    "name":{
+                                                                                    "name" => {
                                                                                              "type" => "string"
                                                                                            },
-                                                                                    "password":{
+                                                                                    "password" => {
                                                                                                  "type" => "string"
                                                                                               },
-                                                                                    "passwordChanged":{
+                                                                                    "passwordChanged" => {
                                                                                                         "type" => "boolean"
                                                                                                       }
                                                                                     }
