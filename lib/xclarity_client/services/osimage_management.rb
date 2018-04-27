@@ -25,13 +25,13 @@ module XClarityClient
  
         msg="inputs serverId=#{serverId},path=#{path}"
         $lxca_log.info self.class.to_s+" "+__method__.to_s, msg
-        opts = { "Action": "Init" }
+        opts = { "Action" => "Init" }
         request_body = JSON.generate(opts)
         response = do_post("#{OsImage::BASE_URI}?imageType=OS", request_body)
         response = JSON.load(response.body).to_hash
         jobId = response["jobId"]
         puts jobId
-        opts = { "serverId": serverId, "path": path }
+        opts = { "serverId" => serverId, "path" => path }
         request_body = JSON.generate(opts)
         imageName = path.split(File::SEPARATOR).last
         begin
@@ -39,7 +39,7 @@ module XClarityClient
                               "&imageType=OS&imageName=#{imageName}", request_body)
            response = JSON.parse(response.body)
         rescue Faraday::TimeoutError => e
-           result = JSON.generate({"result": " Job for importing image is in progress with jobId #{jobId}"})
+           result = JSON.generate({"result" => " Job for importing image is in progress with jobId #{jobId}"})
            response = JSON.parse(result) 
         end
     end
