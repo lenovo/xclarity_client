@@ -1,7 +1,8 @@
-# Top Level Xclarity module
 module XClarityClient
-  # Power management mixin
-  module PowerManagementMixin
+  #
+  # Exposes NodeManagement features
+  #
+  module Mixins::PowerManagementMixin
     def power_on_node(uuid = '')
       node_management.set_node_power_state(uuid, :powerOn)
     end
