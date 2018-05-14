@@ -70,6 +70,10 @@ module XClarityClient
       SwitchManagement.new(@connection).population opts
     end
 
+    def discover_storages(opts = {})
+      StorageManagement.new(@connection).fetch_all(opts)
+    end
+
     def discover_fan_muxes(opts = {})
       FanMuxManagement.new(@connection).population opts
     end
@@ -120,6 +124,14 @@ module XClarityClient
       SwitchManagement.new(@connection).get_object(uuids,
                                                    includeAttributes,
                                                    excludeAttributes)
+    end
+
+    def fetch_storages(uuids = nil,
+                       include_attributes = nil,
+                       exclude_attributes = nil)
+      StorageManagement.new(@connection).get_object(uuids,
+                                                    include_attributes,
+                                                    exclude_attributes)
     end
 
     def fetch_power_supplies(uuids = nil,
