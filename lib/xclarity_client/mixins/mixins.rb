@@ -6,7 +6,6 @@ module XClarityClient
   end
 end
 
-require 'xclarity_client/mixins/power_management_mixin'
 require 'xclarity_client/mixins/aicc_mixin'
 require 'xclarity_client/mixins/cabinet_mixin'
 require 'xclarity_client/mixins/canister_mixin'

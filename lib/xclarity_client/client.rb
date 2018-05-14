@@ -24,7 +24,6 @@ module XClarityClient
     include XClarityClient::Mixins::NodeMixin
     include XClarityClient::Mixins::OsImageMixin
     include XClarityClient::Mixins::PersistedResultMixin
-    include XClarityClient::Mixins::PowerManagementMixin
     include XClarityClient::Mixins::PowerSupplyMixin
     include XClarityClient::Mixins::RemoteAccessMixin
     include XClarityClient::Mixins::RemoteFileServerMixin

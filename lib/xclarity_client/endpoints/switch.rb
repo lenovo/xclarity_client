@@ -2,6 +2,9 @@ module XClarityClient
   class Switch < Endpoints::XclarityEndpoint
     BASE_URI = '/switches'.freeze
     LIST_NAME = 'switchList'.freeze
+    POWER_ACTIONS = %i(
+      powerCycleSoft
+    ).freeze
 
     attr_accessor :accessState, :attachedNodes, :backedBy, :cmmDisplayName, :cmmHealthState,
                   :dataHandle, :description, :dnsHostnames, :errorFields, :excludedHealthState,
