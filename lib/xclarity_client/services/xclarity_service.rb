@@ -34,14 +34,15 @@ module XClarityClient
         $lxca_log.info "XclarityClient::Endpoints::XClarityService get_object",
                        "Sending request to #{managed_resource} resource"
 
-        uuids.reject! { |uuid| UUID.validate(uuid).nil? } unless uuids.nil?
+        uuid_array = uuids&.reject { |uuid| uuid.nil? || uuid.empty? }
 
         response = if not includeAttributes.nil?
-          get_object_with_include_attributes(uuids, includeAttributes)
+          get_object_with_include_attributes(uuid_array, includeAttributes)
         elsif not excludeAttributes.nil?
-          get_object_with_exclude_attributes(uuids, excludeAttributes)
-        elsif not uuids.nil?
-          @connection.do_get(managed_resource::BASE_URI + "/" + uuids.join(","))
+          get_object_with_exclude_attributes(uuid_array, excludeAttributes)
+        elsif not uuid_array.nil?
+          @connection.do_get(managed_resource::BASE_URI + "/" +
+            uuid_array.join(","))
         else
           @connection.do_get(managed_resource::BASE_URI)
         end
