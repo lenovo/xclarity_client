@@ -7,10 +7,6 @@ module XClarityClient
   class NodeManagement < Services::XClarityService
     manages_endpoint Node
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def set_node_power_state(uuid, requested_state = nil)
       if [uuid, requested_state].any? { |item| item.nil? }
         error = 'Invalid target or power state requested'

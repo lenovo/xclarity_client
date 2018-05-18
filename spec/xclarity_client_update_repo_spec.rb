@@ -32,7 +32,7 @@ describe XClarityClient do
 
     context 'with option key and an invalid value' do
       it 'should throw an error' do
-        expect {@client.discover_update_repo({"key":"Stopped"}).class}.to raise_error(RuntimeError, 'The value for option key should be one of these : supportedMts, lastRefreshed, size, importDir, publicKeys, updates, updatesByMt, updatesByMtByComp')
+        expect {@client.discover_update_repo({"key":"Stopped"}).class}.to raise_error(RuntimeError, 'The value for option key should be one of these : supportedMts, size, lastRefreshed, importDir, publicKeys, updates, updatesByMt, updatesByMtByComp')
       end
     end
 
