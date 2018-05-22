@@ -13,6 +13,7 @@ describe XClarityClient do
     :auth_type => ENV['LXCA_AUTH_TYPE'],
     :verify_ssl => ENV['LXCA_VERIFY_SSL']
     )
+    @host = ENV['LXCA_HOST']
     @client = XClarityClient::Client.new(conf)
   end
 
@@ -92,6 +93,20 @@ describe XClarityClient do
           end
         end
       end
+    end
+  end
+
+  context 'do Power operations' do
+    it 'should fail without the uuid' do
+      expect { @client.power_cycle_soft_switch }.to raise_error('Invalid target or power state requested')
+    end
+
+    it 'should do the power cycle soft request successfully' do
+      response = @client.power_cycle_soft_switch(@uuidArray.first)
+      uri = "#{@host}/switches/#{@uuidArray.first}"
+      request_body = { 'body' => { 'powerState' => 'powerCycleSoft' } }
+      expect(a_request(:put, uri).with(request_body)).to have_been_made
+      expect(response.status).to eq(200)
     end
   end
 end
