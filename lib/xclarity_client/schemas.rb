@@ -3,110 +3,110 @@ require 'json-schema'
 module XClarityClient
   class Schemas
      @remotefs = {
-	        "id" => "create_remotefileserver_profile",
-	        "type" => "object",
-	        "required" => ["address", "displayName", "port", "protocol"],
-	        "properties" => {
-                                "address" => {
-				               "type" => "string"
+	        :id => "create_remotefileserver_profile",
+	        :type => "object",
+	        :required => ["address", "displayName", "port", "protocol"],
+	        :properties => {
+                                :address => {
+				               :type => "string"
 				             },
-                                "displayName" => {
-					           "type" => "string" 
+                                :displayName => {
+					           :type => "string" 
 						 },
-				"keyComment" => {
-				                    "type" => "string" 
+				:keyComment => {
+				                    :type => "string" 
 						},
-				"keyPassphras" => {
-				                    "type" => "string" 
+				:keyPassphras => {
+				                    :type => "string" 
 						  },
-				"keyType" => {
-                                               "type" => "string"
+				:keyType => {
+                                               :type => "string"
 					     },
-				"password" => {
-						 "type" => "string"
+				:password => {
+						 :type => "string"
 					      },
-				"port" => {
-						 "type" => "integer"
+				:port => {
+						 :type => "integer"
 					  },
-				"protocol" => { 
-                                                 "type" => "string"
+				:protocol => { 
+                                                 :type => "string"
 					      },
-				"serverId" =>  {
-						 "type" => "string"
+				:serverId =>  {
+						 :type => "string"
 						},
-			        "username" => {
-						"type" => "string"
+			        :username => {
+						:type => "string"
 					      }
                                }
                      }
  
      @hostplatforms = {
-                    "id" => "deploy_osimage",
-                    "type" => "array",
-                    "items" => { 
-                                "type" => "object",
-                                "required" => ["networkSettings", "selectedImage", "storageSettings", "uuid"],
-                                "properties" => {
-                                     "adusername" => {
-                                                       "type" => "string"
+                    :id => "deploy_osimage",
+                    :type => "array",
+                    :items => { 
+                                :type => "object",
+                                :required => ["networkSettings", "selectedImage", "storageSettings", "uuid"],
+                                :properties => {
+                                     :adusername => {
+                                                       :type => "string"
                                                      },
-                                     "adpassword" => {
-                                                        "type" => "string"
+                                     :adpassword => {
+                                                        :type => "string"
                                                      },
-                                     "configFileId" => {
-                                                         "type" => "string"
+                                     :configFileId => {
+                                                         :type => "string"
                                                        },
-                                     "licenseKey" => {
-                                                       "type" => "string"
+                                     :licenseKey => {
+                                                       :type => "string"
                                                      },
-                                     "selectedImage" => {
-                                                          "type" => "string"
+                                     :selectedImage => {
+                                                          :type => "string"
                                                         },
-                                     "storageSettings" => {
-                                                            "type" => "object"
+                                     :storageSettings => {
+                                                            :type => "object"
                                                           },
-                                     "unattendFileId" => {
-                                                            "type" => "string"
+                                     :unattendFileId => {
+                                                            :type => "string"
                                                          },
-                                     "uuid" => {
-                                                 "type" => "string"
+                                     :uuid => {
+                                                 :type => "string"
                                                },         
-                                     "windowsDomain" => {
-                                                          "type" => "string"
+                                     :windowsDomain => {
+                                                          :type => "string"
                                                         },
-                                     "windowsDomainBlob" => {
-                                                              "type" => "string"
+                                     :windowsDomainBlob => {
+                                                              :type => "string"
                                                             },
-                                     "networkSettings" => {
-                                                           "type" => "object",
-                                                           "properties" =>
+                                     :networkSettings => {
+                                                           :type => "object",
+                                                           :properties =>
                                                                   {
-                                                                    "dns1" => {
-                                                                                "type" => "string"
+                                                                    :dns1 => {
+                                                                                :type => "string"
                                                                               },
-                                                                    "dns2" => {
-                                                                                "type" => "string"
+                                                                    :dns2 => {
+                                                                                :type => "string"
                                                                               },
-                                                                    "gateway" => {
-                                                                                "type" => "string"
+                                                                    :gateway => {
+                                                                                :type => "string"
                                                                               },
-                                                                    "hostname" => {
-                                                                                "type" => "string"
+                                                                    :hostname => {
+                                                                                :type => "string"
                                                                               },
-                                                                    "ipAddress" => {
-                                                                                "type" => "string"
+                                                                    :ipAddress => {
+                                                                                :type => "string"
                                                                               },
-                                                                    "mtu" => {
-                                                                               "type" => "integer"
+                                                                    :mtu => {
+                                                                               :type => "integer"
                                                                              },
-                                                                    "prefixLength" => {
-                                                                                       "type" => "string"
+                                                                    :prefixLength => {
+                                                                                       :type => "integer"
                                                                                       },
-                                                                    "selectedMAC" => {
-                                                                                      "type" => "string"
+                                                                    :selectedMAC => {
+                                                                                      :type => "string"
                                                                                      },
-                                                                    "vlanId" => {
-                                                                                  "type" => "string"
+                                                                    :vlanId => {
+                                                                                  :type => "integer"
                                                                                 }
                                                                   }        
                                                             }
@@ -115,46 +115,46 @@ module XClarityClient
                                }
 
      @globalsettings = {
-                       "id" => "set_globalsettings",
-                       "type" => "object",
-                       "required" => ["activeDirectory", "ipAssignment", "isVLANMode", "licenseKeys", "credentials"],
-                       "properties" => {
-                                          "activeDirectory": {
-                                                              "type" => "object"
+                       :id => "set_globalsettings",
+                       :type => "object",
+                       :required => ["activeDirectory", "ipAssignment", "isVLANMode", "licenseKeys", "credentials"],
+                       :properties => {
+                                           :activeDirectory => {
+                                                              :type => "object"
                                                              },
-                                           "ipAssignment":{
-                                                            "type" => "string"
+                                           :ipAssignment => {
+                                                            :type => "string"
                                                           },
-                                           "isVLANMode": {
-                                                           "type" => "boolean"
+                                           :isVLANMode => {
+                                                           :type => "boolean"
                                                          },
-                                           "licenseKeys":{
-                                                           "type" => "object"
+                                           :licenseKeys => {
+                                                           :type => "object"
                                                          },
-                                           "deploySettings":{
+                                           :deploySettings => {
                                                               "type" => "string"
                                                             },
-                                           "credentials":{
-                                                           "type" => "array",
-                                                            "items" => {
-                                                                          "type" => "object",
-                                                                          "required" => ["type",
+                                           :credentials => {
+                                                           :type => "array",
+                                                           :items => {
+                                                                          :type => "object",
+                                                                          :required => ["type",
                                                                                          "name",
                                                                                          "password", 
                                                                                          "passwordChanged"],
-                                                                          "properties" =>
+                                                                          :properties =>
                                                                                   {
-                                                                                    "type":{
-                                                                                             "type"=> "string"
+                                                                                    :type => {
+                                                                                             :type => "string"
                                                                                            },
-                                                                                    "name":{
-                                                                                             "type" => "string"
+                                                                                    :name => {
+                                                                                             :type => "string"
                                                                                            },
-                                                                                    "password":{
-                                                                                                 "type" => "string"
+                                                                                    :password => {
+                                                                                                 :type => "string"
                                                                                               },
-                                                                                    "passwordChanged":{
-                                                                                                        "type" => "boolean"
+                                                                                    :passwordChanged => {
+                                                                                                        :type => "boolean"
                                                                                                       }
                                                                                     }
                                                                             }
@@ -163,9 +163,9 @@ module XClarityClient
                                                              }
 
      REQ_SCHEMA={
-                 "deploy_osimage" => @hostplatforms,
-                 "set_globalsettings" => @globalsettings,
-                 "create_remotefileserver_profile" => @remotefs 
+                 :deploy_osimage => @hostplatforms,
+                 :set_globalsettings => @globalsettings,
+                 :create_remotefileserver_profile => @remotefs 
                 }
 
      def Schemas.validate_input(schema_name, data)

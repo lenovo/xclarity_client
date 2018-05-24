@@ -5,8 +5,5 @@ module XClarityClient
     attr_accessor :activeDirectory, :credentials, :ipAssignment,
                   :isVLANMode, :licenseKeys
 
-    def initialize(attributes)
-      build_resource(attributes)
-    end
   end
 end

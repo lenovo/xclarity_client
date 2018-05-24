@@ -66,7 +66,7 @@ module XClarityClient
       FanManagement.new(@connection).population opts
     end
 
-    def discover_switches(opts = {})
+    def discover_switche(opts = {})
       SwitchManagement.new(@connection).population opts
     end
 
@@ -304,19 +304,22 @@ module XClarityClient
     end
 
     def get_remotefileserver_profiles
-      RemoteFileServerManagement.new(@connection).population
+      RemoteFileServerManagement.new(@connection).fetch_all
     end
 
     def create_remotefileserver_profile(opts = {})
-      RemoteFileServerManagement.new(@connection).create_remotefileserver_profile(opts)
+      RemoteFileServerManagement.new(@connection).\
+      create_remotefileserver_profile(opts)
     end
 
     def delete_remotefileserver_profile(serverId = "")
-      RemoteFileServerManagement.new(@connection).delete_remotefileserver_profile(serverId)
+      RemoteFileServerManagement.new(@connection).\
+      delete_remotefileserver_profile(serverId)
     end
 
     def get_remotefileserver_profile(serverId = "")
-      RemoteFileServerManagement.new(@connection).get_remotefileserver_profile(serverId)
+      RemoteFileServerManagement.new(@connection).\
+      get_remotefileserver_profile(serverId)
     end
 
     def import_osimage(serverId = "", path = "")
@@ -324,15 +327,16 @@ module XClarityClient
     end
 
     def get_osimages
-        OsImageManagement.new(@connection).population
+        OsImageManagement.new(@connection).fetch_all
     end
 
     def get_hostplatforms
-      HostPlatformManagement.new(@connection).population
+      HostPlatformManagement.new(@connection).fetch_all
     end
 
     def get_osimage_deployment_status(uuid = "")
-      HostPlatformManagement.new(@connection).get_osimage_deployment_status(uuid)
+      HostPlatformManagement.new(@connection).\
+      get_osimage_deployment_status(uuid)
     end
 
     def deploy_osimage(opts = [])
@@ -340,7 +344,7 @@ module XClarityClient
     end
 
     def get_globalsettings
-      GlobalSettingManagement.new(@connection).population
+      GlobalSettingManagement.new(@connection).fetch_all
     end
 
     def set_globalsettings(opts = {})
@@ -364,11 +368,13 @@ module XClarityClient
     end
 
     def assign_compliance_policy(opts = {}, keep=nil, auto_assign=nil)
-      CompliancePolicyManagement.new(@connection).assign_compliance_policy(opts, keep, auto_assign)
+      CompliancePolicyManagement.new(@connection).
+      assign_compliance_policy(opts, keep, auto_assign)
     end
 
     def delete_compliance_policy(policyName, removePackage=nil)
-      CompliancePolicyManagement.new(@connection).delete_compliance_policy(policyName, removePackage)
+      CompliancePolicyManagement.new(@connection).
+      delete_compliance_policy(policyName, removePackage)
     end
   end
 end

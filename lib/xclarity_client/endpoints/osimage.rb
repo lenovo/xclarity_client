@@ -6,9 +6,5 @@ module XClarityClient
     attr_accessor :description, :osrelease, :name, :profiles,
                   :id, :type, :osBuildId, :deployStatus
 
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end
