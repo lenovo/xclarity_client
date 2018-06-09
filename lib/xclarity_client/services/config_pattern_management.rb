@@ -4,10 +4,6 @@ module XClarityClient
   class ConfigPatternManagement < Services::XClarityService
     manages_endpoint ConfigPattern
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def export(id)
       response = @connection.do_get(managed_resource::BASE_URI + "/" + id + "/includeSettings" )
       return [] unless response.success?

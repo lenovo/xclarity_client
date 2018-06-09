@@ -7,8 +7,12 @@ module XClarityClient
 
     def set_globalsettings(opts={})
         request_body = JSON.generate(opts)
-        if Schemas.validate_input(:set_globalsettings, request_body)
-          response = @connection.do_put("#{GlobalSetting::BASE_URI}", request_body)
+        res = Schemas.validate_input(:set_globalsettings, request_body)
+        if res[:result] == 'success'
+          response = @connection.do_put("#{GlobalSetting::BASE_URI}",
+                                        request_body)
+        else
+          res
         end
     end
   end

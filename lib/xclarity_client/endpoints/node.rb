@@ -2,6 +2,14 @@ module XClarityClient
   class Node < Endpoints::XclarityEndpoint
     BASE_URI = '/nodes'.freeze
     LIST_NAME = 'nodeList'.freeze
+    POWER_ACTIONS = %i(
+      powerOn
+      powerOffSoftGraceful
+      powerOff
+      powerCycleSoftGrace
+      powerCycleSoft
+      bootToF1
+    ).freeze
 
     attr_accessor :accessState, :activationKeys, :addinCards, :addinCardSlots, :arch, :backedBy, :bladeState, :bladeState_health,
                   :bladeState_string, :bootMode, :bootOrder, :cmmDisplayName, :cmmHealthState, :complexID, :contact, :dataHandle,

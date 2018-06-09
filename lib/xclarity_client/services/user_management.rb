@@ -4,10 +4,6 @@ module XClarityClient
   class UserManagement < Services::XClarityService
     manages_endpoint User
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def change_password(current_password, new_password)
       payload = {
         password: current_password,

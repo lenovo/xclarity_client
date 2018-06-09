@@ -1,0 +1,211 @@
+AllCops:
+  TargetRubyVersion: 2.3
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+Layout/ExtraSpacing:
+  AutoCorrect: true
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+Lint/DefEndAlignment:
+  AutoCorrect: true
+Lint/EndAlignment:
+  AutoCorrect: true
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/BlockNesting:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: true
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: true
+Metrics/MethodLength:
+  Enabled: true
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Enabled: true
+Metrics/PerceivedComplexity:
+  Enabled: false
+Performance/Casecmp:
+  Enabled: true
+Rails:
+  Enabled: true
+Rails/FindEach:
+  Enabled: false
+Rails/ReadWriteAttribute:
+  AutoCorrect: false
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/ClassCheck:
+  EnforcedStyle: kind_of?
+Style/CollectionMethods:
+  PreferredMethods:
+    find: detect
+    find_all: select
+    map: collect
+    reduce: inject
+Style/Documentation:
+  Enabled: true
+Style/DoubleNegation:
+  Enabled: true
+Style/EmptyMethod:
+  Enabled: true
+Style/Encoding:
+  Enabled: false
+Style/FormatString:
+  EnforcedStyle: percent
+Style/FormatStringToken:
+  EnforcedStyle: template
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/GuardClause:
+  Enabled: true
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+Style/IfUnlessModifier:
+  Enabled: true
+Style/MethodCallWithArgsParentheses:
+  Exclude:
+    - Gemfile
+    - spec/**/*
+  Enabled: true
+  IgnoredMethods:
+    # Ruby
+    - alias_method
+    - attr_accessor
+    - attr_reader
+    - attr_writer
+    - exit
+    - extend
+    - gem
+    - include
+    - load
+    - module_function
+    - pp
+    - prepend
+    - print
+    - private
+    - private_class_method
+    - private_constant
+    - puts
+    - raise
+    - require
+    - sleep
+    - throw
+    - yield
+    # Rails
+    - accepts_nested_attributes_for
+    - add_column
+    - add_index
+    - after_action
+    - after_commit
+    - after_create
+    - after_create_commit
+    - after_destroy
+    - after_destroy
+    - after_destroy_commit
+    - after_initialize
+    - after_save
+    - after_save
+    - after_update
+    - after_update_commit
+    - alias_attribute
+    - around_destroy
+    - autoload
+    - before_action
+    - before_create
+    - before_destroy
+    - before_save
+    - before_update
+    - before_validation
+    - belongs_to
+    - bigint
+    - boolean
+    - cattr_accessor
+    - cattr_reader
+    - cattr_writer
+    - change_column
+    - class_attribute
+    - create_table
+    - datetime
+    - decimal
+    - delegate
+    - drop_table
+    - has_and_belongs_to_many
+    - has_many
+    - has_one
+    - head
+    - identified_by
+    - integer
+    - mattr_accessor
+    - remove_column
+    - remove_index
+    - rename_column
+    - render
+    - require_dependency
+    - require_relative
+    - respond_to
+    - scope
+    - serialize
+    - skip_before_action
+    - string
+    - text
+    - validate
+    - validates
+    # Rake
+    - desc
+    - task
+Style/NumericLiterals:
+  AutoCorrect: false
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': ()
+    '%I': ()
+    '%w': ()
+    '%W': ()
+Style/PerlBackrefs:
+  Enabled: false
+Style/ParallelAssignment:
+  Enabled: false
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+Style/RegexpLiteral:
+  Enabled: false
+Style/RescueModifier:
+  AutoCorrect: false
+Style/SignalException:
+  EnforcedStyle: only_raise
+Style/SingleLineBlockParams:
+  Enabled: false
+Style/SingleLineMethods:
+  AllowIfMethodIsEmpty: false
+Style/GlobalVars:
+  AllowedVariables:
+    - $lxca_log
+Style/SpecialGlobalVars:
+  AutoCorrect: false
+Style/StringLiterals:
+  Enabled: true
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+Style/TrailingCommaInArguments:
+  Enabled: false
+Style/TrailingCommaInLiteral:
+  Enabled: false
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+Style/TrivialAccessors:
+  AllowPredicates: true
+Style/WhileUntilModifier:
+  Enabled: true
+Style/WordArray:
+  AutoCorrect: true

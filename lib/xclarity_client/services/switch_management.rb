@@ -1,9 +1,9 @@
+require 'xclarity_client/services/mixins/power_action_sender_mixin'
+
 module XClarityClient
   class SwitchManagement< Services::XClarityService
-    manages_endpoint Switch
+    include Services::PowerActionSenderMixin
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
+    manages_endpoint Switch
   end
 end

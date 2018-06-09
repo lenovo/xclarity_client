@@ -4,10 +4,6 @@ module XClarityClient
   class DiscoverRequestManagement < Services::XClarityService
     manages_endpoint DiscoverRequest
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def discover_manageable_devices(ip_addresses)
       post_req = JSON.generate([ipAddresses: ip_addresses])
       response = @connection.do_post(managed_resource::BASE_URI, post_req)

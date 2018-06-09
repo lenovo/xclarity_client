@@ -4,10 +4,6 @@ module XClarityClient
   class UnmanageRequestManagement< Services::XClarityService
     manages_endpoint UnmanageRequest
 
-    def population(opts = {})
-      fetch_all(opts)
-    end
-
     def unmanage_discovered_devices(endpoints, force)
       deploy_hash = {}
       deploy_hash.merge!({:endpoints => endpoints})
