@@ -1,57 +1,11 @@
-# XClarity Client
+<p align="center"><a href="https://www3.lenovo.com/us/en/data-center/software/systems-management/xclarity/" target="_blank" rel="noopener noreferrer"><img width="200" src="https://www3.lenovo.com/medias/lenovo-systems-software-management-xclarity-intro.png?context=bWFzdGVyfHJvb3R8NjY0OXxpbWFnZS9wbmd8aDI2L2hlMS85NDQ4OTkwODAxOTUwLnBuZ3xjZTdiOWJhNDViMTVhMjJjNTFiMWRmNzlhMDFkYzRmN2NkNGJjMzk1NTUxN2ZhYjExYWU1MDJlYmUyNGJkYjIw" alt="Lenovo Xclarity Logo"></a></p>
+
+xclarity_client
+===
 
 [![Build Status](https://travis-ci.org/lenovo/xclarity_client.svg)](https://travis-ci.org/lenovo/xclarity_client)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/xclarity_client`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Pre Configuration for Connection with LXCA
-
-
-Get up and running mongo database
-
-Execute rails console:
-
-```ruby
-  $ bundle exec rails console
-```
-
-Add resources to your database:
-
-Nodes:
-
-```ruby
-  $ FactoryGirl.create(:node)
-```
-Switches:
-
-```ruby
-  $ FactoryGirl.create(:switch)
-```
-Scalable Complexes:
-
-```ruby
-  $ FactoryGirl.create(:scalable_complex)
-```
-
-Power Supplies:
-
-```ruby
-  $ FactoryGirl.create(:power_supply)
-```
-
-Chassis:
-
-```ruby
-  $ FactoryGirl.create(:chassi)
-```
-
-Get up LXCA-Mock server:
-
-```ruby
-  $ bundle exec rails s
-```
+Ruby gem to interact with Lenovo XClarity.
 
 ## Installation
 
@@ -71,27 +25,46 @@ Or install it yourself as:
 
 ## Usage
 
-To get basic information from the virtual appliance
+To configure your appliance access:
 
 ```ruby
 require 'xclarity_client'
 
 conf = XClarityClient::Configuration.new(
-  :username   => 'admin',
-  :password   => 'pass',
-  :host       => 'http://example.com'
-  :auth_type  => 'token'
+  :host             => 'http://lxca_host.com'
+  :username         => 'username',
+  :password         => 'password',
+  :port             => 'lxca_port',
+  :auth_type        => 'auth_type',  # ('token', 'basic_auth')
+  :verify_ssl       => 'verify_ssl', # ('PEER', 'NONE')
+  :user_agent_label => 'user_agent'  # Api gem client identification
 )
 
-virtual_appliance = XClarityClient::VirtualApplianceManagement.new(conf)
-
-puts virtual_appliance.configuration_settings
-
 client = XClarityClient::Client.new(conf)
-
-puts client.discover_nodes
 ```
-NOTE: `auth_type` variable must have 'token' or 'basic_auth' as value.
+
+To access the appliance data:
+
+```ruby
+client.discover_aicc # get AICC informations
+
+client.discover_cabinet # get Cabinets from LXCA appliance
+
+# get the cabinets with the specifieds UUIDs,
+# and retrive just `storageList` and `height` attributes.
+client.fetch_cabinet(
+  uuids = ['590b2546bbbc457f-bf801661018c408e', 'd27e57aa278c49a9b57e34a8e6c6e8ae'],
+  include_attributes = ['storageList', 'height']
+)
+
+# get the cabinets with the specifieds UUIDs,
+# and retrive all attributes except `height`.
+client.fetch_cabinet(
+  uuids = ['590b2546bbbc457f-bf801661018c408e', 'd27e57aa278c49a9b57e34a8e6c6e8ae'],
+  exclude_attributes = ['height']
+)
+```
+> To see how to interact with other LXCA resources, please take a look at `lib/xclarity_client/mixins` folder.
 
 ## Development
 
@@ -101,4 +74,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/juliancheal/xclarity_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lenovo/xclarity_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
