@@ -20,13 +20,5 @@ module XClarityClient
 
       send_power_request(managed_resource::BASE_URI + '/' + uuid + '/bmc', requested_state)
     end
-
-    def set_loc_led_state(uuid, state, name = 'Identify')
-      request = JSON.generate(leds:  [{ name: name, state: state }])
-
-      $lxca_log.info "XclarityClient::ManagementMixin set_loc_led_state", "Loc led state action has been sent"
-
-      @connection.do_put("#{managed_resource::BASE_URI}/#{uuid}", request)
-    end
   end
 end
