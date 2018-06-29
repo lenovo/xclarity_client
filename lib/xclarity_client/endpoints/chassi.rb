@@ -1,7 +1,14 @@
 module XClarityClient
   class Chassi < Endpoints::XclarityEndpoint
     BASE_URI = '/chassis'.freeze
+
     LIST_NAME = 'chassisList'.freeze
+
+    LED_STATES = %w(
+      Blinking
+      On
+      Off
+    ).freeze
 
     attr_accessor :accessState, :activationKeys, :activeAlerts, :backedBy,
                   :bladeSlots, :cmmDisplayName, :cmmHealthState, :cmms, :complex,

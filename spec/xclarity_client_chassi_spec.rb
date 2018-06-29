@@ -14,6 +14,7 @@ describe XClarityClient do
     :verify_ssl => ENV['LXCA_VERIFY_SSL']
     )
 
+    @host = ENV['LXCA_HOST']
     @client = XClarityClient::Client.new(conf)
   end
 
@@ -105,6 +106,35 @@ describe XClarityClient do
           end
         end
       end
+    end
+  end
+
+  describe 'Change LED state' do
+    it 'turns on the blinking location led' do
+      response = @client.blink_loc_led_chassis(@uuidArray[0])
+      uri = "#{@host}/chassis/#{@uuidArray[0]}"
+      request_body = { 'body' => { 'leds' => [{ 'name'  => 'Location',
+                    'state' => 'Blinking' }] } }
+      expect(a_request(:put, uri).with(request_body)).to have_been_made
+      expect(response.status).to eq(200)
+    end
+
+    it 'turns off the location led' do
+      response = @client.turn_off_loc_led_chassis(@uuidArray[0])
+      uri = "#{@host}/chassis/#{@uuidArray[0]}"
+      request_body = { 'body' => { 'leds' => [{ 'name'  => 'Location',
+                    'state' => 'Off' }] } }
+      expect(a_request(:put, uri).with(request_body)).to have_been_made
+      expect(response.status).to eq(200)
+    end
+
+    it 'turns on the location led' do
+      response = @client.turn_on_loc_led_chassis(@uuidArray[0])
+      uri = "#{@host}/chassis/#{@uuidArray[0]}"
+      request_body = { 'body' => { 'leds' => [{ 'name'  => 'Location',
+                    'state' => 'On' }] } }
+      expect(a_request(:put, uri).with(request_body)).to have_been_made
+      expect(response.status).to eq(200)
     end
   end
 end
