@@ -17,16 +17,16 @@ module XClarityClient
       )
     end
 
-    def blink_loc_led(uuid = '')
-      node_management.set_loc_led_state(uuid, 'Blinking')
+    def blink_loc_led(uuid = '', name = 'Identify')
+      node_management.set_loc_led_state(uuid, 'Blinking', name)
     end
 
-    def turn_on_loc_led(uuid = '')
-      node_management.set_loc_led_state(uuid, 'On')
+    def turn_on_loc_led(uuid = '', name = 'Identify')
+      node_management.set_loc_led_state(uuid, 'On', name)
     end
 
-    def turn_off_loc_led(uuid = '')
-      node_management.set_loc_led_state(uuid, 'Off')
+    def turn_off_loc_led(uuid = '', name = 'Identify')
+      node_management.set_loc_led_state(uuid, 'Off', name)
     end
 
     def power_on_node(uuid = '')
