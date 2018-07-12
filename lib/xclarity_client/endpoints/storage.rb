@@ -10,9 +10,10 @@ module XClarityClient
     LIST_NAME = 'storageList'.freeze
 
     attr_accessor :uuid, :name, :type, :accessState, :cmmHealthState,
-                  :overallHealthState, :driveBays, :enclosureCount,
-                  :canisterSlots, :productName, :machineType, :model,
-                  :serialNumber, :contact, :description, :location,
-                  :room, :rack, :lowestRackUnit, :mgmtProcIPaddress
+                  :enclosures, :overallHealthState, :driveBays,
+                  :enclosureCount, :canisterSlots, :productName,
+                  :machineType, :model, :serialNumber, :contact,
+                  :description, :location, :room, :rack,
+                  :lowestRackUnit, :mgmtProcIPaddress
   end
 end

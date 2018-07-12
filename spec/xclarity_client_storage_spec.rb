@@ -34,12 +34,15 @@ describe XClarityClient do
 
     it 'correct response values' do
       storage = @storages[0]
+      enclosure_one = storage.enclosures.first
+
       expect(storage.name).to eq('S3200-1')
       expect(storage.type).to eq('Lenovo Storage')
       expect(storage.accessState).to eq('Online')
       expect(storage.driveBays).to eq(12)
       expect(storage.enclosureCount).to eq(1)
       expect(storage.canisterSlots).to eq(2)
+      expect(enclosure_one['drives'].count).to eq(4)
     end
   end
 
