@@ -40,7 +40,7 @@ module XClarityClient
         key   = format_key(key)
         send("#{key}=", value)
       rescue
-        $log.warn("UNEXISTING ATTRIBUTES FOR #{self.class}: #{key}") unless defined?(Rails).nil?
+        $lxca_log.warn("UNEXISTING ATTRIBUTES FOR #{self.class}: #{key}") unless defined?(Rails).nil?
       end
 
       #
