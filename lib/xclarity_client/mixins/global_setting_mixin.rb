@@ -4,7 +4,7 @@ module XClarityClient
   #
   module Mixins::GlobalSettingMixin
     def get_globalsettings
-      GlobalSettingManagement.new(@config).population
+      GlobalSettingManagement.new(@config).fetch_all
     end
 
     def set_globalsettings(opts = {})

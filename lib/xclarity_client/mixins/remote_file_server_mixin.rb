@@ -4,7 +4,7 @@ module XClarityClient
   #
   module Mixins::RemoteFileServerMixin
     def get_remotefileserver_profiles
-      RemoteFileServerManagement.new(@config).population
+      RemoteFileServerManagement.new(@config).fetch_all
     end
 
     def create_remotefileserver_profile(opts = {})

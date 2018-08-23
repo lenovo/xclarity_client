@@ -4,7 +4,7 @@ module XClarityClient
   #
   module Mixins::HostPlatformMixin
     def get_hostplatforms
-      HostPlatformManagement.new(@config).population
+      HostPlatformManagement.new(@config).fetch_all
     end
 
     def get_osimage_deployment_status(uuid = '')

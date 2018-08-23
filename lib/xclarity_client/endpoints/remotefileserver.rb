@@ -7,9 +7,5 @@ module XClarityClient
                   :displayName, :serverId, :username,
                   :keyType, :serverPublicKey
 
-    def initialize(attributes)
-      build_resource(attributes)
-    end
-
   end
 end

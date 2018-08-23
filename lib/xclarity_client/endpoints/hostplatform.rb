@@ -9,9 +9,5 @@ module XClarityClient
                   :name, :networkSettings, :nodeType, :primary, :rackID,
                   :rackUnit, :readyCheck, :remoteControl, :storageSettings,
                   :uuid
-
-    def initialize(attributes)
-      build_resource(attributes)
-    end
   end
 end

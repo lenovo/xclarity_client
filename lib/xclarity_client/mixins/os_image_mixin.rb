@@ -8,7 +8,7 @@ module XClarityClient
     end
 
     def get_osimages
-      OsImageManagement.new(@config).population
+      OsImageManagement.new(@config).fetch_all
     end
   end
 end

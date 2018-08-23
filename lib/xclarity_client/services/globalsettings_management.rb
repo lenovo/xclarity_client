@@ -2,24 +2,17 @@ require 'json'
 require 'pathname'
 
 module XClarityClient
-  class GlobalSettingManagement < XClarityBase
-
-    include XClarityClient::ManagementMixin
-
-    def initialize(conf)
-      super(conf, GlobalSetting::BASE_URI)
-    end
-
-    def population
-      response = connection("#{GlobalSetting::BASE_URI}")
-      response = JSON.parse(response.body)
-    end
+  class GlobalSettingManagement < Services::XClarityService
+    manages_endpoint GlobalSetting
 
     def set_globalsettings(opts={})
         request_body = JSON.generate(opts)
-        if Schemas.validate_input("set_globalsettings", request_body)
-          response = do_put("#{GlobalSetting::BASE_URI}", request_body)
-          response = JSON.parse(response.body)
+        res = Schemas.validate_input(:set_globalsettings, request_body)
+        if res[:result] == 'success'
+          response = @connection.do_put("#{GlobalSetting::BASE_URI}",
+                                        request_body)
+        else
+          res
         end
     end
   end

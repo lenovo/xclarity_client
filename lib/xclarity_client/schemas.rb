@@ -99,13 +99,13 @@ module XClarityClient
                 "type" => "integer"
               },
               "prefixLength" => {
-                "type" => "string"
+                "type" => "integer"
               },
               "selectedMAC"  => {
                 "type" => "string"
               },
               "vlanId"       => {
-                "type" => "string"
+                "type" => "integer"
               }
             }
           }
@@ -162,33 +162,22 @@ module XClarityClient
     }
 
     REQ_SCHEMA = {
-      'deploy_osimage'                  => @hostplatforms,
-      'set_globalsettings'              => @globalsettings,
-      'create_remotefileserver_profile' => @remotefs
+      :deploy_osimage                  => @hostplatforms,
+      :set_globalsettings              => @globalsettings,
+      :create_remotefileserver_profile => @remotefs
     }.freeze
 
     def self.validate_input(schema_name, data)
-      x = JSON::Validator.fully_validate(Schemas::REQ_SCHEMA[schema_name], data)
-      if !x.empty?
+      x = JSON::Validator.fully_validate(self::REQ_SCHEMA[schema_name], data)
+      unless x.empty?
         errmsg = "input validation failed for data #{data}"
-        $lxca_log.error(errmsg, '')
-        x.each { |k| $lxca_log.error(k, '') }
-        return nil
-      else
-        return 1
-      end
-    end
-
-    # parameter name should be string
-    def self.validate_input_parameter(name, value, exp_type)
-      if !value.kind_of?(exp_type)
-        errmsg = "invalid #{name} #{value},"\
-                 " expected #{name} of type #{exp_type}"
-        $lxca_log.error(errmsg, '')
-        return nil
-      else
-        return 1
-      end
+        $lxca_log.error('XClarityClient::Schemas validate_input', errmsg.to_s)
+        g = ''
+        x.each do |k|
+          $lxca_log.error('XClarityClient::Schemas validate_input', k)
+          g << "#{k},  "
+        end; return { :result => 'Input validation failed', :message => g }
+      end; return { :result => 'success' }
     end
   end
 end
