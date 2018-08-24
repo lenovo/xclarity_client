@@ -1548,3 +1548,59 @@ FORMAT: 1A
 + Response 409
 + Response 500
 
+# XClarity Update Repositories [/updatableComponents{?action,with,filetypes}]
+
++ Parameters
+  + action - The action to take. This can be one of the following values - read, refresh, acquire, delete, export
+  + with - The scope of the action. This can be one of the following values - all, latest, payloads
+  + filetypes - When action=delete or action=export is specified, this parameter is used. Value can be set to payloads
+
+## Update Repo [PUT]
++ Request (application/json)
+{
+   "mt": [
+      "7167"
+   ],
+   "os": "",
+   "type": "catalog"
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
++ Request (application/json)
+{
+   "fixids": [
+      "brcd_fw_bcsw_nos5.0.1_anyos_noarch",
+      "brcd_fw_cna_3.2.4.0_linux_32-64",
+      "brcd_fw_cna_3.2.3.0_linux_32-64",
+      "lenovo_fw_dsa_dsyte2f-9.61_anyos_32-64"
+   ],
+   "mt": "0000",
+   "type": "latest"
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
++ Request (application/json)
+{
+   "fixids": [
+      "lnvgy_fw_cmm_1aon01k-1.0.0k_anyos_noarch"
+   ]
+}
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
