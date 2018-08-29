@@ -117,7 +117,7 @@ describe XClarityClient do
         uri = "#{@host}/profiles/unassign/#{@idArray[0]}"
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
         puts user_agent
-        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'), :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=> user_agent})).to have_been_made
+        expect(a_request(:post, uri).with(:body => JSON.generate(force: 'False', powerDownITE: 'False', resetIMM: 'False'), :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=> user_agent})).to have_been_made
       end
     end
   end

@@ -17,10 +17,8 @@ module XClarityClient
     end
     
     def get_update_policy(uri, opts = {})
-      query = opts
-      response = @connection.do_get(uri, query)
-      build_response_with_resource_list(response, managed_resource)
-    end 
+      fetch_all(opts, uri)
+    end
 
     def assign_compliance_policy(opts = {}, keep, auto_assign)
       assign_hash = {:policyname => opts["policyname"], :type => opts["type"], :uuid => opts["uuid"]}
@@ -37,14 +35,14 @@ module XClarityClient
 
       assign_hash_str = assign_hash.to_json
       response = @connection.do_post(managed_resource::SUB_URIS[:compareResult], "{\"compliance\": [#{assign_hash_str}]}") 
-      puts response.body
+      response.body
     end
 
     def delete_compliance_policy(policy_name,removePackage)
       query = policy_name.nil? ? "" : "?policyName=" + policy_name
       query = removePackage.nil? ? query : query + "&removePackage=" + removePackage 
       response = @connection.do_delete(managed_resource::BASE_URI + query)
-      puts response.body
+      response.body
     end
 
   end

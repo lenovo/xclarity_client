@@ -39,7 +39,7 @@ describe XClarityClient do
         @client.discover_manageable_devices(["1.2.3.4"])
         uri = "#{@host}/discoverRequest"
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-	expect(a_request(:post, uri).with(:body => '[{"ipAddresses":["1.2.3.4"]}]', :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+	expect(a_request(:post, uri).with(:body => '[{"ipAddresses":["1.2.3.4"]}]', :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end

@@ -95,7 +95,7 @@ describe XClarityClient do
         @client.read_update_repo
         uri = "#{@host}/updateRepositories/firmware?action=read"
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made         
+        expect(a_request(:put, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made         
       end
     end
   end
@@ -114,7 +114,7 @@ describe XClarityClient do
 
         refresh_json = JSON.generate(mt: ["1234"], os: "", type: "catalog")
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:put, uri).with(:body => refresh_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:put, uri).with(:body => refresh_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -133,7 +133,7 @@ describe XClarityClient do
 
         acquire_json = JSON.generate(mt: ["1234"], fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"], type: "latest")
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:put, uri).with(:body => acquire_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:put, uri).with(:body => acquire_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -152,7 +152,7 @@ describe XClarityClient do
 
         delete_json = JSON.generate(fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"])
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:put, uri).with(:body => delete_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:put, uri).with(:body => delete_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
@@ -172,7 +172,7 @@ describe XClarityClient do
         
         export_json = JSON.generate(fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"])
 
-        expect(a_request(:put, uri).with(:body => export_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:put, uri).with(:body => export_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end

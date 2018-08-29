@@ -32,10 +32,16 @@ module XClarityClient
     #
     # @param [String] uri - endpoint to do the request
     # @param [Hash] query - params to query the endpoint resources
+    # @param [Hash] headers - add headers to the request
     #
-    def do_get(uri = "", query = {})
+    def do_get(uri = "", query: {}, headers: {})
       url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join("&") : ""
-      Timeout.timeout(@timeout) { @connection.get(uri + url_query) }
+      Timeout.timeout(@timeout) do
+        @connection.get do |req|
+          req.url(uri + url_query)
+          headers.map { |key, value| req.headers[key] = value }
+        end
+      end
     rescue Faraday::Error::ConnectionFailed, Timeout::Error => e
       msg = "Error trying to send a GET to #{uri + url_query} "\
             "the reason: #{e.message}"
@@ -99,14 +105,13 @@ module XClarityClient
                                :port     => configuration.port.to_i,
                                :query    => hostname.query,
                                :fragment => hostname.fragment }).to_s
-
       $lxca_log.info(header, "Creating connection to #{url}")
 
       connection = Faraday.new(url: url) do |faraday|
-        faraday.request        :url_encoded             # form-encode POST params
-        faraday.response       :logger, $lxca_log.log   # log requests to STDOUT -- This line, should be uncommented if you wanna inspect the URL Request
-        faraday.use            :cookie_jar if configuration.auth_type == 'token'
-        faraday.adapter        Faraday.default_adapter  # make requests with Net::HTTP
+        faraday.request(:url_encoded) # form-encode POST params
+        faraday.response(:logger, $lxca_log.log) # log requests to log file
+        faraday.use(:cookie_jar) if configuration.auth_type == 'token'
+        faraday.adapter(:httpclient) # make requests with HTTPClient
         faraday.ssl[:verify] = configuration.verify_ssl == 'PEER'
       end
 
