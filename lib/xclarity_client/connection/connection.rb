@@ -2,6 +2,7 @@ require 'faraday'
 require 'faraday-cookie_jar'
 require 'uri'
 require 'uri/https'
+require 'timeout'
 
 module XClarityClient
   #
@@ -9,6 +10,7 @@ module XClarityClient
   # with the API.
   #
   class Connection
+    HEADER_MESSAGE = 'XClarityClient::Connection'.freeze
     #
     # @param [Hash] configuration - the data to create a connection with the LXCA
     # @option configuration [String] :host             the LXCA host
@@ -18,9 +20,11 @@ module XClarityClient
     # @option configuration [String] :auth_type        the type of the authentication ('token', 'basic_auth')
     # @option configuration [String] :verify_ssl       ('PEER', 'NONE')
     # @option configuration [String] :user_agent_label Api gem client identification
+    # @option configuration [String] :timeout          the limit time in seconds
     #
     def initialize(configuration)
       @connection = build(configuration)
+      @timeout    = configuration.timeout
     end
 
     #
@@ -31,9 +35,11 @@ module XClarityClient
     #
     def do_get(uri = "", query = {})
       url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join("&") : ""
-      @connection.get(uri + url_query)
-    rescue Faraday::Error::ConnectionFailed => e
-      $lxca_log.error "XClarityClient::XclarityBase connection", "Error trying to send a GET to #{uri + url_query}"
+      Timeout.timeout(@timeout) { @connection.get(uri + url_query) }
+    rescue Faraday::Error::ConnectionFailed, Timeout::Error => e
+      msg = "Error trying to send a GET to #{uri + url_query} "\
+            "the reason: #{e.message}"
+      $lxca_log.error(HEADER_MESSAGE + ' do_get', msg)
       Faraday::Response.new
     end
 
@@ -43,16 +49,8 @@ module XClarityClient
     # @param [String] uri - endpoint to do the request
     # @param [JSON] body  - json to be sent in request body
     #
-    def do_post(uri = "", body = "")
-      @connection.post do |req|
-        req.url uri
-        req.headers['Content-Type'] = 'application/json'
-        req.body = body
-      end
-    rescue Faraday::Error::ConnectionFailed => e
-      $lxca_log.error "XClarityClient::XclarityBase do_post", "Error trying to send a POST to #{uri}"
-      $lxca_log.error "XClarityClient::XclarityBase do_post", "Request sent: #{body}"
-      Faraday::Response.new
+    def do_post(uri = '', body = '')
+      build_request(:post, uri, body)
     end
 
     #
@@ -61,16 +59,8 @@ module XClarityClient
     # @param [String] uri - endpoint to do the request
     # @param [JSON] body  - json to be sent in request body
     #
-    def do_put(uri = "", body = "")
-      @connection.put do |req|
-        req.url uri
-        req.headers['Content-Type'] = 'application/json'
-        req.body = body
-      end
-    rescue Faraday::Error::ConnectionFailed => e
-      $lxca_log.error "XClarityClient::XclarityBase do_put", "Error trying to send a PUT to #{uri}"
-      $lxca_log.error "XClarityClient::XclarityBase do_put", "Request sent: #{body}"
-      Faraday::Response.new
+    def do_put(uri = '', body = '')
+      build_request(:put, uri, body)
     end
 
     #
@@ -78,17 +68,30 @@ module XClarityClient
     #
     # @param [String] uri - endpoint to do the request
     #
-    def do_delete(uri = "")
-      @connection.delete do |req|
-        req.url uri
-        req.headers['Content-Type'] = 'application/json'
-      end
+    def do_delete(uri = '')
+      build_request(:delete, uri)
     end
 
     private
 
+    def build_request(method, url, body = '')
+      @connection.send(method) do |request|
+        request.url(url)
+        request.headers['Content-Type'] = 'application/json'
+        request.body = body
+      end
+    rescue Faraday::Error::ConnectionFailed => e
+      header = HEADER_MESSAGE + " do_#{method}"
+      msg = "Error trying to send a #{method} to #{url} " \
+            "the reason: #{e.message}"
+      $lxca_log.error(header, msg)
+      $lxca_log.error(header, "Request sent: #{body}")
+      Faraday::Response.new
+    end
+
     def build(configuration)
-      $lxca_log.info "XClarityClient::Connection build", "Building the connection"
+      header = HEADER_MESSAGE + ' build'
+      $lxca_log.info(header, 'Building the connection')
 
       hostname = URI.parse(configuration.host)
 
@@ -97,7 +100,7 @@ module XClarityClient
                                :query    => hostname.query,
                                :fragment => hostname.fragment }).to_s
 
-      $lxca_log.info "XClarityClient::XClarityBase connection_builder", "Creating connection to #{url}"
+      $lxca_log.info(header, "Creating connection to #{url}")
 
       connection = Faraday.new(url: url) do |faraday|
         faraday.request        :url_encoded             # form-encode POST params
@@ -110,7 +113,7 @@ module XClarityClient
       connection.headers[:user_agent] = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (configuration.user_agent_label.nil? ? "" : " (#{configuration.user_agent_label})")
 
       connection.basic_auth(configuration.username, configuration.password) if configuration.auth_type == 'basic_auth'
-      $lxca_log.info "XClarityClient::XclarityBase connection_builder", "Connection created Successfuly"
+      $lxca_log.info(header, 'Connection created Successfuly')
 
       connection
     end
