@@ -18,14 +18,16 @@ module XClarityClient
       # @return [Array] containing all `managed_resource` from LXCA
       # @see EndpointManagerMixin#managed_resource
       #
-      def fetch_all(opts = {})
+      def fetch_all(opts = {}, uri = {})
+        uri = managed_resource::BASE_URI if uri.empty? || uri.nil?
+
         $lxca_log.info "XclarityClient::Endpoints::XClarityService fetch_all",
                        "Sending request to #{managed_resource} resource"
 
-        response = @connection.do_get(managed_resource::BASE_URI, opts)
+        response = @connection.do_get(uri, :query => opts)
 
-        $lxca_log.info "XclarityClient::Endpoints::XClarityService fetch_all",
-                       "Response received from #{managed_resource::BASE_URI}"
+        $lxca_log.info("XclarityClient::Endpoints::XClarityService fetch_all",
+                       "Response received from #{uri}")
 
         build_response_with_resource_list(response, managed_resource)
       end
@@ -64,36 +66,32 @@ module XClarityClient
         build_response_with_resource_list(response, managed_resource)
       end
 
-      def get_object_with_opts(opts, resource)
-        raise "The opts cannot be empty" if opts.empty?
-        filter = ""
-
-        response = if not opts.empty?
-          if not opts.has_key? "type"
-            if opts.has_key? "filterWith"
-              filter += "?filterWith="
-              filter += "#{opts["filterWith"]}"
-
-            elsif opts.has_key? "sort"
-              filter += ",sort=" if filter != ""
-              filter += "?sort=" if filter == ""
-              filter += "#{opts["sort"]}"
-            end
-          else
-            filter += "?type=#{opts["type"]}"
-          end
-        $lxca_log.info "XclarityClient::ManagementMixin get_object_with_include", "Sending request to #{resource} resource using the following filter: #{filter}"
-        @connection.do_get(resource::BASE_URI + filter)
-        end
-
+      def get_object_with_opts(opts, resource, uri = '')
+        response = get_response_with_opts(opts, resource, uri)
         build_response_with_resource_list(response, managed_resource)
+      end
+
+      def get_headers_with_opts(opts, resource)
+        get_response_with_opts(opts, resource).headers
       end
 
       private
 
-      #
-      #
-      #
+      def get_response_with_opts(opts, resource, uri = '')
+        raise "The opts cannot be empty" if opts.empty?
+        uri = resource::BASE_URI if uri.empty? || uri.nil?
+
+        response = do_request_with_opts(uri, opts)
+      end
+
+      def do_request_with_opts(uri, opts)
+        allowed_query_keys = %w(type sort)
+        query = opts.select { |key| allowed_query_keys.include?(key) }
+        headers = opts['headers'] || Hash.new(0)
+
+        @connection.do_get(uri, :query => query, :headers => headers)
+      end
+
       def get_object_with_include_attributes(uuids, attributes)
         $lxca_log.info "XclarityClient::ManagementMixin get_object_with_include",
                        "Sending request to #{managed_resource} resource including the following attributes: #{attributes.join(",")}"
@@ -106,9 +104,6 @@ module XClarityClient
 
       end
 
-      #
-      #
-      #
       def get_object_with_exclude_attributes(uuids, attributes)
         $lxca_log.info "XclarityClient::ManagementMixin get_object_with_include",
                        "Sending request to #{managed_resource} resource excluding the following attributes: #{attributes.join(",")}"

@@ -60,7 +60,7 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash_str = opts.to_json
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -71,7 +71,7 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash_str = opts.to_json
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -82,7 +82,7 @@ describe XClarityClient do
         uri = "#{@host}/compliancePolicies/compareResult"
         assign_hash_str = opts.to_json
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made 
+        expect(a_request(:post, uri).with(:body => "{\"compliance\": [#{assign_hash_str}]}", :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made 
       end
     end
   end
@@ -93,7 +93,7 @@ describe XClarityClient do
         @client.delete_compliance_policy(@policy_name,"true")
         uri = "#{@host}/compliancePolicies?policyName=#{@policy_name}&removePackage=true"
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
 
@@ -102,7 +102,7 @@ describe XClarityClient do
         @client.delete_compliance_policy(@policy_name,"false")
         uri = "#{@host}/compliancePolicies?policyName=#{@policy_name}&removePackage=false"
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
-        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
+        expect(a_request(:delete, uri).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
     end
   end
