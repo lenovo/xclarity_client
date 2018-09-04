@@ -43,7 +43,6 @@ describe XClarityClient do
       context 'where the opts is only sort' do
 
         opts = {"sort" => "cn"}
-        puts opts
 
         it 'the elemented used to sort should be greater or equal to second element on response' do
 
@@ -71,7 +70,6 @@ describe XClarityClient do
         opts = { 'filterWith' => '{"filterType":"FIELDNOTREGEXAND","fields":[{"operation":"GT","field":"cn","value":"242328"}]}'}
         oldValue =242328
         filed = "cn"
-        puts opts
 
         it 'the element used to filterWith should be greater than it self on response OR the response will be none' do
 
@@ -83,6 +81,17 @@ describe XClarityClient do
         end
       end
 
+      context 'when headers are passed' do
+        it "to get last_cn" do
+          expected_last_cn = 9999
+          opts = {
+            :headers => { :range => "item=0-1" }
+          }
+
+          actual_last_cn = @client.get_last_cn(opts)
+          expect(actual_last_cn).to eq(expected_last_cn)
+        end
+      end
     end
   end
 

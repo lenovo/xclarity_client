@@ -10,5 +10,11 @@ module XClarityClient
     def fetch_events(opts = {})
       EventManagement.new(@config).get_object_with_opts(opts, Event)
     end
+
+    def get_last_cn(opts = {})
+      headers = EventManagement.new(@config).get_headers_with_opts(opts, Event)
+      range = headers['content-range']
+      range.slice(range.index('/') + 1, range.length).to_i
+    end
   end
 end
