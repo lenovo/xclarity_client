@@ -6,14 +6,15 @@ module XClarityClient
   # speed, security and high availability
   #
   class Storage < Endpoints::XclarityEndpoint
-    BASE_URI = '/storages'.freeze
+    BASE_URI = '/storage'.freeze
     LIST_NAME = 'storageList'.freeze
 
     attr_accessor :uuid, :name, :type, :accessState, :cmmHealthState,
-                  :enclosures, :overallHealthState, :driveBays,
-                  :enclosureCount, :canisterSlots, :productName,
-                  :machineType, :model, :serialNumber, :contact,
-                  :description, :location, :room, :rack,
-                  :lowestRackUnit, :mgmtProcIPaddress
+                  :enclosures, :canisters, :overallHealthState, :driveBays,
+                  :enclosureCount, :canisterSlots, :parent,
+                  :productName, :machineType, :model,
+                  :serialNumber, :contact, :description,
+                  :location, :room, :rack, :lowestRackUnit,
+                  :mgmtProcIPaddress
   end
 end
