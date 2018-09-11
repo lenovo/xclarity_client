@@ -7,8 +7,10 @@ FORMAT: 1A
 ## Retrieve [GET]
 + Response 200
 {
-   "DeviceList": [{
-      "CMMList": [{
+   "DeviceList": [
+      {
+      "CMMList": [
+         {
          "UpdateStatus": {
             "JobID": 1,
             "PercentComplete": 1,
@@ -19,10 +21,12 @@ FORMAT: 1A
             "TaskID": 1
          },
          "UUID": "6134AFCEA91311E199A5A45AC8953137"
-      }]
+      }
+     ]
    },
    {
-      "ServerList": [{
+      "ServerList": [
+         {
          "UUID": "8BFBADCC33CB11E499F740F2E9903640",
          "Components": [{
             "Component": "System Prerequisites",
@@ -48,11 +52,13 @@ FORMAT: 1A
                "TotalComplete": 0,
                "TotalComponents": 32
             }
-         }]
+         }
+       ]
       },
       {
          "UUID": "0CDF130FDFC211E392806CAE8B704250",
-         "Components": [{
+         "Components": [
+            {
             "Component": "System Prerequisites",
             "UpdateStatus": {
                "JobID": 1,
@@ -77,11 +83,14 @@ FORMAT: 1A
                "TotalComplete": 0,
                "TotalComponents": 30
             }
-         }]
-      }]
+         }
+        ]
+      }
+     ]
    },
    {
-      "SwitchList": [{
+      "SwitchList": [
+         {
          "ReadinessCheck": {
             "ElapsedTime": "00:00:00:01.509",
             "ElapsedTimeFormatted": "1 second 509 milliseconds",
@@ -95,7 +104,8 @@ FORMAT: 1A
             "TaskID": 1,
             "Message": {
                "result": "informational",
-               "messages": [{
+               "messages": [
+                {
                   "id": "FQXHMUP1000I",
                   "text": "The command completed successfully."
                },
@@ -106,7 +116,8 @@ FORMAT: 1A
                   "recovery": {
                      "text": "Correct the issues discovered by validation checks."
                   }
-               }]
+               }
+             ]
             }
          },
          "UpdateStatus": {
@@ -119,19 +130,23 @@ FORMAT: 1A
             "TaskID": 3,
             "Message": {
                "result": "warning",
-               "messages": [{
+               "messages": [
+                  {
                   "id": "FQXHMUP4086F",
                   "text": "The RackSwitch G7052 xHMCUpdates task was canceled.",
                   "explanation": "The task was canceled", 
                   "recovery": {
                      "text": "Try to perform the update again.If the problem persists"
                   }
-               }]
+               }
+              ]
             }
          },
          "UUID": "0b0f5101bb8844b8b2d1c1aaeb24f446"
-      }]
-   }],
+      }
+     ]
+   }
+  ],
    "UpdateStatusMetrics": {
       "TotaldeviceUpdates": 6,
       "TotaldeviceUpdatesActive": 6,
@@ -154,10 +169,12 @@ FORMAT: 1A
       "TotalUpdateTasksActive": 72
    },
    "result": "informational",
-   "messages": [{
+   "messages": [
+     {
       "id": "FQXHMUP4091I",
       "text": "Update Status was obtained successfully."
-   }]
+   }
+  ]
 }
 
 + Response 400
@@ -171,8 +188,10 @@ FORMAT: 1A
 ## Retrieve [GET]
 + Response 200
 {
-   "DeviceList": [{
-      "CMMList": [{
+   "DeviceList": [
+      {
+      "CMMList": [
+         {
          "UpdateStatus": {
             "JobID": 1,
             "PercentComplete": 1,
@@ -183,12 +202,15 @@ FORMAT: 1A
             "TaskID": 1
          },
          "UUID": "6134AFCEA91311E199A5A45AC8953137"
-      }]
+      }
+     ]
    },
    {
-      "ServerList": [{
+      "ServerList": [
+         {
          "UUID": "8BFBADCC33CB11E499F740F2E9903640",
-         "Components": [{
+         "Components": [
+            {
             "Component": "System Prerequisites",
             "UpdateStatus": {
                "JobID": 1,
@@ -212,11 +234,13 @@ FORMAT: 1A
                "TotalComplete": 0,
                "TotalComponents": 32
             }
-         }]
+         }
+        ]
       },
       {
          "UUID": "0CDF130FDFC211E392806CAE8B704250",
-         "Components": [{
+         "Components": [
+            {
             "Component": "System Prerequisites",
             "UpdateStatus": {
                "JobID": 1,
@@ -241,11 +265,14 @@ FORMAT: 1A
                "TotalComplete": 0,
                "TotalComponents": 30
             }
-         }]
-      }]
+         }
+        ]
+      }
+     ]
    },
    {
-      "SwitchList": [{
+      "SwitchList": [
+         {
          "ReadinessCheck": {
             "ElapsedTime": "00:00:00:01.509",
             "ElapsedTimeFormatted": "1 second 509 milliseconds",
@@ -259,7 +286,8 @@ FORMAT: 1A
             "TaskID": 1,
             "Message": {
                "result": "informational",
-               "messages": [{
+               "messages": [
+                  {
                   "id": "FQXHMUP1000I",
                   "text": "The command completed successfully."
                },
@@ -270,7 +298,8 @@ FORMAT: 1A
                   "recovery": {
                      "text": "Correct the issues discovered by validation checks."
                   }
-               }]
+               }
+              ]
             }
          },
          "UpdateStatus": {
@@ -283,19 +312,23 @@ FORMAT: 1A
             "TaskID": 3,
             "Message": {
                "result": "warning",
-               "messages": [{
+               "messages": [
+                  {
                   "id": "FQXHMUP4086F",
                   "text": "The RackSwitch G7052 xHMCUpdates task was canceled.",
                   "explanation": "The task was canceled",
                   "recovery": {
                      "text": "Try to perform the update again"
                   }
-               }]
+               }
+              ]
             }
          },
          "UUID": "0b0f5101bb8844b8b2d1c1aaeb24f446"
-      }]
-   }],
+      }
+     ]
+   }
+  ],
    "UpdateStatusMetrics": {
       "TotaldeviceUpdates": 6,
       "TotaldeviceUpdatesActive": 6,
@@ -318,10 +351,12 @@ FORMAT: 1A
       "TotalUpdateTasksActive": 72
    },
    "result": "informational",
-   "messages": [{
+   "messages": [
+     {
       "id": "FQXHMUP4091I",
       "text": "Update Status was obtained successfully."
-   }]
+   }
+  ]
 }
 + Response 400
 + Response 401
