@@ -85,7 +85,7 @@ describe XClarityClient do
         it "to get last_cn" do
           expected_last_cn = 9999
           opts = {
-            :headers => { :range => "item=0-1" }
+            'headers' => { :range => "item=0-1" }
           }
 
           actual_last_cn = @client.get_last_cn(opts)

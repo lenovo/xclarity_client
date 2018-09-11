@@ -85,9 +85,8 @@ module XClarityClient
       end
 
       def do_request_with_opts(uri, opts)
-        allowed_query_keys = %w(type sort)
-        query = opts.select { |key| allowed_query_keys.include?(key) }
-        headers = opts['headers'] || Hash.new(0)
+        query = opts.reject { |key| 'headers'.eql?(key) }
+        headers = opts['headers'] || {}
 
         @connection.do_get(uri, :query => query, :headers => headers)
       end
