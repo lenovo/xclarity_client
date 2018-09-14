@@ -47,19 +47,19 @@ describe XClarityClient do
     expect(XClarityClient::VERSION).not_to be nil
   end
 
-  describe 'GET /updatableComponents' do
-    context 'get updateComponents with default action of applyStatus' do
-      it 'should respond with an array' do
-        expect(@client.discover_firmware_update_status).not_to be_empty
-      end
-    end
+  #describe 'GET /updatableComponents' do
+  #  context 'get updateComponents with default action of applyStatus' do
+  #    it 'should respond with an array' do
+  #      expect(@client.discover_firmware_update_status).not_to be_empty
+  #    end
+  #  end
     
-    context 'get updateComponents with action of getComponents' do
-      it 'should respond with an array' do
-        expect(@client.discover_updatable_device_comp).not_to be_empty
-      end
-    end
-  end
+  #  context 'get updateComponents with action of getComponents' do
+  #    it 'should respond with an array' do
+  #      expect(@client.discover_updatable_device_comp).not_to be_empty
+  #    end
+  #  end
+  #end
 
   describe 'PUT /updateableComponents negative cases' do
     context 'with an invalid value for activationMode' do
