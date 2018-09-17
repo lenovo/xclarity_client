@@ -32,6 +32,7 @@ module XClarityClient
     include XClarityClient::Mixins::SwitchMixin
     include XClarityClient::Mixins::UnmanageRequestMixin
     include XClarityClient::Mixins::UpdateRepoMixin
+    include XClarityClient::Mixins::UpdateCompMixin
     include XClarityClient::Mixins::UserMixin
 
     def initialize(config)
