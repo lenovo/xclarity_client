@@ -1,0 +1,426 @@
+FORMAT: 1A
+
+# XClarity UpdateComp
+
+# Components [/updatableComponents]
+
+## Retrieve [GET]
++ Response 200
+{
+   "DeviceList": [
+      {
+      "CMMList": [
+         {
+         "UpdateStatus": {
+            "JobID": 1,
+            "PercentComplete": 1,
+            "Phase": "Applying",
+            "StartTime": "2015-04-13 12:50:31.077",
+            "State": "InProgress",
+            "Status": "Active",
+            "TaskID": 1
+         },
+         "UUID": "6134AFCEA91311E199A5A45AC8953137"
+      }
+     ]
+   },
+   {
+      "ServerList": [
+         {
+         "UUID": "8BFBADCC33CB11E499F740F2E9903640",
+         "Components": [{
+            "Component": "System Prerequisites",
+            "UpdateStatus": {
+               "JobID": 1,
+               "PercentComplete": 0,
+               "Phase": "Queued",
+               "State": "Blocked",
+               "Status": "Queued",
+               "TaskID": 4
+            },
+            "Weight": 1
+         },
+         {
+            "Component": "ITE",
+            "UpdateStatus": {
+               "CurrentComponent": {
+                  "Component": "Queued"
+               },
+               "PercentComplete": 0,
+               "State": "NotStarted",
+               "Status": "Active",
+               "TotalComplete": 0,
+               "TotalComponents": 32
+            }
+         }
+       ]
+      },
+      {
+         "UUID": "0CDF130FDFC211E392806CAE8B704250",
+         "Components": [
+            {
+            "Component": "System Prerequisites",
+            "UpdateStatus": {
+               "JobID": 1,
+               "PercentComplete": 0,
+               "Phase": "Queued",
+               "State": "Blocked",
+               "Status": "Queued",
+               "TaskID": 64
+            },
+            "Weight": 1
+            
+         },
+         {
+            "Component": "ITE",
+            "UpdateStatus": {
+               "CurrentComponent": {
+                  "Component": "Queued"
+               },
+               "PercentComplete": 0,
+               "State": "NotStarted",
+               "Status": "Active",
+               "TotalComplete": 0,
+               "TotalComponents": 30
+            }
+         }
+        ]
+      }
+     ]
+   },
+   {
+      "SwitchList": [
+         {
+         "ReadinessCheck": {
+            "ElapsedTime": "00:00:00:01.509",
+            "ElapsedTimeFormatted": "1 second 509 milliseconds",
+            "EndTime": "2016-04-07 23:44:10.366",
+            "JobID": 1,
+            "PercentComplete": 100,
+            "Phase": "Complete",
+            "StartTime": "2016-04-07 23:44:08.857",
+            "State": "Complete",
+            "Status": "Failed",
+            "TaskID": 1,
+            "Message": {
+               "result": "informational",
+               "messages": [
+                {
+                  "id": "FQXHMUP1000I",
+                  "text": "The command completed successfully."
+               },
+               {
+                  "id": "FQXHMUP4545L",
+                  "text": "The device is not ready for an update.",
+                  "explanation": "The device did not pass validation for firmware updates..",
+                  "recovery": {
+                     "text": "Correct the issues discovered by validation checks."
+                  }
+               }
+             ]
+            }
+         },
+         "UpdateStatus": {
+            "EndTime": "2016-04-07 23:44:10.869",
+            "JobID": 1,
+            "PercentComplete": 100,
+            "Phase": "Complete",
+            "State": "Complete",
+            "Status": "Canceled",
+            "TaskID": 3,
+            "Message": {
+               "result": "warning",
+               "messages": [
+                  {
+                  "id": "FQXHMUP4086F",
+                  "text": "The RackSwitch G7052 xHMCUpdates task was canceled.",
+                  "explanation": "The task was canceled", 
+                  "recovery": {
+                     "text": "Try to perform the update again.If the problem persists"
+                  }
+               }
+              ]
+            }
+         },
+         "UUID": "0b0f5101bb8844b8b2d1c1aaeb24f446"
+      }
+     ]
+   }
+  ],
+   "UpdateStatusMetrics": {
+      "TotaldeviceUpdates": 6,
+      "TotaldeviceUpdatesActive": 6,
+      "TotaldeviceUpdatesComplete": 0,
+      "TotaldeviceUpdatesInProgress": 1,
+      "TotalJobs": 1,
+      "TotalJobsComplete": 0,
+      "TotalJobsInProgress": 1,
+      "TotalJobsPercentComplete": 0,
+      "TotalSupportTasks": 18,
+      "TotalSupportTasksActive": 18,
+      "TotalTasks": 93,
+      "TotalTasksBlocked": 92,
+      "TotalTasksCanceled": 0,
+      "TotalTasksComplete": 0,
+      "TotalTasksFailed": 0,
+      "TotalTasksInProgress": 1,
+      "TotalTasksSuccess": 0,
+      "TotalUpdateTasks": 75,
+      "TotalUpdateTasksActive": 72
+   },
+   "result": "informational",
+   "messages": [
+     {
+      "id": "FQXHMUP4091I",
+      "text": "Update Status was obtained successfully."
+   }
+  ]
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Components [/updatableComponents?action=getComponents]
+
+## Retrieve [GET]
++ Response 200
+{
+   "DeviceList": [
+      {
+      "CMMList": [
+         {
+         "UpdateStatus": {
+            "JobID": 1,
+            "PercentComplete": 1,
+            "Phase": "Applying",
+            "StartTime": "2015-04-13 12:50:31.077",
+            "State": "InProgress",
+            "Status": "Active",
+            "TaskID": 1
+         },
+         "UUID": "6134AFCEA91311E199A5A45AC8953137"
+      }
+     ]
+   },
+   {
+      "ServerList": [
+         {
+         "UUID": "8BFBADCC33CB11E499F740F2E9903640",
+         "Components": [
+            {
+            "Component": "System Prerequisites",
+            "UpdateStatus": {
+               "JobID": 1,
+               "PercentComplete": 0,
+               "Phase": "Queued",
+               "State": "Blocked",
+               "Status": "Queued",
+               "TaskID": 4
+            },
+            "Weight": 1
+         },
+         {
+            "Component": "ITE",
+            "UpdateStatus": {
+               "CurrentComponent": {
+                  "Component": "Queued"
+               },
+               "PercentComplete": 0,
+               "State": "NotStarted",
+               "Status": "Active",
+               "TotalComplete": 0,
+               "TotalComponents": 32
+            }
+         }
+        ]
+      },
+      {
+         "UUID": "0CDF130FDFC211E392806CAE8B704250",
+         "Components": [
+            {
+            "Component": "System Prerequisites",
+            "UpdateStatus": {
+               "JobID": 1,
+               "PercentComplete": 0,
+               "Phase": "Queued",
+               "State": "Blocked",
+               "Status": "Queued",
+               "TaskID": 64
+            },
+            "Weight": 1
+            
+         },
+         {
+            "Component": "ITE",
+            "UpdateStatus": {
+               "CurrentComponent": {
+                  "Component": "Queued"
+               },
+               "PercentComplete": 0,
+               "State": "NotStarted",
+               "Status": "Active",
+               "TotalComplete": 0,
+               "TotalComponents": 30
+            }
+         }
+        ]
+      }
+     ]
+   },
+   {
+      "SwitchList": [
+         {
+         "ReadinessCheck": {
+            "ElapsedTime": "00:00:00:01.509",
+            "ElapsedTimeFormatted": "1 second 509 milliseconds",
+            "EndTime": "2016-04-07 23:44:10.366",
+            "JobID": 1,
+            "PercentComplete": 100,
+            "Phase": "Complete",
+            "StartTime": "2016-04-07 23:44:08.857",
+            "State": "Complete",
+            "Status": "Failed",
+            "TaskID": 1,
+            "Message": {
+               "result": "informational",
+               "messages": [
+                  {
+                  "id": "FQXHMUP1000I",
+                  "text": "The command completed successfully."
+               },
+               {
+                  "id": "FQXHMUP4545L",
+                  "text": "The device is not ready for an update.",
+                  "explanation": "The device did not pass validation for firmware updates..",
+                  "recovery": {
+                     "text": "Correct the issues discovered by validation checks."
+                  }
+               }
+              ]
+            }
+         },
+         "UpdateStatus": {
+            "EndTime": "2016-04-07 23:44:10.869",
+            "JobID": 1,
+            "PercentComplete": 100,
+            "Phase": "Complete",
+            "State": "Complete",
+            "Status": "Canceled",
+            "TaskID": 3,
+            "Message": {
+               "result": "warning",
+               "messages": [
+                  {
+                  "id": "FQXHMUP4086F",
+                  "text": "The RackSwitch G7052 xHMCUpdates task was canceled.",
+                  "explanation": "The task was canceled",
+                  "recovery": {
+                     "text": "Try to perform the update again"
+                  }
+               }
+              ]
+            }
+         },
+         "UUID": "0b0f5101bb8844b8b2d1c1aaeb24f446"
+      }
+     ]
+   }
+  ],
+   "UpdateStatusMetrics": {
+      "TotaldeviceUpdates": 6,
+      "TotaldeviceUpdatesActive": 6,
+      "TotaldeviceUpdatesComplete": 0,
+      "TotaldeviceUpdatesInProgress": 1,
+      "TotalJobs": 1,
+      "TotalJobsComplete": 0,
+      "TotalJobsInProgress": 1,
+      "TotalJobsPercentComplete": 0,
+      "TotalSupportTasks": 18,
+      "TotalSupportTasksActive": 18,
+      "TotalTasks": 93,
+      "TotalTasksBlocked": 92,
+      "TotalTasksCanceled": 0,
+      "TotalTasksComplete": 0,
+      "TotalTasksFailed": 0,
+      "TotalTasksInProgress": 1,
+      "TotalTasksSuccess": 0,
+      "TotalUpdateTasks": 75,
+      "TotalUpdateTasksActive": 72
+   },
+   "result": "informational",
+   "messages": [
+     {
+      "id": "FQXHMUP4091I",
+      "text": "Update Status was obtained successfully."
+   }
+  ]
+}
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# Components [/updatableComponents{?action,activationMode,onErrorMode,forceUpdateMode}]
+
++ Parameters
+  + action - The action to take. This can be one of the following values - apply, cancelApply, powerState
+  + activationMode - Indicates when to activate the update. This can be one of the following values - immediate, delayed
+  + forceUpdateMode - Indicates whether to apply the update if firmware is already compliant. This can be one of the following values - true, false
+  + onErrorMode - Indicates how to handle errors during the firmware update. This can be one of the following values - stopOnError, stopdeviceOnError, continueOnError
+
+## Apply [PUT]
++ Request (application/json)
+{   
+   "DeviceList": [
+     {
+      "ServerList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]}]
+     },
+     {
+      "SwitchList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_scsw_en4093r-8.3.9.0_anyons_noarch","Component": "Main application"}]}]
+     },
+     {
+      "StorageList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]}]
+     },
+     {
+      "CMMList":[{"UUID": "8BFBADCC33CB11E499F740F2E9903640","Components": [{"Fixid": "lnvgy_fw_storage_1.1.1","Component": "Controller a"}]
+     }
+   ]
+} 
+
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
++ Request (application/json)
+{
+   "DeviceList": [
+     {
+      "ServerList":[{"PowerState": "reset","UUID": "8BFBADCC33CB11E499F740F2E9972457"}]
+     },
+     {
+      "SwitchList":[{"PowerState": "powerOn","UUID": "8BFBADCC33CB11E499F740F2E9972458"}]
+     },
+     {
+      "StorageList":[{"PowerState": "powerCycleSoft","UUID": "8BFBADCC33CB11E499F740F2E9972457"}]
+     },
+     {
+      "CMMList":[{"PowerState": "reset","UUID": "8BFBADCC33CB11E499F740F2E213123"}]
+     }
+   ]
+}
+
++ Response 200
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
