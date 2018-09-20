@@ -1,0 +1,359 @@
+FORMAT: 1A
+
+# XClarity Users
+
+# GET /manageRequest/jobs/4229
+
++ Response 200 (application/json)
+{
+ "progress": 100.0,
+ "results": [{
+  "result": "OTHER_FAIL",
+  "resultLongDescription": "An internal error occurred during the management process. Attempt the management operation again. If the problem persists, contact Support.",
+  "messageBundle": "com.lenovo.lxca.discovery.bundle.rest.messages",
+  "messageParameters": "10.240.72.172",
+  "resultShortDescription": "Other failure",
+  "progress": 100.0,
+  "messageID": "0509_LONG",
+  "uuid": "46920c143355486f97c19a34abc7d746",
+  "taskid": 4228,
+  "time_spent": 68026,
+  "status": {
+   "substatus": [{
+    "longDescription": "Starting endpoint management job",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1000_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "STARTING",
+    "shortDescription": "Starting",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Choosing best network path to manage the endpoint",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1001_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "NETWORK_CHOICE",
+    "shortDescription": "Network choice",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Creating hardware descriptor",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1002_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "DESCRIPTOR",
+    "shortDescription": "Descriptor",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Logging in to endpoint",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1003_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "LOGIN",
+    "shortDescription": "Login",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Checking for duplicates of endpoint management",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1004_SHORT",
+    "progress": 100.0,
+    "started": true,
+    "id": "DUPLICATE_CHECK",
+    "shortDescription": "Duplicate check",
+    "completed": true,
+    "status": {
+     "percentage": 100.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Complete"
+    }
+   }, {
+    "longDescription": "Collecting endpoint inventory",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1005_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "INVENTORY",
+    "shortDescription": "Inventory",
+    "completed": false,
+    "status": {
+     "substatus": [{
+      "longDescription": "Collecting chassis inventory",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1006_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "INV_CHASSIS",
+      "shortDescription": "Chassis inventory",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }, {
+      "longDescription": "Collecting node inventory",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1007_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "INV_NODES",
+      "shortDescription": "Node inventory",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }, {
+      "longDescription": "Collection I/O module inventory",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1008_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "INV_IOMS",
+      "shortDescription": "I/O module inventory",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }],
+     "percentage": 0.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Stopped_With_Error"
+    }
+   }, {
+    "longDescription": "Verifying endpoint interoperability",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1009_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "INTEROP_CHECK",
+    "shortDescription": "Interoperability check",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Stopped_With_Error"
+    }
+   }, {
+    "longDescription": "Configuring endpoint for management",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1010_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "CONFIGURATION",
+    "shortDescription": "Configuration",
+    "completed": false,
+    "status": {
+     "substatus": [{
+      "longDescription": "Configuring NTP",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1011_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "CFG_NTP",
+      "shortDescription": "NTP",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }, {
+      "longDescription": "Updating DNS servers ip addresses on CMM as part of the manage chassis process.",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1067_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "CFG_DNS_UPD",
+      "shortDescription": "Updating DNS servers ip addresses on CMM",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }, {
+      "longDescription": "Configuring security",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1012_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "CFG_SECURITY",
+      "shortDescription": "Security",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }, {
+      "longDescription": "Putting endpoint under managed authentication",
+      "userAction": "",
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1013_SHORT",
+      "progress": 0.0,
+      "started": false,
+      "id": "CFG_CMGMT",
+      "shortDescription": "Managed authentication",
+      "completed": false,
+      "status": {
+       "percentage": 0.0,
+       "description": [{
+        "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+        "messageID": "1027_LONG"
+       }],
+       "state": "Stopped_With_Error"
+      }
+     }],
+     "percentage": 0.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Stopped_With_Error"
+    }
+   }, {
+    "longDescription": "Configuring Hardware location",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1097_SHORT",
+    "progress": 0.0,
+    "started": false,
+    "id": "CFG_CABINET",
+    "shortDescription": "Configuring Hardware location",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Stopped_With_Error"
+    }
+   }, {
+    "longDescription": "Completing endpoint management job",
+    "userAction": "",
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1114_SHORT",
+    "progress": 0.0,
+    "started": true,
+    "id": "MANAGESTOP",
+    "shortDescription": "Completing",
+    "completed": false,
+    "status": {
+     "percentage": 0.0,
+     "description": [{
+      "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+      "messageID": "1027_LONG"
+     }],
+     "state": "Running"
+    }
+   }],
+   "percentage": 100.0,
+   "description": [{
+    "messageBundle": "com.lenovo.lxca.discovery.bundle.tasks.messages",
+    "messageID": "1027_LONG"
+   }],
+   "state": "Stopped_With_Error"
+  }
+ }],
+ "status": "INCOMPLETE"
+}
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500
+
+# POST /manageRequest
++ Request (application/json)
+
++ Response 200 (application/json)
+  + Headers
+    Location: /manageRequest/jobs/4229
+
++ Response 400
++ Response 401
++ Response 404
++ Response 409
++ Response 500

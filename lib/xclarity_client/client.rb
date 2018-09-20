@@ -31,6 +31,7 @@ module XClarityClient
     include XClarityClient::Mixins::StorageMixin
     include XClarityClient::Mixins::SwitchMixin
     include XClarityClient::Mixins::UnmanageRequestMixin
+    include XClarityClient::Mixins::ManageRequestMixin
     include XClarityClient::Mixins::UpdateRepoMixin
     include XClarityClient::Mixins::UpdateCompMixin
     include XClarityClient::Mixins::UserMixin
