@@ -15,7 +15,7 @@ module XClarityClient
       val = val['securityDescriptor']
       security_descriptor[:managedAuthEnabled] = val['managedAuthSupported']
       security_descriptor[:managedAuthSupported] = val['managedAuthSupported']
-      res = security_descriptor[:managedAuthEnabled] 
+      res = security_descriptor[:managedAuthEnabled]
       security_descriptor[:storedCredentials] = val['storedCredentials'] if res
       manage_request[:securityDescriptor] = security_descriptor
     end
@@ -42,7 +42,6 @@ module XClarityClient
     end
 
     def update_manage_request(manage_request, force, discovery_result)
-      security_descriptor = {}
       populate_manage_request_with_discovery_res(discovery_result,
                                                  manage_request)
       manage_request[:forceManage] = true if force.casecmp('true')
