@@ -45,7 +45,8 @@ module XClarityClient
                                                     manage_request[:ip_address]
                                                   )
       d_res = get_discovery_result(discovery_job_id)
-      update_manage_request(manage_request, force, d_res) if d_res
+      raise "manageable device Discovery failed" unless d_res
+      update_manage_request(manage_request, force, d_res)
       ManageRequestManagement.new(@config)\
                              .manage_discovered_devices(manage_request)
     end
