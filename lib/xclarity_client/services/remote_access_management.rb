@@ -1,15 +1,17 @@
 require 'json'
 
 module XClarityClient
-  class RemoteAccessManagement < XClarityBase
+  class RemoteAccessManagement
 
     def initialize(conf)
-      super(conf, RemoteAccess::BASE_URI)
+      @connection = XClarityClient::Connection.new(conf)
     end
 
     def remote_control(uuid)
       raise 'UUID must not be blank' if uuid.nil? || uuid.empty?
-      con = connection("#{RemoteAccess::BASE_URI}/remoteControl" , {:uuid => uuid})
+      con = @connection.do_get(
+        "#{RemoteAccess::BASE_URI}/remoteControl" , :query => { :uuid => uuid }
+      )
 
       unless con.success?
         $lxca_log.error "XClarityClient::RemoteAccessManagement remote_control", "Request failed"

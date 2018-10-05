@@ -1,11 +1,11 @@
 require 'json'
 
 module XClarityClient
-  class XClarityCredentialsValidator < XClarityBase
+  class XClarityCredentialsValidator
     BASE_URI = '/sessions'.freeze
 
     def initialize(conf)
-      super(conf, BASE_URI)
+      @connection = XClarityClient::Connection.new(conf)
       @configuration = conf
     end
 
@@ -33,19 +33,16 @@ module XClarityClient
     end
 
     def build_session(conf)
-      @response = @conn.post do |request|
-      request.headers['Content-Type'] = 'application/json'
-      request.body = { :UserId => conf.username,
-                       :password => conf.password }.to_json
-      end
+      @response = @connection.do_post(BASE_URI, {
+        :UserId => conf.username,
+        :password => conf.password
+      }.to_json)
+
       raise Faraday::Error::ConnectionFailed unless @response.success?
     end
 
     def close_session(id_session)
-      @conn.delete do |request|
-        request.url "#{BASE_URI}/#{id_session}"
-        request.headers['Content-Type'] = 'application/json'
-      end
+      @connection.do_delete("#{BASE_URI}/#{id_session}")
     end
   end
 end
