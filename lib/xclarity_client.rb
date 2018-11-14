@@ -8,7 +8,6 @@ end
 require 'xclarity_client/errors/errors'
 
 require 'xclarity_client/configuration'
-require 'xclarity_client/xclarity_base'
 require 'xclarity_client/xclarity_credentials_validator'
 require 'xclarity_client/discover'
 require 'xclarity_client/endpoints/endpoints'
