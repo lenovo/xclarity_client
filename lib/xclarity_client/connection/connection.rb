@@ -3,6 +3,7 @@ require 'faraday-cookie_jar'
 require 'uri'
 require 'uri/https'
 require 'timeout'
+require 'pp'
 
 module XClarityClient
   #
@@ -11,7 +12,6 @@ module XClarityClient
   #
   class Connection
     HEADER_MESSAGE = 'XClarityClient::Connection'.freeze
-    #
     # @param [Hash] configuration - the data to create a connection with the LXCA
     # @option configuration [String] :host             the LXCA host
     # @option configuration [String] :username         the LXCA username
@@ -24,10 +24,10 @@ module XClarityClient
     #
     def initialize(configuration)
       @connection = build(configuration)
-      @timeout    = configuration.timeout
+      @connection_multipart = build(configuration, true)
+      @timeout = configuration.timeout
     end
 
-    #
     # Does a GET request to an LXCA endpoint
     #
     # @param [String] uri - endpoint to do the request
@@ -49,42 +49,42 @@ module XClarityClient
       Faraday::Response.new
     end
 
-    #
     # Does a POST request to an LXCA endpoint
     #
     # @param [String] uri - endpoint to do the request
     # @param [JSON] body  - json to be sent in request body
     #
-    def do_post(uri = '', body = '')
-      build_request(:post, uri, body)
+    def do_post(uri = '', body = '', multipart = false)
+      build_request(:post, uri, body, multipart)
     end
 
-    #
     # Does a PUT request to an LXCA endpoint
-    #
     # @param [String] uri - endpoint to do the request
     # @param [JSON] body  - json to be sent in request body
-    #
     def do_put(uri = '', body = '')
       build_request(:put, uri, body)
     end
 
-    #
     # Does a DELETE request to an LXCA endpoint
-    #
     # @param [String] uri - endpoint to do the request
-    #
     def do_delete(uri = '')
       build_request(:delete, uri)
     end
 
     private
 
-    def build_request(method, url, body = '')
-      @connection.send(method) do |request|
-        request.url(url)
-        request.headers['Content-Type'] = 'application/json'
-        request.body = body
+    def build_request(method, url, body = '', multipart = false)
+      if multipart == true
+        @connection_multipart.send(method) do |request|
+          request.url(url)
+          request.body = body
+        end
+      else
+        @connection.send(method) do |request|
+          request.url(url)
+          request.headers['Content-Type'] = 'application/json'
+          request.body = body
+        end
       end
     rescue Faraday::Error::ConnectionFailed => e
       header = HEADER_MESSAGE + " do_#{method}"
@@ -95,32 +95,57 @@ module XClarityClient
       Faraday::Response.new
     end
 
-    def build(configuration)
-      header = HEADER_MESSAGE + ' build'
-      $lxca_log.info(header, 'Building the connection')
+    def create_connection(connection, configuration)
+      user_agent_label = configuration.user_agent_label
+      agent_label = user_agent_label.nil? ? "" : user_agent_label
+      header = "LXCA via Ruby Client/#{XClarityClient::VERSION}"
+      connection.headers[:user_agent] = header + agent_label
+      basic_auth = configuration.auth_type == 'basic_auth'
+      username = configuration.username
+      password = configuration.password
+      connection.basic_auth(username, password) if basic_auth
+      $lxca_log.info(header, 'Connection created Successfuly')
+      connection
+    end
 
-      hostname = URI.parse(configuration.host)
-
-      url = URI::HTTPS.build({ :host     => hostname.scheme ? hostname.host : hostname.path,
-                               :port     => configuration.port.to_i,
-                               :query    => hostname.query,
-                               :fragment => hostname.fragment }).to_s
-      $lxca_log.info(header, "Creating connection to #{url}")
-
-      connection = Faraday.new(url: url) do |faraday|
+    def create_faraday_multipart_obj(url, configuration)
+      Faraday.new(url: url) do |faraday|
+        faraday.request(:multipart) # multipart form data
         faraday.request(:url_encoded) # form-encode POST params
         faraday.response(:logger, $lxca_log.log) # log requests to log file
         faraday.use(:cookie_jar) if configuration.auth_type == 'token'
-        faraday.adapter(:httpclient) # make requests with HTTPClient
+        faraday.adapter(:net_http) # make requests with net_http
         faraday.ssl[:verify] = configuration.verify_ssl == 'PEER'
       end
+    end
 
-      connection.headers[:user_agent] = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (configuration.user_agent_label.nil? ? "" : " (#{configuration.user_agent_label})")
+    def create_faraday_obj(url, configuration)
+      Faraday.new(url: url) do |faraday|
+        faraday.request(:url_encoded) # form-encode POST params
+        faraday.response(:logger, $lxca_log.log) # log requests to log file
+        faraday.use(:cookie_jar) if configuration.auth_type == 'token'
+        faraday.adapter(:httpclient) # make request with httpclient
+        faraday.ssl[:verify] = configuration.verify_ssl == 'PEER'
+      end
+    end
 
-      connection.basic_auth(configuration.username, configuration.password) if configuration.auth_type == 'basic_auth'
-      $lxca_log.info(header, 'Connection created Successfuly')
+    def build_connection(url, configuration, multipart = false)
+      con_obj = create_faraday_multipart_obj(url, configuration) if multipart
+      con_obj = create_faraday_obj(url, configuration) unless multipart
+      create_connection(con_obj, configuration)
+    end
 
-      connection
+    def build(configuration, multipart = false)
+      header = HEADER_MESSAGE + ' build'
+      $lxca_log.info(header, 'Building the connection')
+      hostname = URI.parse(configuration.host)
+      host = hostname.scheme ? hostname.host : hostname.path
+      url = URI::HTTPS.build(:host     => host,
+                             :port     => configuration.port.to_i,
+                             :query    => hostname.query,
+                             :fragment => hostname.fragment).to_s
+      $lxca_log.info(header, "Creating connection to #{url}")
+      build_connection(url, configuration, multipart)
     end
   end
 end

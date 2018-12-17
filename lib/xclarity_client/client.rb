@@ -35,6 +35,7 @@ module XClarityClient
     include XClarityClient::Mixins::UpdateRepoMixin
     include XClarityClient::Mixins::UpdateCompMixin
     include XClarityClient::Mixins::UserMixin
+    include XClarityClient::Mixins::ManagementServerMixin
 
     def initialize(config)
       @config = config
