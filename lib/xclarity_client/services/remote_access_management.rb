@@ -10,7 +10,7 @@ module XClarityClient
     def remote_control(uuid)
       raise 'UUID must not be blank' if uuid.nil? || uuid.empty?
       con = @connection.do_get(
-        "#{RemoteAccess::BASE_URI}/remoteControl" , :query => { :uuid => uuid }
+        "#{RemoteAccess::BASE_URI}/remoteControl", :query => { :uuid => uuid }
       )
 
       unless con.success?
