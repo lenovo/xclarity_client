@@ -3,7 +3,6 @@ require 'faraday-cookie_jar'
 require 'uri'
 require 'uri/https'
 require 'timeout'
-require 'pp'
 
 module XClarityClient
   #
@@ -25,6 +24,7 @@ module XClarityClient
     def initialize(configuration)
       @connection = build(configuration)
       @connection_multipart = build(configuration, true)
+      @connection_net_http = build(configuration, false, true)
       @timeout = configuration.timeout
     end
 
@@ -34,10 +34,11 @@ module XClarityClient
     # @param [Hash] query - params to query the endpoint resources
     # @param [Hash] headers - add headers to the request
     #
-    def do_get(uri = "", query: {}, headers: {})
+    def do_get(uri = "", query: {}, headers: {}, n_http: false)
       url_query = query.size > 0 ? "?" + query.map {|k, v| "#{k}=#{v}"}.join("&") : ""
       Timeout.timeout(@timeout) do
-        @connection.get do |req|
+        con = n_http ? @connection_net_http : @connection
+        con.get do |req|
           req.url(uri + url_query)
           headers.map { |key, value| req.headers[key] = value }
         end
@@ -74,17 +75,11 @@ module XClarityClient
     private
 
     def build_request(method, url, body = '', multipart = false)
-      if multipart == true
-        @connection_multipart.send(method) do |request|
-          request.url(url)
-          request.body = body
-        end
-      else
-        @connection.send(method) do |request|
-          request.url(url)
-          request.headers['Content-Type'] = 'application/json'
-          request.body = body
-        end
+      con = multipart ? @connection_multipart : @connection
+      con.send(method) do |request|
+        request.url(url)
+        request.headers['Content-Type'] = 'application/json' unless multipart
+        request.body = body
       end
     rescue Faraday::Error::ConnectionFailed => e
       header = HEADER_MESSAGE + " do_#{method}"
@@ -95,7 +90,7 @@ module XClarityClient
       Faraday::Response.new
     end
 
-    def create_connection(connection, configuration)
+    def create_connection_obj(connection, configuration)
       user_agent_label = configuration.user_agent_label
       agent_label = user_agent_label.nil? ? "" : user_agent_label
       header = "LXCA via Ruby Client/#{XClarityClient::VERSION}"
@@ -108,34 +103,24 @@ module XClarityClient
       connection
     end
 
-    def create_faraday_multipart_obj(url, configuration)
+    def create_faraday_obj(url, configuration, multipart, n_http)
       Faraday.new(url: url) do |faraday|
-        faraday.request(:multipart) # multipart form data
+        faraday.request(:multipart) if multipart # multipart form data
         faraday.request(:url_encoded) # form-encode POST params
         faraday.response(:logger, $lxca_log.log) # log requests to log file
         faraday.use(:cookie_jar) if configuration.auth_type == 'token'
-        faraday.adapter(:net_http) # make requests with net_http
+        faraday.adapter(:httpclient) unless n_http || multipart
+        faraday.adapter(:net_http) if n_http || multipart # with net_http
         faraday.ssl[:verify] = configuration.verify_ssl == 'PEER'
       end
     end
 
-    def create_faraday_obj(url, configuration)
-      Faraday.new(url: url) do |faraday|
-        faraday.request(:url_encoded) # form-encode POST params
-        faraday.response(:logger, $lxca_log.log) # log requests to log file
-        faraday.use(:cookie_jar) if configuration.auth_type == 'token'
-        faraday.adapter(:httpclient) # make request with httpclient
-        faraday.ssl[:verify] = configuration.verify_ssl == 'PEER'
-      end
+    def build_connection(url, configuration, multipart = false, n_http = false)
+      con_obj = create_faraday_obj(url, configuration, multipart, n_http)
+      create_connection_obj(con_obj, configuration)
     end
 
-    def build_connection(url, configuration, multipart = false)
-      con_obj = create_faraday_multipart_obj(url, configuration) if multipart
-      con_obj = create_faraday_obj(url, configuration) unless multipart
-      create_connection(con_obj, configuration)
-    end
-
-    def build(configuration, multipart = false)
+    def build(configuration, multipart = false, n_http = false)
       header = HEADER_MESSAGE + ' build'
       $lxca_log.info(header, 'Building the connection')
       hostname = URI.parse(configuration.host)
@@ -145,7 +130,7 @@ module XClarityClient
                              :query    => hostname.query,
                              :fragment => hostname.fragment).to_s
       $lxca_log.info(header, "Creating connection to #{url}")
-      build_connection(url, configuration, multipart)
+      build_connection(url, configuration, multipart, n_http)
     end
   end
 end

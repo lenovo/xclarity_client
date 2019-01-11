@@ -13,11 +13,8 @@ module XClarityClient
       err_missing_key = 'Option key must be provided for update_repo resource'
       err_wrong_key = 'The value for option key should be one of these : '\
         "#{allowed_keys.join(', ')}"
-
       raise err_missing_key if opts.empty? || !(opts[:key] || opts['key'])
-
       repo_key = opts[:key] || opts['key']
-
       raise err_wrong_key unless allowed_keys.include?(repo_key)
     end
 
@@ -34,14 +31,45 @@ module XClarityClient
       )
     end
 
-    public
-
-    def check_file_types(file_types)
-      x = 'Invalid value for argument file_types. Allowed values are'\
-               + ' - all and payloads'
-      raise x unless file_types.casecmp('payloads').zero? ||
-                     file_types.casecmp('all').zero?
+    def track_export_progress(jobid)
+      progress = 0
+      uri = UpdateRepo::BASE_URI + '/status' + '?tasktype=EXPORTREPOSITORY'\
+              + '&taskid=' + jobid.to_s
+      while progress < 100
+        resp = @connection.do_get(uri, :query => {}, :headers => {},
+                                  :n_http => true)
+        return resp, 'error' if resp.nil? || resp.status != 200
+        res = JSON.parse(resp.body)
+        return resp, 'error' if res['state'] == 'error'
+        progress = res['progress']
+        sleep(30)
+      end
+      return resp, 'success'
     end
+
+    def download_exported_file(jobid)
+      resp, result = track_export_progress(jobid)
+      return resp unless result == 'success'
+      res = JSON.parse(resp.body)
+      fname = res['current'].to_s
+      uri = UpdateRepo::BASE_URI + '?action=export&exportRepoFilename=' + fname
+      resp = @connection.do_get(uri, :query => {}, :headers => {},
+                                :n_http => true)
+      fp = File.open('./' + fname.to_s, 'wb')
+      fp.write(resp.body)
+      fp.close
+    end
+
+    def validate_inputs(file_types, fixids)
+      msg = 'Invalid value for argument file_types. Allowed values are'\
+               + ' - all and payloads'
+      raise msg unless %w(payloads all).include?(file_types)
+      msg = 'Invalid inputs when argument file_types has values payloads'\
+             + ' argument fixids should not be nil'
+      raise msg if file_types == 'payloads' && fixids.nil?
+    end
+
+    public
 
     def read_update_repo
       response = @connection.do_put(UpdateRepo::BASE_URI + '?action=read')
@@ -73,8 +101,8 @@ module XClarityClient
       response.body
     end
 
-    def delete_firmware_updates(file_types, fixids)
-      check_file_types(file_types)
+    def delete_firmware_updates(file_types, fixids = nil)
+      validate_inputs(file_types, fixids)
       delete_req = JSON.generate(:fixids => fixids)
       response = @connection.do_put(UpdateRepo::BASE_URI + '?action='\
                                     + 'delete&filetypes=' + file_types.downcase,
@@ -82,14 +110,17 @@ module XClarityClient
       response.body
     end
 
-    def export_firmware_updates(file_types, fixids)
-      check_file_types(file_types)
-
+    def export_firmware_updates(file_types, fixids = nil)
+      validate_inputs(file_types, fixids)
       export_req = JSON.generate(:fixids => fixids)
-      response = @connection.do_put(UpdateRepo::BASE_URI\
+      resp = @connection.do_put(UpdateRepo::BASE_URI\
                                     + '?action=export&filetypes='\
                                     + file_types.downcase, export_req)
-      response.body
+      return resp if resp.nil? || resp.status != 200
+      res = JSON.parse(resp.body)
+      jobid = res['taskid']
+      $lxca_log.info(self.class.to_s + ' ' + __method__.to_s, "jobid: #{jobid}")
+      download_exported_file(jobid)
     end
   end
 end
