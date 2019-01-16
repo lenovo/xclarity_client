@@ -18,8 +18,9 @@ module XClarityClient
       request_body = JSON.generate(opts)
       image_name = path.split(File::SEPARATOR).last
       begin
-        response = @connection.do_post("#{OsImage::BASE_URI}?jobId=#{job_id}"\
-                                       "&imageType=OS&imageName=#{image_name}",
+        response = @connection.do_post('/files'\
+                                       + '#{OsImage::BASE_URI}?jobId=#{job_id}'\
+                                       '&imageType=OS&imageName=' + image_name,
                                        request_body)
         response
       rescue Faraday::TimeoutError => e

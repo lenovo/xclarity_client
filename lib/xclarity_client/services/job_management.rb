@@ -6,13 +6,11 @@ module XClarityClient
 
     def cancel_job(uuid='')
       cancelReq = JSON.generate(cancelRequest: 'true')
-      response = @connection.do_put(managed_resource::BASE_URI + '/' + uuid, cancelReq)
-      response
+      @connection.do_put(managed_resource::BASE_URI + '/' + uuid, cancelReq)
     end
 
     def delete_job(uuid='')
-      response = @connection.do_delete(managed_resource::BASE_URI + '/' + uuid)
-      response
+      @connection.do_delete(managed_resource::BASE_URI + '/' + uuid)
     end
   end
 end

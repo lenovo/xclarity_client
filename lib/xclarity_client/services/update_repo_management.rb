@@ -31,96 +31,109 @@ module XClarityClient
       )
     end
 
-    def track_export_progress(jobid)
-      progress = 0
-      uri = UpdateRepo::BASE_URI + '/status' + '?tasktype=EXPORTREPOSITORY'\
-              + '&taskid=' + jobid.to_s
-      while progress < 100
-        resp = @connection.do_get(uri, :query => {}, :headers => {},
-                                  :n_http => true)
-        return resp, 'error' if resp.nil? || resp.status != 200
-        res = JSON.parse(resp.body)
-        return resp, 'error' if res['state'] == 'error'
-        progress = res['progress']
-        sleep(30)
-      end
-      return resp, 'success'
-    end
-
-    def download_exported_file(jobid)
-      resp, result = track_export_progress(jobid)
-      return resp unless result == 'success'
-      res = JSON.parse(resp.body)
-      fname = res['current'].to_s
-      uri = UpdateRepo::BASE_URI + '?action=export&exportRepoFilename=' + fname
-      resp = @connection.do_get(uri, :query => {}, :headers => {},
-                                :n_http => true)
-      fp = File.open('./' + fname.to_s, 'wb')
-      fp.write(resp.body)
-      fp.close
-    end
-
-    def validate_inputs(file_types, fixids)
-      msg = 'Invalid value for argument file_types. Allowed values are'\
-               + ' - all and payloads'
-      raise msg unless %w(payloads all).include?(file_types)
-      msg = 'Invalid inputs when argument file_types has values payloads'\
-             + ' argument fixids should not be nil'
-      raise msg if file_types == 'payloads' && fixids.nil?
-    end
-
     public
 
-    def read_update_repo
-      response = @connection.do_put(UpdateRepo::BASE_URI + '?action=read')
-      response.body
+    def track_task_status(taskid, tasktype)
+      uri = UpdateRepo::BASE_URI + '/status' + '?tasktype=' + tasktype\
+              + '&taskid=' + taskid.to_s
+      @connection.do_get(uri)
     end
 
-    def refresh_update_repo(scope, mt, os)
-      if scope.casecmp('all') != 0 && scope.casecmp('latest') != 0
+    def download_exported_firmware_updates(fname, dir_path_to_download)
+      uri = UpdateRepo::BASE_URI + '?action=export&exportRepoFilename=' + fname
+      file_path = File.join(dir_path_to_download, fname)
+      @connection.do_get_file_download(uri, file_path)
+    end
+
+    def read_update_repo
+      @connection.do_put(UpdateRepo::BASE_URI + '?action=read')
+    end
+
+    def refresh_update_repo_catalog(scope, mt, uxsp = false)
+      unless %w(all latest).include?(scope)
         raise 'Invalid argument combination of action and scope. Action'\
                + ' refresh can have scope as either all or latest'
       end
-      refresh_req = JSON.generate(:mt => mt, :os => os, :type => 'catalog')
-      response = @connection.do_put(UpdateRepo::BASE_URI\
-                                    + '?action=refresh&with='\
-                                    + scope.downcase, refresh_req)
-      response.body
+      req_body = JSON.generate(:mt => mt, :os => '', :type => 'catalog')
+      uri = UpdateRepo::BASE_URI
+      uri += '/uxsps' if uxsp
+      uri += '?action=refresh&with=' + scope
+      @connection.do_put(uri, req_body)
     end
 
-    def acquire_firmware_updates(scope, fixids, mt)
-      if scope.casecmp('payloads') != 0
-        raise 'Invalid argument combination of action and scope. Action'\
-               + ' acquire can have scope as payloads'
-      end
-      acquire_req = JSON.generate(:mt => mt, :fixids => fixids,
-                                  :type => 'latest')
-      response = @connection.do_put(UpdateRepo::BASE_URI\
-                                    + '?action=acquire&with='\
-                                    + scope.downcase, acquire_req)
-      response.body
+    def refresh_uxsp_update_repo_catalog(scope, mt)
+      refresh_update_repo_catalog(scope, mt, true)
     end
 
-    def delete_firmware_updates(file_types, fixids = nil)
-      validate_inputs(file_types, fixids)
-      delete_req = JSON.generate(:fixids => fixids)
-      response = @connection.do_put(UpdateRepo::BASE_URI + '?action='\
-                                    + 'delete&filetypes=' + file_types.downcase,
-                                    delete_req)
-      response.body
+    def updates_info_by_machine_types(mt, uxsp = false)
+      mt = mt.join(',').to_str
+      uri = UpdateRepo::BASE_URI
+      uri += '/uxsps' if uxsp
+      key = 'uxspsByMt' if uxsp
+      key = 'updatesByMt' unless uxsp
+      uri += '?key=' + key + '&with=all&payload&mt=' + mt
+      @connection.do_get(uri)
     end
 
-    def export_firmware_updates(file_types, fixids = nil)
-      validate_inputs(file_types, fixids)
-      export_req = JSON.generate(:fixids => fixids)
-      resp = @connection.do_put(UpdateRepo::BASE_URI\
-                                    + '?action=export&filetypes='\
-                                    + file_types.downcase, export_req)
-      return resp if resp.nil? || resp.status != 200
-      res = JSON.parse(resp.body)
-      jobid = res['taskid']
-      $lxca_log.info(self.class.to_s + ' ' + __method__.to_s, "jobid: #{jobid}")
-      download_exported_file(jobid)
+    def uxsp_updates_info_by_machine_types(mt)
+      updates_info_by_machine_types(mt, true)
+    end
+
+    def supported_machine_types_detail
+      @connection.do_get(UpdateRepo::BASE_URI + '?key=supportedMts')
+    end
+
+    def acquire_firmware_updates(mt, fixids)
+      req_body = JSON.generate(:mt => mt, :fixids => fixids, :type => 'latest')
+      @connection.do_put(UpdateRepo::BASE_URI\
+               + '?action=acquire&with=payloads', req_body)
+    end
+
+    def delete_firmware_updates(file_types, fixids = [])
+      req_body = JSON.generate(:fixids => fixids)
+      @connection.do_put(UpdateRepo::BASE_URI + '?action='\
+                         + 'delete&filetypes=' + file_types.downcase,
+                         req_body)
+    end
+
+    def export_firmware_updates(file_types, fixids = [])
+      req_body = JSON.generate(:fixids => fixids)
+      @connection.do_put(UpdateRepo::BASE_URI\
+                         + '?action=export&filetypes='\
+                         + file_types.downcase, req_body)
+    end
+
+    def validate_import_updates(opts)
+      req_body = JSON.generate(opts)
+      uri = '/files/updateRepositories/firmware/import/validate'
+      @connection.do_post(uri, req_body)
+    end
+
+    def import_firmware_updates(opts)
+      uri = '/files/updateRepositories/firmware/import'
+      @connection.do_post(uri, opts, true)
+    end
+
+    def retrieve_compliance_policy_list
+      uri = '/compliancePolicies'
+      @connection.do_get(uri)
+    end
+
+    def export_compliance_policies(policy_names)
+      uri = '/compliancePolicies?action=export'
+      req_body = JSON.generate(:export => policy_names)
+      @connection.do_put(uri, req_body)
+    end
+
+    def download_exported_compliance_policies(fname, dir_path_for_download)
+      uri = '/compliancePolicies?exportDownload=' + fname
+      file_path = File.join(dir_path_for_download, fname)
+      @connection.do_get_file_download(uri, file_path)
+    end
+
+    def import_compliance_policies(opts)
+      uri = '/files/compliancePolicies?action=import'
+      @connection.do_post(uri, opts, true)
     end
   end
 end

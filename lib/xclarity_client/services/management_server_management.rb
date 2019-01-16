@@ -10,7 +10,7 @@ module XClarityClient
     private
 
     def start_management_server_updates_import_job(file_type_dict, files, jobid)
-      url = "/files/#{ManagementServer::BASE_URI}?action=import&jobid=#{jobid}"
+      url = "/files#{ManagementServer::BASE_URI}?action=import&jobid=#{jobid}"
       index = 0
       payload = {}
       files.each do |file_name|
@@ -59,7 +59,7 @@ module XClarityClient
       payload_files = populate_payload_files(files, file_type_dict)
       request_body = JSON.generate(:files => payload_files)
       response = @connection.do_post(url, request_body)
-      jobid = JSON.parse(response.body).to_hash['jobid']
+      jobid = JSON.parse(response.body)['jobid']
       $lxca_log.info(self.class.to_s + ' ' + __method__.to_s, "jobid: #{jobid}")
       start_management_server_updates_import_job(file_type_dict, files, jobid)
     end

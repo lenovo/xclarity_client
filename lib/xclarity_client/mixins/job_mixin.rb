@@ -24,9 +24,5 @@ module XClarityClient
     def delete_job(id = '')
       JobManagement.new(@config).delete_job(id)
     end
-
-    def get_job(job_id = '')
-      JobManagement.new(@config).get_job(job_id)
-    end
   end
 end

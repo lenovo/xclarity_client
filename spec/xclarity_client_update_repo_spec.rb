@@ -103,16 +103,16 @@ describe XClarityClient do
   describe 'PUT /updateRepositories/firmware?action=refresh' do
     context 'validate argument combination' do
       it 'validates the combination of arguments action and scope' do
-        expect {@client.refresh_update_repo("dummy",["1234"],"")}.to raise_error(RuntimeError, "Invalid argument combination of action and scope. Action refresh can have scope as either all or latest")
+        expect {@client.refresh_update_repo_catalog("all", "7X05")}.to raise_error(RuntimeError, "Invalid input: parameter mt should be Array of strings")
       end
     end
 
     context 'refresh update repo' do
       it 'Retrieves information about the latest available firmware updates from the Lenovo Support website, and stores the information to the firmware-updates repository.' do
-        @client.refresh_update_repo("all",["1234"],"")
+        @client.refresh_update_repo_catalog("all",["7X05"])
         uri = "#{@host}/updateRepositories/firmware?action=refresh&with=all"
 
-        refresh_json = JSON.generate(mt: ["1234"], os: "", type: "catalog")
+        refresh_json = JSON.generate(mt: ["7X05"], os: "", type: "catalog")
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
         expect(a_request(:put, uri).with(:body => refresh_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
@@ -120,18 +120,12 @@ describe XClarityClient do
   end
 
   describe 'PUT /updateRepositories/firmware?action=acquire' do
-    context 'validate argument combination' do
-      it 'validates the combination of arguments action and scope' do
-        expect {@client.acquire_firmware_updates("dummy",["brcd_fw_bcsw_nos5.0.1_anyos_noarch"],["1234"])}.to raise_error(RuntimeError, "Invalid argument combination of action and scope. Action acquire can have scope as payloads")
-      end
-    end
-
     context 'acquire firmware updates' do
       it 'Downloads the specified firmware updates from Lenovo Support website, and stores the updates to the firmware-updates repository.' do
-        @client.acquire_firmware_updates("payloads",["brcd_fw_bcsw_nos5.0.1_anyos_noarch"],["1234"])
+        @client.acquire_firmware_updates(["1234"],["brcd_fw_bcsw_nos5.0.1_anyos_noarch"])
         uri = "#{@host}/updateRepositories/firmware?action=acquire&with=payloads"
 
-        acquire_json = JSON.generate(mt: ["1234"], fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"], type: "latest")
+        acquire_json = JSON.generate(mt: ["1234"], fixids: ["brcd_fw_bcsw_nos5.0.1_anyos_noarch"], type: 'latest')
         user_agent = "LXCA via Ruby Client/#{XClarityClient::VERSION}" + (@user_agent.nil? ? "" : " (#{@user_agent})")
         expect(a_request(:put, uri).with(:body => acquire_json, :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Basic Og==', 'Content-Type'=>'application/json', 'User-Agent'=>user_agent})).to have_been_made
       end
