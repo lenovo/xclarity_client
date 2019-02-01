@@ -3,7 +3,7 @@ require 'faraday-cookie_jar'
 require 'uri'
 require 'uri/https'
 require 'timeout'
-require 'open-uri'
+require 'net/http'
 
 module XClarityClient
   #
@@ -52,22 +52,28 @@ module XClarityClient
       Faraday::Response.new
     end
 
-    def do_get_file_download(uri, file_path)
+    def do_get_file_download(url, file_path)
       host = @configuration.host
       username = @configuration.username
       password = @configuration.password
-      url = 'https://' + host + uri
-      open(file_path, 'wb') do |file|
-        open(url, :ssl_verify_mode           => 0,
-                  :http_basic_authentication => [username, password]) do |res|
-          file.write(res.read)
+      uri = 'https://' + host + url unless host.include?('https')
+      uri = host + url if host.include?('https')
+      uri = URI(uri)
+      Net::HTTP.start(uri.host, uri.port,
+                      :use_ssl     => true,
+                      :verify_mode => 0) do |http|
+
+        request = Net::HTTP::Get.new(uri.request_uri)
+        request.basic_auth(username, password)
+
+        http.request(request) do |response|
+          open file_path, 'wb' do |io|
+            response.read_body do |chunk|
+              io.write(chunk)
+            end
+          end
         end
       end
-    rescue OpenURI::HTTPError => error
-      response = error.io
-      msg = "Error while trying to #{uri} "\
-            "the reason: #{response.status}"
-      $lxca_log.error(' do_get_file_download', msg)
     end
 
     # Does a POST request to an LXCA endpoint
