@@ -1,6 +1,5 @@
 require 'json'
 require 'pathname'
-require 'pp'
 
 module XClarityClient
   # ManagementServerManagement class

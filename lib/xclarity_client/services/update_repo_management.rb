@@ -103,14 +103,21 @@ module XClarityClient
                          + file_types.downcase, req_body)
     end
 
-    def validate_import_updates(opts)
+    def validate_import_updates(file_path)
+      type = 'application/x-zip-compressed'
+      fname = File.basename(file_path)
+      opts = { :index => 0, :name => fname,
+               :type  => type,
+               :size  => File.size?(file_path) }
       req_body = JSON.generate(opts)
       uri = '/files/updateRepositories/firmware/import/validate'
       @connection.do_post(uri, req_body)
     end
 
-    def import_firmware_updates(opts)
+    def import_firmware_updates(file_path)
       uri = '/files/updateRepositories/firmware/import'
+      type = 'application/x-zip-compressed'
+      opts = { :upload_file => Faraday::UploadIO.new(file_path, type) }
       @connection.do_post(uri, opts, true)
     end
 
@@ -131,8 +138,10 @@ module XClarityClient
       @connection.do_get_file_download(uri, file_path)
     end
 
-    def import_compliance_policies(opts)
+    def import_compliance_policies(file_path)
       uri = '/files/compliancePolicies?action=import'
+      type = 'application/x-zip-compressed'
+      opts = { :upload_file => Faraday::UploadIO.new(file_path, type) }
       @connection.do_post(uri, opts, true)
     end
   end
