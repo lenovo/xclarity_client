@@ -103,7 +103,7 @@ describe XClarityClient do
   describe 'PUT /updateRepositories/firmware?action=refresh' do
     context 'validate argument combination' do
       it 'validates the combination of arguments action and scope' do
-        expect {@client.refresh_update_repo_catalog("all", "7X05")}.to raise_error(RuntimeError, "Invalid input: parameter mt should be Array of strings")
+        expect {@client.refresh_update_repo_catalog("all", "7X05")}.to raise_error(RuntimeError, "Parameter machine_types should be of type Array")
       end
     end
 
