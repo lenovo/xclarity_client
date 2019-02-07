@@ -52,11 +52,14 @@ module XClarityClient
       Faraday::Response.new
     end
 
-    def do_get_file_download(uri, file_path)
+    def do_get_file_download(url, file_path)
       host = @configuration.host
       username = @configuration.username
       password = @configuration.password
-      uri = 'https://' + host + uri
+
+      uri = 'https://' + host + url unless host.include?('https')
+      uri = host + url if host.include?('https')
+
       uri = URI(uri)
       Net::HTTP.start(uri.host, uri.port,
                       :use_ssl     => true,
