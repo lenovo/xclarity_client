@@ -56,8 +56,10 @@ module XClarityClient
       host = @configuration.host
       username = @configuration.username
       password = @configuration.password
+
       uri = 'https://' + host + url unless host.include?('https')
       uri = host + url if host.include?('https')
+
       uri = URI(uri)
       Net::HTTP.start(uri.host, uri.port,
                       :use_ssl     => true,
