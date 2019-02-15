@@ -57,7 +57,49 @@ module XClarityClient
       node_management.set_power_state(uuid, :bootToF1)
     end
 
+    def retrieve_mounted_media_details(uuid = '')
+      node_management.retrieve_mounted_media_details(uuid)
+    end
+
+    def enable_media_mount_support_thinkserver(uuid = '')
+      node_management.enable_media_mount_support(uuid)
+    end
+
+    def disable_media_mount_support_thinkserver(uuid = '')
+      node_management.disable_media_mount_support(uuid)
+    end
+
+    def remove_all_mounted_medias_thinksystem(uuid = '')
+      node_management.remove_all_mounted_medias(uuid)
+    end
+
+    def mount_media_thinkserver(uuid, opts)
+      validate_mount_media_params(opts, 'thinkserver')
+      node_management.mount_media(uuid, opts)
+    end
+
+    def mount_media_thinksystem(uuid, opts)
+      validate_mount_media_params(opts)
+      node_management.mount_media(uuid, opts)
+    end
+
+    def unmount_media_thinksystem(uuid, media_uid)
+      node_management.unmount_media(uuid, media_uid)
+    end
+
+    def unmount_media_thinkserver(uuid, media_uid, media_type)
+      node_management.unmount_media(uuid, media_uid, media_type)
+    end
+
     private
+
+    def validate_mount_media_params(opts, server_type = '')
+      msg = "parameter 'opts' should be of type hash"
+      raise(msg) unless opts.kind_of?(Hash)
+      err_msg = ':mediaType is mandatory field in input hash for thinkserver'
+      raise(err_msg) if server_type == 'thinkserver' &&
+                        !opts.keys.include?(:mediaType)
+    end
 
     def node_management
       NodeManagement.new(@config)
