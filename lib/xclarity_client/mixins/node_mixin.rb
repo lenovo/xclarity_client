@@ -74,47 +74,30 @@ module XClarityClient
     end
 
     def mount_media_thinkserver(uuid, opts)
-      validate_mount_media_params(opts)
+      validate_mount_media_params(opts, 'thinkserver')
       node_management.mount_media(uuid, opts)
     end
 
     def mount_media_thinksystem(uuid, opts)
-      validate_mount_media_params(opts, 'thinksystem')
+      validate_mount_media_params(opts)
       node_management.mount_media(uuid, opts)
     end
 
-    def unmount_media_thinkserver(uuid, media_uid)
-      node_management.unmount_media(uuid, media_uid)
+    def unmount_media_thinkserver(uuid, media_type)
+      node_management.unmount_media(uuid, media_type)
     end
 
-    def unmount_media_thinksystem(uuid, media_uid, media_type)
-      node_management.unmount_media(uuid, media_uid, media_type)
+    def unmount_media_thinksystem(uuid, media_uid)
+      node_management.unmount_media(uuid, media_uid)
     end
 
     private
 
     def validate_mount_media_params(opts, server_type = '')
-      msg = 'parameter opts should be of type hash, below are valid fields '\
-            + "of hash \n\n"
-      msg_params =  ":mediaLocation      => Full path of media iso\n"\
-                  + ":mediaServerAddress => Ip Address of the server on\n"\
-                  + "                        which media is located\n"\
-                  + ":mediaType => (for ThinkServersOnly) The media type\n"\
-                  + "               this can be one of following\n"\
-                  + "  1) CD/DVD - CD drive\n"\
-                  + "  2) FD - flash drive\n  3) HD - disk drive\n"\
-                  + ":shareType => share type can be one of following \n"\
-                  + "  1) ftp\n  2) http\n  3) sftp\n  4) https\n"\
-                  + "  5) nfs\n  6) samba\n"\
-                  + ":username  => Required if shareType is samba,\n"\
-                  + "              User name to authenticate media\n"\
-                  + ":password  => Required if shareType is samba,\n"\
-                  + '              password to authenticate media'
-      err_msg = msg + msg_params
-      raise(err_msg) unless opts.kind_of?(Hash)
-
-      err_msg = ':mediaType is mandatory field in input hash for thinksystem'
-      raise(err_msg) if server_type == 'thinksystem' &&
+      msg = "parameter 'opts' should be of type hash"
+      raise(msg) unless opts.kind_of?(Hash)
+      err_msg = ':mediaType is mandatory field in input hash for thinkserver'
+      raise(err_msg) if server_type == 'thinkserver' &&
                         !opts.keys.include?(:mediaType)
     end
 
