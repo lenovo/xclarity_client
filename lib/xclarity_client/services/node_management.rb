@@ -46,6 +46,7 @@ module XClarityClient
 
     def mount_media(uuid, opts)
       uri = Node::BASE_URI + "/#{uuid}/" + 'mediaMount'
+      opts[:action] = 'mount'
       req_body = JSON.generate(opts)
       @connection.do_put(uri, req_body)
     end
