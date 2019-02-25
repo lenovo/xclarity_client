@@ -53,7 +53,7 @@ module XClarityClient
 
     def unmount_media_thinkserver(uuid, media_type)
       uri = Node::BASE_URI + "/#{uuid}/" + 'mediaMount'
-      opts = { :action => 'unmount',
+      opts = { :action    => 'unmount',
                :mediaType => media_type }
       req_body = JSON.generate(opts)
       @connection.do_put(uri, req_body)
@@ -62,7 +62,7 @@ module XClarityClient
     def unmount_media_thinksystem(uuid, media_uid)
       uri = Node::BASE_URI + "/#{uuid}/" + 'mediaMount'
       opts = { :action => 'unmount',
-               :UID => media_uid }
+               :UID    => media_uid }
       req_body = JSON.generate(opts)
       @connection.do_put(uri, req_body)
     end

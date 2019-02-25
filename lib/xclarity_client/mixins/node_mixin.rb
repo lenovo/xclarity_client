@@ -83,12 +83,12 @@ module XClarityClient
       node_management.mount_media(uuid, opts)
     end
 
-    def unmount_media_thinkserver(uuid, media_type)
-      node_management.unmount_media(uuid, media_type)
+    def unmount_media_thinkserver(uuid, media_type = '')
+      node_management.unmount_media_thinkserver(uuid, media_type)
     end
 
-    def unmount_media_thinksystem(uuid, media_uid)
-      node_management.unmount_media(uuid, media_uid)
+    def unmount_media_thinksystem(uuid, media_uid = '')
+      node_management.unmount_media_thinksystem(uuid, media_uid)
     end
 
     private
